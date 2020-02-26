@@ -1,5 +1,5 @@
 body {
-	background-color:  #123456;
+	background-color:  #FFCDB2;
 	color:  #abcdef;
 	font-family: monospace;
 	font-size: 18px; 
@@ -10,6 +10,14 @@ h1 {
 p {
 
 }
+
+a {
+	background-color:  #FFB4A2;
+	color:  #abcdef;
+	font-family: monospace;
+	font-size: 18px;
+}
+
 em {
 	font-weight: bold;
 }
