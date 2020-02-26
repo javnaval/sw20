@@ -1,3 +1,4 @@
+Colores de claro a oscuro
 #FFCDB2
 #FFB4A2
 #E5989B
