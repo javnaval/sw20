@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link href="estilos.css" rel="stylesheet" type="text/css" />
+    <title>Alvaro Avezuela Altozano</title>
+</head>
+
+<body>
+<h1>Alvaro Avezuela Altozano</h1>
+<p>Correo electrónico: @ucm.es</p>
+//Foto
+<p>Aficiones:.</p>
+</body>
+</html>
