@@ -1,19 +1,17 @@
 body {
-	background-color:  #FFCDB2;
-	color:  #abcdef;
+	background-color:  #ffe5d9;
+	color:  #6D6875;
 	font-family: monospace;
 	font-size: 18px; 
 }
-h1 {
-	font-size: 30px; 
-}
-p {
 
+h1 {
+	font-size: 50px;
+	color: #6D6875;
 }
 
 a {
-	background-color:  #FFB4A2;
-	color:  #abcdef;
+	color:  #B5838D;
 	font-family: monospace;
 	font-size: 18px;
 }
