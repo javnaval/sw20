@@ -132,6 +132,10 @@ table tr:nth-child(1) {
 	background-color: #000;
 }
 
-img#lu {
+img.foto {
 	width:50%;
+}
+
+ol img {
+	width: 95%;
 }
