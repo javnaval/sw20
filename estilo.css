@@ -12,17 +12,9 @@ div#contenedor {
 
 div#cabecera {
 	padding: 30px;
-	background-color: transparent;
+	background-color: black;
 	color: white;
 }
-
-div#cabecera h1 {
-	color: white;
-	font-weight: bold;
-	text-decoration: none;
-	text-align: center;
-	font-size: 80px;
-} 
 
 div#sidebar-left {
 	padding: 10px;
@@ -33,14 +25,14 @@ div#sidebar-left {
 }
 
 div#sidebar-left a, div#sidebar-left a:visited {
-	color: #B5838D;
+	color: white;
 	font-weight: bold;
 	font-family: arial;
 	text-decoration: none;
 } 
 
 div#sidebar-left a:hover {
-	color: #B5838D;
+	color: white;
 	font-family: arial;
 	text-decoration: underline;
 } 
@@ -49,17 +41,35 @@ div#sidebar-left li {
 	list-style-type: none;
 }
 
-div#contenido a, div#contenido a:visited {
+div#sidebar-left h3 {
+	top:37%;
+	position: fixed;
+	font-size: 20px;
+	text-align: center;
+}
 
+div#sidebar-left h2 {
+	font-size: 50px;
+	position: fixed;
+	color: #FF307B;
+}
+
+div#contenido a, div#contenido a:visited {
 	font-family: arial;
 	font-weight: bold;
 	text-decoration: none;
-} 
+}
+
+div#contenido legend {
+	color: #FF307B;
+}
 
 div#contenido h1 {
-
 	font-size: 50px;
-	
+	color: grey;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
 } 
 
 div#contenido {
@@ -87,7 +97,6 @@ legend {
 a.enlaces {
 	color: #E5989B; 
 }
-
 
 label {
 	width: 4em;
