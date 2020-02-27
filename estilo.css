@@ -96,7 +96,9 @@ label {
 	margin-right: 0.5em;
 	display: block;
 }
-
+img.Foto-Álvaro Avezuela Altozano{
+ width: 100px; height: 100px;
+}
 button {
 	margin-left: 100px;
 } 
