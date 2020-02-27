@@ -11,4 +11,4 @@ Otros:
 --d8e2dc-ffe5d9-ffcad4-f4acb7-9d8189
 Escala de grises
 636363 c3c3c3 808080 9c9c9c 7d7d7d
-fucsia: e30052
+fucsia: #ff307b
