@@ -9,3 +9,6 @@ Otros:
 --131515-2b2c28-339989-7de2d1-fffafb
 --725752-878e88-96c0b7-d4dfc7-fef6c9
 --d8e2dc-ffe5d9-ffcad4-f4acb7-9d8189
+Escala de grises
+636363 c3c3c3 808080 9c9c9c 7d7d7d
+fucsia: e30052
