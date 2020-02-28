@@ -24,6 +24,10 @@ div#sidebar-left {
 	background-color: transparent;
 }
 
+#sidebar-menu{
+	position: fixed;
+}
+
 div#sidebar-left a, div#sidebar-left a:visited {
 	color: white;
 	font-weight: bold;
@@ -39,14 +43,12 @@ div#sidebar-left a:hover {
 
 div#sidebar-left h3 {
 	top:37%;
-	position: fixed;
 	font-size: 20px;
 	text-align: center;
 }
 
 div#sidebar-left h2 {
 	font-size: 50px;
-	position: fixed;
 	color: #FF307B;
 }
 
@@ -88,6 +90,10 @@ div#contenido h3 {
 	font-size: 20px;
 	font-weight: bold;
 
+}
+
+div#contenido > #imagen{
+	text-align: center;
 }
 
 fieldset {
