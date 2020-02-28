@@ -84,6 +84,12 @@ div#contenido p {
 	font-weight: normal;
 }
 
+div#contenido h3 {
+	font-size: 15px;
+	font-weight: bold;
+
+}
+
 fieldset {
 	border: 1px solid black;
 	width: 15em;
