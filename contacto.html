@@ -3,54 +3,32 @@
 <head>
     <title>Contacto</title>
 	<link rel="stylesheet" type="text/css" href="estilo.css" />
-	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<meta charset="UTF-8">
 </head>
 <body>
-<h1>Contacto</h1>
-<a href='index.html'>Inicio</a>
-<a href='detalles.html'>Detalles</a>
-<a href='bocetos.html'>Boceto</a>
-<a href='miembros.html'>Miembros</a>
-<a href='planificacion.html'>Planificacion</a>
-<p><form action="mailto:soundaymusic2k20@gmail.com" method="post">
-    <fieldset>
-        <legend>Pongase en contacto con nosotros</legend>
-        <p>Nombre: <input type="text" name="nombre"></p>
-        <p>Email de contacto: <input type="email" name="email"></p>
-        <p>Motivo de la consulta:
-        <input type="radio" name="motivo" value="evaluacion"> Evaluación
-        <input type="radio" name="motivo" value="sugerencias"> Sugerencias
-        <input type="radio" name="motivo" value="criticas"> Criticas
-        </p>
-        <p><input type="checkbox" name="condi" value="ok"> Marque esta casilla para verificar
-            que ha leído nuestros términos y condiciones del servicio.</p>
-        <p><textarea cols="80" rows="10" placeholder="Escriba su consulta aquí."></textarea></p>
-        <p><input type="submit" name="aceptar"></p>
-    </fieldset>
-</form></p>
 
 <div id="contenedor">
 
 	<div id="cabecera">
-		<h1>Sounday</h1>
+		<img id="img" src="img/soundayfondonegro.png" alt="Logo y titulo de la página">
 	</div>
 
 	<div id="sidebar-left">
-		<h3>Menú</h3>
-		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="detalles.html">Detalles</a></li>
-			<li><a href="bocetos.html">Bocetos</a></li>
-			<li><a href="miembros.html">Miembros</a></li>
-			<li><a href="planificacion.html">Planificación</a></li>
-			<li><a href="contacto.html">Contacto</a></li>
-		</ul>
+		<div id="sidebar-menu">
+			<h2>Menú</h2>
+			<h3><a href="index.html">Inicio</a></h3>
+			<h3><a href="detalles.html">Detalles</a></h3>
+			<h3><a href="bocetos.html">Bocetos</a></h3>
+			<h3><a href="miembros.html">Miembros</a></h3>
+			<h3><a href="planificacion.html">Planificación</a></h3>
+			<h3><a href="contacto.html">Contacto</a></h3>
+		</div>
 	</div>
 
 	<div id="contenido">
 		<h1>Contacto</h1>
 
-		<p><form action="mailto:soundaymusic2k20@gmail.com" method="post">
+		<form action="mailto:soundaymusic2k20@gmail.com" method="post">
 			<fieldset>
 				<legend>Pongase en contacto con nosotros</legend>
 				<p>Nombre: <input type="text" name="nombre"></p>
@@ -65,7 +43,7 @@
 				<p><textarea cols="80" rows="10" placeholder="Escriba su consulta aquí."></textarea></p>
 				<p><input type="submit" name="aceptar"></p>
 			</fieldset>
-		</form></p>
+		</form>
 	</div>
 
 </div> <!-- Fin del contenedor -->
