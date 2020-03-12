@@ -1,15 +1,15 @@
 <?php
-session_start();
-$usuario = new claseUsuario($_POST['user'], $_POST['pass']);
-if (!isset($_SESSION)){
+require("config.php");
+$usuario = $_POST['user'];
+$contrasenia = $_POST['pass'];
 
-    if ($user == "user") {
-        $_SESSION['login'] = true;
-        $_SESSION['nombre'] = "Juan";
-    } else {
-        $_SESSION['login'] = true;
-        $_SESSION['nombre'] = "Administrador";
-        $_SESSION['esAdmin'] = true;
-    };
+if (!isset($_SESSION)) {
+    if (is_string($usuario)) {
+        $user = $dao->buscar($usuario);
+        if ($user->getPassword() == $contrasenia) {
+            $_SESSION['login'] = true;
+            $_SESSION['nombre'] = "Juan";
+        }
+    }
 }
 require('inicio.php');
