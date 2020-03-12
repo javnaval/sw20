@@ -15,7 +15,7 @@
     </div>
 
     <div id="contenido">
-        <form action="procesarLogin.php" method="post">
+        <form action="procesarLogin.php?log=1" method="post">
             <fieldset>
                 <legend>Login</legend>
                 <div id="s1">
@@ -24,7 +24,7 @@
                 </div>
                 <div id="s2">
                     <a href="vistaSignIn.php" placeholder="¿Aun no está registrado? Crear una cuenta">¿Aun no está registrado? Crear una cuenta</a>
-                    <p><input type="submit" name="Iniciar sesión"></p>
+                    <p><input type="submit" name="Iniciar sesión" value="Iniciar sesión"></p>
                 </div>
             </fieldset>
         </form>

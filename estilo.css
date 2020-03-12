@@ -53,6 +53,10 @@ div#contenido fieldset div#s2 {
 	padding-top: 25%;
 }
 
+div#contenido fieldset div#s3 {
+	text-align: center;
+}
+
 legend {
 	color: #FF307B;
 	background: #303030;

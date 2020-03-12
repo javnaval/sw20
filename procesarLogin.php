@@ -1,15 +1,34 @@
 <?php
-require("config.php");
-$usuario = $_POST['user'];
-$contrasenia = $_POST['pass'];
+require_once("DAOUsuario.php");
+require_once("config.php");
 
-if (!isset($_SESSION)) {
-    if (is_string($usuario)) {
+assert(is_string($_POST['user']) && is_string($_POST['pass']), "Error al introducir los datos");
+$usuario = htmlspecialchars(trim(strip_tags($_POST['user'])));
+$contrasenia = htmlspecialchars(trim(strip_tags($_POST['pass'])));
+$dao = new DAOUsuario();
+
+unset($_SESSION);
+
+if (!isset($_SESSION['login'])) {
+    if ($_GET['log']) {
         $user = $dao->buscar($usuario);
-        if ($user->getPassword() == $contrasenia) {
+        if ($user != null && $user->getPassword() == $contrasenia) {
             $_SESSION['login'] = true;
             $_SESSION['nombre'] = "Juan";
+            require('vistaInicio.php');
         }
+        else require("vistaLogin.php");
+    }
+    else {
+        assert(is_string($_POST['email']) && is_string($_POST['pass2']), "Error al introducir los datos");
+        $email = htmlspecialchars(trim(strip_tags($_POST['email'])));
+        $contrasenia2 = htmlspecialchars(trim(strip_tags($_POST['pass2'])));
+
+        if ($contrasenia == $contrasenia2) {
+            $user = new claseUsuario($usuario, $contrasenia, $email);
+            if ($dao->insertar($user)) require('vistaInicio.php');
+            else require("vistaSignIn.php");
+        }
+        else require("vistaSignIn.php");
     }
 }
-require('inicio.php');

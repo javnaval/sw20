@@ -1,27 +1,34 @@
 <?php
-
+require_once("DAO.php");
+require_once("claseUsuario.php");
 
 class DAOUsuario implements DAO {
-    private $db;
+
+    private $mysqli;
+
     public function __construct() {
-        $db = mysqli_connect('localhost', 'root', '', 'pr4');
+        $this->mysqli = new mysqli('localhost', 'sounday', 'sounday2020', 'sounday');
+        require_once("config.php");
     }
 
     public function insertar($user){
-
+        $usuario = $this->mysqli->real_escape_string($user->getUser());
+        $pass = $this->mysqli->real_escape_string($user->getPassword());
+        $email = $this->mysqli->real_escape_string($user->getEmail());
+        $query = "INSERT INTO usuarios VALUES ('$usuario', '$pass', '$email')";
+        return ($this->mysqli->query($query));
     }
 
     public function buscar($user) {
-        $sql = 'SELECT * FROM usuarios WHERE user = ? ';
-        $consulta = mysqli_prepare($this->db, $sql);
-        $ok = mysqli_stmt_bind_param($consulta, 's', $user);
-        $ok = mysqli_stmt_execute($consulta);
-        $ok = mysqli_stmt_bind_result($consulta, $password);
-        while($ok != NULL) {
-            mysqli_stmt_fetch($consulta);
-            $ok = mysqli_stmt_bind_result($consulta, $password);
-        }
+        $user = $this->mysqli->real_escape_string($user);
+        $query = "SELECT * FROM usuarios WHERE user = '$user' ";
+        $result = $this->mysqli->query($query);
         $usuario = new claseUsuario();
+        if ($res = $result->fetch_object()) {
+            $usuario->setUser($res->user);
+            $usuario->setPassword($res->password);
+        }
+        else $usuario = NULL;
         return $usuario;
     }
 
