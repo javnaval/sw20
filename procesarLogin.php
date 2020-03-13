@@ -17,7 +17,10 @@ if (!isset($_SESSION['login'])) {
             $_SESSION['nombre'] = "Juan";
             require('vistaInicio.php');
         }
-        else require("vistaLogin.php");
+        else {
+            $_GET['error'] = true;
+            require("vistaLogin.php");
+        }
     }
     else {
         assert(is_string($_POST['email']) && is_string($_POST['pass2']), "Error al introducir los datos");
@@ -27,8 +30,14 @@ if (!isset($_SESSION['login'])) {
         if ($contrasenia == $contrasenia2) {
             $user = new claseUsuario($usuario, $contrasenia, $email);
             if ($dao->insertar($user)) require('vistaInicio.php');
-            else require("vistaSignIn.php");
+            else {
+                $_GET['error'] = true;
+                require("vistaSignIn.php");
+            }
         }
-        else require("vistaSignIn.php");
+        else {
+            $_GET['error'] = true;
+            require("vistaSignIn.php");
+        }
     }
 }

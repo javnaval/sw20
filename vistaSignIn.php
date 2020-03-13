@@ -19,11 +19,24 @@
             <fieldset>
                 <legend>Sign In</legend>
                 <div id="s1">
-                    <p><input type="email" name="email" placeholder="Correo electrónico"></p>
-                    <p><input type="text" name="user" placeholder="Usuario"></p>
+                    <?php
+                        if (isset($_POST['email'])) {
+                            echo "<p><input type=\"email\" name=\"email\" placeholder=\"Correo electrónico\" value=".$_POST['email']."></p>";
+                        }
+                        else echo " <p><input type=\"email\" name=\"email\" placeholder=\"Correo electrónico\"></p>";
+                        if (isset($_POST['user'])) {
+                            echo "<p><input type=\"text\" name=\"user\" value=".$_POST['user']." placeholder=\"Usuario\"></p>";
+                        }
+                        else echo "<p><input type=\"text\" name=\"user\" placeholder=\"Usuario\"></p>";
+                    ?>
                     <p><input type="password" name="pass" placeholder="Contraseña"></p>
                     <p><input type="password" name="pass2" placeholder="Repetir contraseña"></p>
                 </div>
+                <?php
+                    if (isset($_GET['error']) && $_GET['error'] == true) {
+                        echo "<p id='error'>Usuario o contraseña no válidos.</p>";
+                    }
+                ?>
                 <div id="s3">
                     <a href="vistaLogin.php" placeholder="¿Ya tienes cuenta? Iniciar sesión">¿Ya tienes cuenta? Iniciar sesión</a>
                     <p><input type="submit" name="Registrarse" value="Registrarse"></p>
