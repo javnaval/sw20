@@ -7,14 +7,12 @@ $usuario = htmlspecialchars(trim(strip_tags($_POST['user'])));
 $contrasenia = htmlspecialchars(trim(strip_tags($_POST['pass'])));
 $dao = new DAOUsuario();
 
-unset($_SESSION);
-
 if (!isset($_SESSION['login'])) {
     if ($_GET['log']) {
         $user = $dao->buscar($usuario);
         if ($user != null && $user->getPassword() == $contrasenia) {
             $_SESSION['login'] = true;
-            $_SESSION['nombre'] = "Juan";
+            $_SESSION['user'] = $user->getUser();
             require('vistaInicio.php');
         }
         else {
@@ -41,3 +39,4 @@ if (!isset($_SESSION['login'])) {
         }
     }
 }
+else echo "holaaa caracola";

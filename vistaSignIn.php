@@ -1,3 +1,10 @@
+<?php
+    require_once "config.php";
+    if (isset($_SESSION['login']) && $_SESSION['login'] = true) {
+        require("vistaInicio.php");
+    }
+    else {
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -51,6 +58,6 @@
         ?>
     </div>
 </div>
-
+<?php } ?>
 </body>
 </html>
