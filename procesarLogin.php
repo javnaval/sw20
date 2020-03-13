@@ -39,4 +39,4 @@ if (!isset($_SESSION['login'])) {
         }
     }
 }
-else echo "holaaa caracola";
+else require("vistaLogin.php");

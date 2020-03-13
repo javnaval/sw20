@@ -17,6 +17,7 @@
 <div id="contenedor">
     <div id="cabecera">
         <?php
+        $_GET['cab'] = 1;
         require('cabecera.php');
         ?>
     </div>
@@ -28,11 +29,11 @@
                 <div id="s1">
                     <?php
                         if (isset($_POST['user'])) {
-                            echo "<p><input type=\"text\" name=\"user\" value=".$_POST['user']." placeholder=\"Usuario\"></p>";
+                            echo "<p><input type=\"text\" name=\"user\" value=".$_POST['user']." placeholder=\"Usuario\" required></p>";
                         }
-                        else echo "<p><input type=\"text\" name=\"user\" placeholder=\"Usuario\"></p>";
+                        else echo "<p><input type=\"text\" name=\"user\" placeholder=\"Usuario\" required></p>";
                     ?>
-                    <p><input type="password" name="pass" placeholder="Contraseña"></p>
+                    <p><input type="password" name="pass" placeholder="Contraseña" required></p>
                 </div>
                 <?php
                     if (isset($_GET['error']) && $_GET['error'] == true) {

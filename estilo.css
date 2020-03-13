@@ -6,26 +6,47 @@ div#contenedor {
 	background-color: black;
 }
 
-div#cabecera {
-
-}
-
-div#cabecera a {
+div#cabecera section#cab1 a {
 	color : floralwhite;
 	background-color: #FF307B;
 	float: right;
 	text-align: center;
-	padding: 40px 40px;
-	border-radius: 100px;
 	padding: 17px;
+	border-radius: 100px;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+div#cabecera section#cab2 {
+	height: 100px;
+	background-color: floralwhite;
+	padding-left: 220px;
+}
+
+div#cabecera section#cab2 a {
+	color : floralwhite;
+	background-color: #FF307B;
+	float: right;
+	text-align: center;
+	padding: 17px;
+	border-radius: 100px;
 	font-size: 15px;
 	text-decoration: none;
 }
 
 div#sidebar-left {
-
+	background-color: black;
+	width: 200px;
+	height: 100%;
+	position: fixed;
+	float: left;
 }
 
+div#sidebar-left img {
+	height: 150px;
+	width: 150px;
+	padding-left: 25px;
+}
 
 div#contenido fieldset {
 	border: 1px solid black;
