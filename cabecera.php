@@ -10,7 +10,7 @@ if (isset($_GET['cab']) && $_GET['cab'] == 1) {
 else {
     echo '<section id="cab2">';
     echo '<form href="procesarBusqueda.php" method="post">
-            <input type="search" id="Busqueda" placeholder="Buscar artistas, canciones o álbumes">
+            <input type="search" id="busqueda" placeholder="Buscar artistas, canciones o álbumes">
             <input type="submit" name="Buscar" value="Buscar">
            </form>';
     echo '<a href="procesarLogout.php" placeholder="Logout">Logout</a>';

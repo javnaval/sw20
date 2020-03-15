@@ -33,7 +33,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `usuarios` (
   `user` varchar(15) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `email` varchar(30) DEFAULT NULL
+  `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -54,6 +54,7 @@ INSERT INTO `usuarios` (`user`, `password`, `email`) VALUES
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`user`);
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

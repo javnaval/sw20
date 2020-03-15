@@ -1,15 +1,17 @@
 <?php
-
+require_once("DAOUsuario.php");
 
 class claseUsuario {
     private $user;
     private $password;
     private $email;
+    private $dao;
 
     public function __construct($user = "", $password = "", $email = "") {
         $this->user = $user;
         $this->password = $password;
         $this->email = $email;
+        $this->dao = new DAOUsuario();
     }
 
     public function getPassword() {
@@ -34,6 +36,18 @@ class claseUsuario {
 
     public function setEmail($email) {
         $this->email = $email;
+    }
+
+    public function buscar() {
+        $this->dao->buscar($this);
+    }
+
+    public function insertar() {
+        return $this->dao->insertar($this);
+    }
+
+    public function eliminar() {
+        $this->dao->eliminar($this);
     }
 
 }

@@ -1,14 +1,14 @@
 <?php
+require_once("config.php");
 require_once("DAO.php");
 require_once("claseUsuario.php");
 
 class DAOUsuario implements DAO {
-
     private $mysqli;
 
     public function __construct() {
-        $this->mysqli = new mysqli('localhost', 'sounday', 'sounday2020', 'sounday');
-        require_once("config.php");
+        $singleton = Singleton::getSingleton();
+        $this->mysqli = $singleton->connection();
     }
 
     public function insertar($user){
@@ -20,19 +20,20 @@ class DAOUsuario implements DAO {
     }
 
     public function buscar($user) {
-        $user = $this->mysqli->real_escape_string($user);
-        $query = "SELECT * FROM usuarios WHERE user = '$user' ";
+        $usuario = $this->mysqli->real_escape_string($user->getUser());
+        $query = "SELECT * FROM usuarios WHERE user = '$usuario' ";
         $result = $this->mysqli->query($query);
-        $usuario = new claseUsuario();
         if ($res = $result->fetch_object()) {
-            $usuario->setUser($res->user);
-            $usuario->setPassword($res->password);
+            $user->setUser($res->user);
+            $user->setPassword($res->password);
+            $user->setEmail($res->email);
         }
-        else $usuario = NULL;
-        return $usuario;
+        else $user = null;
     }
 
     public function eliminar ($user) {
-
+        $usuario = $this->mysqli->real_escape_string($user->getUser());
+        $query = "DELETE FROM usuarios WHERE user = '$usuario'";
+        $this->mysqli->query($query);
     }
 }
