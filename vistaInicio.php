@@ -25,9 +25,10 @@
         <?php
         if (isset($_GET['canciones'])){
             $canciones = $_GET['canciones'];
+            echo "<h1>CANCIONES</h1>";
             foreach ($canciones as $cancion) {
-                echo $cancion->getCancion().' '.$cancion->getArtista().' '.$cancion->getAlbum();
-                echo '<p>'.$cancion->getRuta().'</p>';
+                echo '<h3>'.$cancion->getCancion().'</h3><p>Artista: '.$cancion->getArtista().'</p><p>Album: '.$cancion->getAlbum().'</p>';
+                echo '<audio src="'.$cancion->getRuta().'" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
             }
         }
         ?>

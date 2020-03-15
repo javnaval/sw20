@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-03-2020 a las 17:48:31
+-- Tiempo de generación: 15-03-2020 a las 18:45:43
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -43,9 +43,9 @@ CREATE TABLE `canciones` (
 --
 
 INSERT INTO `canciones` (`cancion`, `artista`, `album`, `user`, `ruta`) VALUES
-('Happy together', 'The turtles', 'Happy together', 'user', 'AW\\sw20\\img\\fondo.jpg'),
-('So payaso', 'Extremoduro', 'Agila', 'user1', 'AW\\sw20\\img\\image.png'),
-('Someone you loved', 'Lewis Capaldi', 'Divinely Uninspired To A Helli', 'user', 'AW\\sw20\\img\\soundayfondonegro.png');
+('Happy together', 'The turtles', 'Happy together', 'user', 'img\\Happy Together.mp3'),
+('So payaso', 'Extremoduro', 'Agila', 'user1', 'img\\So Payaso.mp3'),
+('Someone you loved', 'Lewis Capaldi', 'Divinely Uninspired To A Helli', 'user', 'img\\Someone You Loved.mp3');
 
 -- --------------------------------------------------------
 
