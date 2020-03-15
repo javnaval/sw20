@@ -15,9 +15,9 @@
 <body>
 
 <div id="contenedor">
+
     <div id="cabecera">
         <?php
-        $_GET['cab'] = 1;
         require('cabecera.php');
         ?>
     </div>

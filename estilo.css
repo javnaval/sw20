@@ -3,27 +3,16 @@ body {
 }
 
 div#contenedor {
-	background-color: black;
-}
-
-div#cabecera section#cab1 a {
-	color : floralwhite;
-	background-color: #FF307B;
-	float: right;
-	text-align: center;
-	padding: 17px;
-	border-radius: 100px;
-	font-size: 15px;
-	text-decoration: none;
-}
-
-div#cabecera section#cab2 {
-	height: 100px;
 	background-color: floralwhite;
-	padding-left: 220px;
+	margin: auto;
 }
 
-div#cabecera section#cab2 a {
+div#cabecera{
+	background-color: black;
+	height: 200px;
+}
+
+div#cabecera a {
 	color : floralwhite;
 	background-color: #FF307B;
 	float: right;
@@ -34,18 +23,43 @@ div#cabecera section#cab2 a {
 	text-decoration: none;
 }
 
-div#sidebar-left {
+div#cabeceraInicio {
+	height: 120px;
 	background-color: black;
-	width: 200px;
-	height: 100%;
-	position: fixed;
-	float: left;
 }
 
-div#sidebar-left img {
+div#cabeceraInicio a {
+	color : floralwhite;
+	background-color: #FF307B;
+	float: right;
+	text-align: center;
+	padding: 17px;
+	border-radius: 100px;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+div#cabeceraInicio img {
 	height: 150px;
 	width: 150px;
+	float: left;
 	padding-left: 25px;
+}
+
+div#sidebarLeft {
+	float: left;
+	background-color: black;
+	width: 200px;
+	min-height: 830px;
+	position: fixed;
+}
+
+div#contenidoInicio {
+	height: 100%;
+	margin-left: 200px;
+	padding: 30px;
+	background-color: floralwhite;
+	color: black;
 }
 
 div#contenido fieldset {

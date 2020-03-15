@@ -9,20 +9,28 @@
 
 <div id="contenedor">
 
-    <div id="sidebar-left">
+    <div id="cabeceraInicio">
         <?php
-        require('sidebar-left.php');
+        require('cabeceraInicio.php');
         ?>
     </div>
 
-    <div id="cabecera">
+    <div id="sidebarLeft">
         <?php
-        require('cabecera.php');
+        require('sidebarLeft.php');
         ?>
     </div>
 
-    <div id="contenido">
-
+    <div id="contenidoInicio">
+        <?php
+        if (isset($_GET['canciones'])){
+            $canciones = $_GET['canciones'];
+            foreach ($canciones as $cancion) {
+                echo $cancion->getCancion().' '.$cancion->getArtista().' '.$cancion->getAlbum();
+                echo '<p>'.$cancion->getRuta().'</p>';
+            }
+        }
+        ?>
     </div>
 
     <div id="pie">
