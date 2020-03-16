@@ -1,11 +1,12 @@
 body {
 	background-color: floralwhite;
-	margin: auto;
+	margin: 5px;
 }
 
 header#index{
 	background-color: black;
 	height: 200px;
+	padding: 10px;
 }
 
 header#index a {
@@ -45,15 +46,20 @@ header#inicio img {
 nav {
 	float: left;
 	background-color: black;
+	color: white;
 	width: 200px;
-	min-height: 100%;
+	height: 100%;
 	position: absolute;
 }
 
+nav section {
+	position: fixed;
+	padding: 20px;
+}
+
 section#inicio {
-	height: 100%;
 	margin-left: 200px;
-	padding: 30px;
+	padding: 30px 60px;
 	background-color: floralwhite;
 	color: black;
 }
