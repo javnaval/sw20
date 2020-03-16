@@ -8,18 +8,14 @@
 
 <body>
 
-<div id="contenedor">
-
-	<div id="cabecera">
+	<header id="index">
         <?php
         require("cabecera.php");
         ?>
-	</div>
+	</header>
 
-	<div id="contenido">
-	</div>
-
-</div> <!-- Fin del contenedor -->
+	<section>
+	</section>
 
 </body>
 </html>

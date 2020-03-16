@@ -7,21 +7,19 @@
 </head>
 <body>
 
-<div id="contenedor">
-
-    <div id="cabeceraInicio">
+    <header id="inicio">
         <?php
         require('cabeceraInicio.php');
         ?>
-    </div>
+    </header>
 
-    <div id="sidebarLeft">
+    <nav>
         <?php
         require('sidebarLeft.php');
         ?>
-    </div>
+    </nav>
 
-    <div id="contenidoInicio">
+    <section id="inicio">
         <?php
         if (isset($_GET['canciones'])){
             $canciones = $_GET['canciones'];
@@ -39,13 +37,13 @@
             }
         }
         ?>
-    </div>
+    </section>
 
-    <div id="pie">
+    <footer>
         <?php
         require('pie.php');
         ?>
-    </div>
+    </footer>
 
 </body>
 </html>

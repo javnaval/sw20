@@ -14,15 +14,13 @@
 </head>
 <body>
 
-<div id="contenedor">
-
-    <div id="cabecera">
+    <header id="index">
         <?php
         require('cabecera.php');
         ?>
-    </div>
+    </header>
 
-    <div id="contenido">
+    <section id="log">
         <form action="procesarLogin.php?log=0" method="post">
             <fieldset>
                 <legend>Sign In</legend>
@@ -51,14 +49,14 @@
                 </div>
             </fieldset>
         </form>
-    </div>
+    </section>
 
-    <div id="pie">
+    <footer>
         <?php
         require('pie.php');
         ?>
-    </div>
-</div>
-<?php } ?>
+    </footer>
+
 </body>
+<?php } ?>
 </html>

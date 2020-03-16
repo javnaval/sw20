@@ -1,18 +1,14 @@
 body {
 	background-color: floralwhite;
-}
-
-div#contenedor {
-	background-color: floralwhite;
 	margin: auto;
 }
 
-div#cabecera{
+header#index{
 	background-color: black;
 	height: 200px;
 }
 
-div#cabecera a {
+header#index a {
 	color : floralwhite;
 	background-color: #FF307B;
 	float: right;
@@ -23,12 +19,12 @@ div#cabecera a {
 	text-decoration: none;
 }
 
-div#cabeceraInicio {
+header#inicio {
 	height: 120px;
 	background-color: black;
 }
 
-div#cabeceraInicio a {
+header#inicio a {
 	color : floralwhite;
 	background-color: #FF307B;
 	float: right;
@@ -39,21 +35,21 @@ div#cabeceraInicio a {
 	text-decoration: none;
 }
 
-div#cabeceraInicio img {
+header#inicio img {
 	height: 150px;
 	width: 150px;
 	float: left;
 	padding-left: 25px;
 }
 
-div#sidebarLeft {
+nav {
 	float: left;
 	background-color: black;
 	width: 200px;
 	min-height: 830px;
 }
 
-div#contenidoInicio {
+section#inicio {
 	height: 100%;
 	margin-left: 200px;
 	padding: 30px;
@@ -61,7 +57,7 @@ div#contenidoInicio {
 	color: black;
 }
 
-div#contenido fieldset {
+section#log fieldset {
 	border: 1px solid black;
 	width: 300px;
 	height: 320px;
@@ -73,21 +69,21 @@ div#contenido fieldset {
 	transform: translate(-50%, -50%);
 }
 
-div#contenido fieldset div#s1 {
+section#log fieldset div#s1 {
 	float: top;
 }
 
-div#contenido fieldset div#s1 input {
+section#log fieldset div#s1 input {
 	width: 100%;
 	height: 30px;
 }
 
-div#contenido fieldset div#s2 {
+section#log fieldset div#s2 {
 	text-align: center;
 	padding-top: 35%;
 }
 
-div#contenido fieldset div#s3 {
+section#log fieldset div#s3 {
 	text-align: center;
 }
 
