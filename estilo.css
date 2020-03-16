@@ -46,7 +46,8 @@ nav {
 	float: left;
 	background-color: black;
 	width: 200px;
-	min-height: 830px;
+	min-height: 100%;
+	position: absolute;
 }
 
 section#inicio {
