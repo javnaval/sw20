@@ -31,6 +31,13 @@
                 echo '<audio src="'.$cancion->getRuta().'" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
             }
         }
+        if (isset($_GET['artistas'])){
+            $artistas = $_GET['artistas'];
+            echo "<h1>ARTISTAS</h1>";
+            foreach ($artistas as $artista) {
+                echo '<h3>'.$artista->getArtista().'</h3><p>Género: '.$artista->getGenero().'</p><p>Descripcion: '.$artista->getDescripcion().'</p>';
+            }
+        }
         ?>
     </div>
 

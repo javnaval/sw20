@@ -2,7 +2,7 @@
 
 
 interface DAO {
-    public function insertar($user);
-    public function buscar($user);
-    public function eliminar($user);
+    public function insertar($elem);
+    public function buscar($elem);
+    public function eliminar($elem);
 }
