@@ -50,6 +50,8 @@ nav {
 	width: 200px;
 	height: 100%;
 	position: absolute;
+	font-size: 30px;
+	text-align: center;
 }
 
 nav section {
