@@ -1,37 +1,42 @@
+<?php
+require_once 'includes/config.php';
+?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="estilo.css" />
     <meta charset="UTF-8">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sounday</title>
 </head>
 <body>
 
-    <header id="inicio">
+<div id="container" class="wrapper">
+
+    <header>
         <?php
-        require 'cabeceraInicio.php';
+        require 'includes/handlers/header.php';
         ?>
     </header>
 
     <nav>
         <?php
-        require 'sidebarLeft.php';
+        require 'includes/handlers/sidebarLeft.php';
         ?>
     </nav>
 
-    <section id="inicio">
+    <section>
         <?php
-        if (isset($_POST['busqueda'])) require 'vistaBusqueda.php';
-        if (isset($_GET['upload'])) require 'vistaUpload.php';
-        if (isset($_POST['archivo'])) require 'procesarUpload.php';
+        require 'includes/handlers/contents.php';
         ?>
     </section>
 
     <footer>
         <?php
-        require 'pie.php';
+        require 'includes/handlers/footer.php';
         ?>
     </footer>
+
+</div>
 
 </body>
 </html>

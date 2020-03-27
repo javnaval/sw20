@@ -1,14 +1,14 @@
 <?php
-    require_once "config.php";
+    require_once __DIR__ . '/includes/config.php';
     if (isset($_SESSION['login']) && $_SESSION['login'] = true) {
-        require("vistaInicio.php");
+        header("Location: vistaInicio.php");
     }
     else {
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" type="text/css" href="estilo.css" />
+    <link rel="stylesheet" type="text/css" href="css/estilo.css" />
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
@@ -16,22 +16,22 @@
 
     <header id="index">
         <?php
-        require('cabecera.php');
+        require 'includes/handlers/cabecera.php';
         ?>
     </header>
 
     <section id="log">
-        <form action="procesarLogin.php?log=0" method="post">
+        <form action="includes/procesarLogin.php?log=0" method="post">
             <fieldset>
                 <legend>Sign In</legend>
                 <div id="s1">
                     <?php
-                        if (isset($_POST['email'])) {
-                            echo "<p><input type=\"email\" name=\"email\" placeholder=\"Correo electrónico\" value=".$_POST['email']." required></p>";
+                        if (isset($_GET['email'])) {
+                            echo "<p><input type=\"email\" name=\"email\" placeholder=\"Correo electrónico\" value=".$_GET['email']." required></p>";
                         }
                         else echo " <p><input type=\"email\" name=\"email\" placeholder=\"Correo electrónico\" required></p>";
-                        if (isset($_POST['user'])) {
-                            echo "<p><input type=\"text\" name=\"user\" value=".$_POST['user']." placeholder=\"Usuario\" required></p>";
+                        if (isset($_GET['user'])) {
+                            echo "<p><input type=\"text\" name=\"user\" value=".$_GET['user']." placeholder=\"Usuario\" required></p>";
                         }
                         else echo "<p><input type=\"text\" name=\"user\" placeholder=\"Usuario\" required></p>";
                     ?>
@@ -53,7 +53,7 @@
 
     <footer>
         <?php
-        require('pie.php');
+        require 'includes/handlers/pie.php';
         ?>
     </footer>
 

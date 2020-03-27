@@ -1,16 +1,19 @@
+<?php
+require_once 'includes/config.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<link rel="stylesheet" type="text/css" href="css/estilo.css" />
 	<meta charset="UTF-8">
 	<title>Inicio</title>
 </head>
 
 <body>
 
-	<header id="index">
+	<header>
         <?php
-        require("cabecera.php");
+        require 'includes/handlers/cabecera.php';
         ?>
 	</header>
 
