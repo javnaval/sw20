@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,17 +15,23 @@
          </header>
          <section>
              <ul>
-                 <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-home"></i><figcaption>Inicio<figcaption></figure></a></li>
-                 <li><a class="icon" href="vistaInicio.php?busqueda=false"><figure><i class="fas fa-search"></i><figcaption>Buscar<figcaption></figure></a></li>
+                 <li><a class="icon" href="vistaInicio.php"><i class="fas fa-home"> Inicio</i></a></li>
+			</ul>
+             <ul>
+                 <li><a class="icon" href="vistaInicio.php?pag=2&busqueda=false"><i class="fas fa-search"> Buscar</i></a></li>
              </ul>
              <ul>
-                 <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-list-ul"></i><figcaption>Tu Biblioteca<figcaption></figure></a></li>
-                 <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-newspaper"></i><figcaption>Noticias<figcaption></figure></a></li>
+                 <li><a class="icon" href="vistaInicio.php"><i class="fas fa-list-ul"> Tu Biblioteca</i></a></li>
+			</ul>
+             <ul>
+                 <li><a class="icon" href="vistaInicio.php"><i class="fas fa-newspaper"> Noticias</i></a></li>
              </ul>
              <span><hr></span>
              <ul>
-                 <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-cloud-download-alt"></i></i><figcaption>Descargar<figcaption></figure></a></li>
-                 <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-cloud-upload-alt"></i><figcaption>Subir Cancion<figcaption></figure></a></li>
+                 <li><a class="icon" href="vistaInicio.php"><i class="fas fa-cloud-download-alt"> Descargar</i></a></li>
+			</ul>
+             <ul>
+                 <li><a class="icon" href="vistaInicio.php"><i class="fas fa-cloud-upload-alt"> Subir Cancion</i></a></li>
              </ul>
          </section>
      </nav>

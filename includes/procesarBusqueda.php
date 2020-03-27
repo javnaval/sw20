@@ -15,22 +15,22 @@ $albumes = (new Albums())->where("title", "LIKE", "%".$buscar."%")->get();
 
 echo "<h1>CANCIONES</h1>";
 foreach ($canciones as $cancion) {
-    echo '<p><div>';
+    echo '<div>';
     echo '<h3>' . $cancion->getTitle() . '</h3><p>Artista: ' . $cancion->getIdArtist() . '</p><p>Album: ' . $cancion->getIdAlbum() . '</p>';
     echo '<audio src="server/'.$cancion->getId().'.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
-    echo '</div></p>';
+    echo '</div>';
 }
 
 echo "<h1>ARTISTAS</h1>";
 foreach ($artistas as $artista) {
-    echo '<p><div>';
+    echo '<div>';
     echo '<h3>'.$artista->getName().'</h3><p>Género: '.$artista->getGenre().'</p>';
-    echo '</div></p>';
+    echo '</div>';
 }
 
 echo "<h1>ALBUMES</h1>";
 foreach ($albumes as $album) {
-    echo '<p><div>';
+    echo '<div>';
     echo '<h3>'.$album->getTitle().'</h3><p>Año de lanzamiento: '.$album->getReleaseDate().'</p>';
-    echo '</div></p>';
+    echo '</div>';
 }
