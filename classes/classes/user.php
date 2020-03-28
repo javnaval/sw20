@@ -52,5 +52,24 @@
 			 return $this->password;
 		 }
 
+        public static function buscaUsuario($user){
+            $user = (new Users())->where("user", "=", $user)->get();
+            return $user[0];
+        }
+
+        public function compruebaPassword($password){
+            return $this->password == $password;
+        }
+
+        public static function login($user, $password){
+		     $user = self::buscaUsuario($user);
+		     if ($user != null && $user->compruebaPassword($password)) return $user;
+		     else return false;
+        }
+
+        public static function crea($user, $email, $contrasenia){
+		     return (new Users())->insert(new user(null, $user, null, null, null, $email, $contrasenia));
+        }
+
 	}
 ?>

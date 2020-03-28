@@ -21,7 +21,7 @@
     </header>
 
     <section id="log">
-        <form action="includes/procesarLogin.php?log=0" method="post">
+        <form action="includes/procesarSignIn.php" method="post">
             <fieldset>
                 <legend>Sign In</legend>
                 <div id="s1">

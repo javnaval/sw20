@@ -19,7 +19,7 @@
     </header>
 
     <section id="log">
-        <form action="includes/procesarLogin.php?log=1" method="post">
+        <form action="includes/procesarLogin.php" method="post">
             <fieldset>
                 <legend>Login</legend>
                 <div id="s1">
