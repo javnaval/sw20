@@ -24,13 +24,6 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
-
-CREATE USER IF NOT EXISTS 'sounday'@'%' IDENTIFIED VIA mysql_native_password USING 'sounday2020';
-GRANT ALL PRIVILEGES ON *.* TO 'sounday'@'%' REQUIRE NONE WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
-CREATE DATABASE IF NOT EXISTS `sounday`;GRANT ALL PRIVILEGES ON `sounday`.* TO 'sounday'@'%';
-
-USE `sounday`;
-
 --
 -- Estructura de tabla para la tabla `albums`
 --
