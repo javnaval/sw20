@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,8 +15,8 @@
          </header>
          <section>
              <ul>
-                 <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-home"></i><figcaption>Inicio<figcaption></figure></a></li>
-                 <li><a class="icon" href="vistaInicio.php?busqueda=false"><figure><i class="fas fa-search"></i><figcaption>Buscar<figcaption></figure></a></li>
+                 <li><a class="icon" href="vistaInicio.php?pag=1"><figure><i class="fas fa-home"></i><figcaption>Inicio<figcaption></figure></a></li>
+                 <li><a class="icon" href="vistaInicio.php?pag=2&busqueda=false"><figure><i class="fas fa-search"></i><figcaption>Buscar<figcaption></figure></a></li>
              </ul>
              <ul>
                  <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-list-ul"></i><figcaption>Tu Biblioteca<figcaption></figure></a></li>

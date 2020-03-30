@@ -62,7 +62,7 @@ footer section.left-footer{
   display: flex;
   flex-direction: row;
   width: 20%;
-  background-color: white;
+  background-color: black;
 }
 
 footer section.center-footer{

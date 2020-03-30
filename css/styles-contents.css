@@ -1,7 +1,8 @@
 section.contents{
-    margin-left: 100px;
+    margin-left: 10%;
     margin-bottom: 100px;
     height: calc(100% - 100px);
+	width:90%;
     background-color: rgb(87, 0, 250);
     position: fixed;
     display: flex;
