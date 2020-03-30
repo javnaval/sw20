@@ -53,8 +53,8 @@ EOF;
         if ($contrasenia == $contrasenia2) {
             try {
                 $idUser = user::crea($usuario, $email, $contrasenia);
-                $_SESSION['login'] = true;
-                $_SESSION['idUser'] = $idUser;
+                session_regenerate_id(true);
+                Application::getSingleton()->login($idUser);
                 $resultado = "vistaInicio.php";
             }
             catch (Exception $exc) {

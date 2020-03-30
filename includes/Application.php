@@ -44,6 +44,17 @@
              }
          }
 
+         public function login($id) {
+             $_SESSION['login'] = true;
+             $_SESSION['idUser'] = $id;
+         }
+
+         public function logout() {
+             if (isset($_SESSION)) session_destroy();
+             unset($_SESSION);
+             session_start();
+         }
+
          public function shutdown(){
             $this->connection = null;
          }

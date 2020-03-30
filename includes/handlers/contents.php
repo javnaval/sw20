@@ -26,7 +26,7 @@ require_once("classes/databaseClasses/Albums.php");
 				   else echo "Estas en la pagina de busqueda. Haz click en buscar para encontrar canciones, artistas y albumes.";
 			   }
 		   }
-		   elseif ($_GET['pag'] == 2){
+		   elseif ($_GET['pag'] == 1){
 			   $albums = (new Albums())->get();
 			   foreach ($albums as $row) {
 				   echo "<div>";

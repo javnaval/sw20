@@ -44,8 +44,8 @@ EOF;
 
         $user = user::login($usuario, $contrasenia);
         if ($user) {
-            $_SESSION['login'] = true;
-            $_SESSION['idUser'] = $user->getId();
+            session_regenerate_id(true);
+            Application::getSingleton()->login($user->getId());
             $resultado = "vistaInicio.php";
         }
         else {
