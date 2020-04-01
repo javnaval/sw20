@@ -20,3 +20,10 @@ section.contents div{
 section.contents div img{
     width: 100px;
 }
+
+section.contents header{
+	width: 100%;
+	height:5%;
+
+
+}

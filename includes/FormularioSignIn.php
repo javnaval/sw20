@@ -1,8 +1,10 @@
 <?php
 require_once "config.php";
 require_once 'Form.php';
-require_once dirname(__DIR__)."/classes/classes/user.php";
-require_once dirname(__DIR__)."/classes/databaseClasses/Users.php";
+require_once dirname(__DIR__) . "/classes/classes/user.php";
+require_once dirname(__DIR__) . "/classes/factories/classesFatory.php";
+require_once dirname(__DIR__) . "/classes/factories/databaseFactory.php";
+
 
 class FormularioSignIn extends Form {
 
@@ -51,14 +53,22 @@ EOF;
         $contrasenia2 = htmlspecialchars(trim(strip_tags($datos['pass2'])));
 
         if ($contrasenia == $contrasenia2) {
-            try {
-                $idUser = user::crea($usuario, $email, $contrasenia);
-                session_regenerate_id(true);
-                Application::getSingleton()->login($idUser);
-                $resultado = "vistaInicio.php";
+            $user = (databaseFactory::getTable("Users"))->where("user", "=", $usuario)->get();
+            if($user[0] == null){
+                try {
+                    $User = classesFatory::getClass("user")->getThis(null,null,$usuario, "VACIO", "VACIO", "VACIO", $email, $contrasenia);
+                    $id= databaseFactory::getTable("Users")->insert($User);
+                    session_regenerate_id(true);
+                    Application::getSingleton()->login($id);
+                    $resultado = "vistaInicio.php";
+                }
+                catch (Exception $exc) {
+                    $resultado[] = "<p id='error'>Usuario, email o contraseña incorrecto.</p>";
+                }
+
             }
-            catch (Exception $exc) {
-                $resultado[] = "<p id='error'>Usuario, email o contraseña incorrecto.</p>";
+            else{
+                $resultado[] = "<p id='error'>Usuario, ya existe.</p>";
             }
         }
         else {

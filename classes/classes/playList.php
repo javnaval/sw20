@@ -1,12 +1,15 @@
 <?php
-require_once dirname(__DIR__) . "/abstractClasses/GenericModel.php";
 
-	class playList extends GenericModel {
+	class playList  {
+		public static $className = "playList";
+
+		
 		 private $id;
 		 private $title;
          private $numberSongs;
-         private $dateCreated;
-		 public function __construct($id = null,$title,$numberSongs,$dateCreated){
+		 private $dateCreated;
+		 
+		 public function __construct($id = null, $title= null,$numberSongs = null,$dateCreated = null){
             $this->id = $id;
             if($id == null){
                $this->$id = uniqid();
@@ -26,6 +29,21 @@ require_once dirname(__DIR__) . "/abstractClasses/GenericModel.php";
          }
          public function getDateCreated(){
             return $this->dateCreated;
-         }
+		 }
+		 
+		 public function getThis($row = null,$id = null, $title= null,$numberSongs = null,$dateCreated = null){
+			if($row != null){
+				return new self($row["id"],$row["title"],$row["numberSongs"],$row["dateCreated"]);
+			}
+			return new self($id,$title,$numberSongs,$dateCreated);
+	 	 }
+		 public function toString(){
+			return[
+			   "id"           => "".$this->id."",
+			   "title"        => "".$this->title."",
+			   "numberSongs"  => "".$this->numberSongs."",
+			   "dateCreated"  => "".$this->dateCreated.""
+			];
+		 } 
 	}
 ?>

@@ -1,5 +1,8 @@
 <?php
+  require_once dirname(__DIR__) . "/abstractClasses/GenericModel.php";
 	 class PlayLists extends GenericModel {
+		public static  $tableName = "PlayLists";
+		
 		 private $properties = [
 			 "id"    => "NOT NULL",
 			 "title"  => "NOT NULL",
@@ -8,16 +11,7 @@
 
 		 ];
 		 public function __construct(){
-			 parent::__construct("PlayLists",$this->properties);
-		 }
-
-
-		 public function get() {
-			 $playListPDO = parent::get();
-			 foreach($playListPDO as $row){
-				 $arrayPlayList[] = new playList($row['id'],$row['title'],$row['title'],$row['numberSongs'],$row['dateCreated']);
-			 }
-			 return $arrayPlayList;
+			 parent::__construct("PlayLists","playlist",$this->properties);
 		 }
 	}
 ?>

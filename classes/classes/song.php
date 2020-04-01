@@ -1,7 +1,10 @@
 <?php
-require_once dirname(__DIR__) . "/abstractClasses/GenericModel.php";
 
-	class song extends GenericModel {
+	class song  {
+
+        public static $className = "song";
+
+        
 		 private $id;
 		 private $title;
          private $duration;
@@ -10,7 +13,7 @@ require_once dirname(__DIR__) . "/abstractClasses/GenericModel.php";
 		 private $idArtist;
 		 private $idAlbum;
 
-		 public function __construct($id = null,$title,$duration, $played,$idUser,$idArtist,$idAlbum){
+		 public function __construct($id = null,$title = null,$duration = null, $played = null,$idUser = null,$idArtist = null,$idAlbum = null){
              $this->id = $id;
              if($id == null){
                $this->$id = uniqid();
@@ -49,6 +52,22 @@ require_once dirname(__DIR__) . "/abstractClasses/GenericModel.php";
          public function getIdAlbum(){
              return $this->idAlbum;
          }
+         public function getThis($row = null,$id = null,$title = null,$duration = null, $played = null,$idUser = null,$idArtist = null,$idAlbum = null){
+            if($row != null){
+               return new self($row["id"],$row["title"],$row["duration"],$row["played"],$row["idUser"],$row["idArtist"],$row["idAlbum"]);
+            }
+            return new self($id,$title,$duration,$played,$idUser,$idArtist,$idAlbum);
+         }
+        public function toString(){
+            return[
+              "id"           => "".$this->id."",
+              "title"        => "".$this->title."",
+              "duration"     => "".$this->duration."",
+              "played"        => "".$this->played."",
+              "idUser"        => "".$this->idUser."",
+              "idAlbum"        => "".$this->idAlbum.""
+            ];
+        } 
 
 	}
 ?>

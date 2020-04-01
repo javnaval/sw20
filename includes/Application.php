@@ -33,11 +33,12 @@
                      $database = $this->settings["database"];
                      $username = $this->settings["username"];
                      $password = $this->settings["password"];
+                
                      //Creamos la url;
-                     $url = "{$driver}:host={$host};". "dbname={$database}";
+                     $url = "{$driver}:host={$host};"."dbname={$database}";
                      //Se crea  la conexion;
                      $this->connection = new PDO($url, $username,$password);
-                 }
+                    }
                  return $this->connection;
              }catch(Exception $exc){
                  echo $exc->getTraceAsString();
