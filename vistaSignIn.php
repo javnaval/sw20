@@ -28,11 +28,6 @@
         ?>
     </section>
 
-    <footer>
-        <?php
-        require 'includes/handlers/pie.php';
-        ?>
-    </footer>
 
 </body>
 <?php } ?>
