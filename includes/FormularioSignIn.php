@@ -2,7 +2,7 @@
 require_once "config.php";
 require_once 'Form.php';
 require_once dirname(__DIR__) . "/classes/classes/user.php";
-require_once dirname(__DIR__) . "/classes/factories/classesFatory.php";
+require_once dirname(__DIR__) . "/classes/factories/classesFactory.php";
 require_once dirname(__DIR__) . "/classes/factories/databaseFactory.php";
 
 
@@ -53,13 +53,12 @@ EOF;
         $contrasenia2 = htmlspecialchars(trim(strip_tags($datos['pass2'])));
 
         if ($contrasenia == $contrasenia2) {
-            $user = (databaseFactory::getTable("Users"))->where("user", "=", $usuario)->get();
+            $user = user::buscaUsuario($usuario);
             if($user[0] == null){
                 try {
-                    $User = classesFatory::getClass("user")->getThis(null,null,$usuario, "VACIO", "VACIO", "VACIO", $email, $contrasenia);
-                    $id= databaseFactory::getTable("Users")->insert($User);
+                    $idUser = user::crea($usuario, $email, $contrasenia);
                     session_regenerate_id(true);
-                    Application::getSingleton()->login($id);
+                    Application::getSingleton()->login($idUser);
                     $resultado = "vistaInicio.php";
                 }
                 catch (Exception $exc) {
@@ -68,11 +67,11 @@ EOF;
 
             }
             else{
-                $resultado[] = "<p id='error'>Usuario, ya existe.</p>";
+                $resultado[] = "<p id='error'>Usuario, email o contraseña incorrecto.</p>";
             }
         }
         else {
-            $resultado[] = "<p id='error'>Usuario, email o contraseña incorrecto.</p>";
+            $resultado[] = "<p id='error'>Las contraseñas deben ser iguales.</p>";
         }
 
         return $resultado;

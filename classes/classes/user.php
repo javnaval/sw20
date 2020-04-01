@@ -55,8 +55,6 @@
               "id"           => "".$this->id."",
               "user"         => "".$this->user."",
               "name"         => "".$this->name."",
-              "firstName"         => "".$this->firstName."",
-              "lastName"         => "".$this->lastName."",
 			  "email"        => "".$this->email."",
 			  "password"     => "".$this->password.""
 			 ];
@@ -64,21 +62,21 @@
 
         public static function buscaUsuario($user){
             $user = databaseFactory::getTable("Users")->where("user", "=", $user)->get();
-            return $user[0];
+            return $user;
         }
 
         public function compruebaPassword($password){
-            return $this->password == $password;
+            return strcmp($this->password, $password) === 0;
         }
 
         public static function login($user, $password){
             $user = self::buscaUsuario($user);
-            if ($user != null && $user->compruebaPassword($password)) return $user;
+            if ($user != null && $user[0]->compruebaPassword($password)) return $user[0];
             else return false;
         }
 
         public static function crea($user, $email, $contrasenia){
-            return databaseFactory::getTable("Users")->insert(new user(null, $user, null, $email, $contrasenia));
+            return databaseFactory::getTable("Users")->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, $contrasenia));
         }
 	}
 ?>

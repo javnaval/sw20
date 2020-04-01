@@ -1,6 +1,6 @@
 <?php
      require_once "Crud.php";
-     require_once dirname(__DIR__) . "/factories/classesFatory.php";
+     require_once dirname(__DIR__) . "/factories/classesFactory.php";
      abstract class GenericModel extends Crud {
         private $propertiesStatic;
         private $properties;
@@ -29,14 +29,14 @@
             $arrayPDO = parent::get();
             $array = null;
             foreach($arrayPDO as $row){
-                $array[] = classesFatory::getClass($this->className)->getThis($row);
+                $array[] = classesFactory::getClass($this->className)->getThis($row);
                                         
             }
            return $array;
         }
   
         private function correctProperties($object){
-            if(classesFatory::instance($object)){
+            if(classesFactory::instance($object)){
                $this->properties = $object->toString();
                var_dump($this->properties);
            

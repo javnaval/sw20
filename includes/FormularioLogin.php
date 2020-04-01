@@ -42,7 +42,7 @@ EOF;
         $usuario = htmlspecialchars(trim(strip_tags($datos['user'])));
         $contrasenia = htmlspecialchars(trim(strip_tags($datos['pass'])));
 
-        $user = $this->login($usuario,$contrasenia);
+        $user = user::login($usuario,$contrasenia);
         
         if ($user) {
             session_regenerate_id(true);
@@ -55,17 +55,5 @@ EOF;
 
         return $resultado;
      }
-
-
-        private function buscaUsuario($user){
-            $user = (databaseFactory::getTable("Users"))->where("user", "=", $user)->get();
-            return $user;
-        }
-
-        private function login($user, $password){
-		     $user = $this->buscaUsuario($user);
-		     if ($user != null && (strcmp($user[0]->getPassword(), $password)) === 0) return $user[0];
-		     else return false;
-        }
 
 }
