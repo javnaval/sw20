@@ -20,6 +20,8 @@ abstract class Form
      */
     private $action;
 
+    private $enctype;
+
     /**
      * Crea un nuevo formulario.
      *
@@ -51,10 +53,11 @@ abstract class Form
     {
         $this->formId = $formId;
 
-        $opcionesPorDefecto = array( 'action' => null, );
+        $opcionesPorDefecto = array( 'action' => null, 'enctype' => null );
         $opciones = array_merge($opcionesPorDefecto, $opciones);
 
         $this->action   = $opciones['action'];
+        $this->enctype  = $opciones['enctype'];
         
         if ( !$this->action ) {
             $this->action = htmlentities($_SERVER['PHP_SELF']);
@@ -131,7 +134,11 @@ abstract class Form
 
         $html= $this->generaListaErrores($errores);
 
-        $html .= '<form method="POST" action="'.$this->action.'" id="'.$this->formId.'" >';
+        $html .= '<form method="POST" action="'.$this->action.'" id="'.$this->formId.'"';
+        if ( $this->enctype ) {
+            $html .= ' enctype="'.$this->enctype.'"';
+        }
+        $html .=' >';
         $html .= '<input type="hidden" name="action" value="'.$this->formId.'" />';
 
         $html .= $this->generaCamposFormulario($datos);

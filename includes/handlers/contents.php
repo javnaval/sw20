@@ -1,6 +1,7 @@
 <?php
-require_once("classes/classes/album.php");
-require_once("classes/databaseClasses/Albums.php");
+require_once "classes/classes/album.php";
+require_once "classes/databaseClasses/Albums.php";
+require_once 'includes/FormularioUpload.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,6 +26,10 @@ require_once("classes/databaseClasses/Albums.php");
 				   }
 				   else echo "Estas en la pagina de busqueda. Haz click en buscar para encontrar canciones, artistas y albumes.";
 			   }
+               if (isset($_GET['upload'])){
+                   $form = new FormularioUpload();
+                   $form->gestiona();
+               }
 		   }
 		   elseif ($_GET['pag'] == 1){
 			   $albums = (new Albums())->get();
