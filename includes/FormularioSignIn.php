@@ -15,7 +15,7 @@ class FormularioSignIn extends Form {
         parent::__construct("form-signin", $this->opciones);
     }
 
-    protected function generaCamposFormulario($datosIniciales) {
+    protected function generaCamposFormulario($datosIniciales, $err) {
         $html = <<<EOF
         <fieldset>
                 <legend>Sign In</legend>
@@ -32,8 +32,9 @@ EOF;
 
         $html .= '<p><input type="password" name="pass" placeholder="Contraseña" required></p>
                 <p><input type="password" name="pass2" placeholder="Repetir contraseña" required></p>
-            </div>
-            <div id="s3">
+            </div>';
+        $html .= $err;
+        $html .= '<div id="s3">
                 <a href="vistaLogin.php" placeholder="¿Ya tienes cuenta? Iniciar sesión">¿Ya tienes cuenta? Iniciar sesión</a>
                 <p><input type="submit" name="Registrarse" value="Registrarse"></p>
             </div>

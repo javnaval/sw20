@@ -66,7 +66,7 @@
         }
 
         public function compruebaPassword($password){
-            return strcmp($this->password, $password) === 0;
+            return password_verify($password, $this->password);
         }
 
         public static function login($user, $password){
@@ -76,7 +76,7 @@
         }
 
         public static function crea($user, $email, $contrasenia){
-            return databaseFactory::getTable("Users")->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, $contrasenia));
+            return databaseFactory::getTable("Users")->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT)));
         }
 	}
 ?>

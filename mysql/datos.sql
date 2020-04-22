@@ -37,6 +37,6 @@ INSERT INTO `songs` (`id`, `title`, `duration`, `played`, `idUser`, `idArtist`, 
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `user`, `name`, `firstName`, `lastName`, `email`, `password`) VALUES
-(1, 'user', NULL, NULL, NULL, 'pp@pepe.com', 'pass'),
-(2, 'user1', NULL, NULL, NULL, 'tt@gmail.com', 'pass1');
+INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`) VALUES
+(1, 'user', 'VACIO', 'pp@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e'),
+(2, 'user1', 'VACIO', 'tt@gmail.com', '$2y$10$sWiXnfqwSJfGFkRistH6cePGuxXf1QbFWNxIdilAeIlmNhYGbn/sa');

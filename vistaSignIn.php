@@ -24,7 +24,7 @@
     <section id="log">
         <?php
         $form = new FormularioSignIn();
-        $form->gestiona();
+        echo $form->gestiona();
         ?>
     </section>
 

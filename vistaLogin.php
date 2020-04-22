@@ -22,7 +22,7 @@
     <section id="log">
         <?php
         $form = new FormularioLogin();
-        $form->gestiona();
+         echo $form->gestiona();
         ?>
     </section>
 
