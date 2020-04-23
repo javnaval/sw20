@@ -17,7 +17,7 @@
 
         private function CRUDinsert($propertiesStatic){
             $arrayKeys = implode(", ", array_keys($propertiesStatic)); 
-            $arrayValues = ":" . implode(", :", array_keys($propertiesStatic)); 
+            $arrayValues = ":" . implode(", :", array_keys($propertiesStatic));
             return "INSERT INTO {$this->table} ({$arrayKeys}) VALUES ({$arrayValues})";
         }
         
@@ -85,12 +85,13 @@
 
         private function runCRUD($object = null) {
             $query = $this->connection->prepare($this->sql);
-           
+
             if ($object !== null) { 
                 foreach ($object as $key => $value) {
                     $query->bindValue(":$key", $value);
                 }
             }
+
             $query->execute();
             $this->wheres = "";
             $this->sql = null;

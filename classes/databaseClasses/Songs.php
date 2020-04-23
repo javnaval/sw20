@@ -14,7 +14,7 @@ require_once dirname(__DIR__) . "/abstractClasses/GenericModel.php";
              "idAlbum" => "NOT NULL"
 		 ];
 		 public function __construct(){
-			 parent::__construct("Songs","song",$this->properties);
+			 parent::__construct("songs","song",$this->properties);
 		 }
 	}
 ?>

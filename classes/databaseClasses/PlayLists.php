@@ -11,7 +11,7 @@
 
 		 ];
 		 public function __construct(){
-			 parent::__construct("PlayLists","playlist",$this->properties);
+			 parent::__construct("playLists","playlist",$this->properties);
 		 }
 	}
 ?>

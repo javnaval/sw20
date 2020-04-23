@@ -1,6 +1,5 @@
 <?php
 
-
 	class user {
 
 		public static $className = "user";

@@ -66,12 +66,13 @@
               "duration"     => "".$this->duration."",
               "played"        => "".$this->played."",
               "idUser"        => "".$this->idUser."",
+              "idArtist"        => "".$this->idArtist."",
               "idAlbum"        => "".$this->idAlbum.""
             ];
         }
 
         public static function crea($title, $idUser, $idArtist, $idAlbum){
-            return databaseFactory::getTable("songs")->insert(classesFactory::getClass("song")->getThis(null,null,$title, "VACIO", $idUser, $idArtist, $idAlbum));
+            return databaseFactory::getTable("songs")->insert(classesFactory::getClass("song")->getThis(null,null,$title, "VACIO", 0, $idUser, $idArtist, $idAlbum));
         }
 
 	}

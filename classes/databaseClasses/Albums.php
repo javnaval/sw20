@@ -10,7 +10,7 @@
 			"idArtist" => "NOT NULL"
 		];
 		 public function __construct(){
-			 parent::__construct("Albums","album",$this->properties);
+			 parent::__construct("albums","album",$this->properties);
 		 }
 	}
 ?>

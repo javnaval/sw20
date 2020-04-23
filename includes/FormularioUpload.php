@@ -1,12 +1,14 @@
 <?php
 require_once "config.php";
 require_once 'Form.php';
+require_once dirname(__DIR__) . "/classes/classes/song.php";
+require_once dirname(__DIR__) . "/classes/factories/databaseFactory.php";
 
 class FormularioUpload extends Form {
     private $opciones = array();
 
     public function __construct() {
-        $this->opciones['action'] = "vistaInicio.php?pag=2&upload=false";
+        $this->opciones['action'] = "vistaInicio.php?pag=2&upload=true";
         $this->opciones['enctype'] = "multipart/form-data";
         parent::__construct("form-upload", $this->opciones);
     }
@@ -17,12 +19,16 @@ class FormularioUpload extends Form {
                 <legend>Upload</legend>
 EOF;
 
-        if (isset($datosIniciales['artista'])) {
-            $html .= "<input type=\"text\" name=\"artista\" placeholder=\"Artista\" value= " . $datosIniciales['artista'] . " required>";
-        } else $html .=  "<input type=\"text\" name=\"artista\" placeholder=\"Artista\" required>";
+        if (isset($datosIniciales['titulo'])) {
+            $html .= "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" value= " . $datosIniciales['titulo'] . " required></p>";
+        } else $html .=  "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" required></p>";
 
-        $html .= '<input type="file" name="fileAudio" required>
-                <input type="submit" name="Subir" value="Subir">
+        if (isset($datosIniciales['artista'])) {
+            $html .= "<p><input type=\"text\" name=\"artista\" placeholder=\"Artista\" value= " . $datosIniciales['artista'] . " required></p>";
+        } else $html .=  "<p><input type=\"text\" name=\"artista\" placeholder=\"Artista\" required></p>";
+
+        $html .= '<p><input type="file" name="fileAudio" value="Elija un archivo" required></p>
+                <p><input type="submit" name="Subir" value="Subir"></p>
                 </fieldset>';
 
         $html .= $err;
@@ -30,32 +36,37 @@ EOF;
         return $html;
     }
 
-    protected function procesaFormulario($datos) {
+    protected function procesaFormulario($datos)
+    {
         $resultado = array();
 
-        /*assert(is_string($_FILES['fileAudio']['name']));
+        assert(is_string($_FILES['fileAudio']['name']));
         $name = htmlspecialchars(trim(strip_tags($_FILES['fileAudio']['name'])));
 
-        $finfo = new finfo(FILEINFO_MIME_TYPE);
-        if (false === array_search($finfo->file($_FILES['fileAudio']['tmp_name']),
-            array(
-                'mp3' => 'audio/mpeg',
-                'mp4' => 'audio/mp4',
-                'ogg' => 'audio/ogg',
-            ),
-            true
-        ) || $_FILES['fileAudio']['size'] > 100000000){
-            $resultado[] = "La extensión o el tamaño de los archivos no es correcta.";
-        }
-        else {
-            $idUser = song::crea($name, $_SESSION['idUser'], "", "");*/
-            if (move_uploaded_file($_FILES['fileAudio']['tmp_name'], "server/songs/4.mp3")){
-                $resultado[] = "El archivo ha sido cargado correctamente.";
+        if ($_FILES['fileAudio']['error'] == UPLOAD_ERR_OK) {
+            $finfo = new finfo(FILEINFO_MIME_TYPE);
+            $ext = array_search($finfo->file($_FILES['fileAudio']['tmp_name']),
+                array(
+                    'mp3' => 'audio/mpeg',
+                    'mp4' => 'audio/mp4',
+                    'ogg' => 'audio/ogg',
+                ),
+                true
+            );
+            if (!$ext || $_FILES['fileAudio']['size'] > 10000000) {
+                $resultado[] = "La extensión o el tamaño de los archivos no es correcta.";
             }
             else {
-                $resultado[] = "Ocurrió algún error al subir el fichero. No pudo guardarse.";
+                $idSong = song::crea($name, $_SESSION['idUser'], "1", "1");
+                if (move_uploaded_file($_FILES['fileAudio']['tmp_name'], "server/songs/".$idSong.".".$ext)) {
+                    $resultado[] = "El archivo ha sido cargado correctamente.";
+                } else {
+                    $resultado[] = "Ocurrió algún error al subir el fichero. No pudo guardarse.";
+                }
             }
-        //}
+        }
+        else $resultado[] = "Error al subir el fichero. ";
+
         return $resultado;
     }
 

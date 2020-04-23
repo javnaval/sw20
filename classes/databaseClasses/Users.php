@@ -14,7 +14,7 @@
 			 "password"   => "NOT NULL",
 		 ];
 		public function __construct(){
-			parent::__construct("Users","user",$this->properties);
+			parent::__construct("users","user",$this->properties);
 		}
 	}
 ?>

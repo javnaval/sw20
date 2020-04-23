@@ -9,7 +9,7 @@
              "genre" => "NOT NULL"
 		 ];
 		 public function __construct(){
-			 parent::__construct("Artists","artist",$this->properties);
+			 parent::__construct("artists","artist",$this->properties);
 		 }
 	}
 ?>
