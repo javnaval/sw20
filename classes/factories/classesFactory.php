@@ -1,6 +1,7 @@
 <?php
      require_once("classes/classes/album.php");
-     require_once("classes/classes/artist.php");
+     require_once("classes/classes/noticia.php");
+     require_once("classes/classes/contiene.php");
      require_once("classes/classes/playList.php");
      require_once("classes/classes/song.php");
      require_once("classes/classes/user.php");
@@ -13,7 +14,8 @@
          public static function getClass($nameClass){
              if(classesFactory::$classes == null){
                  classesFactory::$classes[] = new album();
-                 classesFactory::$classes[] = new artist();
+                 classesFactory::$classes[] = new noticia();
+                 classesFactory::$classes[] = new contiene();
                  classesFactory::$classes[] = new playList();
                  classesFactory::$classes[] = new song();
                  classesFactory::$classes[] = new user();
@@ -29,7 +31,8 @@
          public static function instance($instaceClass){
             if(classesFactory::$classes == null){
                 classesFactory::$classes[] = new album();
-                classesFactory::$classes[] = new artist();
+                classesFactory::$classes[] = new noticia();
+                classesFactory::$classes[] = new contiene();
                 classesFactory::$classes[] = new playList();
                 classesFactory::$classes[] = new song();
                 classesFactory::$classes[] = new user();

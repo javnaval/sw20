@@ -5,10 +5,8 @@
 		
 		 private $properties = [
 			 "id"    => "NOT NULL",
+             "idUser" => "NOT NULL",
 			 "title"  => "NOT NULL",
-			 "numberSongs" => "NOT NULL",
-			 "dateCreated" => "NOT NULL",
-
 		 ];
 		 public function __construct(){
 			 parent::__construct("playLists","playlist",$this->properties);

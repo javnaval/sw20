@@ -12,6 +12,8 @@
 			 "name"       => "NOT NULL",
 			 "email"      => "NOT NULL",
 			 "password"   => "NOT NULL",
+             "rol"        => "NOT NULL",
+             "descripcion" => "NULL",
 		 ];
 		public function __construct(){
 			parent::__construct("users","user",$this->properties);

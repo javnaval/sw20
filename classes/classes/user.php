@@ -10,9 +10,11 @@
 		 private $name;
 		 private $email;
          private $password;
+         private $rol;
+         private $descripcion;
 
 
-		 public function __construct($id = null,$user = null,$name = null,$email = null,$password = null){
+		 public function __construct($id = null,$user = null,$name = null,$email = null,$password = null,$rol = null,$descripcion = null){
              $this->id = $id;
              if($id == null){
                $this->$id = uniqid();
@@ -21,6 +23,8 @@
              $this->name = $name;
              $this->email = $email;
              $this->password = $password;
+             $this->rol = $rol;
+             $this->descripcion = $descripcion;
 		 }
 
          public function getId(){
@@ -43,11 +47,19 @@
 			 return $this->password;
 		 }
 
-         public function getThis($row = null,$id = null,$user = null,$name = null,$email = null,$password = null){
+        public function getRol() {
+            return $this->rol;
+        }
+
+        public function getDescripcion() {
+            return $this->descripcion;
+        }
+
+         public function getThis($row = null,$id = null,$user = null,$name = null,$email = null,$password = null,$rol = null,$descripcion = null){
 			if($row != null){
-			   return new self($row["id"],$row["user"],$row["name"],$row["email"],$row["password"]);
+			   return new self($row["id"],$row["user"],$row["name"],$row["email"],$row["password"],$row["rol"],$row["descripcion"]);
 			}
-			return new self($id,$user,$name,$email,$password);
+			return new self($id,$user,$name,$email,$password,$rol,$descripcion);
 		 }
 		 public function toString(){
 			 return[
@@ -55,7 +67,9 @@
               "user"         => "".$this->user."",
               "name"         => "".$this->name."",
 			  "email"        => "".$this->email."",
-			  "password"     => "".$this->password.""
+			  "password"     => "".$this->password."",
+              "rol"          => "".$this->rol."",
+              "descripcion"  => "".$this->descripcion.""
 			 ];
 	     }
 
@@ -75,7 +89,7 @@
         }
 
         public static function crea($user, $email, $contrasenia){
-            return databaseFactory::getTable("users")->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT)));
+            return databaseFactory::getTable("users")->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT), "usuario", null));
         }
 	}
 ?>

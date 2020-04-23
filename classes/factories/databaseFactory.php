@@ -1,6 +1,7 @@
 <?php
      require_once("classes/databaseClasses/Albums.php");
-     require_once("classes/databaseClasses/Artists.php");
+     require_once("classes/databaseClasses/Noticias.php");
+     require_once("classes/databaseClasses/Contenidos.php");
      require_once("classes/databaseClasses/PlayLists.php");
      require_once("classes/databaseClasses/Songs.php");
      require_once("classes/databaseClasses/Users.php");
@@ -13,7 +14,8 @@
          public static function getTable($nameTable){
              if(databaseFactory::$tables == null){
                  databaseFactory::$tables[] = new Albums();
-                 databaseFactory::$tables[] = new Artists();
+                 databaseFactory::$tables[] = new Noticias();
+                 databaseFactory::$tables[] = new Contenidos();
                  databaseFactory::$tables[] = new PlayLists();
                  databaseFactory::$tables[] = new Songs();
                  databaseFactory::$tables[] = new Users();

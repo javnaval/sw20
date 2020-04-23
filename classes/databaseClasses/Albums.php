@@ -5,9 +5,9 @@
 		
 		 private $properties = [
 			"id"    => "NOT NULL",
-			"releaseDate"  => "NOT NULL",
-			"title" => "NOT NULL",
-			"idArtist" => "NOT NULL"
+             "idArtist" => "NOT NULL",
+             "title" => "NOT NULL",
+			"releaseDate"  => "NOT NULL"
 		];
 		 public function __construct(){
 			 parent::__construct("albums","album",$this->properties);

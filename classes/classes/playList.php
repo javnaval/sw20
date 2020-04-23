@@ -5,44 +5,40 @@
 
 		
 		 private $id;
+		 private $idUser;
 		 private $title;
-         private $numberSongs;
-		 private $dateCreated;
 		 
-		 public function __construct($id = null, $title= null,$numberSongs = null,$dateCreated = null){
+		 public function __construct($id = null, $idUser = null, $title= null){
             $this->id = $id;
             if($id == null){
                $this->$id = uniqid();
             }
+            $this->idUser = $idUser;
             $this->title = $title;
-            $this->numberSongs = $numberSongs;
-            $this->dateCreated = $dateCreated;
 		 }
 		 public function getId(){
 			 return $this->id;
 		 }
+
+        public function getIdUser() {
+            return $this->idUser;
+        }
+
 		 public function getTitle(){
 			 return $this->title;
 		 }
-		 public function getNumberSongs(){
-			 return $this->numberSongs;
-         }
-         public function getDateCreated(){
-            return $this->dateCreated;
-		 }
 		 
-		 public function getThis($row = null,$id = null, $title= null,$numberSongs = null,$dateCreated = null){
+		 public function getThis($row = null,$id = null, $idUser = null, $title= null){
 			if($row != null){
-				return new self($row["id"],$row["title"],$row["numberSongs"],$row["dateCreated"]);
+				return new self($row["id"],$row['idUser'],$row["title"]);
 			}
-			return new self($id,$title,$numberSongs,$dateCreated);
+			return new self($id,$idUser,$title);
 	 	 }
 		 public function toString(){
 			return[
 			   "id"           => "".$this->id."",
-			   "title"        => "".$this->title."",
-			   "numberSongs"  => "".$this->numberSongs."",
-			   "dateCreated"  => "".$this->dateCreated.""
+               "idUser"           => "".$this->idUser."",
+			   "title"        => "".$this->title.""
 			];
 		 } 
 	}

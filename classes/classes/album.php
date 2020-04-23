@@ -4,11 +4,11 @@
 
 		
 		 private $id;
+        private $idArtist;
+        private $title;
 		 private $releaseDate;
-		 private $title;
-		 private $idArtist;
 
-		 public function __construct($id = null,$releaseDate = null,$title = null,$idArtist = null){
+		 public function __construct($id = null,$idArtist = null,$title = null,$releaseDate = null){
              $this->id = $id;
              if($id == null){
                 $this->$id = uniqid();
@@ -33,18 +33,18 @@
         public function getIdArtist(){
             return $this->idArtist;
         }
-		public function getThis($row = null,$id = null,$releaseDate = null,$title = null,$idArtist = null){
+		public function getThis($row = null,$id = null,$idArtist = null,$title = null,$releaseDate = null){
 			if($row != null){
-			   return new self($row["id"],$row["releaseDate"],$row["title"],$row["idArtist"]);
+			   return new self($row["id"],$row["idArtist"],$row["title"],$row["releaseDate"]);
 			}
-			return new self($id,$releaseDate,$title,$idArtist);
+			return new self($id,$idArtist,$title,$releaseDate);
 		}
 		public function toString(){
 			return[
 				"id"      => "".$this->id."",
-				"releaseDate"    => "".$this->releaseDate."",
-				"title"   => "".$this->title."",
-				"idArtist"  => "".$this->idArtist.""
+                "idArtist"  => "".$this->idArtist."",
+                "title"   => "".$this->title."",
+				"releaseDate"    => "".$this->releaseDate.""
 			];
 		}
    }

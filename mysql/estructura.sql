@@ -99,7 +99,6 @@ CREATE TABLE `songs` (
   `idUser` int(11) NOT NULL,
   `idAlbum` int(11) DEFAULT NULL,
   `title` varchar(50) NOT NULL,
-  `duration` time NOT NULL,
   `played` bigint(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -114,10 +113,11 @@ CREATE TABLE `songs` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `user` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `email` varchar(200) NOT NULL,
   `password` varchar(80) NOT NULL,
   `rol` varchar(15) NOT NULL,
-  `descripcion` text
+  `descripcion` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 

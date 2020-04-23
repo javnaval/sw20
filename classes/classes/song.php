@@ -6,73 +6,61 @@
 
         
 		 private $id;
+         private $idUser;
+         private $idAlbum;
 		 private $title;
-         private $duration;
 		 private $played;
-		 private $idUser;
-		 private $idArtist;
-		 private $idAlbum;
 
-		 public function __construct($id = null,$title = null,$duration = null, $played = null,$idUser = null,$idArtist = null,$idAlbum = null){
+		 public function __construct($id = null,$idUser = null,$idAlbum = null,$title = null,$played = null){
              $this->id = $id;
              if($id == null){
                $this->$id = uniqid();
              }
+             $this->idUser = $idUser;
+             $this->idAlbum = $idAlbum;
              $this->title = $title;
              $this->played = $played;
-             $this->idUser = $idUser;
-             $this->idArtist = $idArtist;
-             $this->idAlbum = $idAlbum;
 		 }
 
 		 public function getId(){
 			 return $this->id;
 		 }
 
+        public function getIdUser(){
+            return $this->idUser;
+        }
+
+        public function getIdAlbum(){
+            return $this->idAlbum;
+        }
+
 		 public function getTitle(){
 			 return $this->title;
 		 }
-
-		 public function getDuration(){
-			 return $this->duration;
-         }
 
          public function getPlayed(){
              return $this->played;
 		 }
 
-         public function getIdUser(){
-             return $this->idUser;
-         }
-
-         public function getIdArtist(){
-             return $this->idArtist;
-         }
-
-         public function getIdAlbum(){
-             return $this->idAlbum;
-         }
-         public function getThis($row = null,$id = null,$title = null,$duration = null, $played = null,$idUser = null,$idArtist = null,$idAlbum = null){
+         public function getThis($row = null,$id = null,$idUser = null,$idAlbum = null,$title = null, $played = null){
             if($row != null){
-               return new self($row["id"],$row["title"],$row["duration"],$row["played"],$row["idUser"],$row["idArtist"],$row["idAlbum"]);
+               return new self($row["id"],$row["idUser"],$row["idAlbum"],$row["title"],$row["played"]);
             }
-            return new self($id,$title,$duration,$played,$idUser,$idArtist,$idAlbum);
+            return new self($id,$idUser,$idAlbum,$title,$played);
          }
 
         public function toString(){
             return[
               "id"           => "".$this->id."",
+              "idUser"       => "".$this->idUser."",
+              "idAlbum"      => "".$this->idAlbum."",
               "title"        => "".$this->title."",
-              "duration"     => "".$this->duration."",
-              "played"        => "".$this->played."",
-              "idUser"        => "".$this->idUser."",
-              "idArtist"        => "".$this->idArtist."",
-              "idAlbum"        => "".$this->idAlbum.""
+              "played"       => "".$this->played.""
             ];
         }
 
-        public static function crea($title, $idUser, $idArtist, $idAlbum){
-            return databaseFactory::getTable("songs")->insert(classesFactory::getClass("song")->getThis(null,null,$title, "VACIO", 0, $idUser, $idArtist, $idAlbum));
+        public static function crea($title, $idUser, $idAlbum){
+            return databaseFactory::getTable("songs")->insert(classesFactory::getClass("song")->getThis(null,null, $idUser, $idAlbum, $title, 0));
         }
 
 	}
