@@ -3,7 +3,7 @@
     require_once dirname(__DIR__) . "/abstractClasses/GenericModel.php";
 	class Users extends GenericModel {
 
-		public static $tableName = "Users";
+		public static $tableName = "users";
 
 		
 		private $properties = [

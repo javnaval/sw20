@@ -61,7 +61,7 @@
 	     }
 
         public static function buscaUsuario($user){
-            $user = databaseFactory::getTable("Users")->where("user", "=", $user)->get();
+            $user = databaseFactory::getTable("users")->where("user", "=", $user)->get();
             return $user;
         }
 
@@ -76,7 +76,7 @@
         }
 
         public static function crea($user, $email, $contrasenia){
-            return databaseFactory::getTable("Users")->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT)));
+            return databaseFactory::getTable("users")->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT)));
         }
 	}
 ?>

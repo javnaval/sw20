@@ -28,7 +28,7 @@ require_once 'includes/FormularioUpload.php';
 			   }
                if (isset($_GET['upload'])){
                    $form = new FormularioUpload();
-                   $form->gestiona();
+                   echo $form->gestiona();
                }
 		   }
 		   elseif ($_GET['pag'] == 1){

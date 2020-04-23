@@ -7,9 +7,9 @@ require_once dirname(__DIR__) . "/classes/factories/databaseFactory.php";
 
 assert(is_string($_POST['busqueda']), "Error al introducir los datos");
 $buscar = htmlspecialchars(trim(strip_tags($_POST['busqueda'])));
-$canciones = databaseFactory::getTable("Songs")->where("title", "LIKE", "%".$buscar."%")->get();
-$artistas = databaseFactory::getTable("Artists")->where("name", "LIKE", "%".$buscar."%")->get();
-$albumes = databaseFactory::getTable("Albums")->where("title", "LIKE", "%".$buscar."%")->get();
+$canciones = databaseFactory::getTable("songs")->where("title", "LIKE", "%".$buscar."%")->get();
+$artistas = databaseFactory::getTable("artists")->where("name", "LIKE", "%".$buscar."%")->get();
+$albumes = databaseFactory::getTable("albums")->where("title", "LIKE", "%".$buscar."%")->get();
 
 
 if ($canciones == null && $artistas == null && $albumes == null) echo "<p>No existen resultados para su búsqueda.</p>";
@@ -19,7 +19,7 @@ else {
 		foreach ($canciones as $cancion) {
 			echo '<div>';
 			echo '<h3>' . $cancion->getTitle() . '</h3><p>Artista: ' . $cancion->getIdArtist() . '</p><p>Album: ' . $cancion->getIdAlbum() . '</p>';
-			echo '<audio src="server/' . $cancion->getId()  . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
+			echo '<audio src="server/songs/' . $cancion->getId()  . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
 			echo '</div>';
 		}
 	}

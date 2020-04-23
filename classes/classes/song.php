@@ -58,6 +58,7 @@
             }
             return new self($id,$title,$duration,$played,$idUser,$idArtist,$idAlbum);
          }
+
         public function toString(){
             return[
               "id"           => "".$this->id."",
@@ -67,7 +68,11 @@
               "idUser"        => "".$this->idUser."",
               "idAlbum"        => "".$this->idAlbum.""
             ];
-        } 
+        }
+
+        public static function crea($title, $idUser, $idArtist, $idAlbum){
+            return databaseFactory::getTable("songs")->insert(classesFactory::getClass("song")->getThis(null,null,$title, "VACIO", $idUser, $idArtist, $idAlbum));
+        }
 
 	}
 ?>

@@ -1,7 +1,7 @@
 <?php
   require_once dirname(__DIR__) . "/abstractClasses/GenericModel.php";
 	 class PlayLists extends GenericModel {
-		public static  $tableName = "PlayLists";
+		public static  $tableName = "playLists";
 		
 		 private $properties = [
 			 "id"    => "NOT NULL",
