@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2020 a las 20:43:04
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 23-04-2020 a las 18:28:35
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -18,11 +18,19 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
--- Usuario con todos los privilegios: 'sounday'
--- Constraseña: sounday2020
--- Base de datos: 'sounday'
+--
+-- Base de datos: `sounday`
+--
 
 -- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `contiene`;
+DROP TABLE IF EXISTS `songs`;
+DROP TABLE IF EXISTS `playlists`;
+DROP TABLE IF EXISTS `noticias`;
+DROP TABLE IF EXISTS `albums`;
+DROP TABLE IF EXISTS `users`;
+
 
 --
 -- Estructura de tabla para la tabla `albums`
@@ -30,24 +38,54 @@ SET time_zone = "+00:00";
 
 
 CREATE TABLE `albums` (
-  `id` int(15) NOT NULL,
-  `releaseDate` date NOT NULL,
+  `id` int(11) NOT NULL,
+  `idArtist` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
-  `idArtist` int(15) NOT NULL
+  `releaseDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `artists`
+-- Estructura de tabla para la tabla `contiene`
 --
 
-CREATE TABLE `artists` (
-  `id` int(15) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `genre` varchar(30) NOT NULL
+CREATE TABLE `contiene` (
+  `idSong` int(11) NOT NULL,
+  `idPlaylist` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `noticias`
+--
+
+CREATE TABLE `noticias` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `texto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `playlists`
+--
+
+CREATE TABLE `playlists` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 
 -- --------------------------------------------------------
@@ -57,13 +95,12 @@ CREATE TABLE `artists` (
 --
 
 CREATE TABLE `songs` (
-  `id` int(15) NOT NULL,
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idAlbum` int(11) DEFAULT NULL,
   `title` varchar(50) NOT NULL,
   `duration` time NOT NULL,
-  `played` bigint(100) NOT NULL,
-  `idUser` int(15) NOT NULL,
-  `idArtist` int(15) NOT NULL,
-  `idAlbum` int(15) NOT NULL
+  `played` bigint(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -73,13 +110,17 @@ CREATE TABLE `songs` (
 -- Estructura de tabla para la tabla `users`
 --
 
+
 CREATE TABLE `users` (
-  `id` int(15) NOT NULL,
-  `user` varchar(30) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `user` varchar(50) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `password` varchar(32) NOT NULL
+  `password` varchar(80) NOT NULL,
+  `rol` varchar(15) NOT NULL,
+  `descripcion` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 --
 -- Índices para tablas volcadas
@@ -89,30 +130,43 @@ CREATE TABLE `users` (
 -- Indices de la tabla `albums`
 --
 ALTER TABLE `albums`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `artistAlbum` (`idArtist`);
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `idArtist` (`idArtist`);
 
 --
--- Indices de la tabla `artists`
+-- Indices de la tabla `contiene`
 --
-ALTER TABLE `artists`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `contiene`
+  ADD KEY `contiene_ibfk_1` (`idPlaylist`),
+  ADD KEY `idSong` (`idSong`);
+
+--
+-- Indices de la tabla `noticias`
+--
+ALTER TABLE `noticias`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idUser` (`idUser`);
+
+--
+-- Indices de la tabla `playlists`
+--
+ALTER TABLE `playlists`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idUser` (`idUser`);
 
 --
 -- Indices de la tabla `songs`
 --
 ALTER TABLE `songs`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `artist` (`idArtist`),
-  ADD KEY `album` (`idAlbum`),
-  ADD KEY `user` (`idUser`);
+  ADD KEY `songs_ibfk_1` (`idAlbum`),
+  ADD KEY `idUser` (`idUser`);
 
 --
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user` (`user`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -122,19 +176,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `albums`
 --
 ALTER TABLE `albums`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `artists`
+-- AUTO_INCREMENT de la tabla `noticias`
 --
-ALTER TABLE `artists`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `noticias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `playlists`
+--
+ALTER TABLE `playlists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `songs`
+--
+ALTER TABLE `songs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -144,15 +210,33 @@ ALTER TABLE `users`
 -- Filtros para la tabla `albums`
 --
 ALTER TABLE `albums`
-  ADD CONSTRAINT `artistAlbum` FOREIGN KEY (`idArtist`) REFERENCES `artists` (`id`);
+  ADD CONSTRAINT `album_ibfk_1` FOREIGN KEY (`idArtist`) REFERENCES `users` (`id`);
+
+--
+-- Filtros para la tabla `contiene`
+--
+ALTER TABLE `contiene`
+  ADD CONSTRAINT `contiene_ibfk_1` FOREIGN KEY (`idPlaylist`) REFERENCES `playlists` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `contiene_ibfk_2` FOREIGN KEY (`idSong`) REFERENCES `songs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `noticias`
+--
+ALTER TABLE `noticias`
+  ADD CONSTRAINT `noticias_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`);
+
+--
+-- Filtros para la tabla `playlists`
+--
+ALTER TABLE `playlists`
+  ADD CONSTRAINT `playlists_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`);
 
 --
 -- Filtros para la tabla `songs`
 --
 ALTER TABLE `songs`
-  ADD CONSTRAINT `album` FOREIGN KEY (`idAlbum`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `artist` FOREIGN KEY (`idArtist`) REFERENCES `artists` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `songs_ibfk_1` FOREIGN KEY (`idAlbum`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `songs_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
