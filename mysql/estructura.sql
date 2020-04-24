@@ -22,6 +22,15 @@ SET time_zone = "+00:00";
 -- Base de datos: `sounday`
 --
 
+/* Usuario con todos los privilegios: 'sounday' */
+/* Constraseña: sounday2020 */
+/* Base de datos: 'sounday' */
+
+CREATE USER IF NOT EXISTS 'sounday'@'%' IDENTIFIED VIA mysql_native_password USING 'sounday2020';
+GRANT USAGE ON *.* TO 'sounday'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+CREATE DATABASE IF NOT EXISTS `sounday`;
+GRANT ALL PRIVILEGES ON `sounday`.* TO 'sounday'@'%';
+
 -- --------------------------------------------------------
 
 DROP TABLE IF EXISTS `contiene`;
