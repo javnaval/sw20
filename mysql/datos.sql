@@ -44,9 +44,9 @@ INSERT INTO `playlists` (`id`, `idUser`, `title`) VALUES
 --
 
 INSERT INTO `songs` (`id`, `idUser`, `idAlbum`, `title`, `played`) VALUES
-(1, 1, 1, 'Happy Together', 0),
-(2, 1, 2, 'Someone you loved', 0),
-(3, 1, 3, 'So payaso', 0);
+(1, 9, 1, 'Happy Together', 0),
+(2, 8, 2, 'Someone you loved', 0),
+(3, 7, 3, 'So payaso', 0);
 
 --
 -- Volcado de datos para la tabla `contiene`
@@ -55,8 +55,8 @@ INSERT INTO `songs` (`id`, `idUser`, `idAlbum`, `title`, `played`) VALUES
 INSERT INTO `contiene` (`idSong`, `idPlaylist`) VALUES
 (1, 1),
 (2, 1),
-(4, 1),
-(4, 2),
+(3, 1),
+(1, 2),
 (3, 2);
 
 
