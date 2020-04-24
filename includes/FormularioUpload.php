@@ -75,7 +75,7 @@ EOF;
                 }
             }
         }
-        else $resultado[] = "Error al subir el fichero. ";
+        else $resultado[] = "Error al subir el fichero (configuración)";
 
         return $resultado;
     }
