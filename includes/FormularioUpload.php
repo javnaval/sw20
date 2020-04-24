@@ -2,6 +2,7 @@
 require_once "config.php";
 require_once 'Form.php';
 require_once dirname(__DIR__) . "/classes/classes/song.php";
+require_once dirname(__DIR__) . "/classes/classes/album.php";
 require_once dirname(__DIR__) . "/classes/factories/databaseFactory.php";
 
 class FormularioUpload extends Form {
@@ -23,9 +24,17 @@ EOF;
             $html .= "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" value= " . $datosIniciales['titulo'] . " required></p>";
         } else $html .=  "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" required></p>";
 
-        if (isset($datosIniciales['artista'])) {
-            $html .= "<p><input type=\"text\" name=\"artista\" placeholder=\"Artista\" value= " . $datosIniciales['artista'] . " required></p>";
-        } else $html .=  "<p><input type=\"text\" name=\"artista\" placeholder=\"Artista\" required></p>";
+        $html .= '<input type="radio" name="type" value="album">Album';
+        if ($albums = album::mostrarAlbums($_SESSION['idUser'])) {
+            $html .= '<p>Elija el album:</p>
+                        <select name="album">';
+            foreach ($albums as $album) {
+                $html .= '<option value="' . $album->getId() . '">' . $album->getTitle() . '</option>';
+            }
+            $html .= '</select>';
+        }
+        $html .= '<a href="vistaInicio.php?pag=2&upload=false">Crear nuevo album</a>
+                <p><input type="radio" name="type" value="single" checked>Single</p>';
 
         $html .= '<p><input type="file" name="fileAudio" value="Elija un archivo" required></p>
                 <p><input type="submit" name="Subir" value="Subir"></p>
@@ -40,8 +49,8 @@ EOF;
     {
         $resultado = array();
 
-        assert(is_string($_FILES['fileAudio']['name']));
-        $name = htmlspecialchars(trim(strip_tags($_FILES['fileAudio']['name'])));
+        assert(is_string($datos['titulo']));
+        $title = htmlspecialchars(trim(strip_tags($datos['titulo'])));
 
         if ($_FILES['fileAudio']['error'] == UPLOAD_ERR_OK) {
             $finfo = new finfo(FILEINFO_MIME_TYPE);
@@ -57,7 +66,8 @@ EOF;
                 $resultado[] = "La extensión o el tamaño de los archivos no es correcta.";
             }
             else {
-                $idSong = song::crea($name, $_SESSION['idUser'], "1", "1");
+                if($datos['type'] == 'single') $idSong = song::crea($title, $_SESSION['idUser'], 0);
+                else $idSong = song::crea($title, $_SESSION['idUser'], $datos['album']);
                 if (move_uploaded_file($_FILES['fileAudio']['tmp_name'], "server/songs/".$idSong.".".$ext)) {
                     $resultado[] = "El archivo ha sido cargado correctamente.";
                 } else {

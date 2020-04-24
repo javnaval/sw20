@@ -63,5 +63,9 @@
             return databaseFactory::getTable("songs")->insert(classesFactory::getClass("song")->getThis(null,null, $idUser, $idAlbum, $title, 0));
         }
 
+        public static function buscar($title){
+            return databaseFactory::getTable("songs")->where("title", "LIKE", "%".$title."%")->get();
+        }
+
 	}
 ?>

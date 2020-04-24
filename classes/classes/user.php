@@ -74,8 +74,13 @@
 	     }
 
         public static function buscaUsuario($user){
-            $user = databaseFactory::getTable("users")->where("user", "=", $user)->get();
-            return $user;
+		     $user = databaseFactory::getTable("users")->where("user", "=", $user)->get();
+		     return $user[0];
+        }
+
+        public static function buscaUsuarioId($id){
+		     $user = databaseFactory::getTable("users")->where("id", "=", $id)->get();
+		     return $user[0];
         }
 
         public function compruebaPassword($password){
@@ -84,12 +89,16 @@
 
         public static function login($user, $password){
             $user = self::buscaUsuario($user);
-            if ($user != null && $user[0]->compruebaPassword($password)) return $user[0];
+            if ($user != null && $user->compruebaPassword($password)) return $user;
             else return false;
         }
 
         public static function crea($user, $email, $contrasenia){
             return databaseFactory::getTable("users")->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT), "usuario", null));
+        }
+
+        public static function buscar($user){
+            return databaseFactory::getTable("users")->where("name", "LIKE", "%".$user."%")->get();
         }
 	}
 ?>

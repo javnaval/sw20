@@ -47,5 +47,18 @@
 				"releaseDate"    => "".$this->releaseDate.""
 			];
 		}
+
+        public static function buscaAlbumId($id){
+		     $album = databaseFactory::getTable("albums")->where("id", "=", $id)->get();
+		     return $album[0];
+        }
+
+        public static function mostrarAlbums($user){
+            return databaseFactory::getTable("albums")->where("idArtist", "=", $user)->get();
+        }
+
+        public static function buscar($album){
+            return databaseFactory::getTable("albums")->where("title", "LIKE", "%".$album."%")->get();
+        }
    }
 ?>
