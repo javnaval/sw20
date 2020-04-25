@@ -1,0 +1,121 @@
+body {
+	background-color: floralwhite;
+	margin: 0px;
+}
+
+header{
+	background-color: black;
+	height: 20%;
+	padding: 10px;
+}
+
+header a {
+	color : floralwhite;
+	background-color: #FF307B;
+	float: right;
+	text-align: center;
+	padding: 17px;
+	border-radius: 100px;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+header b {
+	color : floralwhite;
+	background-color: #FF307B;
+	float: left;
+	text-align: center;
+	padding: 17px;
+	border-radius: 100px;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+nav {
+	float: left;
+	background-color: black;
+	color: white;
+	width: 200px;
+	height: 100%;
+	position: absolute;
+	font-size: 30px;
+	text-align: center;
+}
+
+nav section {
+	position: fixed;
+	padding: 20px;
+}
+
+section#inicio {
+	margin-left: 200px;
+	padding: 30px 60px;
+	background-color: floralwhite;
+	color: black;
+	height:70%;
+	width:100%;
+}
+
+section#log fieldset {
+	border: 1px solid black;
+	width: 300px;
+	height: 320px;
+	margin: 0;
+	position: absolute;
+	padding: 30px 40px;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin-bottom: auto;
+}
+
+section#log fieldset div#s1 {
+	float: top;
+}
+
+section#log fieldset div#s1 input {
+	width: 100%;
+	height: 30px;
+}
+
+section#log fieldset div#s2 {
+	text-align: center;
+	padding-top: 35%;
+}
+
+section#log fieldset div#s3 {
+	text-align: center;
+}
+
+#error {
+	color: firebrick;
+	text-align: center;
+}
+
+legend {
+	color: #FF307B;
+	background: #303030;
+	border: 1px solid black;
+	padding: 2px 6px;
+}
+
+.vertical-menu {
+	width: 200px; /* Set a width if you like */
+  }
+  
+  .vertical-menu a {
+	background-color: #eee; /* Grey background color */
+	color: black; /* Black text color */
+	display: block; /* Make the links appear below each other */
+	padding: 12px; /* Add some padding */
+	text-decoration: none; /* Remove underline from links */
+  }
+  
+  .vertical-menu a:hover {
+	background-color: #ccc; /* Dark grey background on mouse-over */
+  }
+  
+  .vertical-menu a.active {
+	background-color: #FF307B; /* Add a green color to the "active/current" link */
+	color: white;
+  }

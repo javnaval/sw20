@@ -1,0 +1,29 @@
+section.contents{
+    margin-left: 10%;
+    margin-bottom: 100px;
+    height: calc(100% - 100px);
+	width:90%;
+    background-color: rgb(87, 0, 250);
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-y: scroll;
+}
+section.contents div{
+    margin: 20px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    background-color: white;
+}
+section.contents div img{
+    width: 100px;
+}
+
+section.contents header{
+	width: 100%;
+	height:5%;
+
+
+}
