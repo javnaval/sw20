@@ -1,7 +1,7 @@
 <?php
     require_once 'includes/config.php';
     require_once 'includes/FormularioSignIn.php';
-    if (isset($_SESSION['login']) && $_SESSION['login'] = true) {
+    if (Application::getSingleton()->usuarioLogueado()) {
         header("Location: vistaInicio.php");
     }
     else {

@@ -1,6 +1,9 @@
 <?php
 require_once 'includes/config.php';
 require_once 'includes/FormularioUpload.php';
+if (!Application::getSingleton()->usuarioLogueado()) {
+    header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">

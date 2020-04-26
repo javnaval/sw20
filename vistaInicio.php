@@ -2,6 +2,9 @@
 require_once 'includes/config.php';
 require_once "classes/classes/album.php";
 require_once "classes/databaseClasses/Albums.php";
+if (!Application::getSingleton()->usuarioLogueado()) {
+    header("Location: index.php");
+}
 
 function mostrar(){
     $html = "";

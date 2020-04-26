@@ -1,5 +1,8 @@
 <?php
 require_once 'includes/config.php';
+if (!Application::getSingleton()->usuarioLogueado()) {
+    header("Location: index.php");
+}
 
 function busqueda(){
     $html = "";

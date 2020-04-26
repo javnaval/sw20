@@ -56,6 +56,10 @@
              session_start();
          }
 
+         public function usuarioLogueado() {
+             return ($_SESSION['login'] ?? false) === true;
+         }
+
          public function shutdown(){
             $this->connection = null;
          }
