@@ -60,6 +60,24 @@
              return ($_SESSION['login'] ?? false) === true;
          }
 
+         public function tieneRol($rol, $cabeceraError=NULL, $mensajeError=NULL)
+         {
+             $roles = $_SESSION['roles'] ?? array();
+             if (! in_array($rol, $roles)) {
+                 if ( !is_null($cabeceraError) && ! is_null($mensajeError) ) {
+                     $bloqueContenido=<<<EOF
+<h1>$cabeceraError!</h1>
+<p>$mensajeError.</p>
+EOF;
+                     echo $bloqueContenido;
+                 }
+
+                 return false;
+             }
+
+             return true;
+         }
+
          public function shutdown(){
             $this->connection = null;
          }
