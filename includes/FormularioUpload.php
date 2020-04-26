@@ -9,7 +9,7 @@ class FormularioUpload extends Form {
     private $opciones = array();
 
     public function __construct() {
-        $this->opciones['action'] = "vistaInicio.php?pag=2&upload=true";
+        $this->opciones['action'] = "vistaUpload.php";
         $this->opciones['enctype'] = "multipart/form-data";
         parent::__construct("form-upload", $this->opciones);
     }

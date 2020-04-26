@@ -1,3 +1,8 @@
+body {
+    background-color: floralwhite;
+    margin: 0px;
+}
+
 section.contents{
     margin-left: 10%;
     margin-bottom: 100px;
@@ -24,6 +29,4 @@ section.contents div img{
 section.contents header{
 	width: 100%;
 	height:5%;
-
-
 }

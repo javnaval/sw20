@@ -1,24 +1,27 @@
 <?php
 require_once 'includes/config.php';
+require_once 'includes/FormularioBusqueda.php';
 if (!Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
 function busqueda(){
-    $html = "";
-    if (isset($_POST['busqueda'])){
-        require 'includes/procesarBusqueda.php';
-    }
-    else $html = "Estas en la pagina de busqueda. Haz click en buscar para encontrar canciones, artistas y albumes.";
+    $form = new FormularioBusqueda();
+    $html = $form->gestiona();
+    if (!isset($_POST['busqueda'])) $html .= "<p>Estas en la pagina de busqueda. Haz click en buscar para encontrar canciones, artistas y albumes.</p>";
     return $html;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/styles-contents.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
+    <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
     <title>Busqueda</title>
 </head>
 <body>
@@ -32,12 +35,6 @@ function busqueda(){
     </nav>
 
     <section id="contents" class="contents">
-        <header>
-            <form action = "vistaBusqueda.php" method = "post" >
-                <input type = "search" name = "busqueda" placeholder = "Buscar artistas, canciones o álbumes" >
-                <input type = "submit" name = "Buscar" value = "Buscar" >
-            </form >
-        </header>
         <?php
         echo busqueda();
         ?>
