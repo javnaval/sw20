@@ -15,8 +15,8 @@
          </header>
          <section>
              <ul>
-                 <li><a class="icon" href="vistaInicio.php?pag=1"><figure><i class="fas fa-home"></i><figcaption>Inicio<figcaption></figure></a></li>
-                 <li><a class="icon" href="vistaInicio.php?pag=2&busqueda=false"><figure><i class="fas fa-search"></i><figcaption>Buscar<figcaption></figure></a></li>
+                 <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-home"></i><figcaption>Inicio<figcaption></figure></a></li>
+                 <li><a class="icon" href="vistaBusqueda.php"><figure><i class="fas fa-search"></i><figcaption>Buscar<figcaption></figure></a></li>
              </ul>
              <ul>
                  <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-list-ul"></i><figcaption>Tu Biblioteca<figcaption></figure></a></li>
@@ -25,7 +25,7 @@
              <span><hr></span>
              <ul>
                  <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-cloud-download-alt"></i></i><figcaption>Descargar<figcaption></figure></a></li>
-                 <li><a class="icon" href="vistaInicio.php?pag=2&upload=false"><figure><i class="fas fa-cloud-upload-alt"></i><figcaption>Subir Cancion<figcaption></figure></a></li>
+                 <li><a class="icon" href="vistaUpload.php"><figure><i class="fas fa-cloud-upload-alt"></i><figcaption>Subir Cancion<figcaption></figure></a></li>
              </ul>
          </section>
      </nav>

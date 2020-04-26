@@ -38,8 +38,6 @@
         private function correctProperties($object){
             if(classesFactory::instance($object)){
                $this->properties = $object->toString();
-               var_dump($this->properties);
-           
             }
             else{
                 foreach($this->propertiesStatic as $key => $value){

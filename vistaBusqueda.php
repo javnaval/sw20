@@ -1,28 +1,22 @@
 <?php
 require_once 'includes/config.php';
-require_once "classes/classes/album.php";
-require_once "classes/databaseClasses/Albums.php";
 
-function mostrar(){
+function busqueda(){
     $html = "";
-    $albums = (new Albums())->get();
-    foreach ($albums as $row) {
-        $html .= "<div>";
-        $html .= $row->getTitle();
-        $html .= "<img src='server/images/Colores.jpg'></div>";
+    if (isset($_POST['busqueda'])){
+        require 'includes/procesarBusqueda.php';
     }
+    else $html = "Estas en la pagina de busqueda. Haz click en buscar para encontrar canciones, artistas y albumes.";
     return $html;
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/styles-contents.css"/>
-    <title>Sounday</title>
+    <title>Busqueda</title>
 </head>
 <body>
 
@@ -35,8 +29,14 @@ function mostrar(){
     </nav>
 
     <section id="contents" class="contents">
+        <header>
+            <form action = "vistaBusqueda.php" method = "post" >
+                <input type = "search" name = "busqueda" placeholder = "Buscar artistas, canciones o álbumes" >
+                <input type = "submit" name = "Buscar" value = "Buscar" >
+            </form >
+        </header>
         <?php
-        echo mostrar();
+        echo busqueda();
         ?>
     </section>
 
