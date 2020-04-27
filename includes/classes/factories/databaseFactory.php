@@ -1,10 +1,11 @@
 <?php
-     require_once("classes/databaseClasses/Albums.php");
-     require_once("classes/databaseClasses/Noticias.php");
-     require_once("classes/databaseClasses/Contenidos.php");
-     require_once("classes/databaseClasses/PlayLists.php");
-     require_once("classes/databaseClasses/Songs.php");
-     require_once("classes/databaseClasses/Users.php");
+namespace es\ucm\fdi\aw\classes\factories;
+use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
+use es\ucm\fdi\aw\classes\databaseClasses\Noticias as Noticias;
+use es\ucm\fdi\aw\classes\databaseClasses\Contenidos as Contenidos;
+use es\ucm\fdi\aw\classes\databaseClasses\PlayLists as PlayLists;
+use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
+use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 
      class databaseFactory {
          private static $tables = null;

@@ -1,6 +1,8 @@
 <?php
-     require_once "Crud.php";
-     require_once dirname(__DIR__) . "/factories/classesFactory.php";
+namespace es\ucm\fdi\aw\classes\abstractClasses;
+use es\ucm\fdi\aw\classes\abstractClasses\Crud as Crud;
+use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
+
      abstract class GenericModel extends Crud {
         private $propertiesStatic;
         private $properties;

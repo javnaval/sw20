@@ -1,5 +1,6 @@
 <?php
-require_once dirname(__DIR__) . "/abstractClasses/GenericModel.php";
+namespace es\ucm\fdi\aw\classes\databaseClasses;
+use es\ucm\fdi\aw\classes\abstractClasses\GenericModel as GenericModel;
 
 class Contenidos extends GenericModel {
     public static  $tableName = "contiene";

@@ -1,7 +1,7 @@
 <?php
     require_once 'includes/config.php';
     require_once 'includes/FormularioLogin.php';
-    if (Application::getSingleton()->usuarioLogueado()) {
+    if (es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
         header("Location: vistaInicio.php");
     }
 ?>
@@ -21,7 +21,7 @@
 
     <section id="log">
         <?php
-        $form = new FormularioLogin();
+        $form = new es\ucm\fdi\aw\FormularioLogin();
          echo $form->gestiona();
         ?>
     </section>

@@ -1,12 +1,12 @@
 <?php
 require_once 'includes/config.php';
-require_once 'includes/FormularioBusqueda.php';
-if (!Application::getSingleton()->usuarioLogueado()) {
+
+if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
 function busqueda(){
-    $form = new FormularioBusqueda();
+    $form = new es\ucm\fdi\aw\FormularioBusqueda();
     $html = $form->gestiona();
     if (!isset($_POST['busqueda'])) $html .= "<p>Estas en la pagina de busqueda. Haz click en buscar para encontrar canciones, artistas y albumes.</p>";
     return $html;

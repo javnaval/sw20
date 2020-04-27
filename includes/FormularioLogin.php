@@ -1,8 +1,8 @@
 <?php
-require_once "config.php";
-require_once 'Form.php';
-require_once dirname(__DIR__) . "/classes/classes/user.php";
-require_once dirname(__DIR__) . "/classes/factories/databaseFactory.php";
+namespace es\ucm\fdi\aw;
+use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
+use es\ucm\fdi\aw\classes\classes\user as user;
+use es\ucm\fdi\aw\Form as Form;
 
 class FormularioLogin extends Form {
 

@@ -1,10 +1,13 @@
 <?php
-require_once "config.php";
-require_once 'Form.php';
-require_once dirname(__DIR__) . "/classes/classes/song.php";
-require_once dirname(__DIR__) . "/classes/classes/user.php";
-require_once dirname(__DIR__) . "/classes/classes/album.php";
-require_once dirname(__DIR__) . "/classes/factories/databaseFactory.php";
+namespace es\ucm\fdi\aw;
+use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
+use es\ucm\fdi\aw\classes\classes\contiene as contiene;
+use es\ucm\fdi\aw\classes\classes\noticia as noticia;
+use es\ucm\fdi\aw\classes\classes\album as album;
+use es\ucm\fdi\aw\classes\classes\playList as playList;
+use es\ucm\fdi\aw\classes\classes\song as song;
+use es\ucm\fdi\aw\classes\classes\user as user;
+use es\ucm\fdi\aw\Form as Form;
 
 class FormularioBusqueda extends Form {
     private $opciones = array();

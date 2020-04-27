@@ -1,8 +1,8 @@
 <?php
 require_once 'includes/config.php';
-require_once "classes/classes/album.php";
-require_once "classes/databaseClasses/Albums.php";
-if (!Application::getSingleton()->usuarioLogueado()) {
+use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
+
+if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 

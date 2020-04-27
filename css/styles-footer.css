@@ -62,7 +62,6 @@ footer section.left-footer{
 footer section.center-footer{
   height: 100%;
   display: flex;
-  width: 50%;
   flex-direction: column;
   width: 60%;
   text-align: center;
@@ -97,7 +96,7 @@ footer section.center-footer span.half-center p{
 footer section.center-footer span.half-center div p{
   background-color: #a0a0a0;
   height: 4px;
-  width: 0px;
+  width: 0;
   border-radius: 2px;
 }
 

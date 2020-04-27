@@ -1,7 +1,7 @@
 <?php
 require_once 'includes/config.php';
-require_once 'includes/FormularioUpload.php';
-if (!Application::getSingleton()->usuarioLogueado()) {
+
+if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 ?>
@@ -28,7 +28,7 @@ if (!Application::getSingleton()->usuarioLogueado()) {
 
     <section id="contents" class="contents">
         <?php
-        $form = new FormularioUpload();
+        $form = new es\ucm\fdi\aw\FormularioUpload();
         echo $form->gestiona();
         ?>
     </section>

@@ -1,4 +1,7 @@
 <?php
+namespace es\ucm\fdi\aw\classes\abstractClasses;
+use es\ucm\fdi\aw\Application as Application;
+
      abstract class Crud {
         private $table;
         private $connection;

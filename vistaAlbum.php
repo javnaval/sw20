@@ -1,7 +1,8 @@
 <?php
-    require_once 'includes/config.php';
-    require_once 'classes/factories/databaseFactory.php';
-    if (Application::getSingleton()->usuarioLogueado()) {
+require_once 'includes/config.php';
+use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
+
+    if (es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
         //  $_GET["busquedaAlbum"]="1"; //para probar,
     
     $albumsList= databaseFactory::getTable("albums")->where("id", "=" , 

@@ -1,4 +1,8 @@
 <?php
+namespace es\ucm\fdi\aw\classes\classes;
+use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
+use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
+
 	class album {
 		public static $className = "album";
 

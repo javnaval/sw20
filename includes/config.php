@@ -42,5 +42,5 @@ spl_autoload_register(function ($class) {
     }
 });
 
-$app = Application::getSingleton();
+$app = es\ucm\fdi\aw\Application::getSingleton();
 $app->init($settings, RUTA_RAIZ);

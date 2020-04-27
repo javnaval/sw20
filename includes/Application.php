@@ -1,4 +1,6 @@
 <?php
+namespace es\ucm\fdi\aw;
+
      class Application {
          private static $instancia;
          private $rutaRaiz;
@@ -37,7 +39,7 @@
                      //Creamos la url;
                      $url = "{$driver}:host={$host};"."dbname={$database}";
                      //Se crea  la conexion;
-                     $this->connection = new PDO($url, $username,$password);
+                     $this->connection = new \PDO($url, $username,$password);
                     }
                  return $this->connection;
              }catch(Exception $exc){
