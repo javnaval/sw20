@@ -2,7 +2,7 @@
 namespace es\ucm\fdi\aw\classes\databaseClasses;
 use es\ucm\fdi\aw\classes\abstractClasses\GenericModel as GenericModel;
 
-	 class PlayLists extends GenericModel {
+	 class Playlists extends GenericModel {
 		public static  $tableName = "playLists";
 		
 		 private $properties = [

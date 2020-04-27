@@ -2,7 +2,7 @@
 require_once 'includes/config.php';
 //require_once  'classes/classes/song.php';
 
-if (!Application::getSingleton()->usuarioLogueado()) {
+if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
@@ -35,16 +35,9 @@ function muestraCancion($var,$idCancion){
     </nav>
 
     <section id="contents" class="contents">
-        <header>
-
-            </form >
-        </header>
         <?php
 		$var=$_GET['tituloc'];
 		$idCancion=$_GET['id'];
-
-		?>
-		<?php
         echo muestraCancion($var,$idCancion);
         ?>
     </section>

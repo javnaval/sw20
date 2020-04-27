@@ -1,11 +1,11 @@
 <?php
-    namespace es\ucm\fdi\aw\classes\factories;
-use es\ucm\fdi\aw\classes\classes\contiene as contiene;
-use es\ucm\fdi\aw\classes\classes\noticia as noticia;
-use es\ucm\fdi\aw\classes\classes\album as album;
-use es\ucm\fdi\aw\classes\classes\playList as playList;
-use es\ucm\fdi\aw\classes\classes\song as song;
-use es\ucm\fdi\aw\classes\classes\user as user;
+namespace es\ucm\fdi\aw\classes\factories;
+use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
+use es\ucm\fdi\aw\classes\databaseClasses\Noticias as Noticias;
+use es\ucm\fdi\aw\classes\databaseClasses\Contenidos as Contenidos;
+use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
+use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
+use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 
      class databaseFactory {
          private static $tables = null;
@@ -17,7 +17,7 @@ use es\ucm\fdi\aw\classes\classes\user as user;
                  databaseFactory::$tables[] = new Albums();
                  databaseFactory::$tables[] = new Noticias();
                  databaseFactory::$tables[] = new Contenidos();
-                 databaseFactory::$tables[] = new PlayLists();
+                 databaseFactory::$tables[] = new Playlists();
                  databaseFactory::$tables[] = new Songs();
                  databaseFactory::$tables[] = new Users();
              }

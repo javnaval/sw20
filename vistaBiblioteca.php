@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/config.php';
-if (!Application::getSingleton()->usuarioLogueado()) {
+if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
@@ -16,6 +16,9 @@ function muestraBiblioteca(){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/styles-contents.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
+    <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
     <title>Biblioteca</title>
 </head>
 <body>
@@ -29,10 +32,6 @@ function muestraBiblioteca(){
     </nav>
 
     <section id="contents" class="contents">
-        <header>
-
-            </form >
-        </header>
         <?php
         echo muestraBiblioteca();
         ?>

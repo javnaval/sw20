@@ -4,7 +4,7 @@ use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
 use es\ucm\fdi\aw\classes\classes\contiene as contiene;
 use es\ucm\fdi\aw\classes\classes\noticia as noticia;
 use es\ucm\fdi\aw\classes\classes\album as album;
-use es\ucm\fdi\aw\classes\classes\playList as playList;
+use es\ucm\fdi\aw\classes\classes\playlist as playList;
 use es\ucm\fdi\aw\classes\classes\song as song;
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\Form as Form;

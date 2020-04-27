@@ -1,8 +1,8 @@
 <?php
-require_once "config.php";
-require_once dirname(__DIR__) . "/classes/classes/song.php";
-require_once dirname(__DIR__) . "/classes/classes/playlist.php";
-require_once dirname(__DIR__) . "/classes/factories/databaseFactory.php";
+namespace es\ucm\fdi\aw;
+use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
+use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
+use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,7 +36,7 @@ require_once dirname(__DIR__) . "/classes/factories/databaseFactory.php";
 					  }
 			   }
 			   
-  $playlists=(new PlayLists())->get();
+  $playlists=(new Playlists())->get();
 				 foreach ($playlists as $row) {
 				if($row->getIdUser()==$_SESSION['idUser']){
 				   echo "<div>";

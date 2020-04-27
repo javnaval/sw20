@@ -3,7 +3,7 @@ namespace es\ucm\fdi\aw\classes\factories;
 use es\ucm\fdi\aw\classes\classes\contiene as contiene;
 use es\ucm\fdi\aw\classes\classes\noticia as noticia;
 use es\ucm\fdi\aw\classes\classes\album as album;
-use es\ucm\fdi\aw\classes\classes\playList as playList;
+use es\ucm\fdi\aw\classes\classes\playlist as playlist;
 use es\ucm\fdi\aw\classes\classes\song as song;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
@@ -37,7 +37,7 @@ use es\ucm\fdi\aw\classes\classes\user as user;
                 classesFactory::$classes[] = new album();
                 classesFactory::$classes[] = new noticia();
                 classesFactory::$classes[] = new contiene();
-                classesFactory::$classes[] = new playList();
+                classesFactory::$classes[] = new playlist();
                 classesFactory::$classes[] = new song();
                 classesFactory::$classes[] = new user();
             }
