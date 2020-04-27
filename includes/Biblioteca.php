@@ -36,7 +36,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
 					  }
 			   }
 			   
-  $playlists=(new Playlists())->get();
+  $playlists=(new PlayLists())->get();
 				 foreach ($playlists as $row) {
 				if($row->getIdUser()==$_SESSION['idUser']){
 				   echo "<div>";

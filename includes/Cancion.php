@@ -3,7 +3,7 @@ namespace es\ucm\fdi\aw;
 use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
 use es\ucm\fdi\aw\classes\classes\song as song;
 
-assert(is_string($_POST[$var]));
+assert(is_string($_POST[$var]);
 $buscar = htmlspecialchars(trim(strip_tags($_POST[$var])));
 $canciones = song::buscar($buscar);
 
