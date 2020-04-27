@@ -1,8 +1,9 @@
 <?php
+namespace es\ucm\fdi\aw;
+use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
+use es\ucm\fdi\aw\classes\classes\song as song;
+use es\ucm\fdi\aw\classes\classes\playList as playList;
 require_once "config.php";
-require_once dirname(__DIR__) . "/classes/classes/song.php";
-require_once dirname(__DIR__) . "/classes/classes/playlist.php";
-require_once dirname(__DIR__) . "/classes/factories/databaseFactory.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
