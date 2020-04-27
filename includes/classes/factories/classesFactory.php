@@ -1,11 +1,10 @@
 <?php
-namespace es\ucm\fdi\aw\classes\factories;
-use es\ucm\fdi\aw\classes\classes\contiene as contiene;
-use es\ucm\fdi\aw\classes\classes\noticia as noticia;
-use es\ucm\fdi\aw\classes\classes\album as album;
-use es\ucm\fdi\aw\classes\classes\playList as playList;
-use es\ucm\fdi\aw\classes\classes\song as song;
-use es\ucm\fdi\aw\classes\classes\user as user;
+     require_once("classes/classes/album.php");
+     require_once("classes/classes/noticia.php");
+     require_once("classes/classes/contiene.php");
+     require_once("classes/classes/playList.php");
+     require_once("classes/classes/song.php");
+     require_once("classes/classes/user.php");
 
      class classesFactory {
          private static $classes = null;
@@ -13,16 +12,19 @@ use es\ucm\fdi\aw\classes\classes\user as user;
          }
          
          public static function getClass($nameClass){
+		
              if(classesFactory::$classes == null){
                  classesFactory::$classes[] = new album();
                  classesFactory::$classes[] = new noticia();
                  classesFactory::$classes[] = new contiene();
-                 classesFactory::$classes[] = new playList();
+                 classesFactory::$classes[] = new playlist();
                  classesFactory::$classes[] = new song();
                  classesFactory::$classes[] = new user();
+				  
              }
              foreach(classesFactory::$classes as $class){
                  if(strcmp($nameClass, $class::$className) === 0){
+				
                      return $class;
                  }
              }
