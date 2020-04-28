@@ -106,10 +106,7 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 		
 		public static function esGestor($id){
 			$rol = self::buscaUsuarioId($id)-> getRol();
-            if ($rol == "Gestor" || $rol == "Administrador")
-			{
-				return true;
-			}else return false;
+            return ($rol == "gestor" || $rol == "administrador");
         }
 	}
 ?>

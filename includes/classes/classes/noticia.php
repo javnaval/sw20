@@ -61,14 +61,14 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 			];
 		}
 		
-		public static function buscar(){
-			if($SESSION['roles']== "Gestor" || $SESSION['roles']== "Administrador")
+		public static function buscar($user){
+			if(user::esGestor($user))
 			{
 				$aceptado = 0;
 				
 			}else $aceptado = 1;
 			
-			return databaseFactory::getTable("noticias")->where("accepted", "=", "%".$aceptado."%")->get();
+			return databaseFactory::getTable("noticias")->where("accepted", "LIKE", "%".$aceptado."%")->get();
         }
 		
 		public static function crea($title, $idUser, $text){

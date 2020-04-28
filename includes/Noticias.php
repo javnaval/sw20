@@ -4,7 +4,7 @@ use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\classes\classes\noticia as noticia;
 
-$noticias = noticia::buscar();
+$noticias = noticia::buscar($_SESSION['idUser']);
 
 
 if ($noticias == null) echo "<p>Aún no tenemos noticias que mostrarle.</p>";
