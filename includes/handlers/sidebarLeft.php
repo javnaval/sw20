@@ -10,7 +10,7 @@
      </ul>
      <ul>
          <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-list-ul"></i><figcaption>Tu Biblioteca<figcaption></figure></a></li>
-         <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-newspaper"></i><figcaption>Noticias<figcaption></figure></a></li>
+         <li><a class="icon" href="vistaNoticias.php"><figure><i class="fas fa-newspaper"></i><figcaption>Noticias<figcaption></figure></a></li>
      </ul>
      <span><hr></span>
      <ul>

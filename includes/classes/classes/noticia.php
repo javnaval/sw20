@@ -2,6 +2,7 @@
 namespace es\ucm\fdi\aw\classes\classes;
 use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
 use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
+use es\ucm\fdi\aw\classes\classes\user as user;
 
 	class noticia  {
 		public static $className = "noticia";
@@ -13,7 +14,7 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 		 private $text;
 		 private $accepted;
 
-		 public function __construct($id = null,$idUser = null,$title= null,$text = null){
+		 public function __construct($id = null,$idUser = null,$title= null,$text = null, $accepted = null){
             $this->id = $id;
             if($id == null){
                $this->$id = uniqid();
@@ -36,7 +37,7 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 			 return $this->title;
 		 }
 
-        public function getText(){
+        public function getTexto(){
             return $this->text;
 		}
 		
@@ -46,7 +47,7 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 		
 		public function getThis($row = null,$id = null,$idUser = null,$title = null,$text= null,$accepted = null){
 			if($row != null){
-				return new self($row["id"],$row["idUser"],$row["title"],$row['text'], $row["accepted"]);
+				return new self($row["id"],$row["idUser"],$row["title"],$row['texto'], $row["accepted"]);
 			}
 			return new self($id,$idUser,$title,$text);
 		}
@@ -59,5 +60,20 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 				"accepted" => "".$this->accepted.""
 			];
 		}
+		
+		public static function buscar(){
+			if($SESSION['roles']== "Gestor" || $SESSION['roles']== "Administrador")
+			{
+				$aceptado = 0;
+				
+			}else $aceptado = 1;
+			
+			return databaseFactory::getTable("noticias")->where("accepted", "=", "%".$aceptado."%")->get();
+        }
+		
+		public static function crea($title, $idUser, $text){
+			
+            return databaseFactory::getTable("noticias")->insert(classesFactory::getClass("noticia")->getThis(null, $idUser, $title, $text, 0));
+        }
 	}
 ?>
