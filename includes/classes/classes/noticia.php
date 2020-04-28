@@ -1,7 +1,6 @@
 <?php
 namespace es\ucm\fdi\aw\classes\classes;
-use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
-use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
+use es\ucm\fdi\aw\classes\databaseClasses\Noticias as Noticias;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
 	class noticia  {
@@ -14,11 +13,8 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 		 private $text;
 		 private $accepted;
 
-		 public function __construct($id = null,$idUser = null,$title= null,$text = null, $accepted = null){
+		 public function __construct($id,$idUser,$title,$text, $accepted){
             $this->id = $id;
-            if($id == null){
-               $this->$id = uniqid();
-            }
             $this->idUser = $idUser;
             $this->title = $title;
             $this->text = $text;
@@ -44,13 +40,7 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 		public function getAccepted(){
             return $this->accepted;
 		}
-		
-		public function getThis($row = null,$id = null,$idUser = null,$title = null,$text= null,$accepted = null){
-			if($row != null){
-				return new self($row["id"],$row["idUser"],$row["title"],$row['texto'], $row["accepted"]);
-			}
-			return new self($id,$idUser,$title,$text);
-		}
+
 		public function toString(){
 			return[
 			   "id"    => "".$this->id."",
@@ -68,12 +58,12 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 				
 			}else $aceptado = 1;
 			
-			return databaseFactory::getTable("noticias")->where("accepted", "LIKE", "%".$aceptado."%")->get();
+			return (new Noticias())->where("accepted", "LIKE", "%".$aceptado."%")->get();
         }
 		
 		public static function crea($title, $idUser, $text){
 			
-            return databaseFactory::getTable("noticias")->insert(classesFactory::getClass("noticia")->getThis(null, $idUser, $title, $text, 0));
+            return (new Noticias())->insert(classesFactory::getClass("noticia")->getThis(null, $idUser, $title, $text, 0));
         }
 	}
 ?>

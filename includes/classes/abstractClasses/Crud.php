@@ -6,6 +6,7 @@ use es\ucm\fdi\aw\Application as Application;
         private $table;
         private $connection;
         private $wheres = "";
+         private $join = "";
         private $sql = null;
         private $insert;
         private $update;
@@ -14,8 +15,10 @@ use es\ucm\fdi\aw\Application as Application;
             $singleton = Application::getSingleton();
             $this->connection = $singleton->connect();
             $this->table = $table;
-            $this->insert = $this->CRUDinsert($propertiesStatic);
-            $this->update = $this->CRUDupdate($propertiesStatic);
+            if($propertiesStatic !== null) {
+                $this->insert = $this->CRUDinsert($propertiesStatic);
+                $this->update = $this->CRUDupdate($propertiesStatic);
+            }
         }
 
         private function CRUDinsert($propertiesStatic){
@@ -35,7 +38,7 @@ use es\ucm\fdi\aw\Application as Application;
 
         public function get() {
             try {
-                $this->sql = "SELECT * FROM {$this->table} {$this->wheres}";
+                $this->sql = "SELECT * FROM {$this->table} {$this->join} {$this->wheres}";
                 $query = $this->runCRUD();
                 return $query->fetchAll();
             } catch (Exception $exc) {
@@ -44,26 +47,33 @@ use es\ucm\fdi\aw\Application as Application;
         }
 
 
-        public function insert($object) {
-            try {
-                $this->sql = $this->insert;
-                $this->runCRUD($object);
-                return $this->connection->lastInsertId();
-            } catch (Exception $exc) {
-                echo $exc->getTraceAsString();
-            }
-        }
-
-
-
-        public function update($object) {
+         public function insert($object) {
              try {
-                $this->sql =  $this->update . "{$this->wheres}";
-                $this->runCRUD($object);
-            } catch (Exception $exc) {
-                echo $exc->getTraceAsString();
-            }
-        }
+
+                 if($this->insert === null){
+                    $this->insert = $this->CRUDinsert($object);
+                 }
+                 $this->sql = $this->insert;
+                 $this->runCRUD($object);
+                 return $this->connection->lastInsertId();
+             } catch (Exception $exc) {
+                 echo $exc->getTraceAsString();
+             }
+         }
+
+
+
+         public function update($object) {
+              try {
+                if($this->update === null){
+                    $this->update = $this->CRUDupdate($object);
+                 }
+                 $this->sql =  $this->update . "{$this->wheres}";
+                 $this->runCRUD($object);
+             } catch (Exception $exc) {
+                 echo $exc->getTraceAsString();
+             }
+         }
 
         public function delete() {
             try {
@@ -80,11 +90,16 @@ use es\ucm\fdi\aw\Application as Application;
             return $this;
         }
 
-        public function orWhere($key, $condition, $value) {
-            $this->wheres .= (strpos($this->wheres, "WHERE")) ? " OR " : " WHERE ";
-            $this->wheres .= "$key $condition " . ((is_string($value)) ? "\"$value\"" : $value) . " ";
+         public function join($keyF, $Table, $keyS) {
+            $this->join .=  " INNER JOIN $Table ON $keyF = $keyS ";
             return $this;
         }
+
+         public function orWhere($key, $condition, $value) {
+             $this->wheres .= (strpos($this->wheres, "WHERE")) ? " OR " : " WHERE ";
+             $this->wheres .= "$key $condition " . ((is_string($value)) ? "\"$value\"" : $value) . " ";
+             return $this;
+         }
 
         private function runCRUD($object = null) {
             $query = $this->connection->prepare($this->sql);
@@ -97,6 +112,7 @@ use es\ucm\fdi\aw\Application as Application;
 
             $query->execute();
             $this->wheres = "";
+            $this->join = "";
             $this->sql = null;
             return $query;
         }

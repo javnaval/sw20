@@ -1,23 +1,19 @@
 <?php
 namespace es\ucm\fdi\aw\classes\classes;
-use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
-use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
+use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
 
 	class playlist  {
-		public static $className = "playList";
+		public static $className = "playlist";
 
 		
 		 private $id;
 		 private $idUser;
 		 private $title;
 		 
-		 public function __construct($id = null, $idUser = null, $title= null){
-            $this->id = $id;
-            if($id == null){
-               $this->$id = uniqid();
-            }
-            $this->idUser = $idUser;
-            $this->title = $title;
+		 public function __construct($id, $idUser, $title){
+             $this->id = $id;
+             $this->idUser = $idUser;
+             $this->title = $title;
 		 }
 		 public function getId(){
 			 return $this->id;
@@ -30,17 +26,11 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 		 public function getTitle(){
 			 return $this->title;
 		 }
-		 
-		 public function getThis($row = null,$id = null, $idUser = null, $title= null){
-			if($row != null){
-				return new self($row["id"],$row['idUser'],$row["title"]);
-			}
-			return new self($id,$idUser,$title);
-	 	 }
+
 		 public function toString(){
 			return[
 			   "id"           => "".$this->id."",
-               "idUser"           => "".$this->idUser."",
+               "idUser"       => "".$this->idUser."",
 			   "title"        => "".$this->title.""
 			];
 		 } 

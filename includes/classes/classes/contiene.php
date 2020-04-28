@@ -1,7 +1,6 @@
 <?php
 namespace es\ucm\fdi\aw\classes\classes;
-use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
-use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
+use es\ucm\fdi\aw\classes\databaseClasses\Contenidos as Contenidos;
 
 class contiene {
     public static $className = "contiene";
@@ -9,7 +8,7 @@ class contiene {
     private $idSong;
     private $idPlaylist;
 
-    public function __construct($idSong = null,$idPlaylist = null){
+    public function __construct($idSong,$idPlaylist){
         $this->idSong = $idSong;
         $this->idPlaylist = $idPlaylist;
     }
@@ -20,13 +19,6 @@ class contiene {
 
     public function getIdPlaylist() {
         return $this->idPlaylist;
-    }
-
-    public function getThis($row = null,$idSong = null,$idPlaylist = null){
-        if($row != null){
-            return new self($row["idSong"],$row["idPlaylist"]);
-        }
-        return new self($idSong,$idPlaylist);
     }
 
     public function toString(){

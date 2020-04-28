@@ -1,7 +1,6 @@
 <?php
 namespace es\ucm\fdi\aw\classes\classes;
-use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
-use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
+use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
 
 	class song  {
 
@@ -14,11 +13,8 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 		 private $title;
 		 private $played;
 
-		 public function __construct($id = null,$idUser = null,$idAlbum = null,$title = null,$played = null){
+		 public function __construct($id,$idUser,$idAlbum,$title,$played){
              $this->id = $id;
-             if($id == null){
-               $this->$id = uniqid();
-             }
              $this->idUser = $idUser;
              $this->idAlbum = $idAlbum;
              $this->title = $title;
@@ -45,13 +41,6 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
              return $this->played;
 		 }
 
-         public function getThis($row = null,$id = null,$idUser = null,$idAlbum = null,$title = null, $played = null){
-            if($row != null){
-               return new self($row["id"],$row["idUser"],$row["idAlbum"],$row["title"],$row["played"]);
-            }
-            return new self($id,$idUser,$idAlbum,$title,$played);
-         }
-
         public function toString(){
             return[
               "id"           => "".$this->id."",
@@ -63,11 +52,11 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
         }
 
         public static function crea($title, $idUser, $idAlbum){
-            return databaseFactory::getTable("songs")->insert(classesFactory::getClass("song")->getThis(null,null, $idUser, $idAlbum, $title, 0));
+            return (new Songs())->insert(classesFactory::getClass("song")->getThis(null,null, $idUser, $idAlbum, $title, 0));
         }
 
         public static function buscar($title){
-            return databaseFactory::getTable("songs")->where("title", "LIKE", "%".$title."%")->get();
+            return (new Songs())->where("title", "LIKE", "%".$title."%")->get();
         }
 
 	}

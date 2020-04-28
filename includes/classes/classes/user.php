@@ -1,7 +1,6 @@
 <?php
 namespace es\ucm\fdi\aw\classes\classes;
-use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
-use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
+use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 
 	class user {
 
@@ -17,11 +16,8 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
          private $descripcion;
 
 
-		 public function __construct($id = null,$user = null,$name = null,$email = null,$password = null,$rol = null,$descripcion = null){
+		 public function __construct($id,$user,$name,$email,$password,$rol,$descripcion){
              $this->id = $id;
-             if($id == null){
-               $this->$id = uniqid();
-             }
              $this->user = $user;
              $this->name = $name;
              $this->email = $email;
@@ -50,20 +46,13 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 			 return $this->password;
 		 }
 
-        public function getRol() {
-            return $this->rol;
-        }
+         public function getRol() {
+             return $this->rol;
+         }
 
-        public function getDescripcion() {
-            return $this->descripcion;
-        }
-
-         public function getThis($row = null,$id = null,$user = null,$name = null,$email = null,$password = null,$rol = null,$descripcion = null){
-			if($row != null){
-			   return new self($row["id"],$row["user"],$row["name"],$row["email"],$row["password"],$row["rol"],$row["descripcion"]);
-			}
-			return new self($id,$user,$name,$email,$password,$rol,$descripcion);
-		 }
+         public function getDescripcion() {
+             return $this->descripcion;
+         }
 		 public function toString(){
 			 return[
               "id"           => "".$this->id."",
@@ -77,12 +66,12 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 	     }
 
         public static function buscaUsuario($user){
-		     $user = databaseFactory::getTable("users")->where("user", "=", $user)->get();
+		     $user =(new Users())->where("user", "=", $user)->get();
 		     return $user[0];
         }
 
         public static function buscaUsuarioId($id){
-		     $user = databaseFactory::getTable("users")->where("id", "=", $id)->get();
+		     $user = (new Users())->where("id", "=", $id)->get();
 		     return $user[0];
         }
 
@@ -97,15 +86,15 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
         }
 
         public static function crea($user, $email, $contrasenia){
-            return databaseFactory::getTable("users")->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT), "usuario", null));
+            return (new Users())->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT), "usuario", null));
         }
 
         public static function buscar($user){
-            return databaseFactory::getTable("users")->where("name", "LIKE", "%".$user."%")->get();
+            return (new Users())->where("name", "LIKE", "%".$user."%")->get();
         }
 		
 		public static function esGestor($id){
-			$rol = self::buscaUsuarioId($id)-> getRol();
+			$rol = self::buscaUsuarioId($id)->getRol();
             return ($rol == "gestor" || $rol == "administrador");
         }
 	}

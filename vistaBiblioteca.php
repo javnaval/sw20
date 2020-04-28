@@ -3,12 +3,6 @@ require_once 'includes/config.php';
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
-
-function muestraBiblioteca(){
-    $html = "";
-        require 'includes/Biblioteca.php';
-    return $html;
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,7 +27,7 @@ function muestraBiblioteca(){
 
     <section id="contents" class="contents">
         <?php
-        echo muestraBiblioteca();
+        require 'includes/Biblioteca.php';
         ?>
     </section>
 

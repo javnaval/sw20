@@ -3,19 +3,7 @@ namespace es\ucm\fdi\aw;
 use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
 use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
 use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" type="text/css" href="css/styles-contents.css"/>
-	      <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
-     <title>Document</title>
-</head>
-<body>
-    <section id="contents" class="contents">
-       <?php
+
 //assert(is_string($_POST['busqueda']), "Error al introducir los datos");
 //$buscar = htmlspecialchars(trim(strip_tags($_POST['busqueda'])));
 //$canciones = databaseFactory::getTable("songs")->where("title", "LIKE", "%".$buscar."%")->get();
@@ -49,8 +37,3 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
 					  </div>";
 					  }
 			   }
-		  ?>							
-
-    </section>
-</body>
-</html>
