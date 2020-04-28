@@ -53,7 +53,7 @@ EOF;
         $title = htmlspecialchars(trim(strip_tags($datos['titulo'])));
 
         if ($_FILES['fileAudio']['error'] == UPLOAD_ERR_OK) {
-            $finfo = new finfo(FILEINFO_MIME_TYPE);
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
             $ext = array_search($finfo->file($_FILES['fileAudio']['tmp_name']),
                 array(
                     'mp3' => 'audio/mpeg',
