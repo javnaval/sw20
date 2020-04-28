@@ -27,9 +27,9 @@ INSERT INTO `albums` (`id`, `idArtist`, `title`, `releaseDate`) VALUES
 -- Volcado de datos para la tabla `noticias`
 --
 
-INSERT INTO `noticias` (`id`, `idUser`, `title`, `texto`) VALUES
-(1, 4, 'Noticia 1', 'Texto de noticia 1'),
-(2, 4, 'Noticia 2', 'Texto de noticia 2');
+INSERT INTO `noticias` (`id`, `idUser`, `title`, `texto`, `accepted`) VALUES
+(1, 4, 'Noticia 1', 'Texto de noticia 1', 1),
+(2, 4, 'Noticia 2', 'Texto de noticia 2', 0);
 
 --
 -- Volcado de datos para la tabla `playlists`

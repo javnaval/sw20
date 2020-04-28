@@ -78,7 +78,8 @@ CREATE TABLE `noticias` (
   `id` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
-  `texto` text NOT NULL
+  `texto` text NOT NULL,
+  `accepted` boolean NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
