@@ -54,5 +54,9 @@ use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
         public static function buscar($album){
             return (new Albums())->where("title", "LIKE", "%".$album."%")->get();
         }
+
+        public static function crea($idArtist, $title, $releaseDate){
+            return (new Albums())->insert((new self(null,$idArtist, $title, $releaseDate))->toString());
+        }
    }
 ?>

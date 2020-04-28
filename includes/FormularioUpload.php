@@ -25,6 +25,7 @@ EOF;
         } else $html .=  "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" required></p>";
 
         $html .= '<input type="radio" name="type" value="album">Album';
+        $html .= '<div id="eleccionAlbum">';
         if ($albums = album::mostrarAlbums($_SESSION['idUser'])) {
             $html .= '<p>Elija el album:</p>
                         <select name="album">';
@@ -33,7 +34,7 @@ EOF;
             }
             $html .= '</select>';
         }
-        $html .= '<a href="vistaInicio.php?pag=2&upload=false">Crear nuevo album</a>
+        $html .= '<a href="vistaUpload.php">Crear nuevo album</a></div>
                 <p><input type="radio" name="type" value="single" checked>Single</p>';
 
         $html .= '<p><input type="file" name="fileAudio" value="Elija un archivo" required></p>
@@ -66,7 +67,10 @@ EOF;
                 $resultado[] = "La extensión o el tamaño de los archivos no es correcta.";
             }
             else {
-                if($datos['type'] == 'single') $idSong = song::crea($title, $_SESSION['idUser'], 0);
+                if($datos['type'] == 'single') {
+                    $idAlbum = album::crea($_SESSION['idUser'], $title, date('Y-m-d'));
+                    $idSong = song::crea($title, $_SESSION['idUser'], $idAlbum);
+                }
                 else $idSong = song::crea($title, $_SESSION['idUser'], $datos['album']);
                 if (move_uploaded_file($_FILES['fileAudio']['tmp_name'], "server/songs/".$idSong.".".$ext)) {
                     $resultado[] = "El archivo ha sido cargado correctamente.";
