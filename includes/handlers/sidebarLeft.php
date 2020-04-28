@@ -17,4 +17,8 @@
          <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-cloud-download-alt"></i></i><figcaption>Descargar<figcaption></figure></a></li>
          <li><a class="icon" href="vistaUpload.php"><figure><i class="fas fa-cloud-upload-alt"></i><figcaption>Subir Cancion<figcaption></figure></a></li>
      </ul>
+	 <span><hr></span>
+	 <ul>
+		<li><a class="icon" href="vistaUsuario.php"><figure><i class="fas fa-user"></i><figcaption>Cuenta<figcaption></figure></a></li>
+	 </ul>
  </section>
