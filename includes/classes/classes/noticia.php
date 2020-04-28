@@ -11,6 +11,7 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 		 private $idUser;
 		 private $title;
 		 private $text;
+		 private $accepted;
 
 		 public function __construct($id = null,$idUser = null,$title= null,$text = null){
             $this->id = $id;
@@ -20,6 +21,7 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
             $this->idUser = $idUser;
             $this->title = $title;
             $this->text = $text;
+			$this->accepted = $accepted;
 		 }
 
 		 public function getId(){
@@ -38,9 +40,13 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
             return $this->text;
 		}
 		
-		public function getThis($row = null,$id = null,$idUser = null,$title = null,$text= null){
+		public function getAccepted(){
+            return $this->accepted;
+		}
+		
+		public function getThis($row = null,$id = null,$idUser = null,$title = null,$text= null,$accepted = null){
 			if($row != null){
-				return new self($row["id"],$row["idUser"],$row["title"],$row['text']);
+				return new self($row["id"],$row["idUser"],$row["title"],$row['text'], $row["accepted"]);
 			}
 			return new self($id,$idUser,$title,$text);
 		}
@@ -49,7 +55,8 @@ use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 			   "id"    => "".$this->id."",
 			   "idUser"  => "".$this->idUser."",
 			   "title" => "".$this->title."",
-                "text" => "".$this->text.""
+                "text" => "".$this->text."",
+				"accepted" => "".$this->accepted.""
 			];
 		}
 	}

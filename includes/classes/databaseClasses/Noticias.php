@@ -9,7 +9,8 @@ use es\ucm\fdi\aw\classes\abstractClasses\GenericModel as GenericModel;
 			"id"    => "NOT NULL",
              "idUser"    => "NOT NULL",
 			"title"  => "NOT NULL",
-             "texto" => "NOT NULL"
+             "texto" => "NOT NULL",
+			 "accepted" => "NOT NULL"
 		 ];
 
 		 public function __construct(){
