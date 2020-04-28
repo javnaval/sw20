@@ -86,7 +86,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
         }
 
         public static function crea($user, $email, $contrasenia){
-            return (new Users())->insert(classesFactory::getClass("user")->getThis(null,null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT), "usuario", null));
+            return (new Users())->insert((new self(null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT), "usuario", null))->toString());
         }
 
         public static function buscar($user){

@@ -52,7 +52,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
         }
 
         public static function crea($title, $idUser, $idAlbum){
-            return (new Songs())->insert(classesFactory::getClass("song")->getThis(null,null, $idUser, $idAlbum, $title, 0));
+            return (new Songs())->insert((new self(null, $idUser, $idAlbum, $title, 0))->toString());
         }
 
         public static function buscar($title){

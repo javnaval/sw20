@@ -63,7 +63,7 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 		
 		public static function crea($title, $idUser, $text){
 			
-            return (new Noticias())->insert(classesFactory::getClass("noticia")->getThis(null, $idUser, $title, $text, 0));
+        return (new Noticias())->insert((new self(null, $idUser, $title, $text, 0))->toString());
         }
 	}
 ?>
