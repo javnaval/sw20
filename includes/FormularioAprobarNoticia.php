@@ -1,7 +1,7 @@
 <?php
 namespace es\ucm\fdi\aw;
 use es\ucm\fdi\aw\classes\classes\noticia as noticia;
-//use es\ucm\fdi\aw\classes\databaseClasses\Noticia as Noticia;
+use es\ucm\fdi\aw\classes\databaseClasses\Noticias as Noticias;
 use es\ucm\fdi\aw\Form as Form;
 
 class FormularioAprobarNoticia extends Form {
@@ -17,24 +17,20 @@ class FormularioAprobarNoticia extends Form {
 
     protected function generaCamposFormulario($datos, $err) {
 		
-		$html = '<form method="POST" action="vistaNoticias.php">';
-		$html .= '<input type = "submit" name = "Aprobar" value = "Aprobar" >';
-		$html .= '</form>';
+		$html = '<input type = "submit" name = "Aprobar" value = "Aprobar" >';
 		return $html;
     }
 
     protected function procesaFormulario($datos)
     {
         $resultado = array();
-		$id = $noticia->getId();
-		$idUser = $noticia->getIdUser();
-		$title = $noticia->getTitle();
-		$text = $noticia->getTexto();
-		(new Noticia((new noticia($id, $idUser, $title, $text, 1))->toString()))->where("id", "LIKE", "%".$id."%");
+		$id = $this->noticia->getId();
+		$idUser = $this->noticia->getIdUser();
+		$title = $this->noticia->getTitle();
+		$text = $this->noticia->getTexto();
+		(new Noticias((new noticia($id, $idUser, $title, $text, 1))->toString()))->where("id", "LIKE", "%".$id."%");
 
 
         return $resultado;
     }
-
-    //javascript como controlar audio ruben
 }
