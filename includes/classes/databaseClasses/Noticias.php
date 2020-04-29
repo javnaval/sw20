@@ -15,5 +15,14 @@ use es\ucm\fdi\aw\classes\classes\noticia as noticia;
 		 public function __construct(){
 			 parent::__construct("noticias",$this->properties);
 		 }
+		 
+		 public function get(){
+			$arrayPDO = parent::get();
+			$array = null;
+			foreach($arrayPDO as $row){
+				$array[] = new noticia($row["id"],$row["idUser"],$row["title"],$row["texto"],$row["accepted"]);
+			}
+		   return $array;
+		 }
 	}
 ?>
