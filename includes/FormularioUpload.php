@@ -41,7 +41,7 @@ EOF;
 
         $html .= '<p><a onClick="muestra(\'crearAlbum\', \'tituloAlbum\');oculta(\'eleccionAlbum\')">Crear nuevo album</a></p></div>';
         $html .= '<div id="crearAlbum">';
-        $html .= "<p><input type=\"text\" id=\"tituloAlbum\" name=\"tituloAlbum\" placeholder=\"TituloAlbum\"></p>
+        $html .= "<p><input type=\"text\" id=\"tituloAlbum\" name=\"tituloAlbumIgnore\" placeholder=\"TituloAlbum\"></p>
                     <p><input type=\"date\" name=\"dateAlbum\" value=\"".date('Y-m-d')."\" placeholder=\"TituloAlbum\"></p>
                     <a onClick=\"oculta('crearAlbum', 'tituloAlbum');muestra('eleccionAlbum')\">Elegir albumes existentes</a>";
         $html .= '</div>';
