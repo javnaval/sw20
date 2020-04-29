@@ -1,9 +1,11 @@
 <?php
-require_once 'includes/config.php';
+    require_once 'includes/config.php';
 
-if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
-    header("Location: index.php");
-}
+    if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
+        header("Location: index.php");
+    }
+    $form = new es\ucm\fdi\aw\FormularioUpload();
+    $html = $form->gestiona();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,8 +31,7 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 
     <section id="contents" class="contents">
         <?php
-        $form = new es\ucm\fdi\aw\FormularioUpload();
-        echo $form->gestiona();
+        echo $html;
         ?>
     </section>
 

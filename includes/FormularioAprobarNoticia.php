@@ -9,7 +9,6 @@ class FormularioAprobarNoticia extends Form {
 
     public function __construct() {
         $this->opciones['action'] = "vistaNoticias.php";
-        $this->opciones['enctype'] = "multipart/form-data";
         parent::__construct("form-upload", $this->opciones);
     }
 
@@ -32,13 +31,13 @@ EOF;
 
     protected function procesaFormulario($datos)
     {
-        $resultado = array();
 		
 		$noticia = (new Noticias())->where("id", "LIKE", "%". $datos['noticia']."%")->get();
 		$noticia = $noticia[0];
 		$noticia2 = new noticia($noticia->getId(), $noticia->getIdUser(), $noticia->getTitle(), $noticia->getTexto(), 1);
 		(new Noticias())->where("id","=",$noticia2->getId())->update($noticia2->toString());
 
+		$resultado = 'vistaNoticias.php';
         return $resultado;
     }
 }

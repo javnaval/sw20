@@ -4,6 +4,8 @@
     if (es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
         header("Location: vistaInicio.php");
     }
+    $form = new es\ucm\fdi\aw\FormularioLogin();
+    $html = $form->gestiona();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,8 +23,7 @@
 
     <section id="log">
         <?php
-        $form = new es\ucm\fdi\aw\FormularioLogin();
-         echo $form->gestiona();
+         echo $html;
         ?>
     </section>
 
