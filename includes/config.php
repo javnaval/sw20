@@ -11,7 +11,7 @@ define ('RUTA_RAIZ', '/AW/sw20/');
 
 $settings =
     ["driver"   => "mysql",
-        "host"     => "localhost",
+        "host"     => "localhost", //vm04.db.swarm.test  en el vps
         "database" => "sounday",
         "username" => "sounday",
         "password" => "sounday2020"];
