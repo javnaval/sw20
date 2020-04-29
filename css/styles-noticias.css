@@ -28,7 +28,11 @@ section.contents div
 {
 	margin: 0;
 }
-
+section.contents div.formulario {
+    width: 100%;
+    height: 5%;
+	text-align: center;
+}
 section.contents div.imagen {
     width: 20%;
     height: 15em;
