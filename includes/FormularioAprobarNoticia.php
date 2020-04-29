@@ -36,5 +36,4 @@ class FormularioAprobarNoticia extends Form {
         return $resultado;
     }
 
-    //javascript como controlar audio ruben
 }
