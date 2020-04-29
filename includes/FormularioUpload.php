@@ -41,8 +41,8 @@ EOF;
 
         $html .= '<p><a onClick="muestra(\'crearAlbum\', \'tituloAlbum\');oculta(\'eleccionAlbum\')">Crear nuevo album</a></p></div>';
         $html .= '<div id="crearAlbum">';
-        $html .= "<p><input type=\"text\" id=\"tituloAlbum\" name=\"tituloAlbum\" placeholder=\"TituloAlbum\" required></p>
-                    <p><input type=\"date\" name=\"dateAlbum\" placeholder=\"TituloAlbum\"></p>
+        $html .= "<p><input type=\"text\" id=\"tituloAlbum\" name=\"tituloAlbum\" placeholder=\"TituloAlbum\"></p>
+                    <p><input type=\"date\" name=\"dateAlbum\" value=\"".date('Y-m-d')."\" placeholder=\"TituloAlbum\"></p>
                     <a onClick=\"oculta('crearAlbum', 'tituloAlbum');muestra('eleccionAlbum')\">Elegir albumes existentes</a>";
         $html .= '</div>';
 
@@ -65,8 +65,7 @@ EOF;
         if (isset($datos['tituloAlbum'])) {
             assert(is_string($datos['tituloAlbum']));
             $titleAlbum = htmlspecialchars(trim(strip_tags($datos['tituloAlbum'])));
-            if (isset($datos['dateAlbum'])) $date = htmlspecialchars(trim(strip_tags($datos['dateAlbum'])));
-            else $date = date('Y-m-d');
+            $date = htmlspecialchars(trim(strip_tags($datos['dateAlbum'])));
         }
 
         if ($_FILES['fileAudio']['error'] == UPLOAD_ERR_OK) {
