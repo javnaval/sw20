@@ -1,0 +1,46 @@
+body {
+    background-color: #fdbcb4;
+    margin: 0;
+}
+
+section.contents{
+
+    margin-left: 13%;
+    height: 85%;
+	width:87%;
+    background-color: #fdbcb4;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-y: scroll;
+}
+
+section.contents div.titulo
+{
+	height: 10%;
+	width: 100%;
+	text-align: center;
+	margin: 0;
+}
+
+section.contents div
+{
+	margin: 0;
+}
+
+section.contents div.imagen {
+    width: 20%;
+    height: 15em;
+	margin-bottom: 0px;
+}
+section.contents div.texto {
+    width: 78%;
+    height: 15em;
+	background-color: white;
+	margin-bottom: 0px;
+}
+
+section.contents div img{
+    width: 15em;
+}
