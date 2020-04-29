@@ -19,7 +19,7 @@ echo "<div class=\"titulo\"><h1>NOTICIAS</h1></div>";
 		if(user::esGestor($_SESSION['idUser']))
 		{
 			echo '<div class="formulario">';
-			$form = new FormularioAprobarNoticia($noticia);
+			$form = new FormularioAprobarNoticia();
 			echo $form->gestiona();
 			echo '</div>';
 		}

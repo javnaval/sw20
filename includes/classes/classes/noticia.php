@@ -46,7 +46,7 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 			   "id"    => "".$this->id."",
 			   "idUser"  => "".$this->idUser."",
 			   "title" => "".$this->title."",
-                "text" => "".$this->text."",
+                "texto" => "".$this->text."",
 				"accepted" => "".$this->accepted.""
 			];
 		}

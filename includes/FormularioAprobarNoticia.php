@@ -6,10 +6,8 @@ use es\ucm\fdi\aw\Form as Form;
 
 class FormularioAprobarNoticia extends Form {
     private $opciones = array();
-	private $noticia;
 
-    public function __construct($noticia) {
-		$this->noticia = $noticia;
+    public function __construct() {
         $this->opciones['action'] = "vistaNoticias.php";
         $this->opciones['enctype'] = "multipart/form-data";
         parent::__construct("form-upload", $this->opciones);
@@ -35,12 +33,11 @@ EOF;
     protected function procesaFormulario($datos)
     {
         $resultado = array();
-		$id = $this->noticia->getId();
-		$idUser = $this->noticia->getIdUser();
-		$title = $this->noticia->getTitle();
-		$text = $this->noticia->getTexto();
-		(new Noticias((new noticia($id, $idUser, $title, $text, 1))->toString()))->where("id", "LIKE", "%".$id."%");
-
+		
+		$noticia = (new Noticias())->where("id", "LIKE", "%". $datos['noticia']."%")->get();
+		$noticia = $noticia[0];
+		$noticia2 = new noticia($noticia->getId(), $noticia->getIdUser(), $noticia->getTitle(), $noticia->getTexto(), 1);
+		(new Noticias())->where("id","=",$noticia2->getId())->update($noticia2->toString());
 
         return $resultado;
     }
