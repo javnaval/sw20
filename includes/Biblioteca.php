@@ -30,8 +30,8 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
 				   echo "<div>";
 				 $id= $row->getId();	
 				   $titulo=$row->getTitle();
-				   //echo "<a href='vistaCancion.php?tituloc=$titulo&id=$id'>$titulo</a>";
-				   echo $titulo;
+				   echo "<a href='vistaPlaylist.php?tituloc=$titulo&id=$id'>$titulo</a>";
+				   //echo $titulo;
 					echo "<img src='server/images/Colores.jpg'>						
 										
 					  </div>";

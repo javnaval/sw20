@@ -1,20 +1,29 @@
 <?php
 //namespace es\ucm\fdi\aw;
 require_once 'includes/config.php';
-//use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
+use es\ucm\fdi\aw\classes\databaseClasses\contenidos as contenidos;
 //require_once  'classes/classes/song.php';
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
-  //  header("Location: index.php");
+    header("Location: index.php");
 }
 
-function muestraCancion($var,$idCancion){
+function muestraPlaylist($idPlaylist){
     $html = "";
         //require 'includes/procesarBusqueda.php';
-	echo $var;
-
-	echo '<audio src="server/songs/' . $idCancion  . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
-	echo "<img src='server/images/Colores.jpg'>";
+	 $contiene = (new contenidos())->get();
+			   foreach ($contiene as $row) {
+				if($row->getIdPlaylist()==$idPlaylist){
+				   echo "<div>";
+				 $id= $row->getIdSong();	
+				  // $titulo=$row->getTitle();
+				 //  echo "<a href='vistaCancion.php?tituloc=$var&id=$idPlaylist'>$titulo</a>"; 
+					echo "<img src='server/images/Colores.jpg'>						
+										
+					  </div>";
+				 //echo	muestraCancion();
+					  }
+			   }
     return $html;
 }
 ?>
@@ -40,11 +49,11 @@ function muestraCancion($var,$idCancion){
     <section id="contents" class="contents">
         <?php
 		//$var=$_GET['tituloc'];
-		$var=filter_input(INPUT_GET,'tituloc',FILTER_SANITIZE_STRING);
-		$idCancion=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
+		//$var=filter_input(INPUT_GET,'tituloc',FILTER_SANITIZE_STRING);
+		$idPlaylist=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
 		//$idCancion=$_GET['id'];
-		
-        echo muestraCancion($var,$idCancion);
+
+        echo muestraPlaylist($idPlaylist);
         ?>
     </section>
 
