@@ -6,7 +6,9 @@ ini_set('default_charset', 'UTF-8');
 setLocale(LC_ALL, 'es_ES.UTF.8');
 date_default_timezone_set('Europe/Madrid');
 
+define('RAIZ_APP', __DIR__);
 define ('RUTA_RAIZ', '/AW/sw20/');
+
 $settings =
     ["driver"   => "mysql",
         "host"     => "localhost",
@@ -43,4 +45,4 @@ spl_autoload_register(function ($class) {
 });
 
 $app = es\ucm\fdi\aw\Application::getSingleton();
-$app->init($settings, RUTA_RAIZ);
+$app->init($settings, RUTA_RAIZ, RAIZ_APP);

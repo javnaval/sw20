@@ -14,20 +14,7 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
-    <script type="text/javascript">
-        function muestra(id){
-            if (document.getElementById){
-                var el = document.getElementById(id);
-                el.style.display = 'block';
-            }
-        }
-        function oculta(id){
-            if (document.getElementById){
-                var el = document.getElementById(id);
-                el.style.display = 'none';
-            }
-        }
-    </script>
+    <script src="includes/js/upload.js"></script>
     <title>Upload</title>
 </head>
 <body>

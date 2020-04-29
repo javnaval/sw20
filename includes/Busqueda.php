@@ -28,9 +28,11 @@ else {
     if ($artistas != null) {
         echo "<h1>ARTISTAS</h1><section class=\"elementos\">";
         foreach ($artistas as $artista) {
-            echo '<div>';
-            echo '<h3>' . $artista->getName() . '</h3><p>Descripción: ' . $artista->getDescripcion() . '</p>';
-            echo '</div>';
+            if (in_array($artista->getRol(), array("usuario","premium","artista"), TRUE)) {
+                echo '<div>';
+                echo '<h3>' . $artista->getName() . '</h3><p>Descripción: ' . $artista->getDescripcion() . '</p>';
+                echo '</div>';
+            }
         }
         echo "</section>";
     }

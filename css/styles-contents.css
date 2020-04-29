@@ -56,7 +56,7 @@ section.contents header{
     margin: 1%;
 }
 
-section.contents #eleccionAlbum {
+section.contents #eleccionAlbum, section.contents #crearAlbum {
     display: none;
     background-color: #fdbcb4;
     float: none;
@@ -65,3 +65,13 @@ section.contents #eleccionAlbum {
     height: auto;
 }
 
+section.contents #eleccionAlbum a, section.contents #crearAlbum a{
+    text-decoration: underline;
+    color: blue;
+}
+
+section.contents #eleccionAlbum a:hover, section.contents #crearAlbum a:hover{
+    text-decoration: none;
+    color: blue;
+    cursor: pointer;
+}

@@ -3,10 +3,10 @@ namespace es\ucm\fdi\aw;
 
      class Application {
          private static $instancia;
-         private $rutaRaiz;
-         private $connection = null;
+         private $rutaRaizApp;
+         private $connection;
          private $settings;
-         private $inicializada = false;
+         private $dirInstalacion;
 
         public static function getSingleton(){
             if (  !self::$instancia instanceof self) {
@@ -15,21 +15,58 @@ namespace es\ucm\fdi\aw;
             return self::$instancia;
         }
 
-        private function __clone(){
-
+        private function __construct()
+        {
         }
 
-         public function init($settings, $rutaRaiz){
-             if (!$this->inicializada) {
-                 $this->settings = $settings;
-                 $this->inicializada = true;
-             }
-             $this->rutaRaiz = $rutaRaiz;
-         }
+        /**
+         * Evita que se pueda utilizar el operador clone.
+         */
+        public function __clone()
+        {
+            throw new \Exception('No tiene sentido el clonado');
+        }
+
+
+        /**
+         * Evita que se pueda utilizar serialize().
+         */
+        public function __sleep()
+        {
+            throw new \Exception('No tiene sentido el serializar el objeto');
+        }
+
+        /**
+         * Evita que se pueda utilizar unserialize().
+         */
+        public function __wakeup()
+        {
+            throw new \Exception('No tiene sentido el deserializar el objeto');
+        }
+
+        public function init($bdDatosConexion, $rutaRaizApp, $dirInstalacion)
+        {
+            $this->settings = $bdDatosConexion;
+
+            $this->rutaRaizApp = $rutaRaizApp;
+            $tamRutaRaizApp = mb_strlen($this->rutaRaizApp);
+            if ($tamRutaRaizApp > 0 && $this->rutaRaizApp[$tamRutaRaizApp - 1] !== '/') {
+                $this->rutaRaizApp .= '/';
+            }
+
+            $this->dirInstalacion = $dirInstalacion;
+            $tamDirInstalacion = mb_strlen($this->dirInstalacion);
+            if ($tamDirInstalacion > 0 && $this->dirInstalacion[$tamDirInstalacion - 1] !== '/') {
+                $this->dirInstalacion .= '/';
+            }
+
+            $this->conn = null;
+        }
+
 
         public function connect(){
              try{
-                 if($this->inicializada && $this->connection == null){
+                 if(!$this->connection){
                      $driver = $this->settings["driver"];
                      $host = $this->settings["host"];
                      $database = $this->settings["database"];
@@ -43,8 +80,31 @@ namespace es\ucm\fdi\aw;
                     }
                  return $this->connection;
              }catch(Exception $exc){
-                 echo $exc->getTraceAsString();
+                 echo "Error de conexión a la BD:". $exc->getTraceAsString();
+                 exit;
              }
+         }
+
+
+         public function resuelve($path = '')
+         {
+             $rutaRaizAppLongitudPrefijo = mb_strlen($this->rutaRaizApp);
+             if (mb_substr($path, 0, $rutaRaizAppLongitudPrefijo) === $this->rutaRaizApp) {
+                 return $path;
+             }
+
+             if (mb_strlen($path) > 0 && $path[0] == '/') {
+                 $path = mb_substr($path, 1);
+             }
+             return $this->rutaRaizApp . $path;
+         }
+
+         public function doInclude($path = '')
+         {
+             if (mb_strlen($path) > 0 && $path[0] == '/') {
+                 $path = mb_substr($path, 1);
+             }
+             include($this->dirInstalacion . '/' . $path);
          }
 
          public function login($id) {

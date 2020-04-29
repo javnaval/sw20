@@ -1,20 +1,22 @@
 <?php
 namespace es\ucm\fdi\aw;
-use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
 use es\ucm\fdi\aw\classes\classes\album as album;
 use es\ucm\fdi\aw\classes\classes\song as song;
 use es\ucm\fdi\aw\Form as Form;
 
-class FormularioUpload extends Form {
+class FormularioUpload extends Form
+{
     private $opciones = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->opciones['action'] = "vistaUpload.php";
         $this->opciones['enctype'] = "multipart/form-data";
         parent::__construct("form-upload", $this->opciones);
     }
 
-    protected function generaCamposFormulario($datosIniciales, $err) {
+    protected function generaCamposFormulario($datosIniciales, $err)
+    {
         $html = <<<EOF
         <fieldset>
                 <legend>Upload</legend>
@@ -22,10 +24,11 @@ EOF;
 
         if (isset($datosIniciales['titulo'])) {
             $html .= "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" value= " . $datosIniciales['titulo'] . " required></p>";
-        } else $html .=  "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" required></p>";
+        } else $html .= "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" required></p>";
 
         $html .= '<p><input type="file" name="fileAudio" value="Elija un archivo" required></p>
                     <input type="radio" name="type" value="album" onClick="muestra(\'eleccionAlbum\')">Album';
+
         $html .= '<div id="eleccionAlbum">';
         if ($albums = album::mostrarAlbums($_SESSION['idUser'])) {
             $html .= '<p>Elija el album:</p>
@@ -35,8 +38,15 @@ EOF;
             }
             $html .= '</select>';
         }
-        $html .= '<a href="vistaUpload.php">Crear nuevo album</a></div>
-                <p><input type="radio" name="type" value="single" onClick="oculta(\'eleccionAlbum\')" checked>Single</p>';
+
+        $html .= '<p><a onClick="muestra(\'crearAlbum\', \'tituloAlbum\');oculta(\'eleccionAlbum\')">Crear nuevo album</a></p></div>';
+        $html .= '<div id="crearAlbum">';
+        $html .= "<p><input type=\"text\" id=\"tituloAlbum\" name=\"tituloAlbum\" placeholder=\"TituloAlbum\" required></p>
+                    <p><input type=\"date\" name=\"dateAlbum\" placeholder=\"TituloAlbum\"></p>
+                    <a onClick=\"oculta('crearAlbum', 'tituloAlbum');muestra('eleccionAlbum')\">Elegir albumes existentes</a>";
+        $html .= '</div>';
+
+        $html .= '<p><input type="radio" name="type" value="single" onClick="oculta(\'eleccionAlbum\');oculta(\'crearAlbum\', \'tituloAlbum\')" checked>Single</p>';
 
         $html .= '<p><input type="submit" name="Subir" value="Subir"></p>
                 </fieldset>';
@@ -52,6 +62,12 @@ EOF;
 
         assert(is_string($datos['titulo']));
         $title = htmlspecialchars(trim(strip_tags($datos['titulo'])));
+        if (isset($datos['tituloAlbum'])) {
+            assert(is_string($datos['tituloAlbum']));
+            $titleAlbum = htmlspecialchars(trim(strip_tags($datos['tituloAlbum'])));
+            if (isset($datos['dateAlbum'])) $date = htmlspecialchars(trim(strip_tags($datos['dateAlbum'])));
+            else $date = date('Y-m-d');
+        }
 
         if ($_FILES['fileAudio']['error'] == UPLOAD_ERR_OK) {
             $finfo = new \finfo(FILEINFO_MIME_TYPE);
@@ -65,24 +81,27 @@ EOF;
             );
             if (!$ext || $_FILES['fileAudio']['size'] > 10000000) {
                 $resultado[] = "La extensión o el tamaño de los archivos no es correcta.";
-            }
-            else {
-                if($datos['type'] == 'single') {
+            } else {
+                if ($datos['type'] == 'single') {
                     $idAlbum = album::crea($_SESSION['idUser'], $title, date('Y-m-d'));
                     $idSong = song::crea($title, $_SESSION['idUser'], $idAlbum);
+                } else {
+                    if (isset($datos['tituloAlbum'])) {
+                        $idAlbum = album::crea($_SESSION['idUser'], $titleAlbum, $date);
+                        $idSong = song::crea($title, $_SESSION['idUser'], $idAlbum);
+                    } else $idSong = song::crea($title, $_SESSION['idUser'], $datos['album']);
                 }
-                else $idSong = song::crea($title, $_SESSION['idUser'], $datos['album']);
-                if (move_uploaded_file($_FILES['fileAudio']['tmp_name'], "server/songs/".$idSong.".".$ext)) {
+                if (move_uploaded_file($_FILES['fileAudio']['tmp_name'], "server/songs/" . $idSong . "." . $ext)) {
                     $resultado[] = "El archivo ha sido cargado correctamente.";
                 } else {
                     $resultado[] = "Ocurrió algún error al subir el fichero. No pudo guardarse.";
                 }
             }
-        }
-        else $resultado[] = "Error al subir el fichero (configuración)";
+        } else $resultado[] = "Error al subir el fichero (configuración)";
 
         return $resultado;
     }
 
-    //javascript como controlar audio ruben
 }
+
+    //javascript com
