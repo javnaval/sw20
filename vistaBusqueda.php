@@ -6,9 +6,20 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 }
 
 function busqueda(){
-    $form = new es\ucm\fdi\aw\FormularioBusqueda();
-    $html = $form->gestiona();
-    if (!isset($_POST['busqueda'])) $html .= "<p>Estas en la pagina de busqueda. Haz click en buscar para encontrar canciones, artistas y albumes.</p>";
+    $html = "";
+    if (isset($_POST['busqueda'])) require "includes/Busqueda.php";
+    else $html .= "<p>Estas en la pagina de busqueda. Haz click en buscar para encontrar canciones, artistas y albumes.</p>";
+    return $html;
+}
+
+function generaCamposFormulario($datosIniciales) {
+    $html = '<form method="POST" action="vistaBusqueda.php">';
+    if (isset($datosIniciales['busqueda'])) {
+        $html .= '<input type = "search" name = "busqueda" value="'.$datosIniciales['busqueda'].'" placeholder = "Buscar artistas, canciones o álbumes" >';
+    }
+    else $html.= '<input type = "search" name = "busqueda" placeholder = "Buscar artistas, canciones o álbumes" >';
+    $html .= '<input type = "submit" name = "Buscar" value = "Buscar" >';
+    $html .= '</form>';
     return $html;
 }
 ?>
@@ -35,6 +46,11 @@ function busqueda(){
     </nav>
 
     <section id="contents" class="contents">
+        <header>
+            <?php
+            echo generaCamposFormulario($_POST);
+            ?>
+        </header>
         <?php
         echo busqueda();
         ?>

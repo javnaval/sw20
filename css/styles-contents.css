@@ -15,12 +15,26 @@ section.contents{
     flex-direction: row;
     overflow-y: scroll;
 }
-section.contents div{
+
+/*section.contents div{
     margin: 70px;
     width: 15em;
     height: 15em;
     display: inline-block;
     float: left;
+    background-color: white;
+}*/
+section.elementos {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2%;
+}
+section.elementos div{
+    margin: 4%;
+    width: 15em;
+    height: 15em;
+    flex-direction: row;
     background-color: white;
 }
 section.contents h1{
@@ -39,6 +53,7 @@ section.contents div img{
 section.contents header{
 	width: 100%;
 	height:5%;
+    margin: 1%;
 }
 
 section.contents #eleccionAlbum {
@@ -49,3 +64,4 @@ section.contents #eleccionAlbum {
     width: auto;
     height: auto;
 }
+
