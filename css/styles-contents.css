@@ -40,3 +40,12 @@ section.contents header{
 	width: 100%;
 	height:5%;
 }
+
+section.contents #eleccionAlbum {
+    display: none;
+    background-color: #fdbcb4;
+    float: none;
+    margin: 2em;
+    width: auto;
+    height: auto;
+}

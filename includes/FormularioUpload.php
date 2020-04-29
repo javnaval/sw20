@@ -24,7 +24,8 @@ EOF;
             $html .= "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" value= " . $datosIniciales['titulo'] . " required></p>";
         } else $html .=  "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" required></p>";
 
-        $html .= '<input type="radio" name="type" value="album">Album';
+        $html .= '<p><input type="file" name="fileAudio" value="Elija un archivo" required></p>
+                    <input type="radio" name="type" value="album" onClick="muestra(\'eleccionAlbum\')">Album';
         $html .= '<div id="eleccionAlbum">';
         if ($albums = album::mostrarAlbums($_SESSION['idUser'])) {
             $html .= '<p>Elija el album:</p>
@@ -35,10 +36,9 @@ EOF;
             $html .= '</select>';
         }
         $html .= '<a href="vistaUpload.php">Crear nuevo album</a></div>
-                <p><input type="radio" name="type" value="single" checked>Single</p>';
+                <p><input type="radio" name="type" value="single" onClick="oculta(\'eleccionAlbum\')" checked>Single</p>';
 
-        $html .= '<p><input type="file" name="fileAudio" value="Elija un archivo" required></p>
-                <p><input type="submit" name="Subir" value="Subir"></p>
+        $html .= '<p><input type="submit" name="Subir" value="Subir"></p>
                 </fieldset>';
 
         $html .= $err;
