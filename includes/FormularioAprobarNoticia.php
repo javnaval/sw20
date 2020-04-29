@@ -16,8 +16,19 @@ class FormularioAprobarNoticia extends Form {
     }
 
     protected function generaCamposFormulario($datos, $err) {
-		
-		$html = '<input type = "submit" name = "Aprobar" value = "Aprobar" >';
+		$html = <<<EOF
+        <fieldset>
+                <legend>Aprobar Noticia</legend>
+EOF;
+		if ($noticias = noticia::buscar($_SESSION['idUser'])) {
+            $html .= '<p>Elija la noticia:</p>
+                        <select name="noticia">';
+            foreach ($noticias as $noticia) {
+                $html .= '<option value="' . $noticia->getId() . '">' . $noticia->getTitle() . '</option>';
+            }
+            $html .= '</select>';
+        }
+		$html .= '<input type = "submit" name = "Aprobar" value = "Aprobar" ></fieldset>';
 		return $html;
     }
 

@@ -27,6 +27,7 @@ section.contents div.titulo
 section.contents div
 {
 	margin: 0;
+	margin-bottom: 2%;
 }
 section.contents div.formulario {
     width: 100%;
@@ -36,13 +37,11 @@ section.contents div.formulario {
 section.contents div.imagen {
     width: 20%;
     height: 15em;
-	margin-bottom: 0px;
 }
 section.contents div.texto {
     width: 78%;
     height: 15em;
 	background-color: white;
-	margin-bottom: 0px;
 }
 
 section.contents div img{
