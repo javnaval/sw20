@@ -1,7 +1,5 @@
 <?php
 namespace es\ucm\fdi\aw;
-use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
-use es\ucm\fdi\aw\classes\factories\classesFactory as classesFactory;
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\Form as Form;
 

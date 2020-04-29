@@ -18,7 +18,7 @@ class FormularioEditarPerfil extends Form {
         <fieldset>
                 <legend>Editar</legend>
 EOF;
-       $html .= "<p>Correo electrónico: </p>";
+       $html .= "<p>Correo electrÃ³nico: </p>";
        $html .= "<p><input type=\"email\" name=\"email\"  value=".$datosIniciales['email']." required></p>";
 	   $html .= "</p>Nombre usuario: </p>";
        $html .= "<p><input type=\"text\" name=\"user\" value=".$datosIniciales['user']." required></p>";
@@ -40,7 +40,7 @@ EOF;
         $email = htmlspecialchars(trim(strip_tags($datos['email'])));
 		$name = htmlspecialchars(trim(strip_tags($datos['name'])));
 
-		Usuario::actualiza($usuario, $email, $name, $idUser);
+		//Usuario::actualiza($usuario, $email, $name, $idUser);
 		
 		$resultado = "vistaInicio.php";
            

@@ -26,12 +26,15 @@ SET time_zone = "+00:00";
 /* Constraseña: sounday2020 */
 /* Base de datos: 'sounday' */
 
-CREATE USER IF NOT EXISTS 'sounday'@'%' IDENTIFIED VIA mysql_native_password USING 'sounday2020';
+CREATE USER IF NOT EXISTS 'sounday'@'%' IDENTIFIED VIA mysql_native_password USING '*54790E3CED1D1BF1B1E1C8A54AE8F7C3899F7FD8';
 GRANT USAGE ON *.* TO 'sounday'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
 CREATE DATABASE IF NOT EXISTS `sounday`;
 GRANT ALL PRIVILEGES ON `sounday`.* TO 'sounday'@'%';
 
 -- --------------------------------------------------------
+
+USE `sounday`;
+
 
 DROP TABLE IF EXISTS `contiene`;
 DROP TABLE IF EXISTS `songs`;

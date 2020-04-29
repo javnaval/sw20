@@ -1,6 +1,5 @@
 <?php
 namespace es\ucm\fdi\aw;
-use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\classes\classes\noticia as noticia;
 
