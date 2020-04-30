@@ -24,7 +24,7 @@ use es\ucm\fdi\aw\Application as Application;
         private function CRUDinsert($propertiesStatic){
             $arrayKeys = implode(", ", array_keys($propertiesStatic)); 
             $arrayValues = ":" . implode(", :", array_keys($propertiesStatic));
-            return "INSERT INTO {$this->table} ({$arrayKeys}) VALUES ({$arrayValues})";
+            return "INSERT INTO {$this->table} ({$arrayKeys}) VALUES (NULL,{$arrayValues})";
         }
         
         private function CRUDupdate($propertiesStatic){

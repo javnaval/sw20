@@ -5,7 +5,6 @@ use es\ucm\fdi\aw\classes\classes\noticia as noticia;
 
 	class Noticias extends Crud {
 		 private $properties = [
-			 "id"      => "NOT NULL",
              "idUser"  => "NOT NULL",
 			 "title"   => "NOT NULL",
              "texto"   => "NOT NULL",

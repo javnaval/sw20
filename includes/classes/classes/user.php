@@ -55,7 +55,6 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
          }
 		 public function toString(){
 			 return[
-              "id"           => "".$this->id."",
               "user"         => "".$this->user."",
               "name"         => "".$this->name."",
 			  "email"        => "".$this->email."",

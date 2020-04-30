@@ -35,7 +35,6 @@ use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
         }
 		public function toString(){
 			return[
-				"id"             => "".$this->id."",
                 "idArtist"       => "".$this->idArtist."",
                 "title"          => "".$this->title."",
 				"releaseDate"    => "".$this->releaseDate.""
@@ -56,7 +55,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
         }
 
         public static function crea($idArtist, $title, $releaseDate){
-            return (new Albums())->insert((new self(null,$idArtist, $title, $releaseDate))->toString());
+            return (new Albums())->insert((new self(NULL,$idArtist, $title, $releaseDate))->toString());
         }
    }
 ?>

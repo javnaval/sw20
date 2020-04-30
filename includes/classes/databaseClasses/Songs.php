@@ -6,7 +6,6 @@ use es\ucm\fdi\aw\classes\classes\song as song;
 	class Songs extends Crud {
 		
 		 private $properties = [
-			"id"       => "NOT NULL",
             "idUser"   => "NOT NULL",
             "idAlbum"  => "NOT NULL",
 			"title"    => "NOT NULL",

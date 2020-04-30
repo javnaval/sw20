@@ -6,7 +6,6 @@ use es\ucm\fdi\aw\classes\classes\playlist as playlist;
 	 class Playlists extends Crud {
 		
 		 private $properties = [
-			 "id"     => "NOT NULL",
              "idUser" => "NOT NULL",
 			 "title"  => "NOT NULL",
 		 ];

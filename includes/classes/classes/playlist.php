@@ -29,7 +29,6 @@ use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
 
 		 public function toString(){
 			return[
-			   "id"           => "".$this->id."",
                "idUser"       => "".$this->idUser."",
 			   "title"        => "".$this->title.""
 			];

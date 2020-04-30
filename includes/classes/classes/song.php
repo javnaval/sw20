@@ -43,7 +43,6 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
 
         public function toString(){
             return[
-              "id"           => "".$this->id."",
               "idUser"       => "".$this->idUser."",
               "idAlbum"      => "".$this->idAlbum."",
               "title"        => "".$this->title."",

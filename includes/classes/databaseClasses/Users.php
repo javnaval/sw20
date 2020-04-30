@@ -5,7 +5,6 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 
 	class Users extends Crud {
 		private $properties = [
-			 "id"          => "NOT NULL",
              "user"        => "NOT NULL",
 			 "name"        => "NOT NULL",
 			 "email"       => "NOT NULL",

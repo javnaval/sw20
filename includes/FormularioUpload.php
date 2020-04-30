@@ -51,7 +51,11 @@ EOF;
         $html .= '<p><input type="submit" name="Subir" value="Subir"></p>
                 </fieldset>';
 
-        $html .= $err;
+        if (is_array($err)) {
+            foreach ($err as $e) {
+                $html .= $e;
+            }
+        } else $html .= $err;
 
         return $html;
     }

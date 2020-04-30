@@ -6,7 +6,6 @@ use es\ucm\fdi\aw\classes\classes\album as album;
 	 class Albums extends Crud {
 		
 		 private $properties = [
-			 "id"           => "NOT NULL",
              "idArtist"     => "NOT NULL",
              "title"        => "NOT NULL",
 			 "releaseDate"  => "NOT NULL"

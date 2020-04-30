@@ -43,7 +43,6 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 
 		public function toString(){
 			return[
-			   "id"    => "".$this->id."",
 			   "idUser"  => "".$this->idUser."",
 			   "title" => "".$this->title."",
                 "texto" => "".$this->text."",
