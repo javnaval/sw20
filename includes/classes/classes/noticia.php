@@ -41,6 +41,11 @@ use es\ucm\fdi\aw\classes\classes\user as user;
             return $this->accepted;
 		}
 
+        public function setAccepted($accepted)
+        {
+            $this->accepted = $accepted;
+        }
+
 		public function toString(){
 			return[
 			   "idUser"  => "".$this->idUser."",
@@ -49,20 +54,25 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 				"accepted" => "".$this->accepted.""
 			];
 		}
+
+        public static function buscaNoticiaId($id){
+            $noticia = (new Noticias())->where("id", "=", $id)->get();
+            return $noticia[0];
+        }
 		
 		public static function buscar($user){
-			if(user::esGestor($user))
-			{
-				$aceptado = 0;
-				
-			}else $aceptado = 1;
+			if(user::esGestor($user)) $aceptado = 0;
+			else $aceptado = 1;
 			
-			return (new Noticias())->where("accepted", "LIKE", "%".$aceptado."%")->get();
+			return (new Noticias())->where("accepted", "=", $aceptado)->get();
         }
 		
 		public static function crea($title, $idUser, $text){
-			
-        return (new Noticias())->insert((new self(null, $idUser, $title, $text, 0))->toString());
+		     return (new Noticias())->insert((new self(null, $idUser, $title, $text, 0))->toString());
+        }
+
+        public function update(){
+            (new Noticias())->where("id","=",$this->id)->update($this->toString());
         }
 	}
 ?>

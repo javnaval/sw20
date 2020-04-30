@@ -16,7 +16,7 @@ section.contents{
     overflow-y: scroll;
 }
 
-section.contents div.titulo
+section.contents h1
 {
 	height: 10%;
 	width: 100%;
@@ -29,11 +29,53 @@ section.contents div
 	margin: 0;
 	margin-bottom: 2%;
 }
-section.contents div.formulario {
-    width: 100%;
-    height: 5%;
-	text-align: center;
+
+section.contents section.noticia {
+    display: grid;
+    grid-template-columns: 5% 18% 77%;
+    height: 15em;
+    margin: 5%;
 }
+
+section.contents section.noticia div.imagen {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    object-fit: cover;
+}
+section.contents section.noticia div.imagen img{
+    width: 100%;
+    height: 100%;
+}
+section.contents section.noticia div.texto {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    height: 15em;
+	background-color: white;
+}
+
+section.contents section.noticia div.checkbox {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    text-align: center;
+}
+
+input.boton {
+    float: right;
+    width: 15%;
+    height: 5%;
+    background-color: hotpink;
+    color: white;
+    margin: 1%
+}
+input.boton:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+/*
+section.contents div img{
+    width: 15em;
+}
+
 section.contents div.imagen {
     width: 20%;
     height: 15em;
@@ -41,7 +83,7 @@ section.contents div.imagen {
 section.contents div.texto {
     width: 78%;
     height: 15em;
-	background-color: white;
+    background-color: white;
 }
 
 section.contents div img{

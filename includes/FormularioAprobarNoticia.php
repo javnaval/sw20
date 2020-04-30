@@ -1,7 +1,7 @@
 <?php
 namespace es\ucm\fdi\aw;
 use es\ucm\fdi\aw\classes\classes\noticia as noticia;
-use es\ucm\fdi\aw\classes\databaseClasses\Noticias as Noticias;
+use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\Form as Form;
 
 class FormularioAprobarNoticia extends Form {
@@ -13,29 +13,33 @@ class FormularioAprobarNoticia extends Form {
     }
 
     protected function generaCamposFormulario($datos, $err) {
-		$html = <<<EOF
-        <fieldset>
-                <legend>Aprobar Noticia</legend>
-EOF;
-		if ($noticias = noticia::buscar($_SESSION['idUser'])) {
-            $html .= '<p>Elija la noticia:</p>
-                        <select name="noticia">';
+		$html = '<h1>NOTICIAS</h1>';
+
+        $noticias = noticia::buscar($_SESSION['idUser']);
+        if ($noticias == null) $html .= "<p>Aún no tenemos noticias que mostrarle.</p>";
+        else {
+            $html .= '<p>Elija la(s) noticia: <input class="boton" type = "submit" name = "Aprobar" value = "APROBAR" ></p>';
             foreach ($noticias as $noticia) {
-                $html .= '<option value="' . $noticia->getId() . '">' . $noticia->getTitle() . '</option>';
+                $html .= '<section class="noticia"><div class="checkbox"><input type="checkbox" name="' . $noticia->getId() . '" value="' . $noticia->getId() . '"></div>
+                <div class="imagen"><img src="server/noticias/images/'. $noticia->getId() .'.jpg"></div>
+                <div class="texto"><h3>' . $noticia->getTitle() . '</h3><p>Autor: ' . (user::buscaUsuarioId($noticia->getIdUser()))->getName() . '</p><p>' . $noticia->getTexto(). '</p></div>
+                </section>';
             }
-            $html .= '</select>';
+            $html .= '<input class="boton" type = "submit" name = "Aprobar" value = "APROBAR" >';
         }
-		$html .= '<input type = "submit" name = "Aprobar" value = "Aprobar" ></fieldset>';
+
 		return $html;
     }
 
     protected function procesaFormulario($datos)
     {
-		
-		$noticia = (new Noticias())->where("id", "LIKE", "%". $datos['noticia']."%")->get();
-		$noticia = $noticia[0];
-		$noticia2 = new noticia($noticia->getId(), $noticia->getIdUser(), $noticia->getTitle(), $noticia->getTexto(), 1);
-		(new Noticias())->where("id","=",$noticia2->getId())->update($noticia2->toString());
+        foreach ($datos as $key => $dato) {
+            if (is_int($key)) {
+                $noticia = noticia::buscaNoticiaId($dato);
+                $noticia->setAccepted('1');
+                $noticia->update($noticia);
+            }
+        }
 
 		$resultado = 'vistaNoticias.php';
         return $resultado;

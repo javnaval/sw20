@@ -6,16 +6,11 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
-function contenidoGestor()
-{
-	if(user::esGestor($_SESSION['idUser']))
-	{
-		echo '<div class="formulario">';
-		$form = new es\ucm\fdi\aw\FormularioAprobarNoticia();
-		echo $form->gestiona();
-		echo '</div>';
-	}
-}
+$form = new es\ucm\fdi\aw\FormularioAprobarNoticia();
+$html = $form->gestiona();
+
+function gestor(){ return user::esGestor($_SESSION['idUser']); }
+
 ?>
 
 <!DOCTYPE html>
@@ -41,8 +36,8 @@ function contenidoGestor()
 
     <section id="contents" class="contents">
         <?php
-        require 'includes/Noticias.php';
-		contenidoGestor();
+        if (!gestor()) require 'includes/Noticias.php';
+		else echo $html;
         ?>
     </section>
 
