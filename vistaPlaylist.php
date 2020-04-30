@@ -2,6 +2,8 @@
 //namespace es\ucm\fdi\aw;
 require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\contenidos as contenidos;
+use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
+use es\ucm\fdi\aw\classes\databaseClasses\Playists as Playlists;
 //require_once  'classes/classes/song.php';
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
@@ -11,19 +13,25 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 function muestraPlaylist($idPlaylist){
     $html = "";
         //require 'includes/procesarBusqueda.php';
-	 $contiene = (new contenidos())->get();
-			   foreach ($contiene as $row) {
-				if($row->getIdPlaylist()==$idPlaylist){
-				   echo "<div>";
-				 $id= $row->getIdSong();	
+	// $contiene = (new contenidos())->get();
+		//	   foreach ($contiene as $row) {
+			//	if($row->getIdPlaylist()==$idPlaylist){
+				//   echo "<div>";
+				 //$id= $row->getIdSong();	
 				  // $titulo=$row->getTitle();
 				 //  echo "<a href='vistaCancion.php?tituloc=$var&id=$idPlaylist'>$titulo</a>"; 
-					echo "<img src='server/images/Colores.jpg'>						
+					//echo "<img src='server/images/Colores.jpg'>						
 										
-					  </div>";
+					  //</div>";
 				 //echo	muestraCancion();
-					  }
-			   }
+					  //}
+			//   }
+			$songs = ((new songs())->join("songs.id","contiene","contiene.idSong"))
+			->join("Playlist.id","Playlist","contiene.idPlaylist")->where("idPlaylist","=","contiene.idPlaylist")->get();
+			foreach ($songs as $row){
+			$titulo=$row->getTitle();
+			echo $titulo;
+			}
     return $html;
 }
 ?>
