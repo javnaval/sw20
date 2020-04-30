@@ -1,7 +1,7 @@
 <?php
 //namespace es\ucm\fdi\aw;
 require_once 'includes/config.php';
-//use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
+use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
 //require_once  'classes/classes/song.php';
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
@@ -17,6 +17,22 @@ function muestraCancion($var,$idCancion){
 	echo "<img src='server/images/Colores.jpg'>";
     return $html;
 }
+
+function generaCamposFormulario($idCancion) {
+    $html = '<form method="POST" action="vistaCancion.php">';
+    if (isset($datosIniciales['eliminar'])) {
+        $html .= '<input type = "search" name = "eliminar" value="'.$datosIniciales['eliminar'].'" placeholder = "Eliminar cancion" >';
+   }
+   // else $html.= '<input type = "search" name = "busqueda">';
+    $html .= '<input type = "submit"  value = "Eliminar" >';
+    $html .= '</form>';
+	echo elimina($idCancion);
+    return $html;
+}
+function elimina ($idCancion){
+$cancion=(new Songs())->where("id","=",$idCancion)->delete();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,10 +54,16 @@ function muestraCancion($var,$idCancion){
         ?>
     </nav>
     <section id="contents" class="contents">
+	<header>
+            <?php
+			$var=filter_input(INPUT_GET,'tituloc',FILTER_SANITIZE_STRING);
+		$idCancion=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
+            echo generaCamposFormulario($idCancion);
+            ?>
+        </header>
         <?php
 		//$var=$_GET['tituloc'];
-		$var=filter_input(INPUT_GET,'tituloc',FILTER_SANITIZE_STRING);
-		$idCancion=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
+		
 		//$idCancion=$_GET['id'];
 		
         echo muestraCancion($var,$idCancion);
