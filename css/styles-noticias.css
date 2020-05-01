@@ -53,7 +53,7 @@ section.contents section.noticia div.texto {
     grid-column-end: 3;
     height: 15em;
 	background-color: white;
-    color: black;
+    color: rgb(44, 44, 44);
 }
 
 section.contents section.noticia div.checkbox {
@@ -66,7 +66,7 @@ input.boton {
     float: right;
     width: 15%;
     height: 5%;
-    background-color: hotpink;
+    background-color: #FF307B;
     color: white;
     margin: 1%
 }
@@ -92,8 +92,8 @@ section.contents div.not div.imagen {
 section.contents div.not div.texto {
     width: 78%;
     height: 15em;
-    background-color: white;
-    color: black;
+    background-color: rgb(44, 44, 44);
+    color: white;
     float: left;
     margin-bottom: 2%;
     margin-top: 2%;

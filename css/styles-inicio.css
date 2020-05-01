@@ -25,7 +25,7 @@ section.contents ul li div {
     margin: 10px;
     padding:0px;
     border-radius: 10px;
-    background-color: #fdbcb4;
+    background-color: rgb(44, 44, 44);
 }
 section.contents ul li::-webkit-scrollbar {
     width: 7px;

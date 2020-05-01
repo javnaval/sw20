@@ -27,8 +27,8 @@ nav header span{
     align-items: center;
     border-radius: 15px;
     margin-top: 40px;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
 
 }
 
@@ -45,8 +45,8 @@ nav section{
 
 }
 nav section ul{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     list-style: none;
     display: flex;
     flex-direction: row;
