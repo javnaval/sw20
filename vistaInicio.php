@@ -13,18 +13,18 @@ function mostrar($albumNombre){
     $albums = album::albums();
     foreach ($albums as $row) {
         $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
-        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='server/images/Colores.jpg'> </a>";
+        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
         $html .= "<figcaption>" . $row->getTitle() . "<figcaption></div>";
     }
     //Dejar de prueba para probar scroll y añadir volumen se quitara en la entrega final asi como todo lo comentado de las imagenes
     foreach ($albums as $row) {
         $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
-        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='server/images/Colores.jpg'> </a>";
+        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
         $html .= "<figcaption>" . $row->getTitle() . "<figcaption></div>";
     }
     foreach ($albums as $row) {
         $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
-        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='server/images/Colores.jpg'> </a>";
+        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
         $html .= "<figcaption>" . $row->getTitle() . "<figcaption></div>";
     }
     return $html;
