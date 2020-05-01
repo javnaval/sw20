@@ -26,7 +26,7 @@ $userRol=$usuario->getRol();
 $userDesc=$usuario->getDescripcion();
 
 function muestra($userr, $usName, $cor, $rol, $desc, $form){
-    $html = "<img src= 'server/images/user.png'>";
+    $html = "<img src= 'images/user.png'>";
     $html .= "<h3> Nombre Usuario: ";
     $html .= $userr;
 	$html .= "</h3> <h3>";
