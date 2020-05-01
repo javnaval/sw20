@@ -3,55 +3,31 @@ require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
 use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
 use es\ucm\fdi\aw\classes\classes\user as user;
+use es\ucm\fdi\aw\classes\classes\album as album;
+use es\ucm\fdi\aw\classes\classes\song as song;
 
     if (es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
-    $_GET["busquedaAlbum"]="1"; //para probar,
-    
-    $albumsList = new Albums();
-    $albumsList = $albumsList->where("id", "=" , 
-    $_GET["busquedaAlbum"])->get();
-    $songs = new Songs();
-    $songs = $songs->where("idAlbum", "=" , 
-    $_GET["busquedaAlbum"])->get();
-    
-    $listaCanciones ="<canciones>";
-    foreach ($songs as $or) {
-        $listaCanciones =  $listaCanciones .'<a href="vistaCancion.php?idCancion='.
-        $or->getId().'" >'. $or->getTitle().' </a>';
-    }
-    $listaCanciones =  $listaCanciones . '</canciones>';
-    $album=null;
-    $albumCount=0;
+        $album = album::buscaAlbumId($_GET["id"]);
+        $songs = song::buscaSongsIdAlbum($_GET["id"]);
 
-   foreach($albumsList as $albumes) {
-        $album=$albumes;
-        $albumCount+=1;
+        $listaCanciones = '';
+        foreach ($songs as $or) {
+            $listaCanciones .= '<p><a href="vistaCancion.php?id='. $or->getId().'" >'. $or->getTitle().' </a></p>';
+        }
     }
-    if ($albumCount>0) {
-        $albumError=false;
-    } else 
-        $albumError=true;
-    } 
     else {
         header("Location: index.php");
     }
-    $albumId= $album->getId();
-    $albumArtist= $album->getIdArtist();
-    $albumTitle= $album->getTitle();
+
+    $albumArtist= user::buscaUsuarioId($album->getIdArtist())->getName();
+    $albumTitle = $album->getTitle();
+    $albumId = $album->getId();
 
     function viewAlbumInfo($albumId, $albumArtist, $albumTitle) {
-        echo "<header>  <a> <img src= 'server/images/albums/";
-        echo $albumId;
-        echo ".png'>";
-        echo "<h1> ";
-        echo $albumTitle;
-        echo " </h1> ";
-        echo $albumArtist; 
-        echo "</a>  </header> ";
-    }
-
-    function viewSongList($listaCanciones) {
-        echo $listaCanciones;
+        echo '<header><img src= "server/albums/images/'.$albumId.'.png">';
+        echo "<h1>$albumTitle</h1> ";
+        echo $albumArtist;
+        echo "</header> ";
     }
 
     function sidebar(){
@@ -81,18 +57,11 @@ use es\ucm\fdi\aw\classes\classes\user as user;
     </nav>
 
     <section id="contents" class="contents">
-
-    <script type="text/javascript">
-    var error = '<?php echo $albumError; ?>';
-    if (!error) {
-        document.write("<?php viewAlbumInfo($albumId, $albumArtist, $albumTitle); ?>");
-    } else {
-        document.write("Error en el album");
-    } 
-   </script> 
-    <?php viewSongList($listaCanciones); ?>
-    
-   </section>
+        <?php
+        viewAlbumInfo($albumId, $albumArtist, $albumTitle);
+        echo '<p>'.$listaCanciones.'</p>';
+        ?>
+    </section>
 
    <footer>
         <?php

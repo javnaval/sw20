@@ -55,6 +55,10 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
             return $song[0];
         }
 
+        public static function buscaSongsIdAlbum($id){
+            return (new Songs())->where("idAlbum", "=", $id)->get();
+        }
+
         public static function crea($title, $idUser, $idAlbum){
             return (new Songs())->insert((new self(null, $idUser, $idAlbum, $title, 0))->toString());
         }
