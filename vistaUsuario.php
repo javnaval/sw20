@@ -72,9 +72,7 @@ function sidebar(){
         ?>
         <h1>
             <button type="button" onclick="actualizarCuenta()">Editar</button>
-
         </h1>
-
     </section>
 
     <footer>
