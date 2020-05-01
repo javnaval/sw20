@@ -10,32 +10,38 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 $form = new es\ucm\fdi\aw\FormularioEditarPerfil();
 $htmlform = $form->gestiona();
 
-$_GET["busquedaUsuario"] = "1"; //para probar
+$_GET["busquedaUsuario"] = $_SESSION['idUser']; 
 
 $usuarios = new Users();
-$usuarios = $usuarios->where("id", "=" , 
-$_GET["busquedaUsuario"])->get();
+$usuarios = $usuarios->where("id", "=" , $_GET["busquedaUsuario"])->get();
 $usuario="";
 foreach($usuarios as $us) {
     $usuario=$us;
 }
-$userId=$usuario->getId();
+
+$user=$usuario->getUser();
 $userName=$usuario->getName();
 $userEmail=$usuario->getEmail();
 $userRol=$usuario->getRol();
 $userDesc=$usuario->getDescripcion();
 
-function muestra($cor, $us, $nom, $rol, $id, $form){
-    $html = "<img src= 'server/images/users/";
-    $html .= $id;
-    $html .= ".png'>";
-    $html .= "<h1> ";
-    $html .= $nom;
-    $html .= " </h1> ";
+function muestra($userr, $usName, $cor, $rol, $desc, $form){
+    $html = "<img src= 'images/user.png'>";
+    $html .= "<h3> Nombre Usuario: ";
+    $html .= $userr;
+	$html .= "</h3> <h3>";
+    $html .= "Nombre: ";
+	$html .= $usName;
+	$html .= "</h3> <h3>";
+	$html .= "Correo electrónico: ";
     $html .= $cor;
-    $html .= ", ";
+	$html .= "</h3> <h3>";
+    $html .= "Rol: ";
     $html .= $rol;
-    $html .= $us;
+	$html .= "</h3> <h3>";
+	$html .= "Descripción: ";
+    $html .= $desc;
+	$html .= " </h3> ";
 
     if (isset($_GET['editar'])) $html .= $form;
     else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true">Editar</a></h1>';
@@ -53,7 +59,7 @@ function sidebar(){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/styles-contents.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-usuario.css"/>
 	<link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
 	<script src="https://kit.fontawesome.com/9d868392d8.js"></script>
@@ -71,7 +77,7 @@ function sidebar(){
 
     <section id="contents" class="contents">
         <?php
-        echo muestra($userEmail, $userDesc, $userName, $userRol, $userId, $htmlform);
+        echo muestra($user, $userName, $userEmail, $userRol, $userDesc, $htmlform);
         ?>
     </section>
 
