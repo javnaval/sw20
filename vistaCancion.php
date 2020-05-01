@@ -2,9 +2,15 @@
 require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
 use es\ucm\fdi\aw\classes\classes\song as song;
+use es\ucm\fdi\aw\classes\classes\user as user;
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
+}
+
+function sidebar(){
+    if (user::esGestor($_SESSION['idUser'])) require 'includes/handlers/sidebarLeftGestor.php';
+    else require 'includes/handlers/sidebarLeft.php';
 }
 
 function muestraCancion($idCancion){
@@ -50,7 +56,7 @@ function formulario($idCancion) {
 
     <nav>
         <?php
-        require 'includes/handlers/sidebarLeft.php';
+        sidebar();
         ?>
     </nav>
 

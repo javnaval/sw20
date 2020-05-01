@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
+use es\ucm\fdi\aw\classes\classes\user as user;
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
@@ -21,7 +22,7 @@ $userRol=$usuario->getRol();
 $userDesc=$usuario->getDescripcion();
 
 function muestraUsuario($cor, $us, $nom, $rol, $id){
-    echo "<header>  <a> <img src= 'server/images/users/";
+    echo "<img src= 'server/images/users/";
     echo $id;
     echo ".png'>";
     echo "<h1> ";
@@ -29,15 +30,18 @@ function muestraUsuario($cor, $us, $nom, $rol, $id){
     echo " </h1> ";
     echo $cor; 
     echo ", ";
-    echo $rol;  
-    echo "</a> ";
+    echo $rol;
     echo $us;
-    echo " </header> ";
 }
 
 function actualizarCuenta(){
 	$form = new es\ucm\fdi\aw\FormularioEditarPerfil();
     echo $form->gestiona();
+}
+
+function sidebar(){
+    if (user::esGestor($_SESSION['idUser'])) require 'includes/handlers/sidebarLeftGestor.php';
+    else require 'includes/handlers/sidebarLeft.php';
 }
 
 ?>
@@ -58,7 +62,7 @@ function actualizarCuenta(){
 
     <nav>
         <?php
-        require 'includes/handlers/sidebarLeft.php';
+        sidebar();
         ?>
     </nav>
 
@@ -66,8 +70,10 @@ function actualizarCuenta(){
         <?php
         echo muestraUsuario($userEmail, $userDesc, $userName, $userRol, $userId);
         ?>
+        <h1>
+            <button type="button" onclick="actualizarCuenta()">Editar</button>
 
-		<button type="button" onclick="actualizarCuenta()">Editar</button>
+        </h1>
 
     </section>
 

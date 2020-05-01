@@ -50,6 +50,11 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
              return $this->rol;
          }
 
+        public function setRol($rol)
+        {
+            $this->rol = $rol;
+        }
+
          public function getDescripcion() {
              return $this->descripcion;
          }
@@ -91,10 +96,18 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
         public static function buscar($user){
             return (new Users())->where("name", "LIKE", "%".$user."%")->get();
         }
+
+        public static function usersVerificar(){
+            return (new Users())->where("rol", "=", "usuario")->get();
+        }
 		
 		public static function esGestor($id){
 			$rol = self::buscaUsuarioId($id)->getRol();
             return ($rol == "gestor" || $rol == "administrador");
+        }
+
+        public function update(){
+            (new Users())->where("id","=",$this->id)->update($this->toString());
         }
 	}
 ?>

@@ -6,28 +6,24 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
-$form = new es\ucm\fdi\aw\FormularioAprobarNoticia();
-$html = $form->gestiona();
-
-function gestor(){ return user::esGestor($_SESSION['idUser']); }
-
-function sidebar(){
-    if (user::esGestor($_SESSION['idUser'])) require 'includes/handlers/sidebarLeftGestor.php';
-    else require 'includes/handlers/sidebarLeft.php';
+if (!user::esGestor($_SESSION['idUser'])){
+    header("Location: vistaInicio.php");
 }
 
+$form = new es\ucm\fdi\aw\FormularioVerificarArtista();
+$html = $form->gestiona();
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
+    <!DOCTYPE html>
+    <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/styles-noticias.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-ver-artistas.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
-    <title>Noticias</title>
+    <title>Verificar artistas</title>
 </head>
 <body>
 
@@ -35,14 +31,13 @@ function sidebar(){
 
     <nav>
         <?php
-        sidebar();
+        require 'includes/handlers/sidebarLeftGestor.php';
         ?>
     </nav>
 
     <section id="contents" class="contents">
         <?php
-        if (!gestor()) require 'includes/Noticias.php';
-		else echo $html;
+        echo $html;
         ?>
     </section>
 

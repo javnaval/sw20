@@ -1,0 +1,78 @@
+body {
+    background-color: #fdbcb4;
+    margin: 0;
+}
+
+section.contents{
+
+    margin-left: 13%;
+    height: 85%;
+	width:87%;
+    background-color: #fdbcb4;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-y: scroll;
+}
+
+section.contents h1
+{
+	height: 10%;
+	width: 100%;
+	text-align: center;
+	margin: 0;
+}
+
+section.contents div
+{
+	margin: 0;
+	margin-bottom: 2%;
+}
+
+section.contents form {
+    width: 100%;
+}
+
+section.contents section.art {
+    display: grid;
+    grid-template-columns: 5% 18% 40%;
+    height: 12em;
+    margin: 5%;
+    grid-column-gap: 2%;
+}
+
+section.contents section.art div.imagen {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    object-fit: cover;
+}
+section.contents section.art div.imagen img{
+    width: 100%;
+    height: 100%;
+}
+section.contents section.art div.texto {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    height: 12em;
+	background-color: white;
+}
+
+section.contents section.art div.checkbox {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    text-align: center;
+}
+
+input.boton {
+    float: right;
+    width: 15%;
+    height: 5%;
+    background-color: hotpink;
+    color: white;
+    margin: 1%
+}
+input.boton:hover{
+    text-decoration: none;
+    cursor: pointer;
+}

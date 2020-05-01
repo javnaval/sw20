@@ -2,6 +2,7 @@
 require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
 use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
+use es\ucm\fdi\aw\classes\classes\user as user;
 
     if (es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     $_GET["busquedaAlbum"]="1"; //para probar,
@@ -48,8 +49,14 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
         echo $albumArtist; 
         echo "</a>  </header> ";
     }
+
     function viewSongList($listaCanciones) {
         echo $listaCanciones;
+    }
+
+    function sidebar(){
+        if (user::esGestor($_SESSION['idUser'])) require 'includes/handlers/sidebarLeftGestor.php';
+        else require 'includes/handlers/sidebarLeft.php';
     }
 ?>
 <!DOCTYPE html>
@@ -69,7 +76,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
 
     <nav>
         <?php
-        require 'includes/handlers/sidebarLeft.php';
+        sidebar();
         ?>
     </nav>
 

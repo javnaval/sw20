@@ -1,10 +1,9 @@
 <?php
-//namespace es\ucm\fdi\aw;
 require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\contenidos as contenidos;
 use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
-use es\ucm\fdi\aw\classes\databaseClasses\Playists as Playlists;
-//require_once  'classes/classes/song.php';
+use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
+use es\ucm\fdi\aw\classes\classes\user as user;
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
@@ -34,6 +33,11 @@ function muestraPlaylist($idPlaylist){
 			}
     return $html;
 }
+
+function sidebar(){
+    if (user::esGestor($_SESSION['idUser'])) require 'includes/handlers/sidebarLeftGestor.php';
+    else require 'includes/handlers/sidebarLeft.php';
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -51,7 +55,7 @@ function muestraPlaylist($idPlaylist){
 
     <nav>
         <?php
-        require 'includes/handlers/sidebarLeft.php';
+        sidebar();
         ?>
     </nav>
     <section id="contents" class="contents">

@@ -9,7 +9,7 @@ class FormularioAprobarNoticia extends Form {
 
     public function __construct() {
         $this->opciones['action'] = "vistaNoticias.php";
-        parent::__construct("form-upload", $this->opciones);
+        parent::__construct("form-noticia", $this->opciones);
     }
 
     protected function generaCamposFormulario($datos, $err) {
