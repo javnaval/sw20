@@ -31,7 +31,7 @@ EOF;
         else $html .= "<input type=\"text\" name=\"user\" value=".$user->getUser()." required></p>";
 
 	   $html .= "</p>Nombre: ";
-        if (isset($datosIniciales['user'])) {
+        if (isset($datosIniciales['name'])) {
             $html .= "<input type=\"text\" name=\"name\" value=".$datosIniciales['name']." required></p>";
         }
         else $html .= "<input type=\"text\" name=\"name\" value=".$user->getName()." required></p>";
@@ -62,10 +62,11 @@ EOF;
         $usuario = htmlspecialchars(trim(strip_tags($datos['user'])));
         $email = htmlspecialchars(trim(strip_tags($datos['email'])));
 		$name = htmlspecialchars(trim(strip_tags($datos['name'])));
+        $descripcion = '';
         if (isset($datos['descripcion'])){
             assert(is_string($datos['descripcion']), "Error al introducir los datos");
-            $descripcion = htmlspecialchars(trim(strip_tags($datos['name'])));
-        } else $descripcion = '';
+            $descripcion = htmlspecialchars(trim(strip_tags($datos['descripcion'])));
+        }
 
 		$user->actualiza($usuario, $email, $name, $descripcion);
 		
