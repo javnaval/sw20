@@ -57,7 +57,7 @@ $cancion=(new Songs())->where("id","=",$idCancion)->delete();
 	<header>
             <?php
 			$var=filter_input(INPUT_GET,'tituloc',FILTER_SANITIZE_STRING);
-		$idCancion=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
+		$idCancion=filter_input(INPUT_GET,'idSong',FILTER_SANITIZE_NUMBER_INT);
             echo generaCamposFormulario($idCancion);
             ?>
         </header>

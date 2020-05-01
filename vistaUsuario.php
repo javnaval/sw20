@@ -1,21 +1,38 @@
 <?php
 require_once 'includes/config.php';
-use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
-use es\ucm\fdi\aw\classes\classes\user as user;
+use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
-function muestraUsuario($cor, $us, $nom, $rol){
-    $html = "";
-    
-	echo "<img src='server/images/user.png'>";
-	echo $cor;
-	echo $us;
-	echo $nom;
-	echo $rol;
-	
-    return $html;
+ $_GET["busquedaUsuario"] = "1"; //para probar
+
+$usuarios = new Users();
+$usuarios = $usuarios->where("id", "=" , 
+$_GET["busquedaUsuario"])->get();
+$usuario="";
+foreach($usuarios as $us) {
+    $usuario=$us;
+}
+$userId=$usuario->getId();
+$userName=$usuario->getName();
+$userEmail=$usuario->getEmail();
+$userRol=$usuario->getRol();
+$userDesc=$usuario->getDescripcion();
+
+function muestraUsuario($cor, $us, $nom, $rol, $id){
+    echo "<header>  <a> <img src= 'server/images/users/";
+    echo $id;
+    echo ".png'>";
+    echo "<h1> ";
+    echo $nom;
+    echo " </h1> ";
+    echo $cor; 
+    echo ", ";
+    echo $rol;  
+    echo "</a> ";
+    echo $us;
+    echo " </header> ";
 }
 
 function actualizarCuenta(){
@@ -47,14 +64,7 @@ function actualizarCuenta(){
 
     <section id="contents" class="contents">
         <?php
-		
-       
-		$us=  user::getUser();
-		$nom= user::getName();
-		$cor= user::getEmail();
-		$rol= user::getRol();
-        echo muestraUsuario($cor, $us, $nom, $rol);
-		
+        echo muestraUsuario($userEmail, $userDesc, $userName, $userRol, $userId);
         ?>
 
 		<button type="button" onclick="actualizarCuenta()">Editar</button>
