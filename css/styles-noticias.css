@@ -5,9 +5,9 @@ body {
 
 section.contents{
 
-    margin-left: 13%;
+    margin-left: 11%;
     height: 85%;
-	width:87%;
+	width:89%;
     background-color: #fdbcb4;
     position: fixed;
     display: flex;
@@ -40,6 +40,7 @@ section.contents section.noticia {
 section.contents section.noticia div.imagen {
     grid-column-start: 2;
     grid-column-end: 2;
+	height: 15em;
     object-fit: cover;
 }
 section.contents section.noticia div.imagen img{

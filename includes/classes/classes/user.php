@@ -98,12 +98,22 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
         }
 
         public static function usersVerificar(){
-            return (new Users())->where("rol", "=", "usuario")->get();
+            return (new Users())->where("rol", "=", "usuario")->orWhere("rol", "=", "premium")->get();
+        }
+		
+		public static function esArtista($id){
+			$rol = self::buscaUsuarioId($id)->getRol();
+            return ($rol == "artista" || self::esGestor($id));
         }
 		
 		public static function esGestor($id){
 			$rol = self::buscaUsuarioId($id)->getRol();
-            return ($rol == "gestor" || $rol == "administrador");
+            return ($rol == "gestor" || self::esAdmin($id));
+        }
+
+		public static function esAdmin($id){
+			$rol = self::buscaUsuarioId($id)->getRol();
+            return ($rol == "administrador");
         }
 
         public function update(){

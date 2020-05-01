@@ -18,7 +18,7 @@ class FormularioAprobarNoticia extends Form {
         $noticias = noticia::buscar($_SESSION['idUser']);
         if ($noticias == null) $html .= "<p>Aún no tenemos noticias que mostrarle.</p>";
         else {
-            $html .= '<p>Elija la(s) noticia: <input class="boton" type = "submit" name = "Aprobar" value = "APROBAR" ></p>';
+            $html .= '<p>Elija la(s) noticia(s): <input class="boton" type = "submit" name = "Aprobar" value = "APROBAR" ></p>';
             foreach ($noticias as $noticia) {
                 $html .= '<section class="noticia"><div class="checkbox"><input type="checkbox" name="' . $noticia->getId() . '" value="' . $noticia->getId() . '"></div>
                 <div class="imagen"><img src="server/noticias/images/'. $noticia->getId() .'.jpg"></div>
