@@ -14,6 +14,7 @@ use es\ucm\fdi\aw\classes\classes\song as song;
         foreach ($songs as $or) {
             $listaCanciones .= '<p><a href="vistaCancion.php?id='. $or->getId().'" >'. $or->getTitle().' </a></p>';
         }
+		echo "</div>";
     }
     else {
         header("Location: index.php");
@@ -22,12 +23,12 @@ use es\ucm\fdi\aw\classes\classes\song as song;
     $albumArtist= user::buscaUsuarioId($album->getIdArtist())->getName();
     $albumTitle = $album->getTitle();
     $albumId = $album->getId();
+	$albumIdArtist = $album->getIdArtist();
 
-    function viewAlbumInfo($albumId, $albumArtist, $albumTitle) {
-        echo '<header><img src= "server/albums/images/'.$albumId.'.png">';
-        echo "<h1>$albumTitle</h1> ";
-        echo $albumArtist;
-        echo "</header> ";
+    function viewAlbumInfo($albumId, $albumArtist, $albumTitle, $albumIdArtist) {
+        echo '<div class="imagen"><img src= "server/albums/images/'.$albumId.'.png"></div>';
+        echo "<div class=\"titulo\">" . $albumTitle . "</div>";
+        echo '<div class="contenido"><p><a href="vistaUsuario.php?id='. $albumIdArtist.'" >' . $albumArtist . '</a></p>';
     }
 
     function sidebar(){
@@ -40,7 +41,7 @@ use es\ucm\fdi\aw\classes\classes\song as song;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/styles-contents.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-album.css"/>
 	<link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
 	<script src="https://kit.fontawesome.com/9d868392d8.js"></script>
@@ -58,8 +59,8 @@ use es\ucm\fdi\aw\classes\classes\song as song;
 
     <section id="contents" class="contents">
         <?php
-        viewAlbumInfo($albumId, $albumArtist, $albumTitle);
-        echo '<p>'.$listaCanciones.'</p>';
+        viewAlbumInfo($albumId, $albumArtist, $albumTitle, $albumIdArtist);
+        echo $listaCanciones;
         ?>
     </section>
 
