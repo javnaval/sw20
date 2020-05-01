@@ -1,6 +1,5 @@
 <?php
 require_once 'includes/config.php';
-use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
@@ -10,14 +9,7 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 $form = new es\ucm\fdi\aw\FormularioEditarPerfil();
 $htmlform = $form->gestiona();
 
-$_GET["busquedaUsuario"] = $_SESSION['idUser']; 
-
-$usuarios = new Users();
-$usuarios = $usuarios->where("id", "=" , $_GET["busquedaUsuario"])->get();
-$usuario="";
-foreach($usuarios as $us) {
-    $usuario=$us;
-}
+$usuario = user::buscaUsuarioId($_SESSION['idUser']);
 
 $user=$usuario->getUser();
 $userName=$usuario->getName();
@@ -25,21 +17,21 @@ $userEmail=$usuario->getEmail();
 $userRol=$usuario->getRol();
 $userDesc=$usuario->getDescripcion();
 
-function muestra($userr, $usName, $cor, $rol, $desc, $form){
+function muestra($user, $usName, $cor, $rol, $desc, $form){
     $html = "<img src= 'images/user.png'>";
-    $html .= "<h3> Nombre Usuario: ";
-    $html .= $userr;
+    $html .= "<h3> Usuario: ";
+    $html .= $user;
 	$html .= "</h3> <h3>";
     $html .= "Nombre: ";
 	$html .= $usName;
 	$html .= "</h3> <h3>";
-	$html .= "Correo electrónico: ";
+	$html .= "Correo electronico: ";
     $html .= $cor;
 	$html .= "</h3> <h3>";
     $html .= "Rol: ";
     $html .= $rol;
 	$html .= "</h3> <h3>";
-	$html .= "Descripción: ";
+	$html .= "Descripcion: ";
     $html .= $desc;
 	$html .= " </h3> ";
 
