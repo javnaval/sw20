@@ -1,6 +1,5 @@
 <?php
 namespace es\ucm\fdi\aw;
-use es\ucm\fdi\aw\classes\factories\databaseFactory as databaseFactory;
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\Form as Form;
 
@@ -14,16 +13,28 @@ class FormularioEditarPerfil extends Form {
     }
 
     protected function generaCamposFormulario($datosIniciales, $err) {
+        $user = user::buscaUsuarioId($_SESSION['idUser']);
         $html = <<<EOF
         <fieldset>
                 <legend>Editar</legend>
 EOF;
        $html .= "<p>Correo electrónico: </p>";
-       $html .= "<p><input type=\"email\" name=\"email\"  value=".$datosIniciales['email']." required></p>";
+        if (isset($datosIniciales['email'])) {
+            $html .= "<p><input type=\"email\" name=\"email\"  value=".$datosIniciales['email']." required></p>";
+        }
+        else $html .= "<p><input type=\"email\" name=\"email\"  value=".$user->getEmail()." required></p>";
+
 	   $html .= "</p>Nombre usuario: </p>";
-       $html .= "<p><input type=\"text\" name=\"user\" value=".$datosIniciales['user']." required></p>";
+        if (isset($datosIniciales['user'])) {
+            $html .= "<p><input type=\"text\" name=\"user\" value=".$datosIniciales['user']." required></p>";
+        }
+        else $html .= "<p><input type=\"text\" name=\"user\" value=".$user->getUser()." required></p>";
+
 	   $html .= "</p>Nombre: </p>";
-	   $html .= "<p><input type=\"text\" name=\"name\" value=".$datosIniciales['name']." required></p>";
+        if (isset($datosIniciales['user'])) {
+            $html .= "<p><input type=\"text\" name=\"name\" value=".$datosIniciales['name']." required></p>";
+        }
+        else $html .= "<p><input type=\"text\" name=\"name\" value=".$user->getName()." required></p>";
 
 	   $html .= '<p><input type="submit" name="Actualizar" value="Actualizar"></p> </fieldset>';
 

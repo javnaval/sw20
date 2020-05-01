@@ -6,7 +6,11 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
- $_GET["busquedaUsuario"] = "1"; //para probar
+
+$form = new es\ucm\fdi\aw\FormularioEditarPerfil();
+$htmlform = $form->gestiona();
+
+$_GET["busquedaUsuario"] = "1"; //para probar
 
 $usuarios = new Users();
 $usuarios = $usuarios->where("id", "=" , 
@@ -21,22 +25,21 @@ $userEmail=$usuario->getEmail();
 $userRol=$usuario->getRol();
 $userDesc=$usuario->getDescripcion();
 
-function muestraUsuario($cor, $us, $nom, $rol, $id){
-    echo "<img src= 'server/images/users/";
-    echo $id;
-    echo ".png'>";
-    echo "<h1> ";
-    echo $nom;
-    echo " </h1> ";
-    echo $cor; 
-    echo ", ";
-    echo $rol;
-    echo $us;
-}
+function muestra($cor, $us, $nom, $rol, $id, $form){
+    $html = "<img src= 'server/images/users/";
+    $html .= $id;
+    $html .= ".png'>";
+    $html .= "<h1> ";
+    $html .= $nom;
+    $html .= " </h1> ";
+    $html .= $cor;
+    $html .= ", ";
+    $html .= $rol;
+    $html .= $us;
 
-function actualizarCuenta(){
-	$form = new es\ucm\fdi\aw\FormularioEditarPerfil();
-    echo $form->gestiona();
+    if (isset($_GET['editar'])) $html .= $form;
+    else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true">Editar</a></h1>';
+    return $html;
 }
 
 function sidebar(){
@@ -68,11 +71,8 @@ function sidebar(){
 
     <section id="contents" class="contents">
         <?php
-        echo muestraUsuario($userEmail, $userDesc, $userName, $userRol, $userId);
+        echo muestra($userEmail, $userDesc, $userName, $userRol, $userId, $htmlform);
         ?>
-        <h1>
-            <button type="button" onclick="actualizarCuenta()">Editar</button>
-        </h1>
     </section>
 
     <footer>
