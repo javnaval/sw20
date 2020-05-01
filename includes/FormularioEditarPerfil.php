@@ -18,23 +18,29 @@ class FormularioEditarPerfil extends Form {
         <fieldset>
                 <legend>Editar</legend>
 EOF;
-       $html .= "<p>Correo electrónico: </p>";
+       $html .= "<p>Correo electrónico: ";
         if (isset($datosIniciales['email'])) {
-            $html .= "<p><input type=\"email\" name=\"email\"  value=".$datosIniciales['email']." required></p>";
+            $html .= "<input type=\"email\" name=\"email\"  value=".$datosIniciales['email']." required></p>";
         }
-        else $html .= "<p><input type=\"email\" name=\"email\"  value=".$user->getEmail()." required></p>";
+        else $html .= "<input type=\"email\" name=\"email\"  value=".$user->getEmail()." required></p>";
 
-	   $html .= "</p>Nombre usuario: </p>";
+	   $html .= "</p>Nombre usuario: ";
         if (isset($datosIniciales['user'])) {
-            $html .= "<p><input type=\"text\" name=\"user\" value=".$datosIniciales['user']." required></p>";
+            $html .= "<input type=\"text\" name=\"user\" value=".$datosIniciales['user']." required></p>";
         }
-        else $html .= "<p><input type=\"text\" name=\"user\" value=".$user->getUser()." required></p>";
+        else $html .= "<input type=\"text\" name=\"user\" value=".$user->getUser()." required></p>";
 
-	   $html .= "</p>Nombre: </p>";
+	   $html .= "</p>Nombre: ";
         if (isset($datosIniciales['user'])) {
-            $html .= "<p><input type=\"text\" name=\"name\" value=".$datosIniciales['name']." required></p>";
+            $html .= "<input type=\"text\" name=\"name\" value=".$datosIniciales['name']." required></p>";
         }
-        else $html .= "<p><input type=\"text\" name=\"name\" value=".$user->getName()." required></p>";
+        else $html .= "<input type=\"text\" name=\"name\" value=".$user->getName()." required></p>";
+
+        $html .= "</p>Descripcion: ";
+        if (isset($datosIniciales['descripcion'])) {
+            $html .= "<input type=\"text\" name=\"descripcion\" value=".$datosIniciales['descripcion']."></p>";
+        }
+        else $html .= "<input type=\"text\" name=\"descripcion\" value=".$user->getDescripcion()."></p>";
 
 	   $html .= '<p><input type="submit" name="Actualizar" value="Actualizar"></p> </fieldset>';
 
