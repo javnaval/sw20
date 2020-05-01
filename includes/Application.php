@@ -80,7 +80,6 @@ namespace es\ucm\fdi\aw;
                     }
                  return $this->connection;
              }catch(Exception $exc){
-                 echo "Error de conexión a la BD:". $exc->getTraceAsString();
                  error_log("Error de conexión a la BD:". $exc->getTraceAsString());
                  exit;
              }
