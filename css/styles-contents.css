@@ -30,12 +30,14 @@ section.elementos {
     flex-wrap: wrap;
     margin: 2%;
 }
-section.elementos div{
+section.elementos a div{
     margin: 4%;
     width: 15em;
     height: 15em;
     flex-direction: row;
-    background-color: white;
+    background-color: #363434;
+    color: white;
+    border-radius: 10px;
 }
 section.contents h1{
     width: 20px;
@@ -73,5 +75,17 @@ section.contents #eleccionAlbum a, section.contents #crearAlbum a{
 section.contents #eleccionAlbum a:hover, section.contents #crearAlbum a:hover{
     text-decoration: none;
     color: blue;
+    cursor: pointer;
+}
+
+section.contents a.buscar{
+    text-decoration: none;
+    color: transparent;
+    margin: 4%;
+}
+
+section.contents a.buscar:hover{
+    text-decoration: none;
+    color: transparent;
     cursor: pointer;
 }

@@ -2,6 +2,7 @@
 require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
 use es\ucm\fdi\aw\classes\classes\user as user;
+use es\ucm\fdi\aw\classes\classes\album as album;
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
@@ -9,7 +10,7 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 
 function mostrar($albumNombre){
     $html = "";          //where("name", "=", "albumNombre");
-    $albums = (new Albums())->get();
+    $albums = album::albums();
     foreach ($albums as $row) {
         $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
         $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='server/images/Colores.jpg'> </a>";

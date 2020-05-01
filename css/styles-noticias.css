@@ -51,7 +51,8 @@ section.contents section.noticia div.texto {
     grid-column-start: 3;
     grid-column-end: 3;
     height: 15em;
-	background-color: white;
+	background-color: #363434;
+    color: white;
 }
 
 section.contents section.noticia div.checkbox {
@@ -90,7 +91,8 @@ section.contents div.not div.imagen {
 section.contents div.not div.texto {
     width: 78%;
     height: 15em;
-    background-color: white;
+    background-color: #363434;
+    color: white;
     float: left;
     margin-bottom: 2%;
     margin-top: 2%;

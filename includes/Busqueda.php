@@ -17,10 +17,10 @@ else {
     if ($canciones != null){
         echo "<h1>CANCIONES</h1><section class=\"elementos\">";
         foreach ($canciones as $cancion) {
-            echo '<div>';
+            echo '<a class="buscar" href="vistaCancion.php?id='  .$cancion->getId() . '"><div>';
             echo '<h3>' . $cancion->getTitle() . '</h3><p>Autor: ' . (user::buscaUsuarioId($cancion->getIdUser()))->getName() . '</p><p>Album: ' . (album::buscaAlbumId($cancion->getIdAlbum()))->getTitle() . '</p>';
             echo '<audio src="server/songs/' . $cancion->getId()  . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
-            echo '</div>';
+            echo '</div></a>';
         }
         echo "</section>";
     }
@@ -29,9 +29,9 @@ else {
         echo "<h1>ARTISTAS</h1><section class=\"elementos\">";
         foreach ($artistas as $artista) {
             if (in_array($artista->getRol(), array("usuario","premium","artista"), TRUE)) {
-                echo '<div>';
+                echo '<a class="buscar" href="vistaUsuario.php?id='  .$artista->getId() . '"><div>';
                 echo '<h3>' . $artista->getName() . '</h3><p>Descripción: ' . $artista->getDescripcion() . '</p>';
-                echo '</div>';
+                echo '</div></a>';
             }
         }
         echo "</section>";
@@ -40,9 +40,9 @@ else {
     if ($albumes != null){
         echo "<h1>ALBUMES</h1><section class=\"elementos\">";
         foreach ($albumes as $album) {
-            echo '<div>';
+            echo '<a class="buscar" href="vistaAlbum.php?id='  .$album->getId() . '"><div>';
             echo '<h3>' . $album->getTitle() . '</h3><p>Año de lanzamiento: ' . $album->getReleaseDate() . '</p>';
-            echo '</div>';
+            echo '</div></a>';
         }
         echo "</section>";
     }
