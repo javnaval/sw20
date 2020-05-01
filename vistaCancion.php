@@ -17,9 +17,10 @@ function muestraCancion($idCancion){
     $html = "";
     $song = song::buscaSongId($idCancion);
     if ($song !== null) {
+		$html .= "<div class=\"imagen\"><img src='server/images/Colores.jpg'></div><div class=\"titulo\">";
         $html .= $song->getTitle();
-        $html .= '<audio src="server/songs/' . $song->getId() . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
-        $html .= "<img src='server/images/Colores.jpg'>";
+        $html .= '</div><div class=\"audio\"><audio src="server/songs/' . $song->getId() . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio></div>';
+        
     } else $html .= 'Se ha eliminado correctamente';
 
     return $html;
@@ -45,7 +46,7 @@ function formulario($idCancion) {
 <head>
      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/styles-contents.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-cancion.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
