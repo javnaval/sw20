@@ -64,12 +64,12 @@ EOF;
 		$name = htmlspecialchars(trim(strip_tags($datos['name'])));
         if (isset($datos['descripcion'])){
             assert(is_string($datos['descripcion']), "Error al introducir los datos");
-            $descripcion = htmlspecialchars(trim(strip_tags($datos['name'])));
+            $descripcion = htmlspecialchars(trim(strip_tags($datos['descripcion'])));
         } else $descripcion = '';
 
 		$user->actualiza($usuario, $email, $name, $descripcion);
 		
-		$resultado = "vistaUsuario.php";
+		$resultado = "vistaInicio.php";
            
         return $resultado;
     }
