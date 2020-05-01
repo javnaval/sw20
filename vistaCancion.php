@@ -17,7 +17,7 @@ function muestraCancion($idCancion){
     $html = "";
     $song = song::buscaSongId($idCancion);
     if ($song !== null) {
-		$html .= ">";
+        $html .= "<div class=\"imagen\"><img src='images/Colores.jpg'></div><div class=\"titulo\">";
         $html .= $song->getTitle();
         $html .= '</div><div class="audio"><audio src="server/songs/' . $song->getId() . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio></div>';
 

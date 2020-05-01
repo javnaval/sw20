@@ -69,7 +69,7 @@ EOF;
 
 		$user->actualiza($usuario, $email, $name, $descripcion);
 		
-		$resultado = "vistaInicio.php";
+		$resultado = "vistaUsuario.php";
            
         return $resultado;
     }
