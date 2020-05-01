@@ -19,7 +19,7 @@ function muestraCancion($idCancion){
     if ($song !== null) {
 		$html .= "<div class=\"imagen\"><img src='server/images/Colores.jpg'></div><div class=\"titulo\">";
         $html .= $song->getTitle();
-        $html .= '</div><div class=\"audio\"><audio src="server/songs/' . $song->getId() . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio></div>';
+        $html .= '</div><div class="audio"><audio src="server/songs/' . $song->getId() . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio></div>';
 
     } else $html .= 'Se ha eliminado correctamente';
 
