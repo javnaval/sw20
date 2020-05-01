@@ -7,13 +7,24 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
-function mostrar(){
-    $html = "";
+function mostrar($albumNombre){
+    $html = "";          //where("name", "=", "albumNombre");
     $albums = (new Albums())->get();
     foreach ($albums as $row) {
-        $html .= "<div>";
-        $html .= $row->getTitle();
-        $html .= "<img src='server/images/Colores.jpg'></div>";
+        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
+        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='server/images/Colores.jpg'> </a>";
+        $html .= "<figcaption>" . $row->getTitle() . "<figcaption></div>";
+    }
+    //Dejar de prueba para probar scroll y añadir volumen se quitara en la entrega final asi como todo lo comentado de las imagenes
+    foreach ($albums as $row) {
+        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
+        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='server/images/Colores.jpg'> </a>";
+        $html .= "<figcaption>" . $row->getTitle() . "<figcaption></div>";
+    }
+    foreach ($albums as $row) {
+        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
+        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='server/images/Colores.jpg'> </a>";
+        $html .= "<figcaption>" . $row->getTitle() . "<figcaption></div>";
     }
     return $html;
 }
@@ -30,7 +41,7 @@ function sidebar(){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/styles-contents.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-inicio.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
@@ -47,9 +58,13 @@ function sidebar(){
     </nav>
 
     <section id="contents" class="contents">
-        <?php
-        echo mostrar();
-        ?>
+        <ul>
+            <li><h2>Listas de éxitos</h2><?php echo mostrar("Listas de éxitos"); ?></li>
+            <li><h2>Destacado</h2><?php echo mostrar("Destacado"); ?></li>
+            <li><h2>Chill</h2><?php echo mostrar("Chill"); ?></li>
+            <li><h2>De fiesta</h2><?php echo mostrar("De fiesta"); ?></li>
+            <li><h2>Relax</h2><?php echo mostrar("Relax"); ?></li>
+        </ul>
     </section>
 
     <footer>
