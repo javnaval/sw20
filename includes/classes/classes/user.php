@@ -109,5 +109,13 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
         public function update(){
             (new Users())->where("id","=",$this->id)->update($this->toString());
         }
+
+        public function actualiza($usuario, $email, $name, $descripcion){
+		     $this->user = $usuario;
+		     $this->email = $email;
+		     $this->name = $name;
+		     $this->descripcion = $descripcion;
+		     $this->update();
+        }
 	}
 ?>

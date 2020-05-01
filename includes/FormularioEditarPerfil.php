@@ -49,13 +49,19 @@ EOF;
     protected function procesaFormulario($datos)
     {
         $resultado = array();
-		$idUser = user::getId();
+
+		$user = user::buscaUsuarioId($_SESSION['idUser']);
+
         assert(is_string($datos['user']) && is_string($datos['email']) && is_string($datos['name']), "Error al introducir los datos");
         $usuario = htmlspecialchars(trim(strip_tags($datos['user'])));
         $email = htmlspecialchars(trim(strip_tags($datos['email'])));
 		$name = htmlspecialchars(trim(strip_tags($datos['name'])));
+        if (isset($datos['descripcion'])){
+            assert(is_string($datos['descripcion']), "Error al introducir los datos");
+            $descripcion = htmlspecialchars(trim(strip_tags($datos['name'])));
+        } else $descripcion = '';
 
-		//Usuario::actualiza($usuario, $email, $name, $idUser);
+		$user->actualiza($usuario, $email, $name, $descripcion);
 		
 		$resultado = "vistaInicio.php";
            
