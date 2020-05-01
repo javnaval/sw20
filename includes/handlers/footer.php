@@ -1,4 +1,4 @@
-<footer id="container-Footer">
+<footer id="container-Footer" class="active">
     <section id="left-footer" class="left-footer">
 
     </section>
@@ -32,12 +32,12 @@
 </footer>
 
 <script>
-    const menuNormal = document.getElementById('logo-circle-center');
+    const menuNormal = document.getElementById('logo-down-center');
     menuNormal.addEventListener('click', () => {
-        document.getElementById('container-Footer').className = "";
-    });
-    const menuCircular = document.getElementById('logo-down-center');
-    menuCircular.addEventListener('click', () => {
         document.getElementById('container-Footer').className = "active";
+    });
+    const menuCircular = document.getElementById('logo-circle-center');
+    menuCircular.addEventListener('click', () => {
+        document.getElementById('container-Footer').className = "";
     });
 </script>
