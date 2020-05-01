@@ -4,7 +4,7 @@
     </section>
 
     <section id="center-footer" class="center-footer">
-        <span class="logo-circle"><img id="logo-circle-center" src="server/images/logoR.png"></a></span>
+        <span class="logo-circle"><img id="logo-circle-center" src="images/logoR.png"></a></span>
         <span class="up-center" id="up-center">
              <i class="fas fa-random"></i>
              <i class="fas fa-step-backward"></i>
@@ -19,7 +19,7 @@
              </div>
                  <p>0:00</p>
         </span>
-         <span class="down-center"><img id="logo-down-center" src="server/images/logoR.png"></a></span>
+         <span class="down-center"><img id="logo-down-center" src="images/logoR.png"></a></span>
     </section>
     <section id="right-footer" class="right-footer">
         <span>

@@ -1,6 +1,6 @@
 
 <header>
-    <span><a class="logo" href="vistaInicio.php"><img src="server/images/logoR.png"></a></span>
+    <span><a class="logo" href="vistaInicio.php"><img src="images/logoR.png"></a></span>
     <a class="out" href="includes/procesarLogout.php">Cerrar Sesion</a>
 </header>
 <section>
