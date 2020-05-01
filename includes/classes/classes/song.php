@@ -63,6 +63,10 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
             return (new Songs())->where("title", "LIKE", "%".$title."%")->get();
         }
 
+        public static function songsUser($id){
+            return (new Songs())->where("idUser", "=", $id)->get();
+        }
+
         public function eliminar(){
             (new Songs())->where("id","=",$this->id)->delete();
         }

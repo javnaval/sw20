@@ -7,25 +7,29 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
-function muestraCancion($song){
+function muestraCancion($idCancion){
     $html = "";
+    $song = song::buscaSongId($idCancion);
     if ($song !== null) {
         $html .= $song->getTitle();
         $html .= '<audio src="server/songs/' . $song->getId() . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
         $html .= "<img src='server/images/Colores.jpg'>";
-    }
+    } else $html .= 'Se ha eliminado correctamente';
 
     return $html;
 }
 
-function formulario($song) {
+function formulario($idCancion) {
     $html = '';
-    if ($_SESSION['idUser'] == $song->getIdUser()) {
-        $html .= '<form method="POST" action="vistaCancion.php">';
-        $html .= '<input type = "submit"  value = "Eliminar" >';
-        $html .= '</form>';
-        if (isset($_POST['Eliminar'])) $song->eliminar();
+    $song = song::buscaSongId($idCancion);
+    if (!isset($_POST['Eliminar'])) {
+        if ($_SESSION['idUser'] == $song->getIdUser()) {
+            $html .= '<form method="POST" action="vistaCancion.php?id='.$song->getId().'">';
+            $html .= '<input type = "submit" name="Eliminar" value = "Eliminar" >';
+            $html .= '</form>';
+        }
     }
+    else $song->eliminar();
     return $html;
 }
 
@@ -53,14 +57,13 @@ function formulario($song) {
     <section id="contents" class="contents">
 	    <header>
             <?php
-		    $idCancion=filter_input(INPUT_GET,'idSong',FILTER_SANITIZE_NUMBER_INT);
-            $song = song::buscaSongId($idCancion);
-            echo formulario($song);
+		    $idCancion=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
+            echo formulario($idCancion);
             ?>
         </header>
 
         <?php
-        echo muestraCancion($song);
+        echo muestraCancion($idCancion);
         ?>
     </section>
 

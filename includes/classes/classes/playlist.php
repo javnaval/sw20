@@ -32,6 +32,10 @@ use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
                "idUser"       => "".$this->idUser."",
 			   "title"        => "".$this->title.""
 			];
-		 } 
+		 }
+
+        public static function playlistsUser($id){
+            return (new Playlists())->where("idUser", "=", $id)->get();
+        }
 	}
 ?>
