@@ -21,7 +21,7 @@ $userRol=$usuario->getRol();
 $userDesc=$usuario->getDescripcion();
 
 function muestraUsuario($cor, $us, $nom, $rol, $id){
-    echo "<header>  <a> <img src= 'server/images/users/";
+    echo "<img src= 'server/images/users/";
     echo $id;
     echo ".png'>";
     echo "<h1> ";
@@ -30,9 +30,7 @@ function muestraUsuario($cor, $us, $nom, $rol, $id){
     echo $cor; 
     echo ", ";
     echo $rol;  
-    echo "</a> ";
     echo $us;
-    echo " </header> ";
 }
 
 function actualizarCuenta(){
@@ -66,9 +64,9 @@ function actualizarCuenta(){
         <?php
         echo muestraUsuario($userEmail, $userDesc, $userName, $userRol, $userId);
         ?>
-
+        <h1>
 		<button type="button" onclick="actualizarCuenta()">Editar</button>
-
+        </h1>
     </section>
 
     <footer>
