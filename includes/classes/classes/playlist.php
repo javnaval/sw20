@@ -37,5 +37,10 @@ use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
         public static function playlistsUser($id){
             return (new Playlists())->where("idUser", "=", $id)->get();
         }
+
+        public static function buscaPlaylistId($id){
+            $playlist = (new Playlists())->where("id", "=", $id)->get();
+            return $playlist[0];
+        }
 	}
 ?>

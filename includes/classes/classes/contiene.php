@@ -27,4 +27,8 @@ class contiene {
             "idPlaylist"  => "".$this->idPlaylist.""
         ];
     }
+
+    public static function songs($id){
+        return (new Contenidos())->where("idPlaylist", "=", $id)->get();
+    }
 }
