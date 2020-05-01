@@ -1,5 +1,5 @@
 body {
-    background-color: #fdbcb4;
+    background-color: #363434;
     margin: 0;
 }
 
@@ -8,7 +8,8 @@ section.contents{
     margin-left: 13%;
     height: 85%;
 	width:87%;
-    background-color: #fdbcb4;
+    background-color: #363434;
+    color: rgb(255, 251, 251);
     position: fixed;
     display: flex;
     flex-wrap: wrap;
@@ -55,7 +56,8 @@ section.contents section.art div.texto {
     grid-column-start: 3;
     grid-column-end: 3;
     height: 12em;
-	background-color: white;
+    background-color: white;
+    color: rgb(44, 44, 44);
 }
 
 section.contents section.art div.checkbox {
@@ -68,7 +70,7 @@ input.boton {
     float: right;
     width: 15%;
     height: 5%;
-    background-color: hotpink;
+    background-color: #FF307B;
     color: white;
     margin: 1%
 }
