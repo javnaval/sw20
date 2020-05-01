@@ -71,21 +71,26 @@ input.boton:hover{
     text-decoration: none;
     cursor: pointer;
 }
-/*
-section.contents div img{
-    width: 15em;
+
+/*version usuario*/
+
+section.contents div.not div img{
+    width: 100%;
+    height: 100%;
 }
 
-section.contents div.imagen {
+section.contents div.not div.imagen {
     width: 20%;
     height: 15em;
+    float: left;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
-section.contents div.texto {
+section.contents div.not div.texto {
     width: 78%;
     height: 15em;
     background-color: white;
-}
-
-section.contents div img{
-    width: 15em;
+    float: left;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
