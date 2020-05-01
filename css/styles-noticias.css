@@ -1,5 +1,5 @@
 body {
-    background-color: #fdbcb4;
+    background-color: #363434;
     margin: 0;
 }
 
@@ -8,7 +8,8 @@ section.contents{
     margin-left: 11%;
     height: 85%;
 	width:89%;
-    background-color: #fdbcb4;
+    background-color: #363434;
+	color: rgb(255, 251, 251);
     position: fixed;
     display: flex;
     flex-wrap: wrap;
@@ -51,8 +52,8 @@ section.contents section.noticia div.texto {
     grid-column-start: 3;
     grid-column-end: 3;
     height: 15em;
-	background-color: #363434;
-    color: white;
+	background-color: white;
+    color: black;
 }
 
 section.contents section.noticia div.checkbox {
@@ -91,8 +92,8 @@ section.contents div.not div.imagen {
 section.contents div.not div.texto {
     width: 78%;
     height: 15em;
-    background-color: #363434;
-    color: white;
+    background-color: white;
+    color: black;
     float: left;
     margin-bottom: 2%;
     margin-top: 2%;
