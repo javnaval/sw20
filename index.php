@@ -17,8 +17,5 @@ require_once 'includes/config.php';
         ?>
 	</header>
 
-	<section>
-	</section>
-
 </body>
 </html>

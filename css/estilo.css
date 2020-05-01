@@ -6,6 +6,7 @@ body {
 header{
 	background-color: black;
 	height: 20%;
+	width: 100%;
 	padding: 10px;
 }
 
@@ -20,29 +21,14 @@ header a {
 	text-decoration: none;
 }
 
-nav {
-	float: left;
-	background-color: black;
-	color: white;
-	width: 200px;
-	height: 100%;
-	position: absolute;
-	font-size: 30px;
-	text-align: center;
-}
-
-nav section {
-	position: fixed;
-	padding: 20px;
-}
-
-section#inicio {
+section#log {
 	margin-left: 200px;
 	padding: 30px 60px;
 	background-color: floralwhite;
 	color: black;
 	height:70%;
 	width:100%;
+	overflow-y: scroll;
 }
 
 section#log fieldset {
@@ -56,10 +42,6 @@ section#log fieldset {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	margin-bottom: auto;
-}
-
-section#log fieldset div#s1 {
-	float: top;
 }
 
 section#log fieldset div#s1 input {
@@ -79,6 +61,11 @@ section#log fieldset div#s3 {
 #error {
 	color: firebrick;
 	text-align: center;
+}
+
+img{
+	height: 10em;
+	width: auto;
 }
 
 legend {
