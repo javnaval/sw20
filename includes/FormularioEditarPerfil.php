@@ -7,7 +7,7 @@ class FormularioEditarPerfil extends Form {
     private $opciones = array();
 
     public function __construct() {
-        $this->opciones['action'] = "vistaUsuario.php";
+        $this->opciones['action'] = "vistaUsuario.php?id='" . $_SESSION['idUser'];
         $this->opciones['enctype'] = "multipart/form-data";
         parent::__construct("form-editar", $this->opciones);
     }
@@ -70,7 +70,7 @@ EOF;
 
 		$user->actualiza($usuario, $email, $name, $descripcion);
 		
-		$resultado = "vistaUsuario.php";
+		$resultado = "vistaUsuario.php?id='" . $_SESSION['idUser'];
            
         return $resultado;
     }

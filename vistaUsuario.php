@@ -9,7 +9,10 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 $form = new es\ucm\fdi\aw\FormularioEditarPerfil();
 $htmlform = $form->gestiona();
 
-$usuario = user::buscaUsuarioId($_SESSION['idUser']);
+if (isset($_GET['id']))
+$usuario = user::buscaUsuarioId(filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT));
+else $usuario = user::buscaUsuarioId($_SESSION['idUser']);
+
 
 $user=$usuario->getUser();
 $userName=$usuario->getName();
@@ -34,9 +37,19 @@ function muestra($user, $usName, $cor, $rol, $desc, $form){
 	$html .= "Descripcion: ";
     $html .= $desc;
 	$html .= " </h3> ";
-
-    if (isset($_GET['editar'])) $html .= $form;
-    else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true">Editar</a></h1>';
+	if (isset($_GET['id']))
+	{
+		if((filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT))==$_SESSION['idUser'])
+		{
+			if (isset($_GET['editar'])) $html .= $form;
+			else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
+		}
+	}
+	else
+	{
+		if (isset($_GET['editar'])) $html .= $form;
+		else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
+	}
     return $html;
 }
 
