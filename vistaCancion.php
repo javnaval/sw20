@@ -1,36 +1,32 @@
 <?php
-//namespace es\ucm\fdi\aw;
 require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
-//require_once  'classes/classes/song.php';
+use es\ucm\fdi\aw\classes\classes\song as song;
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
-  //  header("Location: index.php");
+    header("Location: index.php");
 }
 
-function muestraCancion($var,$idCancion){
+function muestraCancion($song){
     $html = "";
-        //require 'includes/procesarBusqueda.php';
-	echo $var;
+    if ($song !== null) {
+        $html .= $song->getTitle();
+        $html .= '<audio src="server/songs/' . $song->getId() . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
+        $html .= "<img src='server/images/Colores.jpg'>";
+    }
 
-	echo '<audio src="server/songs/' . $idCancion  . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio>';
-	echo "<img src='server/images/Colores.jpg'>";
     return $html;
 }
 
-function generaCamposFormulario($idCancion) {
-    $html = '<form method="POST" action="vistaCancion.php">';
-    if (isset($datosIniciales['eliminar'])) {
-        $html .= '<input type = "search" name = "eliminar" value="'.$datosIniciales['eliminar'].'" placeholder = "Eliminar cancion" >';
-   }
-   // else $html.= '<input type = "search" name = "busqueda">';
-    $html .= '<input type = "submit"  value = "Eliminar" >';
-    $html .= '</form>';
-	echo elimina($idCancion);
+function formulario($song) {
+    $html = '';
+    if ($_SESSION['idUser'] == $song->getIdUser()) {
+        $html .= '<form method="POST" action="vistaCancion.php">';
+        $html .= '<input type = "submit"  value = "Eliminar" >';
+        $html .= '</form>';
+        if (isset($_POST['Eliminar'])) $song->eliminar();
+    }
     return $html;
-}
-function elimina ($idCancion){
-$cancion=(new Songs())->where("id","=",$idCancion)->delete();
 }
 
 ?>
@@ -53,20 +49,18 @@ $cancion=(new Songs())->where("id","=",$idCancion)->delete();
         require 'includes/handlers/sidebarLeft.php';
         ?>
     </nav>
+
     <section id="contents" class="contents">
-	<header>
+	    <header>
             <?php
-			$var=filter_input(INPUT_GET,'tituloc',FILTER_SANITIZE_STRING);
-		$idCancion=filter_input(INPUT_GET,'idSong',FILTER_SANITIZE_NUMBER_INT);
-            echo generaCamposFormulario($idCancion);
+		    $idCancion=filter_input(INPUT_GET,'idSong',FILTER_SANITIZE_NUMBER_INT);
+            $song = song::buscaSongId($idCancion);
+            echo formulario($song);
             ?>
         </header>
+
         <?php
-		//$var=$_GET['tituloc'];
-		
-		//$idCancion=$_GET['id'];
-		
-        echo muestraCancion($var,$idCancion);
+        echo muestraCancion($song);
         ?>
     </section>
 

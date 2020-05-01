@@ -50,12 +50,21 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
             ];
         }
 
+        public static function buscaSongId($id){
+            $song = (new Songs())->where("id", "=", $id)->get();
+            return $song[0];
+        }
+
         public static function crea($title, $idUser, $idAlbum){
             return (new Songs())->insert((new self(null, $idUser, $idAlbum, $title, 0))->toString());
         }
 
         public static function buscar($title){
             return (new Songs())->where("title", "LIKE", "%".$title."%")->get();
+        }
+
+        public function eliminar(){
+            (new Songs())->where("id","=",$this->id)->delete();
         }
 
 	}

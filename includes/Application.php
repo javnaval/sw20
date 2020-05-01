@@ -81,6 +81,7 @@ namespace es\ucm\fdi\aw;
                  return $this->connection;
              }catch(Exception $exc){
                  echo "Error de conexión a la BD:". $exc->getTraceAsString();
+                 error_log("Error de conexión a la BD:". $exc->getTraceAsString());
                  exit;
              }
          }
@@ -144,8 +145,8 @@ EOF;
             $this->connection = null;
          }
 
-         public function getRutaRaiz(){
-             return $this->rutaRaiz;
+         public function getRutaRaizApp(){
+             return $this->rutaRaizApp;
          }
 
      }
