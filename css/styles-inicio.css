@@ -1,0 +1,59 @@
+body {
+    background-color: #363434;
+    margin: 0;
+}
+
+section.contents{
+    margin-left: 100px;
+    margin-bottom: 100px;
+    height: calc(100% - 100px);
+    width: 93%;
+    display: flex;
+    position: fixed;
+}
+section.contents ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    text-align: center;
+    width: 100%;
+}
+
+section.contents ul li div {
+    width: auto;
+    margin: 10px;
+    padding:0px;
+    border-radius: 10px;
+    background-color: rgb(44, 44, 44);
+}
+section.contents ul li::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 7px;
+    background-color: rgb(0,0,0);
+
+}
+section.contents ul li::-webkit-scrollbar-thumb {
+    width: 7px;
+    border-radius: 7px;
+    background-color: white;
+
+}
+section.contents ul h2{
+    color: rgb(255, 251, 251);
+
+}
+
+section.contents ul li  figure{
+    color: rgb(255, 251, 251);
+}
+section.contents ul li{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+section.contents ul li figure img{
+    width: 50%;
+}

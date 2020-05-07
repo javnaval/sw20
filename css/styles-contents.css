@@ -1,0 +1,98 @@
+body {
+    background-color: #363434;
+    margin: 0;
+}
+
+section.contents{
+    padding-top: 2%;
+    margin-left: 13%;
+    height: 85%;
+    width:90%;
+    background-color: #363434;
+    color: rgb(255,251,251);
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-y: scroll;
+}
+
+legend{
+    color: #FF307B;
+}
+
+fieldset{
+    color: rgb(255,251,251);
+}
+
+section.elementos {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2%;
+}
+section.elementos a div{
+    margin: 4%;
+    width: 15em;
+    height: 15em;
+    flex-direction: row;
+    background-color: rgb(44, 44, 44);;
+    color: white;
+    border-radius: 10px;
+}
+section.contents h1{
+    width: 20px;
+    height: 20px;
+    clear: both;
+    color: rgb(255, 251, 251);
+}
+section.contents p{
+    width: 100%;
+    height: 20px;
+}
+section.contents div img{
+    width: 100px;
+}
+
+section.contents header{
+    width: 100%;
+    height:5%;
+    margin: 1%;
+}
+
+section.contents #eleccionAlbum, section.contents #crearAlbum {
+    display: none;
+    background-color: #363434;
+    color: rgb(255, 251, 251);
+    float: none;
+    margin: 2em;
+    width: auto;
+    height: auto;
+}
+
+section.contents #eleccionAlbum a, section.contents #crearAlbum a{
+    text-decoration: underline;
+    color: #FF307B;
+}
+
+section.contents #eleccionAlbum a:hover, section.contents #crearAlbum a:hover{
+    text-decoration: none;
+    color: #FF307B;
+    cursor: pointer;
+}
+
+section.contents a.buscar{
+    text-decoration: none;
+    color: transparent;
+    margin: 4%;
+}
+
+section.contents a.buscar:hover{
+    text-decoration: none;
+    color: transparent;
+    cursor: pointer;
+}
+
+a {
+    color: #FF307B;
+}

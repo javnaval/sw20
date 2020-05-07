@@ -1,0 +1,113 @@
+body {
+    background-color: #363434;
+    margin: 0;
+}
+
+section.contents{
+
+    margin-left: 11%;
+    height: 85%;
+	width:89%;
+    background-color: #363434;
+	color: rgb(255, 251, 251);
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-y: scroll;
+}
+
+section.contents h1
+{
+	height: 10%;
+	width: 100%;
+	text-align: center;
+	margin: 0;
+}
+
+section.contents div
+{
+	margin: 0;
+	margin-bottom: 2%;
+}
+
+section.contents section.noticia {
+    display: grid;
+    grid-template-columns: 5% 18% 77%;
+    height: 15em;
+    margin: 5%;
+}
+
+section.contents section.noticia div.imagen {
+    grid-column-start: 2;
+    grid-column-end: 2;
+	height: 15em;
+    object-fit: cover;
+}
+section.contents section.noticia div.imagen img{
+    width: 100%;
+    height: 100%;
+}
+section.contents section.noticia div.texto {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    height: 15em;
+	background-color: white;
+    color: rgb(44, 44, 44);
+}
+
+section.contents section.noticia div.checkbox {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    text-align: center;
+}
+
+input.boton {
+    float: right;
+    width: 15%;
+    height: 5%;
+    background-color: #FF307B;
+    color: white;
+    margin: 1%
+}
+input.boton:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*version usuario*/
+
+section.contents div.not div img{
+    width: 100%;
+    height: 100%;
+}
+
+section.contents div.not div.imagen {
+    width: 20%;
+    height: 15em;
+    float: left;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+section.contents div.not div.texto {
+    width: 78%;
+    height: 15em;
+    background-color: rgb(44, 44, 44);
+    color: white;
+    float: left;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+section.contents::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 7px;
+    background-color: rgb(0, 0, 0);
+
+}
+section.contents::-webkit-scrollbar-thumb {
+    width: 7px;
+    border-radius: 7px;
+    background-color: white;
+
+}
