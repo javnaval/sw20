@@ -10,6 +10,7 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 			 "email"       => "NOT NULL",
 			 "password"    => "NOT NULL",
              "rol"         => "NOT NULL",
+             "solicitado"  => "NOT NULL",
              "descripcion" => "NOT NULL"
 		 ];
 		 public function __construct(){
