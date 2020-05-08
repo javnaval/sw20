@@ -135,6 +135,35 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `seguidores`
+--
+
+
+CREATE TABLE `seguidores` (
+  `idUser` int(11) NOT NULL,
+  `idSeguidor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+
+CREATE TABLE `comentarios` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idCancion` int(11) NOT NULL,
+  `texto` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
 
 --
 -- Índices para tablas volcadas
