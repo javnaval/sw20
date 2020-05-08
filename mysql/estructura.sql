@@ -206,6 +206,21 @@ ALTER TABLE `songs`
   ADD KEY `idUser` (`idUser`);
 
 --
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `idUser` (`idUser`);
+  ADD KEY `idCancion` (`idCancion`);
+
+--
+-- Indices de la tabla `seguidores`
+--
+ALTER TABLE `contiene`
+  ADD KEY `idUser` (`idUser`),
+  ADD KEY `idSeguidor` (`idSeguidor`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -246,6 +261,12 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -280,6 +301,22 @@ ALTER TABLE `playlists`
 ALTER TABLE `songs`
   ADD CONSTRAINT `songs_ibfk_1` FOREIGN KEY (`idAlbum`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `songs_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`idCancion`) REFERENCES `songs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+--
+-- Filtros para la tabla `seguidores`
+--
+ALTER TABLE `seguidores`
+  ADD CONSTRAINT `seguidores_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `seguidores_ibfk_2` FOREIGN KEY (`idSeguidor`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
