@@ -13,16 +13,18 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 		 private $email;
          private $password;
          private $rol;
+         private $solicitado;
          private $descripcion;
 
 
-		 public function __construct($id,$user,$name,$email,$password,$rol,$descripcion){
+		 public function __construct($id,$user,$name,$email,$password,$rol,$solicitado,$descripcion){
              $this->id = $id;
              $this->user = $user;
              $this->name = $name;
              $this->email = $email;
              $this->password = $password;
              $this->rol = $rol;
+             $this->solicitado = $solicitado
              $this->descripcion = $descripcion;
 		 }
 
@@ -58,6 +60,11 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
          public function getDescripcion() {
              return $this->descripcion;
          }
+
+         public function getSolicitado() {
+		     return $this->solicitado;
+         }
+
 		 public function toString(){
 			 return[
               "user"         => "".$this->user."",
@@ -65,6 +72,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 			  "email"        => "".$this->email."",
 			  "password"     => "".$this->password."",
               "rol"          => "".$this->rol."",
+              "solicitado"   => "".$this->solicitado."",
               "descripcion"  => "".$this->descripcion.""
 			 ];
 	     }
