@@ -39,6 +39,7 @@ function generaCamposFormulario($datosIniciales) {
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
+    <script type="text/javascript" src="includes/js/seguidores.js"></script>
     <title>Busqueda</title>
 </head>
 <body>

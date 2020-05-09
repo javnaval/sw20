@@ -5,6 +5,7 @@ nav {
     position: fixed;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
 }
 
 nav header{
@@ -82,4 +83,9 @@ nav section span hr{
     margin-left: 5px;
     margin-right: 5px;
     background-color: rgb(163, 163, 163);
+}
+
+nav::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
 }

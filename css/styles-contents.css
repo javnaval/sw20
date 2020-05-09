@@ -6,7 +6,7 @@ body {
 section.contents{
     padding-top: 2%;
     margin-left: 13%;
-    height: 85%;
+    height: 100%;
     width:90%;
     background-color: #363434;
     color: rgb(255,251,251);
@@ -87,7 +87,7 @@ section.contents a.buscar{
     margin: 4%;
 }
 
-section.contents a.buscar:hover{
+section.contents a.buscar:hover {
     text-decoration: none;
     color: transparent;
     cursor: pointer;
@@ -95,4 +95,29 @@ section.contents a.buscar:hover{
 
 a {
     color: #FF307B;
+}
+
+section.elementos a.buscar div{
+    margin: 4%;
+    width: 15em;
+    height: 15em;
+    flex-direction: row;
+    background-color: rgb(44, 44, 44);;
+    color: white;
+    border-radius: 10px;
+}
+
+section.contents a.seguir {
+    color : floralwhite;
+    background-color: #FF307B;
+    text-align: center;
+    padding: 0.75em;
+    border-radius: 1em;
+    font-size: 15px;
+    text-decoration: none;
+    height: fit-content;
+}
+
+section.contents a.seguir:hover {
+    cursor: pointer;
 }

@@ -4,15 +4,13 @@ use es\ucm\fdi\aw\classes\classes\album as album;
 use es\ucm\fdi\aw\classes\classes\song as song;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
-$resultado = array();
-
 assert(is_string($_POST['busqueda']), "Error al introducir los datos");
 $buscar = htmlspecialchars(trim(strip_tags($_POST['busqueda'])));
 $canciones = song::buscar($buscar);
-$artistas = user::buscar($buscar);
+$usuarios = user::buscar($buscar);
 $albumes = album::buscar($buscar);
 
-if ($canciones == null && $artistas == null && $albumes == null) $resultado[] = "<p>No existen resultados para su búsqueda.</p>";
+if ($canciones == null && $usuarios == null && $albumes == null) echo "<p>No existen resultados para su búsqueda.</p>";
 else {
     if ($canciones != null){
         echo "<h1>CANCIONES</h1><section class=\"elementos\">";
@@ -25,13 +23,27 @@ else {
         echo "</section>";
     }
 
-    if ($artistas != null) {
+    if ($usuarios != null) {
         echo "<h1>ARTISTAS</h1><section class=\"elementos\">";
-        foreach ($artistas as $artista) {
-            if (in_array($artista->getRol(), array("usuario","premium","artista"), TRUE)) {
+        foreach ($usuarios as $artista) {
+            if (in_array($artista->getRol(), array("artista"), TRUE)) {
                 echo '<a class="buscar" href="vistaUsuario.php?id='  .$artista->getId() . '"><div>';
                 echo '<h3>' . $artista->getName() . '</h3><p>Descripción: ' . $artista->getDescripcion() . '</p>';
                 echo '</div></a>';
+                echo '<a class="seguir" id="' .$artista->getId(). '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$artista->getId(). '\')" placeholder="Seguir">Seguir</a>';
+            }
+        }
+        echo "</section>";
+    }
+
+    if ($usuarios != null) {
+        echo "<h1>USUARIOS</h1><section class=\"elementos\">";
+        foreach ($usuarios as $usuario) {
+            if (in_array($usuario->getRol(), array("usuario","premium"), TRUE)) {
+                echo '<a class="buscar" href="vistaUsuario.php?id='  .$usuario->getId() . '"><div>';
+                echo '<h3>' . $usuario->getName() . '</h3><p>Descripción: ' . $usuario->getDescripcion() . '</p>';
+                echo '</div></a>';
+                echo '<a class="seguir" id="' .$usuario->getId(). '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$usuario->getId(). '\')" placeholder="Seguir">Seguir</a>';
             }
         }
         echo "</section>";

@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
-    <script src="includes/js/upload.js"></script>
+    <script type="text/javascript" src="includes/js/upload.js"></script>
     <title>Upload</title>
 </head>
 <body>

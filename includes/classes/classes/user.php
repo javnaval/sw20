@@ -135,5 +135,13 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 		     $this->descripcion = $descripcion;
 		     $this->update();
         }
+
+        public function seguir($idSeguir){
+            $this->user = $usuario;
+            $this->email = $email;
+            $this->name = $name;
+            $this->descripcion = $descripcion;
+            $this->update();
+        }
 	}
 ?>

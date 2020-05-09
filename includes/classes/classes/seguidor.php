@@ -28,4 +28,8 @@ class seguidor {
             "idSeguidor"  => "".$this->idSeguidor.""
         ];
     }
+
+    public static function seguir($id, $idSeguir){
+        (new Seguidores())->insert((new self($id,$idSeguir))->toString());
+    }
 }
