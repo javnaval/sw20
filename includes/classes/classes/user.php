@@ -24,7 +24,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
              $this->email = $email;
              $this->password = $password;
              $this->rol = $rol;
-             $this->solicitado = $solicitado
+             $this->solicitado = $solicitado;
              $this->descripcion = $descripcion;
 		 }
 
