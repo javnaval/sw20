@@ -1,6 +1,7 @@
 <?php
 namespace es\ucm\fdi\aw;
 use es\ucm\fdi\aw\classes\classes\album as album;
+use es\ucm\fdi\aw\classes\classes\seguidor as seguidor;
 use es\ucm\fdi\aw\classes\classes\song as song;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
@@ -30,7 +31,8 @@ else {
                 echo '<a class="buscar" href="vistaUsuario.php?id='  .$artista->getId() . '"><div>';
                 echo '<h3>' . $artista->getName() . '</h3><p>Descripción: ' . $artista->getDescripcion() . '</p>';
                 echo '</div></a>';
-                echo '<a class="seguir" id="' .$artista->getId(). '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$artista->getId(). '\')" placeholder="Seguir">Seguir</a>';
+                if (seguidor::siguiendo($_SESSION['idUser'],$artista->getId())) echo '<a class="siguiendo" id="' .$artista->getId(). '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$artista->getId(). '\')" placeholder="Seguir">Siguiendo</a>';
+                else echo '<a class="seguir" id="' .$artista->getId(). '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$artista->getId(). '\')" placeholder="Seguir">Seguir</a>';
             }
         }
         echo "</section>";

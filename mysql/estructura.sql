@@ -227,6 +227,18 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `contiene`
+--
+ALTER TABLE `contiene`
+  ADD PRIMARY KEY( `idSong`, `idPlaylist`);
+
+--
+-- Indices de la tabla `seguidores`
+--
+ALTER TABLE `seguidores`
+  ADD PRIMARY KEY( `idUser`, `idSeguidor`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 

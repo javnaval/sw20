@@ -118,6 +118,17 @@ section.contents a.seguir {
     height: fit-content;
 }
 
-section.contents a.seguir:hover {
+section.contents a.siguiendo {
+    color : #FF307B;
+    background-color: floralwhite;
+    text-align: center;
+    padding: 0.75em;
+    border-radius: 1em;
+    font-size: 15px;
+    text-decoration: none;
+    height: fit-content;
+}
+
+section.contents a.seguir:hover, section.contents a.siguiendo:hover {
     cursor: pointer;
 }

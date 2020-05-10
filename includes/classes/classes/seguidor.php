@@ -2,7 +2,6 @@
 namespace es\ucm\fdi\aw\classes\classes;
 use es\ucm\fdi\aw\classes\databaseClasses\Seguidores as Seguidores;
 
-
 class seguidor {
     public static $className = "seguidor";
 
@@ -29,7 +28,15 @@ class seguidor {
         ];
     }
 
-    public static function seguir($id, $idSeguir){
-        (new Seguidores())->insert((new self($id,$idSeguir))->toString());
+    public static function seguir($id, $idSeguidor){
+        (new Seguidores())->insert((new self($id,$idSeguidor))->toString());
+    }
+
+    public static function dejarSeguir($id, $idSeguidor){
+        (new Seguidores())->where("idUser", "=", $id)->where("idSeguidor", "=", $idSeguidor)->delete();
+    }
+
+    public static function siguiendo($idUser, $idSeguir){
+        return (new Seguidores())->where("idUser", "=", $idSeguir)->where("idSeguidor", "=", $idUser)->get() != null;
     }
 }
