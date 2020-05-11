@@ -45,7 +45,8 @@ else {
                 echo '<a class="buscar" href="vistaUsuario.php?id='  .$usuario->getId() . '"><div>';
                 echo '<h3>' . $usuario->getName() . '</h3><p>Descripción: ' . $usuario->getDescripcion() . '</p>';
                 echo '</div></a>';
-                echo '<a class="seguir" id="' .$usuario->getId(). '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$usuario->getId(). '\')" placeholder="Seguir">Seguir</a>';
+                if (seguidor::siguiendo($_SESSION['idUser'],$usuario->getId())) echo '<a class="siguiendo" id="' .$usuario->getId(). '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$usuario->getId(). '\')" placeholder="Seguir">Siguiendo</a>';
+                else echo '<a class="seguir" id="' .$usuario->getId(). '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$usuario->getId(). '\')" placeholder="Seguir">Seguir</a>';
             }
         }
         echo "</section>";

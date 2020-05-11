@@ -1,5 +1,7 @@
 <?php
 require_once 'includes/config.php';
+
+use es\ucm\fdi\aw\classes\classes\seguidor as seguidor;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
@@ -13,14 +15,14 @@ if (isset($_GET['id']))
 $usuario = user::buscaUsuarioId(filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT));
 else $usuario = user::buscaUsuarioId($_SESSION['idUser']);
 
-
+$id =$usuario->getId();
 $user=$usuario->getUser();
 $userName=$usuario->getName();
 $userEmail=$usuario->getEmail();
 $userRol=$usuario->getRol();
 $userDesc=$usuario->getDescripcion();
 
-function muestra($user, $usName, $cor, $rol, $desc, $form){
+function muestra($id,$user, $usName, $cor, $rol, $desc, $form){
     $html = "<img src= 'images/user.png'>";
     $html .= "<h3> Usuario: ";
     $html .= $user;
@@ -44,6 +46,11 @@ function muestra($user, $usName, $cor, $rol, $desc, $form){
 			if (isset($_GET['editar'])) $html .= $form;
 			else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
 		}
+		else
+        {
+            if (seguidor::siguiendo($_SESSION['idUser'],$id)) echo '<a class="siguiendo" id="' .$id. '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$id. '\')" placeholder="Seguir">Siguiendo</a>';
+            else echo '<a class="seguir" id="' .$id. '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$id. '\')" placeholder="Seguir">Seguir</a>';
+        }
 	}
 	else
 	{
@@ -68,6 +75,7 @@ function sidebar(){
 	<link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
 	<script src="https://kit.fontawesome.com/9d868392d8.js"></script>
+    <script type="text/javascript" src="includes/js/seguidores.js"></script>
     <title>Usuario</title>
 </head>
 <body>
@@ -82,7 +90,7 @@ function sidebar(){
 
     <section id="contents" class="contents">
         <?php
-        echo muestra($user, $userName, $userEmail, $userRol, $userDesc, $htmlform);
+        echo muestra($id,$user, $userName, $userEmail, $userRol, $userDesc, $htmlform);
         ?>
     </section>
 
