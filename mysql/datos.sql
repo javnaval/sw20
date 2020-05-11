@@ -3,7 +3,7 @@
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`, `rol`, `solicitado` `descripcion`) VALUES
+INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`, `rol`, `solicitado` , `descripcion`) VALUES
 (1, 'user', 'user', 'pp@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'usuario', 1, NULL),
 (2, 'user1', 'user1', 'tt@gmail.com', '$2y$10$sWiXnfqwSJfGFkRistH6cePGuxXf1QbFWNxIdilAeIlmNhYGbn/sa', 'usuario', 0, NULL),
 (3, 'premium', 'premium', 'premium@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'premium', 0, NULL),
