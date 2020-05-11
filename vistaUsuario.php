@@ -23,8 +23,8 @@ $userRol=$usuario->getRol();
 $userDesc=$usuario->getDescripcion();
 
 function muestra($id,$user, $usName, $cor, $rol, $desc, $form){
-    $html = "<img src= 'images/user.png'>";
-    $html .= "<h3> Usuario: ";
+    $html = "<div class=\"imagen\"><img src= 'images/user.png'></div>";
+    $html .= "<div class=\"contenido\"><h3> Usuario: ";
     $html .= $user;
 	$html .= "</h3> <h3>";
     $html .= "Nombre: ";
@@ -38,7 +38,7 @@ function muestra($id,$user, $usName, $cor, $rol, $desc, $form){
 	$html .= "</h3> <h3>";
 	$html .= "Descripcion: ";
     $html .= $desc;
-	$html .= " </h3> ";
+	$html .= " </h3>";
 	if (isset($_GET['id']))
 	{
 		if((filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT))==$_SESSION['idUser'])
@@ -57,6 +57,7 @@ function muestra($id,$user, $usName, $cor, $rol, $desc, $form){
 		if (isset($_GET['editar'])) $html .= $form;
 		else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
 	}
+	$html .= "</div>";
     return $html;
 }
 
