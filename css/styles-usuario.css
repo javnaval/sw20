@@ -12,7 +12,7 @@ section.contents img{
 }
 
 section.contents div.contenido {
-	width: 70%;
+	width: auto;
     height: 40%;
 	color: white;
 	position: absolute;
@@ -25,6 +25,8 @@ section.contents {
     margin-bottom: 100px;
     height: calc(100% - 100px);
     width: 100%;
+    display: flex;
+    flex-direction: column;
     position: fixed;
     overflow-y: scroll;
 }
@@ -54,6 +56,7 @@ section.contents a.seguir {
     font-size: 15px;
     text-decoration: none;
     height: fit-content;
+    float: right;
     margin-top: 2%;
     margin-right: 15%;
     margin-left: 75%;
@@ -68,6 +71,7 @@ section.contents a.siguiendo {
     font-size: 15px;
     text-decoration: none;
     height: fit-content;
+    float: right;
     margin-top: 2%;
     margin-right: 15%;
     margin-left: 75%;

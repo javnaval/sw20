@@ -14,14 +14,15 @@ $htmlform = $form->gestiona();
 function muestraInteraccion($id,$form){
     $html = '';
     if ($id != $_SESSION['idUser']) {
+        $html .= "</div>";
         if (seguidor::siguiendo($_SESSION['idUser'], $id)) $html .= '<a class="siguiendo" id="' . $id . '" onclick="seguir(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\');actualizarSeguidores(\'' . $id . '\')" placeholder="Seguir">Siguiendo</a>';
         else $html .= '<a class="seguir" id="' . $id . '" onclick="seguir(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\');actualizarSeguidores(\'' . $id . '\')" placeholder="Seguir">Seguir</a>';
     }
     else {
         if (isset($_GET['editar'])) $html .= $form;
         else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
+        $html .= "</div>";
     }
-	$html .= "</div>";
     return $html;
 }
 
