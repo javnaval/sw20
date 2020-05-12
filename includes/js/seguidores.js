@@ -3,7 +3,7 @@ function seguir(id,idSeguidor){
     if (document.getElementById){
         var s = document.getElementById(idSeguidor);
         if (s.innerText === 'Seguir') {
-            fetch('includes/Seguir.php', {
+            return fetch('includes/Seguir.php', {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
                 body: 'seguir=true&id='+id+'&idSeguir='+idSeguidor
@@ -18,7 +18,7 @@ function seguir(id,idSeguidor){
                 });
         }
         else {
-            fetch('includes/Seguir.php', {
+            return fetch('includes/Seguir.php', {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
                 body: 'seguir=false&id='+id+'&idSeguir='+idSeguidor
@@ -52,4 +52,10 @@ function actualizarSeguidores(id){
                 document.write('Fetch Error :', err);
             });
     }
+}
+
+function gestiona (id,idSeguidor){
+    seguir(id,idSeguidor).then(function() {
+        actualizarSeguidores(idSeguidor);
+    });
 }

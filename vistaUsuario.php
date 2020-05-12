@@ -15,8 +15,8 @@ function muestraInteraccion($id,$form){
     $html = '';
     if ($id != $_SESSION['idUser']) {
         $html .= "</div>";
-        if (seguidor::siguiendo($_SESSION['idUser'], $id)) $html .= '<a class="siguiendo" id="' . $id . '" onclick="seguir(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\');actualizarSeguidores(\'' . $id . '\')" placeholder="Seguir">Siguiendo</a>';
-        else $html .= '<a class="seguir" id="' . $id . '" onclick="seguir(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\');actualizarSeguidores(\'' . $id . '\')" placeholder="Seguir">Seguir</a>';
+        if (seguidor::siguiendo($_SESSION['idUser'], $id)) $html .= '<a class="siguiendo" id="' . $id . '" onclick="gestiona(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\')" placeholder="Seguir">Siguiendo</a>';
+        else $html .= '<a class="seguir" id="' . $id . '" onclick="gestiona(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\')" placeholder="Seguir">Seguir</a>';
     }
     else {
         if (isset($_GET['editar'])) $html .= $form;
