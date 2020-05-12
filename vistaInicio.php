@@ -40,19 +40,6 @@ function mostrarSeguidores($albumNombre){
         $html .= "<a href='vistaUsuario.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
         $html .= "<figcaption>" . $row->getName() . "<figcaption></div>";
     }
-    //Dejar de prueba para probar scroll y añadir volumen se quitara en la entrega final asi como todo lo comentado de las imagenes
-    foreach ($siguiendo as $user) {
-        $row = user::buscaUsuarioId($user['idUser']);
-        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
-        $html .= "<a href='vistaUsuario.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
-        $html .= "<figcaption>" . $row->getName() . "<figcaption></div>";
-    }
-    foreach ($siguiendo as $user) {
-        $row = user::buscaUsuarioId($user['idUser']);
-        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
-        $html .= "<a href='vistaUsuario.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
-        $html .= "<figcaption>" . $row->getName() . "<figcaption></div>";
-    }
     return $html;
 }
 
@@ -94,11 +81,11 @@ function sidebar(){
         </ul>
     </section>
 
-    <footer>
+    <!--<footer>-->
         <?php
         require 'includes/handlers/footer.php';
         ?>
-    </footer>
+    <!--</footer>-->
 
 
 </div>
