@@ -74,11 +74,9 @@ function formulario($idCancion) {
         ?>
     </section>
 
-    <footer>
-        <?php
-        require 'includes/handlers/footer.php';
-        ?>
-    </footer>
+    <?php
+    require 'includes/handlers/footer.php';
+    ?>
 
 </div>
 

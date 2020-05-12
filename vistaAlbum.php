@@ -64,11 +64,9 @@ use es\ucm\fdi\aw\classes\classes\song as song;
         ?>
     </section>
 
-   <footer>
-        <?php
-        require 'includes/handlers/footer.php';
-        ?>
-    </footer>
+    <?php
+    require 'includes/handlers/footer.php';
+    ?>
 
 </div>
   

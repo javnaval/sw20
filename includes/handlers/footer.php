@@ -1,6 +1,5 @@
 <footer id="container-Footer" class="active">
     <section id="left-footer" class="left-footer">
-
     </section>
 
     <section id="center-footer" class="center-footer">
