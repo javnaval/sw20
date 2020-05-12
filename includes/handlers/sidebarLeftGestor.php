@@ -1,6 +1,12 @@
-
+<?php
+use es\ucm\fdi\aw\classes\classes\user as user;
+?>
 <header>
     <span><a class="logo" href="vistaInicio.php"><img src="images/logoR.png"></a></span>
+    <?php
+    $usuario = user::buscaUsuarioId($_SESSION['idUser']);
+    echo '<p>'.$usuario->getUser().'</p>';
+    ?>
     <a class="out" href="includes/procesarLogout.php">Cerrar Sesion</a>
 </header>
 <section>
