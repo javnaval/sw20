@@ -19,6 +19,8 @@
      </ul>
 	 <span><hr></span>
 	 <ul>
-		<li><a class="icon" href="vistaUsuario.php"><figure><i class="fas fa-user"></i><figcaption>Cuenta<figcaption></figure></a></li>
+         <?php
+		    echo '<li><a class="icon" href="vistaUsuario.php?id='.$_SESSION['idUser'].'"><figure><i class="fas fa-user"></i><figcaption>Cuenta<figcaption></figure></a></li>'
+	     ?>
 	 </ul>
  </section>

@@ -27,7 +27,7 @@ else {
     if ($usuarios != null) {
         echo "<h1>ARTISTAS</h1><section class=\"elementos\">";
         foreach ($usuarios as $artista) {
-            if (in_array($artista->getRol(), array("artista"), TRUE)) {
+            if (in_array($artista->getRol(), array("artista"), TRUE) && $artista->getId() != $_SESSION['idUser']) {
                 echo '<a class="buscar" href="vistaUsuario.php?id='  .$artista->getId() . '"><div>';
                 echo '<h3>' . $artista->getName() . '</h3><p>Descripción: ' . $artista->getDescripcion() . '</p>';
                 echo '</div></a>';
@@ -41,7 +41,7 @@ else {
     if ($usuarios != null) {
         echo "<h1>USUARIOS</h1><section class=\"elementos\">";
         foreach ($usuarios as $usuario) {
-            if (in_array($usuario->getRol(), array("usuario","premium"), TRUE)) {
+            if (in_array($usuario->getRol(), array("usuario","premium"), TRUE) && $usuario->getId() != $_SESSION['idUser']) {
                 echo '<a class="buscar" href="vistaUsuario.php?id='  .$usuario->getId() . '"><div>';
                 echo '<h3>' . $usuario->getName() . '</h3><p>Descripción: ' . $usuario->getDescripcion() . '</p>';
                 echo '</div></a>';

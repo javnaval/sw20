@@ -11,58 +11,16 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 $form = new es\ucm\fdi\aw\FormularioEditarPerfil();
 $htmlform = $form->gestiona();
 
-if (isset($_GET['id']))
-$usuario = user::buscaUsuarioId(filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT));
-else $usuario = user::buscaUsuarioId($_SESSION['idUser']);
-
-$id =$usuario->getId();
-$user=$usuario->getUser();
-$userName=$usuario->getName();
-$userEmail=$usuario->getEmail();
-$userRol=$usuario->getRol();
-$userDesc=$usuario->getDescripcion();
-
-function muestra($id,$user, $usName, $cor, $rol, $desc, $form){
-    $html = "<div class=\"imagen\"><img src= 'images/user.png'></div>";
-    $html .= "<div class=\"contenido\"><h3> Usuario: ";
-    $html .= $user;
-	$html .= "</h3> <h3>";
-    $html .= "Nombre: ";
-	$html .= $usName;
-	$html .= "</h3> <h3>";
-	$html .= "Correo electronico: ";
-    $html .= $cor;
-	$html .= "</h3> <h3>";
-    $html .= "Rol: ";
-    $html .= $rol;
-	$html .= "</h3> <h3>";
-	$html .= "Descripcion: ";
-    $html .= $desc;
-	$html .= " </h3><h3 id='seguidores'>";
-	$seguidores = seguidor::buscaSeguidores($id);
-	$siguiendo = seguidor::buscaSiguiendo($id);
-	$html .= "Seguidores: ".count($seguidores);
-    $html .= "</h3> <h3>";
-    $html .= "Siguiendo: ".count($siguiendo);
-    $html .= "</h3>";
-    if (isset($_GET['id']))
-	{
-		if((filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT)) == $_SESSION['idUser'])
-		{
-			if (isset($_GET['editar'])) $html .= $form;
-			else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
-		}
-		else
-        {
-            if (seguidor::siguiendo($_SESSION['idUser'],$id)) echo '<a class="siguiendo" id="' .$id. '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$id. '\');actualizarSeguidores(\'' .$id. '\')" placeholder="Seguir">Siguiendo</a>';
-            else echo '<a class="seguir" id="' .$id. '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$id. '\');actualizarSeguidores(\'' .$id. '\')" placeholder="Seguir">Seguir</a>';
-        }
-	}
-	else
-	{
-		if (isset($_GET['editar'])) $html .= $form;
-		else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
-	}
+function muestraInteraccion($id,$form){
+    $html = '';
+    if ($id != $_SESSION['idUser']) {
+        if (seguidor::siguiendo($_SESSION['idUser'], $id)) $html .= '<a class="siguiendo" id="' . $id . '" onclick="seguir(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\');actualizarSeguidores(\'' . $id . '\')" placeholder="Seguir">Siguiendo</a>';
+        else $html .= '<a class="seguir" id="' . $id . '" onclick="seguir(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\');actualizarSeguidores(\'' . $id . '\')" placeholder="Seguir">Seguir</a>';
+    }
+    else {
+        if (isset($_GET['editar'])) $html .= $form;
+        else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
+    }
 	$html .= "</div>";
     return $html;
 }
@@ -97,7 +55,10 @@ function sidebar(){
 
     <section id="contents" class="contents">
         <?php
-        echo muestra($id,$user, $userName, $userEmail, $userRol, $userDesc, $htmlform);
+        if (isset($_GET['id'])) {
+            include 'includes/Usuario.php';
+            echo muestraInteraccion(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT), $htmlform);
+        }
         ?>
     </section>
 
