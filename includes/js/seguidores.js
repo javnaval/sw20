@@ -34,3 +34,22 @@ function seguir(id,idSeguidor){
         }
     }
 }
+
+function actualizarSeguidores(id){
+    if (document.getElementById) {
+        var seg = document.getElementById('seguidores');
+        fetch('includes/Seguir.php', {
+            method: 'POST',
+            headers: {'Content-Type':'application/x-www-form-urlencoded'},
+            body: 'actualizar='+id
+        })
+            .then(function(response) {
+                response.text().then(function(text){
+                    seg.innerText = 'Seguidores: '+ text;
+                });
+            })
+            .catch(function(err) {
+                document.write('Fetch Error :', err);
+            });
+    }
+}

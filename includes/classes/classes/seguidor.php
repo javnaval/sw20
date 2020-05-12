@@ -28,6 +28,14 @@ class seguidor {
         ];
     }
 
+    public static function buscaSeguidores($id){
+        return (new Seguidores())->where("idUser", "=", $id)->get();
+    }
+
+    public static function buscaSiguiendo($id){
+        return (new Seguidores())->where("idSeguidor", "=", $id)->get();
+    }
+
     public static function seguir($id, $idSeguidor){
         (new Seguidores())->insert((new self($id,$idSeguidor))->toString());
     }

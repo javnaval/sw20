@@ -38,18 +38,24 @@ function muestra($id,$user, $usName, $cor, $rol, $desc, $form){
 	$html .= "</h3> <h3>";
 	$html .= "Descripcion: ";
     $html .= $desc;
-	$html .= " </h3>";
-	if (isset($_GET['id']))
+	$html .= " </h3><h3 id='seguidores'>";
+	$seguidores = seguidor::buscaSeguidores($id);
+	$siguiendo = seguidor::buscaSiguiendo($id);
+	$html .= "Seguidores: ".count($seguidores);
+    $html .= "</h3> <h3>";
+    $html .= "Siguiendo: ".count($siguiendo);
+    $html .= "</h3>";
+    if (isset($_GET['id']))
 	{
-		if((filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT))==$_SESSION['idUser'])
+		if((filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT)) == $_SESSION['idUser'])
 		{
 			if (isset($_GET['editar'])) $html .= $form;
 			else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
 		}
 		else
         {
-            if (seguidor::siguiendo($_SESSION['idUser'],$id)) echo '<a class="siguiendo" id="' .$id. '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$id. '\')" placeholder="Seguir">Siguiendo</a>';
-            else echo '<a class="seguir" id="' .$id. '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$id. '\')" placeholder="Seguir">Seguir</a>';
+            if (seguidor::siguiendo($_SESSION['idUser'],$id)) echo '<a class="siguiendo" id="' .$id. '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$id. '\');actualizarSeguidores(\'' .$id. '\')" placeholder="Seguir">Siguiendo</a>';
+            else echo '<a class="seguir" id="' .$id. '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$id. '\');actualizarSeguidores(\'' .$id. '\')" placeholder="Seguir">Seguir</a>';
         }
 	}
 	else
