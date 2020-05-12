@@ -3,6 +3,7 @@ require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\classes\classes\album as album;
+use es\ucm\fdi\aw\classes\classes\song as song;
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
@@ -26,6 +27,31 @@ function mostrar($albumNombre){
         $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
         $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
         $html .= "<figcaption>" . $row->getTitle() . "<figcaption></div>";
+    }
+    return $html;
+}
+
+function mostrarSeguidores($albumNombre){
+    $html = "";
+    $siguiendo = \es\ucm\fdi\aw\classes\classes\seguidor::buscaSiguiendo($_SESSION['idUser']);
+    foreach ($siguiendo as $user) {
+        $row = user::buscaUsuarioId($user['idUser']);
+        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
+        $html .= "<a href='vistaUsuario.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
+        $html .= "<figcaption>" . $row->getName() . "<figcaption></div>";
+    }
+    //Dejar de prueba para probar scroll y añadir volumen se quitara en la entrega final asi como todo lo comentado de las imagenes
+    foreach ($siguiendo as $user) {
+        $row = user::buscaUsuarioId($user['idUser']);
+        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
+        $html .= "<a href='vistaUsuario.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
+        $html .= "<figcaption>" . $row->getName() . "<figcaption></div>";
+    }
+    foreach ($siguiendo as $user) {
+        $row = user::buscaUsuarioId($user['idUser']);
+        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
+        $html .= "<a href='vistaUsuario.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
+        $html .= "<figcaption>" . $row->getName() . "<figcaption></div>";
     }
     return $html;
 }
@@ -62,7 +88,7 @@ function sidebar(){
         <ul>
             <li><h2>Listas de éxitos</h2><?php echo mostrar("Listas de éxitos"); ?></li>
             <li><h2>Destacado</h2><?php echo mostrar("Destacado"); ?></li>
-            <li><h2>Chill</h2><?php echo mostrar("Chill"); ?></li>
+            <li><h2>Entre sus seguidores</h2><?php echo mostrarSeguidores("Entre sus seguidores"); ?></li>
             <li><h2>De fiesta</h2><?php echo mostrar("De fiesta"); ?></li>
             <li><h2>Relax</h2><?php echo mostrar("Relax"); ?></li>
         </ul>
