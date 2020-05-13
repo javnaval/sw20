@@ -41,4 +41,12 @@
         document.getElementById('container-Footer').className = "";
         document.getElementById('contents').style.height = 'calc(100% - 100px)';
     });
+    menuCircular.addEventListener('mouseover', () => {
+        document.getElementsByClassName('logo-circle').item(0).style.clipPath = 'circle(50px at 50% 50%)';
+        document.getElementById('logo-circle-center').style.width = '100px';
+    });
+    menuCircular.addEventListener('mouseout', () => {
+        document.getElementsByClassName('logo-circle').item(0).style.clipPath = 'circle(20px at 50% 50%)';
+        document.getElementById('logo-circle-center').style.width = '40px';
+    });
 </script>

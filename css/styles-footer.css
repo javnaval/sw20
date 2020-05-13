@@ -19,10 +19,11 @@ footer section.center-footer span.logo-circle{
 }
 footer.active section.center-footer span.logo-circle{
   display: block;
+  clip-path: circle(20px at 50% 50%);
 }
 
 footer.active section.center-footer span.logo-circle img{
-  width: 100px;
+  width: 40px;
 }
 
 footer.active {
