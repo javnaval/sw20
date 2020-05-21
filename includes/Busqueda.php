@@ -41,7 +41,7 @@ else {
     if ($usuarios != null) {
         echo "<h1>USUARIOS</h1><section class=\"elementos\">";
         foreach ($usuarios as $usuario) {
-            if (in_array($usuario->getRol(), array("usuario","premium"), TRUE) && $usuario->getId() != $_SESSION['idUser']) {
+            if (in_array($usuario->getRol(), array("usuario","premium","gestor"), TRUE) && $usuario->getId() != $_SESSION['idUser']) {
                 echo '<a class="buscar" href="vistaUsuario.php?id='  .$usuario->getId() . '"><div>';
                 echo '<h3>' . $usuario->getName() . '</h3><p>Descripción: ' . $usuario->getDescripcion() . '</p>';
                 echo '</div></a>';
