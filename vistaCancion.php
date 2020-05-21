@@ -20,7 +20,7 @@ function muestraCancion($idCancion){
         $html .= "<div class=\"imagen\"><img src='images/Colores.jpg'></div><div class=\"titulo\">";
         $html .= $song->getTitle();
         $html .= '</div><div class="audio"><audio src="server/songs/' . $song->getId() . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio></div>';
-
+		if (user::esGestor($_SESSION['idUser']) || $_SESSION['idUser'] == $song->getIdUser()) $html .= '<a class="activado" id="' . $idCancion . '" onclick="eliminaCancion(\'' . $idCancion . '\')" placeholder="Eliminar">Eliminar</a>';
     } else $html .= 'Se ha eliminado correctamente';
 
     return $html;
@@ -50,6 +50,7 @@ function formulario($idCancion) {
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
+	<script type="text/javascript" src="includes/js/eliminarCancion.js"></script>
     <title>Cancion</title>
 </head>
 <body>
