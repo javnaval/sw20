@@ -36,6 +36,7 @@ class FormularioVerificarArtista extends Form {
             if (is_int($key)) {
                 $user = user::buscaUsuarioId($dato);
                 $user->setRol('artista');
+				$user->setSolicitado(0);
                 $user->update($user);
             }
         }

@@ -47,7 +47,7 @@ fieldset{
     color: rgb(255,251,251);
 }
 
-section.contents a.seguir {
+section.contents a.activar {
     color : floralwhite;
     background-color: #FF307B;
     text-align: center;
@@ -62,7 +62,7 @@ section.contents a.seguir {
     margin-left: 75%;
 }
 
-section.contents a.siguiendo {
+section.contents a.activado {
     color : #FF307B;
     background-color: floralwhite;
     text-align: center;
@@ -77,6 +77,6 @@ section.contents a.siguiendo {
     margin-left: 75%;
 }
 
-section.contents a.seguir:hover, section.contents a.siguiendo:hover {
+section.contents a.activar:hover, section.contents a.activado:hover {
     cursor: pointer;
 }

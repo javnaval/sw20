@@ -15,13 +15,18 @@ function muestraInteraccion($id,$form){
     $html = '';
     if ($id != $_SESSION['idUser']) {
         $html .= "</div>";
-        if (seguidor::siguiendo($_SESSION['idUser'], $id)) $html .= '<a class="siguiendo" id="' . $id . '" onclick="gestiona(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\')" placeholder="Seguir">Siguiendo</a>';
-        else $html .= '<a class="seguir" id="' . $id . '" onclick="gestiona(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\')" placeholder="Seguir">Seguir</a>';
+        if (seguidor::siguiendo($_SESSION['idUser'], $id)) $html .= '<a class="activado" id="' . $id . '" onclick="gestiona(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\')" placeholder="Seguir">Siguiendo</a>';
+        else $html .= '<a class="activar" id="' . $id . '" onclick="gestiona(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\')" placeholder="Seguir">Seguir</a>';
     }
     else {
         if (isset($_GET['editar'])) $html .= $form;
         else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
         $html .= "</div>";
+		if(!user::esArtista($id))
+		{
+			if (user::buscaUsuarioId($_SESSION['idUser'])->getSolicitado() == 1) $html .= '<a class="activado" id="' . $_SESSION['idUser'] . '" onclick="gestionaSolicitud(\'' . $_SESSION['idUser'] . '\')" placeholder="Solicitar">Solicitado</a>';
+			else $html .= '<a class="activar" id="' . $_SESSION['idUser'] . '" onclick="gestionaSolicitud(\'' . $_SESSION['idUser'] . '\')" placeholder="Solicitar">Solicitar Verificacion</a>';
+		}
     }
     return $html;
 }
@@ -42,6 +47,7 @@ function sidebar(){
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
 	<script src="https://kit.fontawesome.com/9d868392d8.js"></script>
     <script type="text/javascript" src="includes/js/seguidores.js"></script>
+	<script type="text/javascript" src="includes/js/solicitarVerificacion.js"></script>
     <title>Usuario</title>
 </head>
 <body>

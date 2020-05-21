@@ -64,6 +64,11 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
          public function getSolicitado() {
 		     return $this->solicitado;
          }
+		 
+		public function setSolicitado($solicitado)
+        {
+            $this->solicitado = $solicitado;
+        }
 
 		 public function toString(){
 			 return[
@@ -106,7 +111,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
         }
 
         public static function usersVerificar(){
-            return (new Users())->where("rol", "=", "usuario")->orWhere("rol", "=", "premium")->get();
+            return (new Users())->where("solicitado", "=", "1")->get();
         }
 		
 		public static function esArtista($id){
@@ -134,6 +139,16 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 		     $this->name = $name;
 		     $this->descripcion = $descripcion;
 		     $this->update();
+        }
+		
+		public function solicitar(){		 
+			 $this->solicitado = 1;
+		     $this->update();
+        }
+		
+		public function dejarSolicitar(){
+			 $this->solicitado = 0;
+			 $this->update();
         }
 
         public function seguir($idSeguir){
