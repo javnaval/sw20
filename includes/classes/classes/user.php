@@ -128,6 +128,11 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 			$rol = self::buscaUsuarioId($id)->getRol();
             return ($rol == "administrador");
         }
+		
+		public static function haSolicitado($id){
+			$solicitado = self::buscaUsuarioId($id)->getSolicitado();
+            return $solicitado;
+        }
 
         public function update(){
             (new Users())->where("id","=",$this->id)->update($this->toString());
@@ -148,6 +153,16 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 		
 		public function dejarSolicitar(){
 			 $this->solicitado = 0;
+			 $this->update();
+        }
+		
+		public function darGestor(){		 
+			 $this->rol = "gestor";
+		     $this->update();
+        }
+		
+		public function quitarGestor(){
+			 $this->rol = "usuario";
 			 $this->update();
         }
 

@@ -17,15 +17,20 @@ function muestraInteraccion($id,$form){
         $html .= "</div>";
         if (seguidor::siguiendo($_SESSION['idUser'], $id)) $html .= '<a class="activado" id="' . $id . '" onclick="gestiona(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\')" placeholder="Seguir">Siguiendo</a>';
         else $html .= '<a class="activar" id="' . $id . '" onclick="gestiona(\'' . $_SESSION['idUser'] . '\',\'' . $id . '\')" placeholder="Seguir">Seguir</a>';
-    }
+		if(user::esAdmin($_SESSION['idUser']))
+		{
+			if (user::esGestor($id) && !user::esAdmin($id)) $html .= '<a class="activado" id="' . $id . '" onclick="gestionaDarGestor(\'' . $id . '\')" placeholder="DarGestor">Es gestor</a>';
+			else $html .= '<a class="activar" id="' . $id . '" onclick="gestionaDarGestor(\'' . $id . '\')" placeholder="DarGestor">Elegir como gestor</a>';
+		}
+   }
     else {
         if (isset($_GET['editar'])) $html .= $form;
         else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
         $html .= "</div>";
 		if(!user::esArtista($id))
 		{
-			if (user::buscaUsuarioId($_SESSION['idUser'])->getSolicitado() == 1) $html .= '<a class="activado" id="' . $_SESSION['idUser'] . '" onclick="gestionaSolicitud(\'' . $_SESSION['idUser'] . '\')" placeholder="Solicitar">Solicitado</a>';
-			else $html .= '<a class="activar" id="' . $_SESSION['idUser'] . '" onclick="gestionaSolicitud(\'' . $_SESSION['idUser'] . '\')" placeholder="Solicitar">Solicitar Verificacion</a>';
+			if (user::haSolicitado($id)) $html .= '<a class="activado" id="' . $id . '" onclick="gestionaSolicitud(\'' . $id . '\')" placeholder="Solicitar">Solicitado</a>';
+			else $html .= '<a class="activar" id="' . $id . '" onclick="gestionaSolicitud(\'' . $id . '\')" placeholder="Solicitar">Solicitar Verificacion</a>';
 		}
     }
     return $html;
@@ -48,6 +53,7 @@ function sidebar(){
 	<script src="https://kit.fontawesome.com/9d868392d8.js"></script>
     <script type="text/javascript" src="includes/js/seguidores.js"></script>
 	<script type="text/javascript" src="includes/js/solicitarVerificacion.js"></script>
+	<script type="text/javascript" src="includes/js/darGestor.js"></script>
     <title>Usuario</title>
 </head>
 <body>
