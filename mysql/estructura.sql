@@ -35,7 +35,8 @@ GRANT ALL PRIVILEGES ON `sounday`.* TO 'sounday'@'%';
 
 USE `sounday`;
 
-
+DROP TABLE IF EXISTS `comentarios`;
+DROP TABLE IF EXISTS `seguidores`;
 DROP TABLE IF EXISTS `contiene`;
 DROP TABLE IF EXISTS `songs`;
 DROP TABLE IF EXISTS `playlists`;
