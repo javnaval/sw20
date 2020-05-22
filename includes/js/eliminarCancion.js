@@ -16,4 +16,5 @@ function eliminarCancion(id){
 function eliminaCancion(id){
     eliminarCancion(id);
 	location.href="vistaInicio.php";
+	alert("Se ha eliminado correctamente");
 }

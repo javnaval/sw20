@@ -16,27 +16,11 @@ function sidebar(){
 function muestraCancion($idCancion){
     $html = "";
     $song = song::buscaSongId($idCancion);
-    if ($song !== null) {
-        $html .= "<div class=\"imagen\"><img src='images/Colores.jpg'></div><div class=\"titulo\">";
-        $html .= $song->getTitle();
-        $html .= '</div><div class="audio"><audio src="server/songs/' . $song->getId() . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio></div>';
-		if (user::esGestor($_SESSION['idUser']) || $_SESSION['idUser'] == $song->getIdUser()) $html .= '<a class="activado" id="' . $idCancion . '" onclick="eliminaCancion(\'' . $idCancion . '\')" placeholder="Eliminar">Eliminar</a>';
-    } else $html .= 'Se ha eliminado correctamente';
+    $html .= "<div class=\"imagen\"><img src='images/Colores.jpg'></div><div class=\"titulo\">";
+    $html .= $song->getTitle();
+    $html .= '</div><div class="audio"><audio src="server/songs/' . $song->getId() . '.mp3" type="audio/mpeg" controls>Tu navegador no soporta el audio</audio></div>';
+	if (user::esGestor($_SESSION['idUser']) || $_SESSION['idUser'] == $song->getIdUser()) $html .= '<a class="activado" id="' . $idCancion . '" onclick="eliminaCancion(\'' . $idCancion . '\')" placeholder="Eliminar">Eliminar</a>';
 
-    return $html;
-}
-
-function formulario($idCancion) {
-    $html = '';
-    $song = song::buscaSongId($idCancion);
-    if (!isset($_POST['Eliminar'])) {
-        if ($_SESSION['idUser'] == $song->getIdUser()) {
-            $html .= '<form method="POST" action="vistaCancion.php?id='.$song->getId().'">';
-            $html .= '<input type = "submit" name="Eliminar" value = "Eliminar" >';
-            $html .= '</form>';
-        }
-    }
-    else $song->eliminar();
     return $html;
 }
 
@@ -63,15 +47,10 @@ function formulario($idCancion) {
     </nav>
 
     <section id="contents" class="contents">
-	    <header>
-            <?php
-		    $idCancion=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
-            echo formulario($idCancion);
-            ?>
-        </header>
 
         <?php
-        echo muestraCancion($idCancion);
+			$idCancion=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
+			echo muestraCancion($idCancion);
         ?>
     </section>
 
