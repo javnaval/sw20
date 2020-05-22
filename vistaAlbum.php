@@ -11,10 +11,14 @@ use es\ucm\fdi\aw\classes\classes\song as song;
         $songs = song::buscaSongsIdAlbum($_GET["id"]);
 
         $listaCanciones = '';
-        foreach ($songs as $or) {
-            $listaCanciones .= '<p><a href="vistaCancion.php?id='. $or->getId().'" >'. $or->getTitle().' </a></p>';
-        }
+		if($songs != null)
+		{
+			foreach ($songs as $or) {
+				$listaCanciones .= '<p><a href="vistaCancion.php?id='. $or->getId().'" >'. $or->getTitle().' </a></p>';
+			}
+		}
 		echo "</div>";
+		
     }
     else {
         header("Location: index.php");
