@@ -34,12 +34,10 @@
     const menuNormal = document.getElementById('logo-down-center');
     menuNormal.addEventListener('click', () => {
         document.getElementById('container-Footer').className = "active";
-        document.getElementById('contents').style.height = '100%';
     });
     const menuCircular = document.getElementById('logo-circle-center');
     menuCircular.addEventListener('click', () => {
         document.getElementById('container-Footer').className = "";
-        document.getElementById('contents').style.height = 'calc(100% - 100px)';
     });
     menuCircular.addEventListener('mouseover', () => {
         document.getElementsByClassName('logo-circle').item(0).style.clipPath = 'circle(50px at 50% 50%)';
