@@ -14,10 +14,11 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
          private $password;
          private $rol;
          private $solicitado;
+		 private $bloqueado;
          private $descripcion;
 
 
-		 public function __construct($id,$user,$name,$email,$password,$rol,$solicitado,$descripcion){
+		 public function __construct($id,$user,$name,$email,$password,$rol,$solicitado,$bloqueado,$descripcion){
              $this->id = $id;
              $this->user = $user;
              $this->name = $name;
@@ -25,6 +26,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
              $this->password = $password;
              $this->rol = $rol;
              $this->solicitado = $solicitado;
+			 $this->bloqueado = $bloqueado;
              $this->descripcion = $descripcion;
 		 }
 
@@ -69,6 +71,10 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
         {
             $this->solicitado = $solicitado;
         }
+		
+		public function getBloqueado() {
+		     return $this->bloqueado;
+        }
 
 		 public function toString(){
 			 return[
@@ -78,6 +84,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 			  "password"     => "".$this->password."",
               "rol"          => "".$this->rol."",
               "solicitado"   => "".$this->solicitado."",
+			  "bloqueado"   => "".$this->bloqueado."",
               "descripcion"  => "".$this->descripcion.""
 			 ];
 	     }

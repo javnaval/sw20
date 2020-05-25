@@ -11,6 +11,7 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 			 "password"    => "NOT NULL",
              "rol"         => "NOT NULL",
              "solicitado"  => "NOT NULL",
+			 "bloqueado"  => "NOT NULL",
              "descripcion" => "NOT NULL"
 		 ];
 		 public function __construct(){
@@ -20,7 +21,7 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 			$arrayPDO = parent::get();
 			$array = null;
 			foreach($arrayPDO as $row){
-				$array[] = new user($row["id"],$row["user"],$row["name"],$row["email"],$row["password"],$row["rol"],$row['solicitado'],$row["descripcion"]);
+				$array[] = new user($row["id"],$row["user"],$row["name"],$row["email"],$row["password"],$row["rol"],$row['solicitado'],$row['bloqueado'],$row["descripcion"]);
 			}
 		   return $array;
 		 }
