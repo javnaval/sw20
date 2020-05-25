@@ -108,6 +108,11 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
             if ($user != null && $user->compruebaPassword($password)) return $user;
             else return false;
         }
+		
+		public static function estaBloqueado($id){
+            $user = self::buscaUsuarioId($id);
+			return $user->getBloqueado();
+        }
 
         public static function crea($user, $email, $contrasenia){
             return (new Users())->insert((new self(null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT), "usuario", null))->toString());
@@ -160,6 +165,16 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 		
 		public function dejarSolicitar(){
 			 $this->solicitado = 0;
+			 $this->update();
+        }
+		
+		public function bloquear(){		 
+			 $this->bloqueado = 1;
+		     $this->update();
+        }
+		
+		public function desbloquear(){
+			 $this->bloqueado = 0;
 			 $this->update();
         }
 		

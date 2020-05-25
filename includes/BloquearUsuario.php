@@ -7,14 +7,14 @@ use http\Message\Body;
 require_once 'config.php';
 
 $id = htmlspecialchars(trim(strip_tags($_POST['id'])));
-$solicitar = htmlspecialchars(trim(strip_tags($_POST['solicitar'])));
+$bloquearUsuario = htmlspecialchars(trim(strip_tags($_POST['bloquearUsuario'])));
 $user = user::buscaUsuarioId($id);
-if ($solicitar == 'true')
+if ($bloquearUsuario == 'true')
 {
-	$user->solicitar();
+	$user->bloquear();
 }
 
 else 
 {
-	$user->dejarSolicitar();
+	$user->desbloquear();
 }

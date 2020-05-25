@@ -8,14 +8,13 @@ require_once 'config.php';
 
 $id = htmlspecialchars(trim(strip_tags($_POST['id'])));
 $darGestor = htmlspecialchars(trim(strip_tags($_POST['darGestor'])));
+$user = user::buscaUsuarioId($id);
 if ($darGestor == 'true')
 {
-	$user = user::buscaUsuarioId($id);
 	$user->darGestor();
 }
 
 else 
 {
-	$user = user::buscaUsuarioId($id);
 	$user->quitarGestor();
 }
