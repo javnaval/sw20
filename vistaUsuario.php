@@ -19,12 +19,6 @@ function muestraInteraccion($id,$form){
 		{
 			if (user::esGestor($id) && !user::esAdmin($id)) $html .= '<a class="activado" id="' . $id . '" onclick="gestionaDarGestor(\'' . $id . '\')" placeholder="DarGestor">Es gestor</a>';
 			else $html .= '<a class="activar" id="' . $id . '" onclick="gestionaDarGestor(\'' . $id . '\')" placeholder="DarGestor">Elegir como gestor</a>';
-			
-			if(!user::esGestor($id))
-			{
-				if (user::estaBloqueado($id)) $html .= '<a class="activado" id="bloqueado" onclick="gestionaBloquearUsuario(\'' . $id . '\')" placeholder="BloquearUsuario">Bloqueado</a>';
-				else $html .= '<a class="activar" id="bloqueado" onclick="gestionaBloquearUsuario(\'' . $id . '\')" placeholder="BloquearUsuario">Bloquear usuario</a>';
-			}
 		}
 		if(user::esGestor($_SESSION['idUser']))
 		{
