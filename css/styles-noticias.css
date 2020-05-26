@@ -111,3 +111,21 @@ section.contents::-webkit-scrollbar-thumb {
     background-color: white;
 
 }
+
+section.contents a.activar {
+    color : floralwhite;
+    background-color: #FF307B;
+    text-align: center;
+    padding: 0.75em;
+    border-radius: 1em;
+    font-size: 15px;
+    text-decoration: none;
+    height: fit-content;
+    float: right;
+    margin-top: 2%;
+    margin-left: 85%;
+}
+
+section.contents a.activar:hover{
+    cursor: pointer;
+}

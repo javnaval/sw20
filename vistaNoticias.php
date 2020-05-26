@@ -40,6 +40,7 @@ function sidebar(){
     </nav>
 
     <section id="contents" class="contents">
+		<a class="activar" href="vistaCrearNoticia.php">Crear noticia</a>
         <?php
         if (!gestor()) require 'includes/Noticias.php';
 		else echo $html;
