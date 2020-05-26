@@ -75,7 +75,7 @@ function sidebar(){
         <ul>
             <li><h2>Listas de éxitos</h2><?php echo mostrar("Listas de éxitos"); ?></li>
             <li><h2>Destacado</h2><?php echo mostrar("Destacado"); ?></li>
-            <li><h2>Entre sus seguidores</h2><?php echo mostrarSeguidores("Entre sus seguidores"); ?></li>
+            <li><h2>Entre tus seguidores</h2><?php echo mostrarSeguidores("Entre tus seguidores"); ?></li>
             <li><h2>De fiesta</h2><?php echo mostrar("De fiesta"); ?></li>
             <li><h2>Relax</h2><?php echo mostrar("Relax"); ?></li>
         </ul>

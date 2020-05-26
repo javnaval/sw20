@@ -28,7 +28,7 @@ section.contents h1
 section.contents div
 {
 	margin: 0;
-	margin-bottom: 2%;
+	margin-bottom: 4%;
 }
 
 section.contents section.noticia {
@@ -36,6 +36,7 @@ section.contents section.noticia {
     grid-template-columns: 5% 18% 77%;
     height: 15em;
     margin: 5%;
+    margin-bottom: 10%;
 }
 
 section.contents section.noticia div.imagen {
