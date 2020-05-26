@@ -10,6 +10,36 @@ function sidebar(){
     if (user::esGestor($_SESSION['idUser'])) require 'includes/handlers/sidebarLeftGestor.php';
     else require 'includes/handlers/sidebarLeft.php';
 }
+
+function formulario() {
+    $form = new es\ucm\fdi\aw\FormularioPlaylist();
+    $html = $form->gestiona();
+    $html = '';
+    if (!isset($_POST['Crear Playlist'])) {
+            $html .= '<form method="POST" action="VistaCreaPlaylist.php">';
+            $html .= '<input type = "submit" name="Crear Playlist" value = "Crear Playlist" >';
+            $html .= '</form>';
+    }
+    //else $song->eliminar();
+	else echo "sgd";
+    return $html;
+}
+function anadirAplaylist() {
+  $html = '';
+    //$song = song::buscaSongId($idCancion);
+    if (!isset($_POST['Anade a Playlist'])) {
+       // if ($_SESSION['idUser'] == $song->getIdUser()) {
+            $html .= '<form method="POST" action="includes/FormularioPlaylist.php">';
+            $html .= '<input type = "submit" name="Anade a Playlist" value = "AnadirAplaylist " >';
+            $html .= '</form>';
+        //}
+    }
+    //else $song->eliminar();
+	else echo "sgd";
+    return $html;
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,6 +63,11 @@ function sidebar(){
     </nav>
 
     <section id="contents" class="contents">
+		    <header>
+            <?php
+            echo formulario();
+			//echo AnadirAplaylist();
+            ?>
         <?php
         require 'includes/Biblioteca.php';
         ?>

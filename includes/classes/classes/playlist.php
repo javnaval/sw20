@@ -33,13 +33,21 @@ use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
 			   "title"        => "".$this->title.""
 			];
 		 }
-
+		public static function crea($idUser, $title){
+            return (new Playlists())->insert((new self(null,$idUser, $title))->toString());
+		}
+		
+		
         public static function playlistsUser($id){
             return (new Playlists())->where("idUser", "=", $id)->get();
         }
 
         public static function buscaPlaylistId($id){
             $playlist = (new Playlists())->where("id", "=", $id)->get();
+            return $playlist[0];
+        }
+		public static function buscaTitlePlaylist($title){
+            $playlist = (new Playlists())->where("title", "=", $title)->get();
             return $playlist[0];
         }
 	}
