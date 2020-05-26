@@ -9,6 +9,7 @@ $noticias = noticia::buscar($_SESSION['idUser']);
 
 if ($noticias == null) echo "<p>Aún no tenemos noticias que mostrarle.</p>";
 else{
+if(user::esArtista($_SESSION['idUser'])) echo '<a class="activar" href="vistaCrearNoticia.php">Crear noticia</a>';
 echo "<h1>NOTICIAS</h1><div class='not'>";
 		foreach ($noticias as $noticia) {
 			echo '<div class="imagen">';

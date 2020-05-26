@@ -3,7 +3,7 @@ namespace es\ucm\fdi\aw;
 use es\ucm\fdi\aw\classes\classes\noticia as noticia;
 use es\ucm\fdi\aw\Form as Form;
 
-class FormularioUpload extends Form
+class FormularioCrearNoticia extends Form
 {
     private $opciones = array();
 
@@ -23,11 +23,11 @@ EOF;
 
 		$html .= "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" required></p>";
 
-		$html .= "<p><input type=\"text\" name=\"texto\" placeholder=\"Texto de la noticia\" required></p>";
+		$html .= "<p><input type=\"text\" id=\"campotexto\" name=\"texto\" placeholder=\"Texto de la noticia\" required></p>";
 
-        $html .= '<p><input type="file" name="fileImage" accept="image/png, image/jpeg" value="Elija una imagen" required></p>';
+        $html .= '<p><input type="file" name="fileImage" value="Elija una imagen" required></p>';
 
-        $html .= '<p><input type="submit" name="Subir" value="Subir"></p>
+        $html .= '<p><input type="submit" name="Subir" onClick="validar(campotexto.value);" value="Subir"></p>
                 </fieldset>';
         return $html;
     }
@@ -38,35 +38,25 @@ EOF;
 
         assert(is_string($datos['titulo']));
         $title = htmlspecialchars(trim(strip_tags($datos['titulo'])));
-        if (isset($datos['tituloAlbum'])) {
-            assert(is_string($datos['tituloAlbum']));
-            $titleAlbum = htmlspecialchars(trim(strip_tags($datos['tituloAlbum'])));
-            $date = htmlspecialchars(trim(strip_tags($datos['dateAlbum'])));
-        }
 
-        if ($_FILES['fileAudio']['error'] == UPLOAD_ERR_OK) {
+        assert(is_string($datos['texto']));
+        $texto = htmlspecialchars(trim(strip_tags($datos['texto'])));		
+
+        if ($_FILES['fileImage']['error'] == UPLOAD_ERR_OK) {
             $finfo = new \finfo(FILEINFO_MIME_TYPE);
-            $ext = array_search($finfo->file($_FILES['fileAudio']['tmp_name']),
+            $ext = array_search($finfo->file($_FILES['fileImage']['tmp_name']),
                 array(
-                    'mp3' => 'audio/mpeg',
-                    'mp4' => 'audio/mp4',
-                    'ogg' => 'audio/ogg',
+                    'jpeg' => 'image/jpeg',
+                    'jpg' => 'image/jpg',
+                    'png' => 'image/png',
                 ),
                 true
             );
-            if (!$ext || $_FILES['fileAudio']['size'] > 10000000) {
+            if (!$ext || $_FILES['fileImage']['size'] > 10000000) {
                 $resultado[] = "La extensión o el tamaño de los archivos no es correcta.";
             } else {
-                if ($datos['type'] == 'single') {
-                    $idAlbum = album::crea($_SESSION['idUser'], $title, date('Y-m-d'));
-                    $idSong = song::crea($title, $_SESSION['idUser'], $idAlbum);
-                } else {
-                    if (isset($datos['tituloAlbum'])) {
-                        $idAlbum = album::crea($_SESSION['idUser'], $titleAlbum, $date);
-                        $idSong = song::crea($title, $_SESSION['idUser'], $idAlbum);
-                    } else $idSong = song::crea($title, $_SESSION['idUser'], $datos['album']);
-                }
-                if (move_uploaded_file($_FILES['fileAudio']['tmp_name'], "server/songs/" . $idSong . "." . $ext)) {
+                $idNoticia = noticia::crea($title, $_SESSION['idUser'], $texto);
+                if (move_uploaded_file($_FILES['fileImage']['tmp_name'], "server/noticias/images/" . $idNoticia . "." . $ext)) {
                     $resultado[] = "El archivo ha sido cargado correctamente.";
                 } else {
                     $resultado[] = "Ocurrió algún error al subir el fichero. No pudo guardarse.";
@@ -78,5 +68,3 @@ EOF;
     }
 
 }
-
-    //javascript com

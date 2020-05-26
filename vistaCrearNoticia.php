@@ -6,29 +6,24 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
-$form = new es\ucm\fdi\aw\FormularioAprobarNoticia();
-$html = $form->gestiona();
-
-function gestor(){ return user::esGestor($_SESSION['idUser']); }
-
-
-function sidebar(){
-    if (user::esGestor($_SESSION['idUser'])) require 'includes/handlers/sidebarLeftGestor.php';
-    else require 'includes/handlers/sidebarLeft.php';
+if (!user::esArtista($_SESSION['idUser'])){
+    header("Location: vistaInicio.php");
 }
 
+$form = new es\ucm\fdi\aw\FormularioCrearNoticia();
+$html = $form->gestiona();
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
+    <!DOCTYPE html>
+    <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/styles-noticias.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-crear-noticia.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
-    <title>Noticias</title>
+    <title>Crear noticia</title>
 </head>
 <body>
 
@@ -36,14 +31,13 @@ function sidebar(){
 
     <nav>
         <?php
-        sidebar();
+        require 'includes/handlers/sidebarLeft.php';
         ?>
     </nav>
 
     <section id="contents" class="contents">
         <?php
-        if (!gestor()) require 'includes/Noticias.php';
-		else echo $html;
+        echo $html;
         ?>
     </section>
 
@@ -52,6 +46,16 @@ function sidebar(){
     ?>
 
 </div>
+<script>
+function validar(texto){
 
+	if (texto.length <1){
+		alert('El texto de la noticia es muy corto');
+	}
+	else if (texto.length >1000){
+		alert('El texto de la noticia es muy largo');
+	}
+}
+</script>
 </body>
 </html>
