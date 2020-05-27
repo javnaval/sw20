@@ -35,7 +35,7 @@ section.contents form {
     width: 100%;
 }
 
-section.contents input.campotexto {
+section.contents textarea {
     width: 100%;
 	height: 15em;
 }

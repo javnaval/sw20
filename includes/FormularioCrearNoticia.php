@@ -23,7 +23,7 @@ EOF;
 
 		$html .= "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" required></p>";
 
-		$html .= "<p><input type=\"text\" id=\"campotexto\" name=\"texto\" placeholder=\"Texto de la noticia\" required></p>";
+		$html .= "<p><textarea name=\"texto\" rows=\"10\" cols=\"40\">Texto de la noticia</textarea></p>";
 
         $html .= '<p><input type="file" name="fileImage" value="Elija una imagen" required></p>';
 
