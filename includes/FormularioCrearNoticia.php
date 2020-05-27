@@ -56,7 +56,7 @@ EOF;
                 $resultado[] = "La extensión o el tamaño de los archivos no es correcta.";
             } else {
                 $idNoticia = noticia::crea($title, $_SESSION['idUser'], $texto);
-                if (move_uploaded_file($_FILES['fileImage']['tmp_name'], "server/noticias/images/" . $idNoticia . "." . $ext)) {
+                if (move_uploaded_file($_FILES['fileImage']['tmp_name'], "server/noticias/images/" . $idNoticia . ".jpg")) {
                     $resultado[] = "El archivo ha sido cargado correctamente.";
                 } else {
                     $resultado[] = "Ocurrió algún error al subir el fichero. No pudo guardarse.";
