@@ -47,14 +47,15 @@ EOF;
         $contrasenia = htmlspecialchars(trim(strip_tags($datos['pass'])));
 
         $user = user::login($usuario,$contrasenia);
-        if ($user->getBloqueado())
-		{
-			$resultado[] = "<p id='error'>Usuario bloqueado.</p>";
-		}
-        else if ($user) {
-            session_regenerate_id(true);
-            Application::getSingleton()->login($user->getId());
-            $resultado = "vistaInicio.php";
+        if ($user) {
+            if ($user->getBloqueado()) {
+                $resultado[] = "<p id='error'>Usuario bloqueado.</p>";
+            }
+            else {
+                session_regenerate_id(true);
+                Application::getSingleton()->login($user->getId());
+                $resultado = "vistaInicio.php";
+            }
         }
         else {
             $resultado[] = "<p id='error'>Usuario o contraseña incorrecto.</p>";
