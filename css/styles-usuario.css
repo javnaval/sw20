@@ -20,6 +20,15 @@ section.contents div.contenido {
 	margin-top: 5%;
 }
 
+h3 a {
+    color: rgb(255,251,251);
+    text-decoration: none;
+}
+
+h3 a:hover {
+    text-decoration: underline;
+}
+
 section.contents {
     margin-left: 100px;
     margin-bottom: 100px;

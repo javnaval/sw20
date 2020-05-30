@@ -1,0 +1,102 @@
+body {
+    background-color: #363434;
+    margin: 0;
+}
+
+section.contents{
+
+    margin-left: 11%;
+    height: 100%;
+    width:89%;
+    background-color: #363434;
+    color: rgb(255, 251, 251);
+    position: fixed;
+    overflow-y: scroll;
+}
+
+section.contents h1
+{
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+section.contents div
+{
+    margin: 0;
+    margin-bottom: 4%;
+}
+
+section.contents a{
+    text-decoration: none;
+    color: floralwhite;
+}
+
+section.contents a div.seguidor {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 70%;
+    height: 5em;
+    margin: 5%;
+    margin-bottom: 10%;
+    background-color: rgb(44, 44, 44);
+    text-decoration: none;
+}
+
+section.contents div.seguidor img {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    height: inherit;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+section.contents div.seguidor p {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    height: 15em;
+    color: floralwhite;
+    text-decoration: none;
+}
+
+section.contents::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 7px;
+    background-color: rgb(0, 0, 0);
+
+}
+
+section.contents::-webkit-scrollbar-thumb {
+    width: 7px;
+    border-radius: 7px;
+    background-color: white;
+
+}
+
+section.contents a.seguir {
+    color : floralwhite;
+    background-color: #FF307B;
+    text-align: center;
+    padding: 0.75em;
+    border-radius: 1em;
+    font-size: 15px;
+    text-decoration: none;
+    height: fit-content;
+}
+
+section.contents a.siguiendo {
+    color : #FF307B;
+    background-color: floralwhite;
+    text-align: center;
+    padding: 0.75em;
+    border-radius: 1em;
+    font-size: 15px;
+    text-decoration: none;
+    height: fit-content;
+}
+
+section.contents a.seguir:hover, section.contents a.siguiendo:hover {
+    cursor: pointer;
+}

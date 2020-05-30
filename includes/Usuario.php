@@ -30,7 +30,17 @@ echo $usuario->getDescripcion();
 echo " </h3><h3 id='seguidores'>";
 $seguidores = seguidor::buscaSeguidores($usuario->getId());
 $siguiendo = seguidor::buscaSiguiendo($usuario->getId());
-echo "Seguidores: ".count($seguidores);
+if (($cont = count($seguidores)) == 0) {
+    echo "Seguidores: ".$cont;
+}
+else {
+    echo "<a href='vistaSeguidores.php?id=".$usuario->getId()."&seg=true'>Seguidores</a>: ".$cont;
+}
 echo "</h3> <h3>";
-echo "Siguiendo: ".count($siguiendo);
+if (($cont2 = count($siguiendo)) == 0) {
+    echo "Siguiendo: ".$cont2;
+}
+else {
+    echo "<a href='vistaSeguidores.php?id=".$usuario->getId()."&seg=false'>Siguiendo</a>: ".$cont2;
+}
 echo "</h3>";
