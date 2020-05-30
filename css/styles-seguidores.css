@@ -73,6 +73,13 @@ section.contents div.seguidor p.ur {
     margin-left: 2em;
 }
 
+section.contents div.seguidor p.tu {
+    color: floralwhite;
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 1.5em;
+}
+
 section.contents::-webkit-scrollbar {
     width: 7px;
     border-radius: 7px;

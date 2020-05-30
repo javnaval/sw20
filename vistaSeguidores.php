@@ -18,8 +18,11 @@ function muestra($id, $seg){
             echo "<a href='vistaUsuario.php?id=".$user->getId()."' class='seg'><img src='server/users/images/". $user->getId() .".png'>";
             echo '<p class="ur">' . $user->getUser() . '</p><p>' . $user->getName() . '</p>';
             echo '</a>';
-            if (seguidor::siguiendo($id,$user->getId())) echo '<a class="siguiendo" id="' .$user->getId(). '" onclick="seguir(\'' .$id. '\',\'' .$user->getId(). '\')" placeholder="Seguir">Siguiendo</a>';
-            else echo '<a class="seguir" id="' .$user->getId(). '" onclick="seguir(\'' .$id. '\',\'' .$user->getId(). '\')" placeholder="Seguir">Seguir</a>';
+            if ($user->getId() == $_SESSION['idUser']) echo "<p class='tu'>Tu</p>";
+            else {
+                if (seguidor::siguiendo($_SESSION['idUser'], $user->getId())) echo '<a class="siguiendo" id="' . $user->getId() . '" onclick="seguir(\'' . $_SESSION['idUser'] . '\',\'' . $user->getId() . '\')" placeholder="Seguir">Siguiendo</a>';
+                else echo '<a class="seguir" id="' . $user->getId() . '" onclick="seguir(\'' . $_SESSION['idUser'] . '\',\'' . $user->getId() . '\')" placeholder="Seguir">Seguir</a>';
+            }
             echo '</div>';
         }
     }
@@ -31,7 +34,11 @@ function muestra($id, $seg){
             echo "<a href='vistaUsuario.php?id=".$user->getId()."' class='seg'><img src='server/users/images/". $user->getId() .".png'>";
             echo '<p class="ur">' . $user->getUser() . '</p><p>' . $user->getName() . '</p>';
             echo '</a>';
-            echo '<a class="siguiendo" id="' .$user->getId(). '" onclick="seguir(\'' .$id. '\',\'' .$user->getId(). '\')" placeholder="Seguir">Siguiendo</a>';
+            if ($user->getId() == $_SESSION['idUser']) echo "<p class='tu'>Tu</p>";
+            else {
+                if (seguidor::siguiendo($_SESSION['idUser'], $user->getId())) echo '<a class="siguiendo" id="' . $user->getId() . '" onclick="seguir(\'' . $_SESSION['idUser'] . '\',\'' . $user->getId() . '\')" placeholder="Seguir">Siguiendo</a>';
+                else echo '<a class="seguir" id="' . $user->getId() . '" onclick="seguir(\'' . $_SESSION['idUser'] . '\',\'' . $user->getId() . '\')" placeholder="Seguir">Seguir</a>';
+            }
             echo '</div>';
         }
     }
