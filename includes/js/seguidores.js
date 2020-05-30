@@ -45,7 +45,10 @@ function actualizarSeguidores(id){
         })
             .then(function(response) {
                 response.text().then(function(text){
-                    seg.innerText = 'Seguidores: '+ text;
+                    if (text === '0') seg.innerText = "Seguidores: " + text;
+                    else {
+                        seg.innerHTML = "<a href='vistaSeguidores.php?id=" + id + "&seg=true'>Seguidores</a>: " + text;
+                    }
                 });
             })
             .catch(function(err) {
