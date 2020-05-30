@@ -14,23 +14,25 @@ function muestra($id, $seg){
         $users = seguidor::buscaSeguidores($id);
         foreach ($users as $user) {
             $user = user::buscaUsuarioId($user['idSeguidor']);
-            echo '<a href="vistaUsuario.php?id='.$user->getId().'"><div class="seguidor">';
-            echo "<img src='server/users/images/". $user->getId() .".png'>";
-            echo '<p>' . $user->getUser() . ' ' . $user->getName() . '</p>';
+            echo '<div class="seguidor">';
+            echo "<a href='vistaUsuario.php?id=".$user->getId()."' class='seg'><img src='server/users/images/". $user->getId() .".png'>";
+            echo '<p class="ur">' . $user->getUser() . '</p><p>' . $user->getName() . '</p>';
+            echo '</a>';
             if (seguidor::siguiendo($id,$user->getId())) echo '<a class="siguiendo" id="' .$user->getId(). '" onclick="seguir(\'' .$id. '\',\'' .$user->getId(). '\')" placeholder="Seguir">Siguiendo</a>';
             else echo '<a class="seguir" id="' .$user->getId(). '" onclick="seguir(\'' .$id. '\',\'' .$user->getId(). '\')" placeholder="Seguir">Seguir</a>';
-            echo '</div></a>';
+            echo '</div>';
         }
     }
     else {
         $users = seguidor::buscaSiguiendo($id);
         foreach ($users as $user) {
             $user = user::buscaUsuarioId($user['idUser']);
-            echo '<a href="vistaUsuario.php?id='.$user->getId().'"><div class="seguidor">';
-            echo "<img src='server/users/images/". $user->getId() .".png'>";
-            echo '<p>' . $user->getUser() . ' ' . $user->getName() . '</p>';
+            echo '<div class="seguidor">';
+            echo "<a href='vistaUsuario.php?id=".$user->getId()."' class='seg'><img src='server/users/images/". $user->getId() .".png'>";
+            echo '<p class="ur">' . $user->getUser() . '</p><p>' . $user->getName() . '</p>';
+            echo '</a>';
             echo '<a class="siguiendo" id="' .$user->getId(). '" onclick="seguir(\'' .$id. '\',\'' .$user->getId(). '\')" placeholder="Seguir">Siguiendo</a>';
-            echo '</div></a>';
+            echo '</div>';
         }
     }
 }
