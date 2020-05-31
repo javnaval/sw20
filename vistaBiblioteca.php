@@ -11,10 +11,11 @@ function sidebar(){
     else require 'includes/handlers/sidebarLeft.php';
 }
 
-function formulario() {
-    $form = new es\ucm\fdi\aw\FormularioPlaylist();
-    $html = $form->gestiona();
-    $html = '';
+$form = new es\ucm\fdi\aw\FormularioPlaylist();
+$html = $form->gestiona();
+
+function formulario($form) {
+    $html = $form;
     if (!isset($_POST['Crear Playlist'])) {
             $html .= '<form method="POST" action="VistaCreaPlaylist.php">';
             $html .= '<input type = "submit" name="Crear Playlist" value = "Crear Playlist" >';
@@ -65,7 +66,7 @@ function anadirAplaylist() {
     <section id="contents" class="contents">
 		    <header>
             <?php
-            echo formulario();
+            echo formulario($html);
 			//echo AnadirAplaylist();
             ?>
         <?php
