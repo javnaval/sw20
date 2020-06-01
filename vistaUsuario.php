@@ -66,6 +66,9 @@ function sidebar(){
 	<script type="text/javascript" src="includes/js/solicitarVerificacion.js"></script>
 	<script type="text/javascript" src="includes/js/darGestor.js"></script>
 	<script type="text/javascript" src="includes/js/bloquearUsuario.js"></script>
+	<script type="text/javascript" src="includes/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="includes/js/anuncio.js"></script>
+
     <title>Usuario</title>
 </head>
 <body>
