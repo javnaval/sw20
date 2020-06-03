@@ -62,6 +62,8 @@ function sidebar(){
     <script type="text/javascript" src="includes/js/seguidores.js"></script>
     <script type="text/javascript" src="includes/js/darGestor.js"></script>
     <script type="text/javascript" src="includes/js/bloquearUsuario.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles-header.css"/>
+    <script type="text/javascript" src="includes/js/history.js"></script>
     <title>Usuario</title>
 </head>
 <body>
@@ -73,6 +75,10 @@ function sidebar(){
         sidebar();
         ?>
     </nav>
+
+    <?php
+    require 'includes/handlers/header.php';
+    ?>
 
     <section id="contents" class="contents">
         <?php

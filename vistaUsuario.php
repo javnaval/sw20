@@ -59,6 +59,7 @@ function sidebar(){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/styles-usuario.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-header.css"/>
 	<link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
 	<script src="https://kit.fontawesome.com/9d868392d8.js"></script>
@@ -66,6 +67,7 @@ function sidebar(){
 	<script type="text/javascript" src="includes/js/solicitarVerificacion.js"></script>
 	<script type="text/javascript" src="includes/js/darGestor.js"></script>
 	<script type="text/javascript" src="includes/js/bloquearUsuario.js"></script>
+    <script type="text/javascript" src="includes/js/history.js"></script>
     <title>Usuario</title>
 </head>
 <body>
@@ -77,6 +79,10 @@ function sidebar(){
         sidebar();
         ?>
     </nav>
+
+    <?php
+    require 'includes/handlers/header.php';
+    ?>
 
     <section id="contents" class="contents">
         <?php

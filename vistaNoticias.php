@@ -28,6 +28,8 @@ function sidebar(){
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles-header.css"/>
+    <script type="text/javascript" src="includes/js/history.js"></script>
     <title>Noticias</title>
 </head>
 <body>
@@ -39,6 +41,10 @@ function sidebar(){
         sidebar();
         ?>
     </nav>
+
+    <?php
+    require 'includes/handlers/header.php';
+    ?>
 
     <section id="contents" class="contents">
         <?php

@@ -110,6 +110,8 @@ namespace es\ucm\fdi\aw;
          public function login($id) {
              $_SESSION['login'] = true;
              $_SESSION['idUser'] = $id;
+             $_SESSION['nav'] = 0;
+             $_SESSION['maxNav'] = 0;
          }
 
          public function logout() {

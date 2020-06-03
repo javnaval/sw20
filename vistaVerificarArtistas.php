@@ -23,6 +23,8 @@ $html = $form->gestiona();
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles-header.css"/>
+    <script type="text/javascript" src="includes/js/history.js"></script>
     <title>Verificar artistas</title>
 </head>
 <body>
@@ -34,6 +36,10 @@ $html = $form->gestiona();
         require 'includes/handlers/sidebarLeftGestor.php';
         ?>
     </nav>
+
+    <?php
+    require 'includes/handlers/header.php';
+    ?>
 
     <section id="contents" class="contents">
         <?php
