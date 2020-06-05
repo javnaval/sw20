@@ -43,6 +43,7 @@ DROP TABLE IF EXISTS `playlists`;
 DROP TABLE IF EXISTS `noticias`;
 DROP TABLE IF EXISTS `albums`;
 DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `songForum`;
 
 
 --
@@ -165,6 +166,21 @@ CREATE TABLE `comentarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `songForum`
+--
+
+
+CREATE TABLE `songForum` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idCancion` int(11) NOT NULL,
+  `texto` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 
 --
@@ -211,6 +227,13 @@ ALTER TABLE `songs`
 -- Indices de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `idUser` (`idUser`);
+  ADD KEY `idCancion` (`idCancion`);
+--
+-- Indices de la tabla `songForum`
+--
+ALTER TABLE `songForum`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `idUser` (`idUser`);
   ADD KEY `idCancion` (`idCancion`);
@@ -281,6 +304,12 @@ ALTER TABLE `comentarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `songForum`
+--
+ALTER TABLE `songForum`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -322,6 +351,13 @@ ALTER TABLE `songs`
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`idCancion`) REFERENCES `songs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `songForum`
+--
+ALTER TABLE `songForum`
+  ADD CONSTRAINT `songForum_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `songForum_ibfk_2` FOREIGN KEY (`idCancion`) REFERENCES `songs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 
 --

@@ -3,6 +3,7 @@ require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
 use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
 use es\ucm\fdi\aw\classes\classes\song as song;
+use es\ucm\fdi\aw\classes\classes\songForum as songForum;
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\classes\classes\playlist as playlist;
 
@@ -59,7 +60,21 @@ function anadirAplaylist($idCancion){
     return $html;
 
 }
+function muestraComentarios($idCancion) {
+    $foroCancion = songForum::buscaSongId($idCancion);
 
+    $listaComentarios = '';
+		if($foroCancion != null)
+		{
+            $listaComentarios .= '<div>';
+			foreach ($foroCancion as $or) {
+				$listaComentarios .= '<div>'. $or->getIdUser().' </div><p>'.$or->getText().' </p>';
+            }
+            $listaComentarios .= '</div>';
+        }
+    return $listaComentarios;
+    
+}
 function busqueda(){
 
     $html = "";
@@ -78,8 +93,6 @@ function busqueda(){
     <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
     <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/styles-header.css"/>
-    <script type="text/javascript" src="includes/js/history.js"></script>
     <title>Cancion</title>
 </head>
 <body>
@@ -90,10 +103,6 @@ function busqueda(){
         sidebar();
         ?>
     </nav>
-
-    <?php
-    require 'includes/handlers/header.php';
-    ?>
 
     <section id="contents" class="contents">
 	    <header>
@@ -106,7 +115,7 @@ function busqueda(){
         <?php
 		echo anadirAplaylist($idCancion);
         echo muestraCancion($idCancion);
-		
+		echo muestraComentarios($idCancion);
         ?>
     </section>
 
