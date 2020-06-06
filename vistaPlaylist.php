@@ -10,7 +10,10 @@ use \es\ucm\fdi\aw\classes\classes\playlist as playlist;
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
-
+function sidebar(){
+    if (user::esGestor($_SESSION['idUser'])) require 'includes/handlers/sidebarLeftGestor.php';
+    else require 'includes/handlers/sidebarLeft.php';
+}
 function muestraPlaylist($idPlaylist){
     $playlist = playlist::buscaPlaylistId($idPlaylist);
     $songs = contiene::songs($idPlaylist);
@@ -25,11 +28,27 @@ function muestraPlaylist($idPlaylist){
 
     return $html;
 }
+function formulario($idPlaylist) {
+    $html = '';
+    $playlist = playlist::buscaPlaylistId($idPlaylist);
+	$contiene=playlist::buscaPlaylistId($idPlaylist);
+    if (!isset($_POST['Eliminar'])) {
+        if ($_SESSION['idUser'] == $playlist->getIdUser()) {
+		
+            $html .= '<form method="POST" action="vistaPlaylist.php?id='.$playlist->getId().'">';
+            $html .= '<input type = "submit" name="Eliminar" value = "Eliminar" >';
+            $html .= '</form>';
+        }
+    }
 
-function sidebar(){
-    if (user::esGestor($_SESSION['idUser'])) require 'includes/handlers/sidebarLeftGestor.php';
-    else require 'includes/handlers/sidebarLeft.php';
+    else 	{
+	$playlist->eliminar();	
+	$contiene->eliminar();
+     //require 'inludes/biblioteca.php';
+	}
+    return $html;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -60,7 +79,9 @@ function sidebar(){
     <section id="contents" class="contents">
         <?php
 		$idPlaylist = filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
-        echo muestraPlaylist($idPlaylist);
+		 echo muestraPlaylist($idPlaylist);
+		 echo formulario($idPlaylist);
+       // echo muestraPlaylist($idPlaylist);
         ?>
     </section>
 
