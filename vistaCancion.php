@@ -3,6 +3,7 @@ require_once 'includes/config.php';
 use es\ucm\fdi\aw\classes\databaseClasses\Songs as Songs;
 use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
 use es\ucm\fdi\aw\classes\classes\song as song;
+use es\ucm\fdi\aw\classes\classes\songForum as songForum;
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\classes\classes\playlist as playlist;
 
@@ -45,6 +46,22 @@ function anadirAplaylist($idCancion){
 	
 	else busqueda();
     return $html;
+
+}
+
+function muestraComentarios($idCancion) {
+    $foroCancion = songForum::buscaSongId($idCancion);
+
+    $listaComentarios = '';
+    if($foroCancion != null)
+    {
+        $listaComentarios .= '<div>';
+        foreach ($foroCancion as $or) {
+            $listaComentarios .= '<div>'. $or->getIdUser().' </div><p>'.$or->getText().' </p>';
+        }
+        $listaComentarios .= '</div>';
+    }
+    return $listaComentarios;
 
 }
 
@@ -104,8 +121,9 @@ function formulario($idCancion) {
             <?php
 		    $idCancion=filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
            echo anadirAplaylist($idCancion);
-        echo muestraCancion($idCancion);
-				 echo formulario($idCancion);
+           echo muestraCancion($idCancion);
+           echo formulario($idCancion);
+           echo muestraComentarios($idCancion);
 
             ?>
         </header>
