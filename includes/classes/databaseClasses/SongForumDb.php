@@ -3,7 +3,7 @@ namespace es\ucm\fdi\aw\classes\databaseClasses;
 use es\ucm\fdi\aw\classes\abstractClasses\Crud as Crud;
 use es\ucm\fdi\aw\classes\classes\songForum as songForum;
 
-	class SongForum extends Crud {
+	class SongForumDb extends Crud {
 		
 		 private $properties = [
 			"idSong"  => "NOT NULL",

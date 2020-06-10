@@ -1,6 +1,5 @@
 <?php
 namespace es\ucm\fdi\aw\classes\classes;
-use es\ucm\fdi\aw\classes\databaseClasses\songForum as songForum;
 
 	class songForum  {
 
