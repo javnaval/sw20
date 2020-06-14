@@ -37,6 +37,10 @@ function sidebar(){
 	<script type="text/javascript" src="includes/js/uploadDownload.js"></script>
 	<script type="text/javascript" src="includes/js/widgetControl.js"></script>
 	<script type="text/javascript" src="includes/js/swiper.min.js"></script>
+    <script type="text/javascript" src="includes/js/seguidores.js"></script>
+    <script type="text/javascript" src="includes/js/darGestor.js"></script>
+    <script type="text/javascript" src="includes/js/bloquearUsuario.js"></script>
+    <script type="text/javascript" src="includes/js/history.js"></script>
 </head>
 
 <body>
@@ -46,7 +50,7 @@ function sidebar(){
 
 			<?php sidebar(); ?>
 
-        <header class="buttons">
+        <!--<header class="buttons">
             <div class="history">
                 <button id="volver" aria-hidden="true" onclick="goBack()" class="navegacion" title="Volver">
                     <svg viewBox="0 0 24 24" class="a-v">
@@ -65,7 +69,7 @@ function sidebar(){
             window.onload = function() {
                 adjust(<?php echo $_SESSION['nav'];?>, <?php echo $_SESSION['maxNav'];?>, <?php if (isset($_SESSION['h'])) {echo 1; unset($_SESSION['h']);} else echo 0; ?>);
             }
-        </script>
+        </script>-->
 
 
         <div id="mainViewContainer">
