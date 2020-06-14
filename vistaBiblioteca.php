@@ -17,7 +17,7 @@ $html = $form->gestiona();
 function formulario($form) {
     $html = $form;
     if (!isset($_POST['Crear Playlist'])) {
-            $html .= '<form method="POST" action="VistaCreaPlaylist.php">';
+            $html .= '<form method="POST" action="vistaCreaPlaylist.php">';
             $html .= '<input type = "submit" name="Crear Playlist" value = "Crear Playlist" >';
             $html .= '</form>';
     }

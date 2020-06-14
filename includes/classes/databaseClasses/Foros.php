@@ -11,7 +11,7 @@ class Foros extends Crud {
         "titulo"         => "NOT NULL"
     ];
     public function __construct(){
-        parent::__construct("Foros",$this->properties);
+        parent::__construct("foros",$this->properties);
     }
     public function get(){
         $arrayPDO = parent::get();
