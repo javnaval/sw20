@@ -1,6 +1,7 @@
 <?php
 use es\ucm\fdi\aw\classes\classes\user as user;
 ?>
+ <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
 <header>
     <span><a class="logo" href="vistaInicio.php"><img src="images/logoR.png"></a></span>
     <?php

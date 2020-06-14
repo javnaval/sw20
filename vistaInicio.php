@@ -1,99 +1,79 @@
 <?php
 require_once 'includes/config.php';
-use es\ucm\fdi\aw\classes\databaseClasses\Albums as Albums;
+include("includes/handlers/includedFiles.php");
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\classes\classes\album as album;
 use es\ucm\fdi\aw\classes\classes\song as song;
+use es\ucm\fdi\aw\classes\classes\playlist;
 
 if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
-    header("Location: index.php");
-}
+     header("Location: index.php");
+ }
 
-function mostrar($albumNombre){
-    $html = "";          //where("name", "=", "albumNombre");
+ function mostrar(){
+    $html = "";
     $albums = album::albums();
-    foreach ($albums as $row) {
-        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
-        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
-        $html .= "<figcaption>" . $row->getTitle() . "<figcaption></div>";
-    }
-    //Dejar de prueba para probar scroll y añadir volumen se quitara en la entrega final asi como todo lo comentado de las imagenes
-    foreach ($albums as $row) {
-        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
-        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
-        $html .= "<figcaption>" . $row->getTitle() . "<figcaption></div>";
-    }
-    foreach ($albums as $row) {
-        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
-        $html .= "<a href='vistaAlbum.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
-        $html .= "<figcaption>" . $row->getTitle() . "<figcaption></div>";
-    }
+        foreach ($albums as $row){
+        $html .= "<div class='swiper-slide'> <div class='card'>";
+        $html .= "<figure><img onclick='openPage(\"vistaAlbum.php?id=" .$row->getId() . "\")' src='server/albums/images/".$row->getId().".png'>";
+        $html .= "<figcaption>" . $row->getTitle() . "<figcaption>";
+        $html .= "<button id='playpause" .$row->getId(). "'  onclick='setTrack(\"" . $row->getId() . "\",null,1)'><i class='fas fa-play-circle'></i></button></div></div>";
+      }
     return $html;
+ }
+ function mostrarPlaylists($playlistNombre){
+  $html = "";
+  $playlist = playlist::buscaTitlePlaylist("playlist1");
+  $playListSongs  = song::buscaSongIdPlaylist($playlist->getId());
+  $i = 0;
+      foreach ($playListSongs as $row){
+      $html .= "<div class='swiper-slide'> <div class='card'>";
+      $html .= "<figure><img onclick='openPage(\"vistaPlaylist.php?id=" .$playlist->getId() . "\")' src='server/albums/images/".$row->getIdAlbum().".png'>";
+      $html .= "<figcaption>" . $row->getTitle() . "<figcaption>";
+      $html .= "<button id='playpause" .$row->getId(). "'  onclick='setTrack(\"" .$playlist->getId(). "\",$i,null)'><i class='fas fa-play-circle'></i></button></div></div>";
+      $i++;
+    }
+  return $html;
 }
-
 function mostrarSeguidores($albumNombre){
     $html = "";
     $siguiendo = \es\ucm\fdi\aw\classes\classes\seguidor::buscaSiguiendo($_SESSION['idUser']);
     foreach ($siguiendo as $user) {
         $row = user::buscaUsuarioId($user['idUser']);
-        $html .= "<div>";                                                              //'server/images/'. $row->getName() .'.jpg';
-        $html .= "<a href='vistaUsuario.php?id="  .$row->getId() . " '><figure><img src='images/Colores.jpg'> </a>";
-        $html .= "<figcaption>" . $row->getName() . "<figcaption></div>";
+        $html .= "<div class='swiper-slide'> <div class='card'>";
+        $html .= "<figure><img onclick='openPage(\"vistaUsuario.php?id=".$row->getId()."\")' src='images/Colores.jpg'>";
+        $html .= "<figcaption>".$row->getName()."<figcaption>";
+        $html .= "</div></div>";
     }
     return $html;
 }
 
-function sidebar(){
-    if (user::esGestor($_SESSION['idUser'])) require 'includes/handlers/sidebarLeftGestor.php';
-    else require 'includes/handlers/sidebarLeft.php';
-}
-
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/styles-inicio.css"/>
-    <link rel="stylesheet" type="text/css" href="css/styles-header.css"/>
-    <link rel="stylesheet" type="text/css" href="css/styles-footer.css"/>
-    <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
-    <script src="https://kit.fontawesome.com/9d868392d8.js"></script>
-    <script type="text/javascript" src="includes/js/history.js"></script>
-
-    <title>Sounday</title>
-</head>
-<body>
-
-<div id="container" class="wrapper">
-
-    <nav>
-        <?php
-        sidebar();
-        ?>
-    </nav>
-
-    <?php
-    require 'includes/handlers/header.php';
-    ?>
-
-    <section id="contents" class="contents">
-        <ul>
-            <li><h2>Listas de éxitos</h2><?php echo mostrar("Listas de éxitos"); ?></li>
-            <li><h2>Destacado</h2><?php echo mostrar("Destacado"); ?></li>
-            <li><h2>Entre tus seguidores</h2><?php echo mostrarSeguidores("Entre tus seguidores"); ?></li>
-            <li><h2>De fiesta</h2><?php echo mostrar("De fiesta"); ?></li>
-            <li><h2>Relax</h2><?php echo mostrar("Relax"); ?></li>
-        </ul>
-    </section>
-
-    <?php
-    require 'includes/handlers/footer.php';
-    ?>
+    <section id="contentsInicial" class="contentsInicial">
+         <div class="row"> <h2>Listas de éxitos</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo mostrarPlaylists("Listas de éxitos"); ?> </div> </div> </div>
+         <div class="row"> <h2>Destacado</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo mostrarPlaylists("Destacado"); ?> </div> </div> </div>
+         <div class="row"> <h2>Novedades</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo mostrarPlaylists("Novedades"); ?> </div> </div> </div>
+         <div class="row"> <h2>Entre tus seguidores</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo mostrarSeguidores("Entre tus seguidores"); ?> </div> </div> </div>
+         <div class="row"> <h2>Albums</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo  mostrar(); ?> </div> </div> </div>
+     </section>
 
 
-</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 30,
+        stretch: 0,
+        depth: 500,
+        modifier: 1,
+        slideShadows : true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+  </script>
 
-</body>
-</html>

@@ -55,6 +55,12 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
             return $song[0];
         }
 
+        public static function buscaSongIdPlaylist($id){
+            $song = (new Songs())->join("Songs.id","Contiene","Contiene.idSong")->join("Contiene.idPlayList","PlayLists","PlayLists.id")
+            ->where("Contiene.idPlayList","=",$id)->get();
+            return $song;
+        }
+
         public static function buscaSongsIdAlbum($id){
             return (new Songs())->where("idAlbum", "=", $id)->get();
         }

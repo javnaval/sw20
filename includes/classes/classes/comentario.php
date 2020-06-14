@@ -1,37 +1,85 @@
 <?php
 namespace es\ucm\fdi\aw\classes\classes;
 
+use es\ucm\fdi\aw\classes\databaseClasses\Comentarios;
 
 class comentario {
     public static $className = "comentario";
 
+    private $id;
     private $idUser;
-    private $idCancion;
+    private $idSong;
     private $text;
+    private $MeGusta;
+    private $Respuesta;
+    private $idForo;
 
-    public function __construct($idUser,$idCancion, $text){
+
+    public function __construct($id,$idUser,$idSong,$text,$MeGusta,$Respuesta,$idForo){
+        $this->id = $id;
         $this->idUser = $idUser;
-        $this->idCancion = $idCancion;
+        $this->idSong = $idSong;
         $this->text = $text;
+        $this->MeGusta = $MeGusta;
+        $this->Respuesta = $Respuesta;
+        $this->idForo = $idForo;
+
+    }
+    public function getId() {
+        return $this->id;
     }
 
     public function getIdUser() {
         return $this->idUser;
     }
 
-    public function getIdCancion() {
-        return $this->idCancion;
+    public function getIdSong() {
+        return $this->idSong;
     }
 
     public function getText() {
         return $this->text;
     }
+    public function getMeGusta() {
+        return $this->MeGusta;
+    }
+    public function setMeGusta($MG) {
+         $this->MeGusta = $MG;
+    }
+    public function getForo() {
+        return $this->idForo;
+    }
+    public function getRespuesta() {
+        return $this->Respuesta;
+    }
 
     public function toString(){
         return[
             "idUser"      => "".$this->idUser."",
-            "idCancion"   => "".$this->idCancion."",
-            "text"        => "".$this->text.""
+            "idSong"      => "".$this->idSong."",
+            "texto"       => "".$this->text."",
+            "MeGusta"     => "".$this->MeGusta."",
+            "Respuesta"   => "".$this->Respuesta."",
+            "idForo"        => "".$this->idForo.""
         ];
     }
+    public static function buscaComentariosIdSong($id){
+        $comentarios = (new Comentarios())->where("idSong", "=", $id)->get();
+        return $comentarios;
+    }
+    public static function buscaSongIbuscaComentariosIdSongComentariosdPlaylist($id,$idForo){
+        $song = (new Comentarios())->join("Comentarios.idForo","Foros","Foros.id")->where("Comentarios.idSong","=",$id)->where("Foros.id","=",$idForo)->get();
+        return $song;
+    }
+    public static function buscaComentariosId($id){
+        $comentarios = (new Comentarios())->where("id", "=", $id)->get();
+        return $comentarios[0];
+    }
+    public static function crea($idCancion, $texto, $idComentaio,$idForo){
+        return (new Comentarios())->insert((new self(NULL,$_SESSION['idUser'], $idCancion, $texto,0,$idComentaio,$idForo))->toString());
+    }
+    public static function actualizaMegustas($id,$comentario){
+        (new Comentarios())->where("id","=",$id)->update($comentario->toString());
+    }
+
 }

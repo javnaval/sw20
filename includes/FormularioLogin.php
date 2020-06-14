@@ -54,7 +54,7 @@ EOF;
             else {
                 session_regenerate_id(true);
                 Application::getSingleton()->login($user->getId());
-                $resultado = "vistaInicio.php";
+                $resultado = "vista.php";
             }
         }
         else {

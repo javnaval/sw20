@@ -1,59 +1,66 @@
 body {
-    background-color: #363434;
-    margin: 0;
+    margin: 0px;
 }
 
-section.contents{
+
+section.contentsInicial{
     margin-left: 100px;
     margin-bottom: 100px;
-    height: 100%;
-    width: 93%;
+    height: calc(100% - 100px);
+    width: 100%;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     position: fixed;
+    overflow-y: scroll;
+    background: -moz-linear-gradient(top, rgba(28,28,28,1) 0%, rgba(102,102,102,1) 0%, rgba(90,90,90,1) 4%, rgba(76,76,76,1) 9%, rgba(76,76,76,1) 17%, rgba(76,76,76,1) 18%, rgba(71,71,71,1) 31%, rgba(44,44,44,1) 44%, rgba(43,43,43,1) 50%, rgba(19,19,19,1) 67%, rgba(17,17,17,1) 77%, rgba(0,0,0,1) 87%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(28,28,28,1)), color-stop(0%, rgba(102,102,102,1)), color-stop(4%, rgba(90,90,90,1)), color-stop(9%, rgba(76,76,76,1)), color-stop(17%, rgba(76,76,76,1)), color-stop(18%, rgba(76,76,76,1)), color-stop(31%, rgba(71,71,71,1)), color-stop(44%, rgba(44,44,44,1)), color-stop(50%, rgba(43,43,43,1)), color-stop(67%, rgba(19,19,19,1)), color-stop(77%, rgba(17,17,17,1)), color-stop(87%, rgba(0,0,0,1)));
+    background: -webkit-linear-gradient(top, rgba(28,28,28,1) 0%, rgba(102,102,102,1) 0%, rgba(90,90,90,1) 4%, rgba(76,76,76,1) 9%, rgba(76,76,76,1) 17%, rgba(76,76,76,1) 18%, rgba(71,71,71,1) 31%, rgba(44,44,44,1) 44%, rgba(43,43,43,1) 50%, rgba(19,19,19,1) 67%, rgba(17,17,17,1) 77%, rgba(0,0,0,1) 87%);
+    background: -o-linear-gradient(top, rgba(28,28,28,1) 0%, rgba(102,102,102,1) 0%, rgba(90,90,90,1) 4%, rgba(76,76,76,1) 9%, rgba(76,76,76,1) 17%, rgba(76,76,76,1) 18%, rgba(71,71,71,1) 31%, rgba(44,44,44,1) 44%, rgba(43,43,43,1) 50%, rgba(19,19,19,1) 67%, rgba(17,17,17,1) 77%, rgba(0,0,0,1) 87%);
+    background: -ms-linear-gradient(top, rgba(28,28,28,1) 0%, rgba(102,102,102,1) 0%, rgba(90,90,90,1) 4%, rgba(76,76,76,1) 9%, rgba(76,76,76,1) 17%, rgba(76,76,76,1) 18%, rgba(71,71,71,1) 31%, rgba(44,44,44,1) 44%, rgba(43,43,43,1) 50%, rgba(19,19,19,1) 67%, rgba(17,17,17,1) 77%, rgba(0,0,0,1) 87%);
+    background: linear-gradient(to bottom, rgba(28,28,28,1) 0%, rgba(102,102,102,1) 0%, rgba(90,90,90,1) 4%, rgba(76,76,76,1) 9%, rgba(76,76,76,1) 17%, rgba(76,76,76,1) 18%, rgba(71,71,71,1) 31%, rgba(44,44,44,1) 44%, rgba(43,43,43,1) 50%, rgba(19,19,19,1) 67%, rgba(17,17,17,1) 77%, rgba(0,0,0,1) 87%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1c1c', endColorstr='#000000', GradientType=0 );
+
 }
-section.contents ul{
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-    display: flex;
+
+a:hover{
+    cursor: pointer;
+}
+
+section.contentsInicial div.row{
+    width: 300px;
+    height: 300px;
+    margin: 20px;
     text-align: center;
-    width: 100%;
+    margin-left: 35px;
+    margin-right: 35px;
 }
 
-section.contents ul li div {
-    width: auto;
-    margin: 10px;
-    padding:0px;
-    border-radius: 10px;
-    background-color: rgb(44, 44, 44);
-}
-section.contents ul li::-webkit-scrollbar {
-    width: 7px;
-    border-radius: 7px;
-    background-color: rgb(0,0,0);
-
-}
-section.contents ul li::-webkit-scrollbar-thumb {
-    width: 7px;
-    border-radius: 7px;
-    background-color: white;
-
-}
-section.contents ul h2{
-    color: rgb(255, 251, 251);
-
-}
-
-section.contents ul li  figure{
-    color: rgb(255, 251, 251);
-}
-section.contents ul li{
-    width: 100%;
+div.card{
+    position: relative;
+    background: rgb(139, 139, 139);
+    width: 200px;
+    height: 250px;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    border-radius: 20px;
+    text-align: center;
+    justify-content: center;
 }
-section.contents ul li figure img{
-    width: 50%;
+
+div.card  figure figcaption{
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+section.contentsInicial h2{
+    padding: 0px;
+    margin: 0px;
+    color: rgb(255, 255, 255);
+}
+div.card  figure img{
+    width:100%;
 }

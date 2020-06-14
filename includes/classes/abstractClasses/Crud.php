@@ -38,7 +38,7 @@ use es\ucm\fdi\aw\Application as Application;
 
         public function get() {
             try {
-                $this->sql = "SELECT * FROM {$this->table} {$this->join} {$this->wheres}";
+                $this->sql = "SELECT {$this->table}.* FROM {$this->table} {$this->join} {$this->wheres}";
                 $query = $this->runCRUD();
                 return $query->fetchAll();
             } catch (Exception $exc) {
@@ -103,13 +103,11 @@ use es\ucm\fdi\aw\Application as Application;
 
         private function runCRUD($object = null) {
             $query = $this->connection->prepare($this->sql);
-
             if ($object !== null) { 
                 foreach ($object as $key => $value) {
                     $query->bindValue(":$key", $value);
                 }
             }
-
             $query->execute();
             $this->wheres = "";
             $this->join = "";

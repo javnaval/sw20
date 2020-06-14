@@ -15,6 +15,28 @@ INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`, `rol`, `solicita
 (9, 'turtles', 'The Turtles', 'turtles@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'artista', 0, 0, NULL);
 
 --
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id`, `idUser`, `idSong`, `texto`, `MeGusta`,`Respuesta`,`idForo`) VALUES
+(1, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,1),
+(2, 2, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,1,1),
+(3, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,2),
+(4, 3, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,3,2),
+(5, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,2),
+(6, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,1);
+
+--
+-- Volcado de datos para la tabla `foros`
+--
+
+INSERT INTO `foros` (`id`, `idUser`, `idSong`, `titulo`) VALUES
+(1, 0, 3, 'Comentarios'),
+(2, 1, 3, 'La Lechuga es muy cara'),
+(3, 0, 2, 'Comentarios'),
+(4, 0, 1, 'Comentarios');
+
+--
 -- Volcado de datos para la tabla `albums`
 --
 
