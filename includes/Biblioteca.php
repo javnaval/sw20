@@ -25,4 +25,3 @@ if ($playlists !== null) {
         echo "<img src='server/images/Colores.jpg'></div>";
     }
 }
-

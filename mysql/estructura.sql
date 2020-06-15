@@ -36,7 +36,6 @@ GRANT ALL PRIVILEGES ON `sounday`.* TO 'sounday'@'%';
 USE `sounday`;
 
 DROP TABLE IF EXISTS `comentarios`;
-DROP TABLE IF EXISTS `foros`;
 DROP TABLE IF EXISTS `meGustacomentarios`;
 DROP TABLE IF EXISTS `seguidores`;
 DROP TABLE IF EXISTS `contiene`;
@@ -45,6 +44,7 @@ DROP TABLE IF EXISTS `playlists`;
 DROP TABLE IF EXISTS `noticias`;
 DROP TABLE IF EXISTS `albums`;
 DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `songsForum`;
 DROP TABLE IF EXISTS `descargas`;
 
 
@@ -57,20 +57,6 @@ CREATE TABLE `meGustacomentarios` (
   `idComentarios` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `foros`
---
-
-CREATE TABLE `foros` (
-  `id` int(11) NOT NULL,
-  `idUser` int(11) NOT NULL,
-  `idSong` int(11) NOT NULL,
-  `titulo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -207,7 +193,22 @@ CREATE TABLE `comentarios` (
   `texto` text DEFAULT NULL,
   `MeGusta` bigint(100)  DEFAULT NULL,
   `Respuesta` int(11) NOT NULL,
-  `idForo` int(11) NOT NULL
+  `idForum` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `songsForum`
+--
+
+
+CREATE TABLE `songsForum` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idSong` int(11) NOT NULL,
+  `titulo` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -227,12 +228,6 @@ ALTER TABLE `meGustacomentarios`
 ALTER TABLE `descargas`
   ADD KEY `descargas_ibfk_1` (`idUser`),
   ADD KEY `idSong` (`idSong`);
-
---
--- Indices de la tabla `foros`
---
-ALTER TABLE `foros`
-  ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
 -- Indices de la tabla `albums`
@@ -274,6 +269,13 @@ ALTER TABLE `songs`
 -- Indices de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `idUser` (`idUser`),
+  ADD KEY `idSong` (`idSong`);
+--
+-- Indices de la tabla `songsForum`
+--
+ALTER TABLE `songsForum`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `idUser` (`idUser`),
   ADD KEY `idSong` (`idSong`);
@@ -322,12 +324,6 @@ ALTER TABLE `seguidores`
 --
 
 --
--- AUTO_INCREMENT de la tabla `foros`
---
-ALTER TABLE `foros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT de la tabla `albums`
 --
 ALTER TABLE `albums`
@@ -361,6 +357,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `songsForum`
+--
+ALTER TABLE `songsForum`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -413,6 +415,13 @@ ALTER TABLE `songs`
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`idSong`) REFERENCES `songs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `songsForum`
+--
+ALTER TABLE `songsForum`
+  ADD CONSTRAINT `songsForum_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `songsForum_ibfk_2` FOREIGN KEY (`idSong`) REFERENCES `songs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `meGustacomentarios`

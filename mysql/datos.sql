@@ -4,7 +4,7 @@
 --
 
 INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`, `rol`, `solicitado` , `bloqueado` , `descripcion`) VALUES
-(1, 'user', 'user', 'pp@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'usuario', 1, 0, NULL),
+(1, 'user', 'user', 'pp@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'premium', 1, 0, NULL),
 (2, 'user1', 'user1', 'tt@gmail.com', '$2y$10$sWiXnfqwSJfGFkRistH6cePGuxXf1QbFWNxIdilAeIlmNhYGbn/sa', 'usuario', 0, 1, NULL),
 (3, 'premium', 'premium', 'premium@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'premium', 0, 0, NULL),
 (4, 'artista', 'artista', 'artista@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'artista', 0, 0, 'Descripcion de artista'),
@@ -18,7 +18,7 @@ INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`, `rol`, `solicita
 -- Volcado de datos para la tabla `comentarios`
 --
 
-INSERT INTO `comentarios` (`id`, `idUser`, `idSong`, `texto`, `MeGusta`,`Respuesta`,`idForo`) VALUES
+INSERT INTO `comentarios` (`id`, `idUser`, `idSong`, `texto`, `MeGusta`,`Respuesta`,`idForum`) VALUES
 (1, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,1),
 (2, 2, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,1,1),
 (3, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,2),
@@ -27,14 +27,13 @@ INSERT INTO `comentarios` (`id`, `idUser`, `idSong`, `texto`, `MeGusta`,`Respues
 (6, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,1);
 
 --
--- Volcado de datos para la tabla `foros`
+-- Volcado de datos para la tabla `songsForum`
 --
 
-INSERT INTO `foros` (`id`, `idUser`, `idSong`, `titulo`) VALUES
-(1, 0, 3, 'Comentarios'),
-(2, 1, 3, 'La Lechuga es muy cara'),
-(3, 0, 2, 'Comentarios'),
-(4, 0, 1, 'Comentarios');
+INSERT INTO `songsForum` (`id`, `idUser`, `idSong`, `titulo`) VALUES
+(1, 6, 3, 'Comentarios'),
+(2, 6, 2, 'Comentarios'),
+(3, 6, 1, 'Comentarios');
 
 --
 -- Volcado de datos para la tabla `albums`

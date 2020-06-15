@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/config.php';
-include("includes/handlers/includedFiles.php");
+include("includes/handlers/includedFiles.php"); 
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\classes\classes\album as album;
 use es\ucm\fdi\aw\classes\classes\song as song;
@@ -11,28 +11,28 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
  }
 
  function mostrar(){
-    $html = "";
+    $html = "";    
     $albums = album::albums();
         foreach ($albums as $row){
-        $html .= "<div class='swiper-slide'> <div class='card'>";
-        $html .= "<figure><img onclick='openPage(\"vistaAlbum.php?id=" .$row->getId() . "\")' src='server/albums/images/".$row->getId().".png'>";
+        $html .= "<div class='swiper-slide'> <div class='card'>";   
+        $html .= "<figure><img onclick='openPage(\"vistaAlbum.php?id=" .$row->getId() . "\")' src='server/albums/images/".$row->getId().".png'>";   
         $html .= "<figcaption>" . $row->getTitle() . "<figcaption>";
-        $html .= "<button id='playpause" .$row->getId(). "'  onclick='setTrack(\"" . $row->getId() . "\",null,1)'><i class='fas fa-play-circle'></i></button></div></div>";
-      }
+        $html .= "</div></div>";     
+      }                                                   
     return $html;
  }
  function mostrarPlaylists($playlistNombre){
-  $html = "";
+  $html = "";   
   $playlist = playlist::buscaTitlePlaylist("playlist1");
   $playListSongs  = song::buscaSongIdPlaylist($playlist->getId());
   $i = 0;
       foreach ($playListSongs as $row){
-      $html .= "<div class='swiper-slide'> <div class='card'>";
-      $html .= "<figure><img onclick='openPage(\"vistaPlaylist.php?id=" .$playlist->getId() . "\")' src='server/albums/images/".$row->getIdAlbum().".png'>";
+      $html .= "<div class='swiper-slide'> <div class='card'>";   
+      $html .= "<figure><img onclick='openPage(\"vistaPlaylist.php?id=" .$playlist->getId() . "\")' src='server/albums/images/".$row->getIdAlbum().".png'>";   
       $html .= "<figcaption>" . $row->getTitle() . "<figcaption>";
-      $html .= "<button id='playpause" .$row->getId(). "'  onclick='setTrack(\"" .$playlist->getId(). "\",$i,null)'><i class='fas fa-play-circle'></i></button></div></div>";
+      $html .= "<button id='playpause" .$row->getId(). "'  onclick='setTrack(\"" .$playlist->getId(). "\",$i,null)'><i class='fas fa-play-circle'></i></button></div></div>";     
       $i++;
-    }
+    }                                                 
   return $html;
 }
 function mostrarSeguidores($albumNombre){
@@ -40,10 +40,10 @@ function mostrarSeguidores($albumNombre){
     $siguiendo = \es\ucm\fdi\aw\classes\classes\seguidor::buscaSiguiendo($_SESSION['idUser']);
     foreach ($siguiendo as $user) {
         $row = user::buscaUsuarioId($user['idUser']);
-        $html .= "<div class='swiper-slide'> <div class='card'>";
-        $html .= "<figure><img onclick='openPage(\"vistaUsuario.php?id=".$row->getId()."\")' src='images/Colores.jpg'>";
+        $html .= "<div class='swiper-slide'> <div class='card'>";   
+        $html .= "<figure><img onclick='openPage(\"vistaUsuario.php?id=".$row->getId()."\")' src='images/Colores.jpg'>";   
         $html .= "<figcaption>".$row->getName()."<figcaption>";
-        $html .= "</div></div>";
+        $html .= "</div></div>"; 
     }
     return $html;
 }
@@ -59,6 +59,13 @@ function mostrarSeguidores($albumNombre){
 
 
 <script>
+     if(!song.paused) {
+      var existe = '#playpause' + songId;
+      var playId = 'playpause' + songId;
+      if($(existe).length > 0 ) {
+            document.getElementById(playId).innerHTML = '<i class="fas fa-stop-circle"></i>';
+          }
+     }
     var swiper = new Swiper('.swiper-container', {
       effect: 'coverflow',
       grabCursor: true,
@@ -76,4 +83,5 @@ function mostrarSeguidores($albumNombre){
       },
     });
   </script>
-
+  
+</html>

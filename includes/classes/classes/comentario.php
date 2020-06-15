@@ -12,17 +12,17 @@ class comentario {
     private $text;
     private $MeGusta;
     private $Respuesta;
-    private $idForo;
+    private $idForum;
 
 
-    public function __construct($id,$idUser,$idSong,$text,$MeGusta,$Respuesta,$idForo){
+    public function __construct($id,$idUser,$idSong,$text,$MeGusta,$Respuesta,$idForum){
         $this->id = $id;
         $this->idUser = $idUser;
         $this->idSong = $idSong;
         $this->text = $text;
         $this->MeGusta = $MeGusta;
         $this->Respuesta = $Respuesta;
-        $this->idForo = $idForo;
+        $this->idForum = $idForum;
 
     }
     public function getId() {
@@ -47,7 +47,7 @@ class comentario {
          $this->MeGusta = $MG;
     }
     public function getForo() {
-        return $this->idForo;
+        return $this->idForum;
     }
     public function getRespuesta() {
         return $this->Respuesta;
@@ -60,7 +60,7 @@ class comentario {
             "texto"       => "".$this->text."",
             "MeGusta"     => "".$this->MeGusta."",
             "Respuesta"   => "".$this->Respuesta."",
-            "idForo"        => "".$this->idForo.""
+            "idForum"        => "".$this->idForum.""
         ];
     }
     public static function buscaComentariosIdSong($id){
@@ -68,7 +68,7 @@ class comentario {
         return $comentarios;
     }
     public static function buscaSongIbuscaComentariosIdSongComentariosdPlaylist($id,$idForo){
-        $song = (new Comentarios())->join("Comentarios.idForo","Foros","Foros.id")->where("Comentarios.idSong","=",$id)->where("Foros.id","=",$idForo)->get();
+        $song = (new Comentarios())->join("Comentarios.idForum","songsForum","songsForum.id")->where("Comentarios.idSong","=",$id)->where("songsForum.id","=",$idForo)->get();
         return $song;
     }
     public static function buscaComentariosId($id){
@@ -81,5 +81,5 @@ class comentario {
     public static function actualizaMegustas($id,$comentario){
         (new Comentarios())->where("id","=",$id)->update($comentario->toString());
     }
-
+    
 }

@@ -3,6 +3,8 @@ namespace es\ucm\fdi\aw;
 use es\ucm\fdi\aw\classes\classes\seguidor as seguidor;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
+
+
 if (isset($_GET['id']))
     $usuario = user::buscaUsuarioId(filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT));
 else $usuario = user::buscaUsuarioId($_SESSION['idUser']);
@@ -44,3 +46,4 @@ else {
     echo "<a href='vistaSeguidores.php?id=".$usuario->getId()."&seg=false'>Siguiendo</a>: ".$cont2;
 }
 echo "</h3>";
+$rol = $usuario->getRol();

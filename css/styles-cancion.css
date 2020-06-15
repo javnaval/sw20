@@ -154,7 +154,7 @@ section.contentsCancion div.comentariosForos div.comentarios{
   border-radius: 32px;
 }
 
-form{
+section.contentsCancion form{
    padding: 0px;
    margin: 0px;
    background-color: #363434;
@@ -166,12 +166,12 @@ form{
    align-items: center;
 
 }
-textarea{
+section.contentsCancion textarea{
    width:100%;
    padding: 0;
    color: -internal-light-dark-color(white, black);
    margin: 0;
-	 height:100%;
+	 height:100%;			
 	 resize:none;
 }
 

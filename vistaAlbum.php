@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/config.php';
-include("includes/handlers/includedFiles.php");
+include("includes/handlers/includedFiles.php");  
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\classes\classes\album as album;
 use es\ucm\fdi\aw\classes\classes\song as song;
@@ -17,19 +17,19 @@ use es\ucm\fdi\aw\classes\classes\playlist as playlist;
         $listaCanciones = "<div class='listaCanciones'><ul>";
         $i = 0;
 		 if($songs != null){
-			 foreach ($songs as $row) {
-                 $menu = menu($_SESSION['idUser'],$row->getId(),$i);
+			 foreach ($songs as $row) {   
+                 $menu = menu($_SESSION['idUser'],$row->getId(),$i);    
                  $listaCanciones .= "<li class='tracklistRow'><span class='boton'><button id='playpause" .$row->getId(). "'  onclick='setTrack(\"" . $albumId . "\",$i,1)'><i class='fas fa-play-circle'></i></button></span>
                  <span class='icon'><i class='fas fa-music'></i></span><span class='cancion'><p class='titulo' onclick='openPage(\"vistaCancion.php?id=" .$row->getId() . "\")'>". $row->getTitle() ."</p><p class='nombre'>" .$albumArtist."</p></span>
                  <span class='wave'><div id='waveform".$row->getId()."'></div></span>
                  <span class='descargar'><a onclick='descargar(\"".$_SESSION['idUser']."\",\"" . $row->getId() . "\")' href='server/songs/".$row->getId().".mp3' download='".$row->getTitle()."'><i class='fas fa-cloud-download-alt'></i></a></span>
                  <span class='opciones'><i onclick='mostrarPlaylist(\"".$i."\")' id='PlayList".$i."' class='fas fa-stream'></i></span>$menu</li>";
                  $i++;
-
+                 
 			 }
 		 }
          $listaCanciones .= "</ul></div>";
-
+		
     }
     else {
         header("Location: index.php");
@@ -42,7 +42,7 @@ use es\ucm\fdi\aw\classes\classes\playlist as playlist;
         echo "<p class='fecha'>" . $albumReleaseDate . "</p></span></span></div>";
     }
     function menu($idUser,$idSong,$iC){
-        $html = "";
+        $html = ""; 
         $html .= "<ul id='navPlayList".$iC."' >";
         $playlists = playlist::playlistsUser($idUser);
         foreach($playlists as $play){
@@ -59,12 +59,22 @@ use es\ucm\fdi\aw\classes\classes\playlist as playlist;
         ?>
     </section>
     <script>
+    if(!song.paused) {
+      var existe = '#playpause' + songId;
+      var playId = 'playpause' + songId;
+      if($(existe).length > 0) {
+         document.getElementById(playId).innerHTML = '<i class="fas fa-stop-circle"></i>';
+       }
+         crearSpectro(<?php echo $idCancion ?>);
+		 wavesurfer.load(song.src);
+     }
      var ids = '<?php echo $i ?>';
             for(var i = 0; i < ids; i++){
                 var nav = 'navPlayList' + i;
                 document.getElementById(nav).style.display = 'none';
             }
     </script>
+  
 
-
-
+     
+  

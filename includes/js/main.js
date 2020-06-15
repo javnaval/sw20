@@ -6,13 +6,6 @@ function openPage(url) {
 	history.pushState(url, null, url);
 }
 
-function goBackForwar(numero){
-	history.go(numero);
-}
-window.onpopstate = function(event) {
-	var encodedUrl = encodeURI(document.location);
-	$("#mainContent").load(encodedUrl);
-};
 
 
 function meGustaComentario(idUser,id){
@@ -68,6 +61,31 @@ function mostrarPlaylist(numero){
 	 else{
 		document.getElementById(nav).style.display = 'block';
 	 }
+}
+
+function buscar() {
+	var bus = document.getElementById('input-busqueda').value
+    return fetch('includes/Busqueda.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'busqueda=' + bus
+    })
+        .then(function(response) {
+            response.text().then(function(text){
+                var p = document.getElementById('contBusqueda');
+                if (text === '') p.innerHTML = 'No hay resultado para su busqueda';
+                else {
+                    var parent = document.getElementById('contents');
+					for(var i=parent.childNodes.length - 1; parent.childNodes[i].nodeName !== 'HEADER' && i > 0; i--) {
+						parent.removeChild(parent.childNodes[i]);
+					}
+					document.getElementById('contents').innerHTML += text;
+                }
+            });
+        })
+        .catch(function (err) {
+            document.write('Fetch Error :', err);
+        });
 }
 
 

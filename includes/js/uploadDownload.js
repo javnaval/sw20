@@ -23,6 +23,5 @@ function oculta(id, required = null){
 
 function descargar(idUser,idSong){
     $.post("includes/ajax/Descargas.php",{ idSong: idSong, idUser: idUser, ver: null }, function() {
-
     });
 }

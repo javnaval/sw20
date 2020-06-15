@@ -1,57 +1,32 @@
- var song = new Audio();
- song.type = 'audio/mpeg';
+var song = new Audio();
+song.type = 'audio/mpeg';
 
- const directionAnuncios = "server/anuncios/1.mp3";
- const directionSONG = "server/songs/";
- const directionIMG = "server/albums/images/";
- const playpauseIDCONST = 'playpause';
-
-
- var track;
- var currenTrack = null;
- var songId = null;
- var numeroActual = null;
- var Albumid;
-
- var playpauseid;
-
- var muted = false;
- var currentSong = 0;
- var vol = 1;
- var randv = false;
- var retweetv = false;
- var anuncio = false;
+const directionAnuncios = "server/anuncios/1.mp3";
+const directionSONG = "server/songs/";
+const directionIMG = "server/albums/images/";
+const playpauseIDCONST = 'playpause';
 
 
- var guardarPosicion;
- var guardarCancion;
- var conta;
- var wavesurfer;
+var track;
+var currenTrack = null;
+var songId = null;
+var Albumid;
 
-$(document).ready(function(){
-    setInterval(function(){
-        $.post("includes/ajax/Premium.php", function(data) {
-            if(anuncio == false){
-                if(data == 5){
-                     anuncio = true;
-                     directionAnuncios
-                     guardarPosicion = song.currentTime;
-                     guardarCancion = song.src;
-                     song.src =  directionAnuncios;
-                     song.pause;
-                     playpause();
-                }
-            }
-        });
-    },10000);
-});
+var playpauseid;
 
+var muted = false;
+var currentSong = 0;
+var vol = 1;
+var randv = false;
+var retweetv = false;
+var anuncio = false;
 
- function crearSpectro(numero){
-  conta = '#waveform' + numero;
-    console.log(conta);
+var wavesurfer;
+
+ function crearSpectro(id){
+   var container = '#waveform' + id;
     wavesurfer = WaveSurfer.create({
-        container: conta,
+        container: container,
         waveColor: 'violet',
         height: 65,
         hideScrollbar: true,
@@ -60,84 +35,104 @@ $(document).ready(function(){
      });
  }
 
-
  function setTrack(albumPlayListId,numero,albumOrPlaylist){
+     var direction = "includes/JSON/PlayListJSON.php";
+     if(albumOrPlaylist == 1){
+        direction = "includes/JSON/SongsJSON.php";
+     }
      if(!anuncio){
-        var playId = 'playpause' + songId;
-        var existe = '#playpause' + songId;
-         var direction = "includes/JSON/PlayListJSON.php";
-         if(albumPlayListId == null){
-             currentSong = 0;
-             if(songId == numero){
+        if(albumPlayListId == null){
+            currentSong = 0;
+            if(songId == numero){
                 playpause();
-             }
-             else{
-                if ( $(conta).length > 0 ) {
-                    wavesurfer.destroy();
-                 }
-                song.src = directionSONG + numero + ".mp3";
-                songId = numero;
-                playpause();
-                crearSpectro(songId);
+            }
+           else{
+              song.src = directionSONG + numero + ".mp3";
+              songId = numero;
+              document.getElementById('img-song').innerHTML = '<img  src="' + directionIMG + track[currentSong].id  + '.png"></img>';
+              document.getElementById('nombre-cancion').textContent = track[currentSong].title;
+              playpause();
+           }
+        }
+        else{
+           $.post(direction,{ albumPlayListId: albumPlayListId }, function(data) {
+               track = JSON.parse(data);
+               if(JSON.stringify(currenTrack) === JSON.stringify(track)){
+                   if(numero == currentSong){
+                      playpause();
+                      actualizarIconoPlay();
+                   }
+                   else if((numero != null) && (Object.keys(currenTrack).length > numero)){
+                       song.pause();
+                       actualizarIconoPlay();
+                       currentSong = numero;
+                       song.src = directionSONG + currenTrack[currentSong].id + ".mp3";
+                       actualizarWaveSurfer(currenTrack[currentSong].id);
+                       songId = currenTrack[currentSong].id;
+                       document.getElementById('img-song').innerHTML = '<img  src="' + directionIMG + track[currentSong].id  + '.png"></img>';
+                       document.getElementById('nombre-cancion').textContent = track[currentSong].title;
+                       playpause();
+                       actualizarIconoPlay();
+                   }
+               }
+               else{
+                   actualizarIconoPlay();
+                   currentSong = 0;
+                   currenTrack = track;
+                   Albumid = albumPlayListId;
+                   if((numero != null) && (numero >= 0) && (numero <= currenTrack.length)){
+                      currentSong = numero;
+                   }
+                   song.src = directionSONG + currenTrack[currentSong].id + ".mp3";
+                   actualizarWaveSurfer(currenTrack[currentSong].id);
+                   songId = currenTrack[currentSong].id;
+                   document.getElementById('img-song').innerHTML = '<img  src="' + directionIMG + track[currentSong].id  + '.png"></img>';
+                   document.getElementById('nombre-cancion').textContent = track[currentSong].title;
+                   playpause();
+                   actualizarIconoPlay();
+               }
+           });
+        }
+     }
+ }
+
+ function actualizarWaveSurfer(idSongNow){
+     var containerWaveSurfer;
+     if(songId == null){
+        containerWaveSurfer = '#waveform' + idSongNow;
+        if ($(containerWaveSurfer).length > 0 ) {
+            crearSpectro(idSongNow);
+            wavesurfer.load(song.src);
+         }
+     }
+     else{
+        containerWaveSurfer = '#waveform' + songId;
+        if(idSongNow != songId){
+            if ($(containerWaveSurfer).length > 0 ) {
+                wavesurfer.destroy();
+                crearSpectro(idSongNow);
                 wavesurfer.load(song.src);
              }
          }
-         else{
-            if(albumOrPlaylist == 1){
-                direction = "includes/JSON/SongsJSON.php";
-             }
-             $.post(direction,{ albumPlayListId: albumPlayListId }, function(data) {
-                 track = JSON.parse(data);
-                 if(JSON.stringify(currenTrack) === JSON.stringify(track)){
-                     if(numero != null && numero == currentSong){
-                          playpause();
-                     }
-                     else if(numero != null && numero != currentSong){
-                        song.pause;
-                        if ( $(existe).length > 0 ) {
-                            document.getElementById(playId).innerHTML = '<i class="fas fa-play-circle"></i>';
-                            if ( $(conta).length > 0 ) {
-                                 wavesurfer.destroy();
-                              }
-                          }
-                        currentSong = numero;
-                        song.src = directionSONG + currenTrack[currentSong].id + ".mp3";
-                        songId = currenTrack[currentSong].id;
-                        playpause();
-                        crearSpectro(songId);
-                        wavesurfer.load(song.src);
-                     }
-                     else{
-                        playpause();
-                     }
-                 }
-                 else{
-                     currenTrack = track;
-                     Albumid = albumPlayListId;
-                     playpauseid = playpauseIDCONST + Albumid;
-                     song.pause;
-                     if(numero != null && numero >= 0 && numero <= currenTrack.length){
-                        if ( $(existe).length > 0 ) {
-                            document.getElementById(playId).innerHTML = '<i class="fas fa-play-circle"></i>';
-                            if ( $(conta).length > 0 ) {
-                                wavesurfer.destroy();
-                             }
-                          }
-                        currentSong = numero;
-                     }
-                     song.pause;
-                     song.src = directionSONG + currenTrack[currentSong].id + ".mp3";
-                     songId = currenTrack[currentSong].id;
-                     document.getElementById('img-song').innerHTML = '<img  src="' + directionIMG + track[currentSong].id  + '.png"></img>';
-                     playpause();
-                     crearSpectro(songId);
-                     wavesurfer.load(song.src);
-                 }
-             });
-    
-         }
      }
+ }
 
+
+ function actualizarIconoPlay(){
+    var playId = 'playpause' + songId;
+    var existe = '#playpause' + songId;
+    if (!song.paused) {
+        document.getElementById('playpause').innerHTML = '<i class="fas fa-stop-circle"></i>';
+         if ($(existe).length > 0 ) {
+             document.getElementById(playId).innerHTML = '<i class="fas fa-stop-circle"></i>';
+         }
+    }
+     else {
+         document.getElementById('playpause').innerHTML = '<i class="fas fa-play-circle"></i>';
+         if ($(existe).length > 0) {
+             document.getElementById(playId).innerHTML = '<i class="fas fa-play-circle"></i>';
+         }
+    }
  }
 
  function convertTime(seconds) {
@@ -169,34 +164,32 @@ $(document).ready(function(){
                     }
                 }
             }
+             if (!bool) {
+               song.pause();
+               actualizarIconoPlay();
+             }
+            actualizarWaveSurfer(currenTrack[currentSong].id);
+            songId = currenTrack[currentSong].id;
             song.src =  song.src = directionSONG + currenTrack[currentSong].id + ".mp3";
             document.getElementById('img-song').innerHTML = '<img  src="' + directionIMG + track[currentSong].id  + '.png"></img>';
+            document.getElementById('nombre-cancion').textContent = track[currentSong].title;
         }
-       if (!bool) {
-           song.play();
+        if (!bool) {
+           playpause();
         }
+        
      }
  }
 
 
  function playpause() {
-     var playId = 'playpause' + songId;
-     var existe = '#playpause' + songId;
-    
      if (!song.paused) {
-         document.getElementById('playpause').innerHTML = '<i class="fas fa-play-circle"></i>';
-         if ( $(existe).length > 0 ) {
-            document.getElementById(playId).innerHTML = '<i class="fas fa-play-circle"></i>';
-          }
          song.pause();
      }
       else {
-         document.getElementById('playpause').innerHTML = '<i class="fas fa-stop-circle"></i>';
-         if ( $(existe).length > 0 ) {
-            document.getElementById(playId).innerHTML = '<i class="fas fa-stop-circle"></i>';
-          }
          song.play();
      }
+     actualizarIconoPlay();
  }
 
  function retweet(){
@@ -259,8 +252,21 @@ function mute() {
      document.getElementById('seek').style.backgroundSize =  position * 100 +'%';
  });
  song.addEventListener("ended", function() {
+    $.post("includes/ajax/Premium.php", function(data) {
+        if(anuncio == false){
+            if(data == 5){
+                 anuncio = true;
+                 directionAnuncios
+                 guardarPosicion = song.currentTime;
+                 guardarCancion = song.src;
+                 song.src =  directionAnuncios;
+                 song.pause();
+                 playpause();
+            }
+        }
+    });
      if(anuncio){
-        song.src = guardarCancion = song.src;
+        song.src = guardarCancion;
         song.currentTime = guardarPosicion;
         song.pause;
         song.play;

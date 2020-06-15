@@ -10,17 +10,18 @@ class Comentarios extends Crud {
         "texto"         => "NOT NULL",
         "MeGusta"       => "NOT NULL",
         "Respuesta"     => "NOT NULL",
-        "idForo"        => "NOT NULL"
+        "idForum"        => "NOT NULL"
     ];
     public function __construct(){
-        parent::__construct("comentarios",$this->properties);
+        parent::__construct("Comentarios",$this->properties);
     }
 
     public function get(){
         $arrayPDO = parent::get();
         $array = null;
         foreach($arrayPDO as $row){
-            $array[] = new comentario($row["id"],$row["idUser"],$row["idSong"],$row["texto"],$row["MeGusta"],$row["Respuesta"],$row["idForo"]);
+            $array[] = new comentario($row["id"],$row["idUser"],$row["idSong"],$row["texto"],$row["MeGusta"],$row["Respuesta"],$row["idForum"]);
+            
         }
        return $array;
     }

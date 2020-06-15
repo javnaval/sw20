@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/config.php';
-include("includes/handlers/includedFiles.php");
+include("includes/handlers/includedFiles.php"); 
 
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\classes\classes\song as song;
@@ -18,7 +18,7 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     if($songs != null){
         foreach ($songs as $row) {
             $user = user::buscaUsuarioId($row->getIdUser());
-            $menu = menu($_SESSION['idUser'],$row->getId(),$i);
+            $menu = menu($_SESSION['idUser'],$row->getId(),$i);   
             $listaCanciones .= "<li class='tracklistRow'><span class='boton'><button id='playpause" .$row->getId(). "'  onclick='setTrack(\"" . $_GET["id"] . "\", $i,0)'><i class='fas fa-play-circle'></i></button></span><span class='icon'><i class='fas fa-music'></i></span><span class='cancion'><p class='titulo' onclick='openPage(\"vistaCancion.php?id=" .$row->getId() . "\")'>". $row->getTitle() ."</p><p class='nombre'>" .$user->getName()."</p></span>
             <span class='wave'><div id='waveform".$row->getId()."'></div></span><span class='descargar'><a onclick='descargar(\"".$_SESSION['idUser']."\",\"" . $row->getId() . "\")' href='server/songs/".$row->getId().".mp3' download='".$row->getTitle()."'><i class='fas fa-cloud-download-alt'></i></a></span>
             <span class='opciones'><i onclick='mostrarPlaylist(\"".$i."\")' id='PlayList".$i."' class='fas fa-stream'></i></span>$menu</li>";
@@ -35,7 +35,7 @@ function viewPlayListInfo($playlist,$userPlaylist) {
 }
 
 function menu($idUser,$idSong,$iC){
-    $html = "";
+    $html = ""; 
     $html .= "<ul id='navPlayList".$iC."' >";
     $playlists = playlist::playlistsUser($idUser);
     foreach($playlists as $play){
@@ -52,9 +52,19 @@ function menu($idUser,$idSong,$iC){
         ?>
     </section>
     <script>
+    if(!song.paused) {
+         var existe = '#playpause' + songId;
+         var playId = 'playpause' + songId;
+         if($(existe).length > 0) {
+             document.getElementById(playId).innerHTML = '<i class="fas fa-stop-circle"></i>';
+         }
+          crearSpectro(songId);
+		  wavesurfer.load(song.src);
+     }
          var ids = '<?php echo $i ?>';
             for(var i = 0; i < ids; i++){
                 var nav = 'navPlayList' + i;
                 document.getElementById(nav).style.display = 'none';
             }
     </script>
+  

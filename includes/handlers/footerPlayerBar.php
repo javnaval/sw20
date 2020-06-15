@@ -1,6 +1,7 @@
 <footer id="container-Footer" class="active">
     <section id="left-footer" class="left-footer">
          <span id="img-song"><img  src="images/logoR.png"></a></span>
+         <p id="nombre-cancion">Sounday</p>
     </section>
 
     <section id="center-footer" class="center-footer">

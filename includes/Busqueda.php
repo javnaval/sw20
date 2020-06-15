@@ -1,5 +1,6 @@
 <?php
 namespace es\ucm\fdi\aw;
+require_once 'config.php';
 use es\ucm\fdi\aw\classes\classes\album as album;
 use es\ucm\fdi\aw\classes\classes\seguidor as seguidor;
 use es\ucm\fdi\aw\classes\classes\song as song;

@@ -13,8 +13,6 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs;
 
 	 foreach($songs as $row){
         $songsArray[] =  $row->toString();
-		$songsArray[] =  $row->toString();
-		$songsArray[] =  $row->toString();
      }
 
      echo json_encode($songsArray);

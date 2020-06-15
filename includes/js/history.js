@@ -41,3 +41,8 @@ function goForward() {
         document.write('Fetch Error :', err);
     });
 }
+
+window.onpopstate = function(event) {
+	var encodedUrl = encodeURI(document.location);
+	$("#mainContent").load(encodedUrl);
+};
