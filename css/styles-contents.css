@@ -17,21 +17,21 @@ section.contents{
     overflow-y: scroll;
 }
 
-legend{
+section.contents legend{
     color: #FF307B;
 }
 
-fieldset{
+section.contents fieldset{
     color: rgb(255,251,251);
 }
 
-section.elementos {
+section.contents section.elementos {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin: 2%;
 }
-section.elementos a div{
+section.contents section.elementos a div{
     margin: 4%;
     width: 15em;
     height: 15em;
@@ -93,7 +93,7 @@ section.contents a.buscar:hover {
     cursor: pointer;
 }
 
-a {
+section.contents a {
     color: #FF307B;
 }
 

@@ -27,7 +27,7 @@ section.contentsCancion div.comentariosForos{
     width:100%;
     overflow: hidden;
 }
-div.cancion{
+section.contentsCancion div.cancion{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,42 +38,42 @@ div.cancion{
   padding: 0px;
   margin: 0px;
 }
-div.cancion .wave{
+section.contentsCancion div.cancion .wave{
     width: 70%;
     height: 75px;
     justify-content: center;
     align-items: center;
     display: flex;
 }
-div.cancion .wave div{
+section.contentsCancion div.cancion .wave div{
   width: 100%;
   height: 100%;
 }
-div.cancion span.descargar{
+section.contentsCancion div.cancion span.descargar{
   width: 50px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-div.cancion span.descargar a:link, a:visited, a:active {
+section.contentsCancion div.cancion span.descargar a:link, a:visited, a:active {
   text-decoration:none;
   color: white;
 }
-.refrescar{
+section.contentsCancion .refrescar{
   color: white;
 }
-.refrescar i:hover{
+section.contentsCancion .refrescar i:hover{
   cursor: pointer;
 }
-div.cancion span.opciones{
+section.contentsCancion div.cancion span.opciones{
   width: 50px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-div.cancion span.opciones i{
+section.contentsCancion div.cancion span.opciones i{
   color: white;
 }
 
@@ -84,7 +84,7 @@ section.contentsCancion div.comentariosForos div.comentarios{
     justify-content: center;
     border-radius: 20px;
 }
-.comentariosTexto{
+section.contentsCancion .comentariosTexto{
    display: flex;
    height: 100%;
    width: 55%;
@@ -93,7 +93,7 @@ section.contentsCancion div.comentariosForos div.comentarios{
    align-items: center;
    border-radius: 20px;
 }
-.foros{
+section.contentsCancion .foros{
    display: flex;
    height: 100%;
    width: 45%;
@@ -104,17 +104,17 @@ section.contentsCancion div.comentariosForos div.comentarios{
 
 }
 
-.foros .foro{
+section.contentsCancion .foros .foro{
   margin: 0;
   padding: 0;
   height: 90%;
   width:100%;
   overflow-y: scroll;
 }
-.foros .foro p {
+section.contentsCancion .foros .foro p {
   color: white;
 }
-.textoForo{
+section.contentsCancion .textoForo{
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -125,12 +125,12 @@ section.contentsCancion div.comentariosForos div.comentarios{
    text-align: center;
    word-wrap: break-word;
 }
-.recargar{
+section.contentsCancion .recargar{
   height: 90%;
   width:100%;
   overflow-y: scroll;
 }
-.comentariosForos label {
+section.contentsCancion .comentariosForos label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -176,7 +176,7 @@ section.contentsCancion textarea{
 }
 
 
-.textComentario{
+section.contentsCancion .textComentario{
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -188,26 +188,26 @@ section.contentsCancion textarea{
    word-wrap: break-word;
 }
 
-#recargar::-webkit-scrollbar {
+section.contentsCancion #recargar::-webkit-scrollbar {
   width: 7px;
   border-radius: 7px;
   background-color: rgb(0,0,0);
 
 }
-#recargar::-webkit-scrollbar-thumb {
+section.contentsCancion #recargar::-webkit-scrollbar-thumb {
   width: 7px;
   border-radius: 7px;
   height: 3px;
   background-color: white;
 }
 
-#foro::-webkit-scrollbar {
+section.contentsCancion #foro::-webkit-scrollbar {
   width: 7px;
   border-radius: 7px;
   background-color: rgb(0,0,0);
 
 }
-#foro::-webkit-scrollbar-thumb {
+section.contentsCancion #foro::-webkit-scrollbar-thumb {
   width: 7px;
   border-radius: 7px;
   height: 3px;
@@ -217,7 +217,7 @@ section.contentsCancion textarea{
 
 
 
-ul {
+section.contentsCancion ul {
   list-style-type: none;
 }
 
@@ -225,24 +225,24 @@ ul {
 /** ====================
 * Lista de Comentarios
 =======================*/
-.comments-container {
+section.contentsCancion .comments-container {
  margin: 0 15px 0 0;
   padding: 0;
   width: 768px;
 }
 
-.comments-container h1 {
+section.contentsCancion .comments-container h1 {
   font-size: 36px;
   color: #283035;
   font-weight: 400;
 }
 
-.comments-container h1 a {
+section.contentsCancion .comments-container h1 a {
   font-size: 18px;
   font-weight: 700;
 }
 
-.comments-list {
+section.contentsCancion .comments-list {
    margin: 0;
    padding: 0;
   margin-top: 30px;
@@ -252,7 +252,7 @@ ul {
 /**
 * Lineas / Detalles
 -----------------------*/
-.comments-list:before {
+section.contentsCancion .comments-list:before {
   content: '';
   width: 2px;
   height: 100%;
@@ -262,7 +262,7 @@ ul {
   top: 0;
 }
 
-.comments-list:after {
+section.contentsCancion .comments-list:after {
   content: '';
   position: absolute;
   background: #c7cacb;
@@ -276,7 +276,7 @@ ul {
   border-radius: 50%;
 }
 
-.reply-list:before, .reply-list:after {display: none;}
+section.contentsCancion .reply-list:before, section.contentsCancion .reply-list:after {display: none;}
 .reply-list li:before {
   content: '';
   width: 60px;
@@ -288,13 +288,13 @@ ul {
 }
 
 
-.comments-list li {
+section.contentsCancion .comments-list li {
   margin-bottom: 15px;
   display: block;
   position: relative;
 }
 
-.comments-list li:after {
+section.contentsCancion .comments-list li:after {
   content: '';
   display: block;
   clear: both;
@@ -302,7 +302,7 @@ ul {
   width: 0;
 }
 
-.reply-list {
+section.contentsCancion .reply-list {
   padding-left: 88px;
   clear: both;
   margin-top: 15px;
@@ -310,7 +310,7 @@ ul {
 /**
 * Avatar
 ---------------------------*/
-.comments-list .comment-avatar {
+section.contentsCancion .comments-list .comment-avatar {
   width: 65px;
   height: 65px;
   position: relative;
@@ -326,17 +326,17 @@ ul {
   overflow: hidden;
 }
 
-.comments-list .comment-avatar img {
+section.contentsCancion .comments-list .comment-avatar img {
   width: 100%;
   height: 100%;
 }
 
-.reply-list .comment-avatar {
+section.contentsCancion .reply-list .comment-avatar {
   width: 50px;
   height: 50px;
 }
 
-.comment-main-level:after {
+section.contentsCancion .comment-main-level:after {
   content: '';
   width: 0;
   height: 0;
@@ -346,7 +346,7 @@ ul {
 /**
 * Caja del Comentario
 ---------------------------*/
-.comments-list .comment-box {
+section.contentsCancion .comments-list .comment-box {
   width: 680px;
   float: right;
   position: relative;
@@ -355,7 +355,7 @@ ul {
   box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
 
-.comments-list .comment-box:before, .comments-list .comment-box:after {
+section.contentsCancion .comments-list .comment-box:before, .comments-list .comment-box:after {
   content: '';
   height: 0;
   width: 0;
@@ -368,16 +368,16 @@ ul {
   left: -11px;
 }
 
-.comments-list .comment-box:before {
+section.contentsCancion .comments-list .comment-box:before {
   border-width: 11px 13px 11px 0;
   border-color: transparent rgba(0,0,0,0.05);
   left: -12px;
 }
 
-.reply-list .comment-box {
+section.contentsCancion .reply-list .comment-box {
   width: 610px;
 }
-.comment-box .comment-head {
+section.contentsCancion .comment-box .comment-head {
    height: 50px;
    display: flex;
    flex-direction: row;
@@ -391,7 +391,7 @@ ul {
   border-radius: 4px 4px 0 0;
 }
 
-.comment-box .comment-head i {
+section.contentsCancion .comment-box .comment-head i {
   float: right;
   margin-left: 14px;
   position: relative;
@@ -403,11 +403,11 @@ ul {
   transition: color 0.3s ease;
 }
 
-.comment-box .comment-head i:hover {
+section.contentsCancion .comment-box .comment-head i:hover {
   color: #03658c;
 }
 
-.comment-box .comment-name {
+section.contentsCancion .comment-box .comment-name {
   color: #283035;
   font-size: 14px;
   font-weight: 700;
@@ -415,11 +415,11 @@ ul {
   margin-right: 10px;
 }
 
-.comment-box .comment-name a {
+section.contentsCancion .comment-box .comment-name a {
   color: #283035;
 }
 
-.comment-box .comment-head span {
+section.contentsCancion .comment-box .comment-head span {
   float: left;
   color: #999;
   font-size: 13px;
@@ -427,7 +427,7 @@ ul {
   top: 1px;
 }
 
-.comment-box .comment-content {
+section.contentsCancion .comment-box .comment-content {
   background: #FFF;
   padding: 12px;
   font-size: 15px;
@@ -437,7 +437,7 @@ ul {
   border-radius: 0 0 4px 4px;
 }
 
-.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
+section.contentsCancion .comment-box section.contentsCancion .comment-name.by-author, section.contentsCancion .comment-box .comment-name.by-author a {color: #03658c;}
 .comment-box .comment-name.by-author:after {
   content: 'autor';
   background: #03658c;

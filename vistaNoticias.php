@@ -15,7 +15,7 @@ function gestor(){ return user::esGestor($_SESSION['idUser']); }
 
 ?>
 
-    <section id="contents" class="contents">
+    <section id="contents" class="contentsNoticia">
         <?php
         if (!gestor()) require 'includes/Noticias.php';
 		else echo $html;

@@ -15,7 +15,7 @@ $form = new es\ucm\fdi\aw\FormularioVerificarArtista();
 $html = $form->gestiona();
 ?>
 
-    <section id="contents" class="contents">
+    <section id="contents" class="contentsVerArtistas">
         <?php
         echo $html;
         ?>

@@ -15,7 +15,7 @@ $form = new es\ucm\fdi\aw\FormularioCrearNoticia();
 $html = $form->gestiona();
 ?>
 
-    <section id="contents" class="contents">
+    <section id="contents" class="contentsCrearNoticia">
         <?php
         echo $html;
         ?>

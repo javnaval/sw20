@@ -48,7 +48,7 @@ function muestra($id, $seg){
 ?>
 
 
-    <section id="contents" class="contents">
+    <section id="contents" class="contentsSeguidores">
         <?php
         if (isset($_GET['id']) && isset($_GET['seg'])) {
             echo muestra(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT),

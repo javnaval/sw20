@@ -49,7 +49,7 @@ function muestraInteraccion($id,$form){
 }
 ?>
 
-    <section id="contents" class="contents">
+    <section id="contents" class="contentsUsuario">
         <?php
         if (isset($_GET['id'])) {
             include 'includes/Usuario.php';

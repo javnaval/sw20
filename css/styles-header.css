@@ -7,7 +7,7 @@ header.buttons{
     z-index: 1;
 }
 
-.navegacion {
+header.buttons .navegacion {
     border: none;
     height: 32px;
     width: 32px;
@@ -21,13 +21,13 @@ header.buttons{
     margin-right: 2px;
 }
 
-.history .a-v {
+header.buttons .history .a-v {
     opacity: 1;
     height: 22px;
     width: 22px;
 }
 
-.history .navegacion:disabled {
+header.buttons .history .navegacion:disabled {
     cursor: not-allowed;
     opacity: .6;
 }

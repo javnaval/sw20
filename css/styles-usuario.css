@@ -3,7 +3,7 @@ body {
     margin: 0;
 }
 
-section.contents img{
+section.contentsUsuario img{
     width: 15em;
 	height: 15em;
     text-align: center;
@@ -11,7 +11,7 @@ section.contents img{
 	border-radius: 50%;
 }
 
-section.contents div.contenido {
+section.contentsUsuario div.contenido {
 	width: auto;
     height: 40%;
 	color: white;
@@ -20,16 +20,16 @@ section.contents div.contenido {
 	margin-top: 5%;
 }
 
-h3 a {
+section.contentsUsuario h3 a {
     color: rgb(255,251,251);
     text-decoration: none;
 }
 
-h3 a:hover {
+section.contentsUsuario h3 a:hover {
     text-decoration: underline;
 }
 
-section.contents {
+section.contentsUsuario {
     margin-left: 100px;
     margin-bottom: 100px;
     height: 100%;;
@@ -40,23 +40,23 @@ section.contents {
     overflow-y: scroll;
 }
 
-section.contents h3 {
+section.contentsUsuario h3 {
     color: rgb(255, 251, 251);
 }
 
-h1 a {
+section.contentsUsuario h1 a {
     color: #FF307B;
 }
 
-legend{
+section.contentsUsuario legend{
     color: #FF307B;
 }
 
-fieldset{
+section.contentsUsuario fieldset{
     color: rgb(255,251,251);
 }
 
-section.contents a.activar {
+section.contentsUsuario a.activar {
     color : floralwhite;
     background-color: #FF307B;
     text-align: center;
@@ -71,7 +71,7 @@ section.contents a.activar {
     margin-left: 75%;
 }
 
-section.contents a.activado {
+section.contentsUsuario a.activado {
     color : #FF307B;
     background-color: floralwhite;
     text-align: center;
@@ -86,6 +86,6 @@ section.contents a.activado {
     margin-left: 75%;
 }
 
-section.contents a.activar:hover, section.contents a.activado:hover {
+section.contentsUsuario a.activar:hover, section.contentsUsuario a.activado:hover {
     cursor: pointer;
 }
