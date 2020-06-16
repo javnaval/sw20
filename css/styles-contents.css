@@ -31,7 +31,7 @@ section.contents section.elementos {
     flex-wrap: wrap;
     margin: 2%;
 }
-section.contents section.elementos a div{
+section.contents section.elementos div.esp{
     margin: 4%;
     width: 15em;
     height: 15em;
@@ -39,6 +39,8 @@ section.contents section.elementos a div{
     background-color: rgb(44, 44, 44);;
     color: white;
     border-radius: 10px;
+    text-align: center;
+    padding: 10px;
 }
 section.contents h1{
     width: 20px;
@@ -98,13 +100,7 @@ section.contents a {
 }
 
 section.elementos a.buscar div{
-    margin: 4%;
-    width: 15em;
-    height: 15em;
-    flex-direction: row;
-    background-color: rgb(44, 44, 44);;
     color: white;
-    border-radius: 10px;
 }
 
 section.contents a.seguir {

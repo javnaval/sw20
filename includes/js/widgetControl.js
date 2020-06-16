@@ -49,8 +49,8 @@ var wavesurfer;
            else{
               song.src = directionSONG + numero + ".mp3";
               songId = numero;
-              document.getElementById('img-song').innerHTML = '<img  src="' + directionIMG + track[currentSong].id  + '.png"></img>';
-              document.getElementById('nombre-cancion').textContent = track[currentSong].title;
+              document.getElementById('img-song').innerHTML = '<img  src="' + directionIMG + songId  + '.png"></img>';
+              //document.getElementById('nombre-cancion').textContent = track[currentSong].title;
               playpause();
            }
         }
