@@ -47,7 +47,7 @@ function actualizarSeguidores(id){
                 response.text().then(function(text){
                     if (text === '0') seg.innerText = "Seguidores: " + text;
                     else {
-                        seg.innerHTML = "<a href='vistaSeguidores.php?id=" + id + "&seg=true'>Seguidores</a>: " + text;
+                        seg.innerHTML = "<a onclick=\"openPage('vistaSeguidores.php?id=" + id + "&seg=true')\">Seguidores</a>: " + text;
                     }
                 });
             })

@@ -37,7 +37,7 @@ function muestraInteraccion($id,$form){
    }
     else {
         if (isset($_GET['editar'])) $html .= $form;
-        else $html .= '<h1><a type="button" href="vistaUsuario.php?editar=true&id=' . $_SESSION['idUser'] . '">Editar</a></h1>';
+        else $html .= '<h1><a type="button" onclick="openPage(\'vistaUsuario.php?editar=true&id='  .$_SESSION['idUser'] . '\')">Editar</a></h1>';
         $html .= "</div>";
 		if(!user::esArtista($id))
 		{

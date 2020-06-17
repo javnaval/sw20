@@ -16,7 +16,7 @@ function muestra($id, $seg){
         foreach ($users as $user) {
             $user = user::buscaUsuarioId($user['idSeguidor']);
             echo '<div class="seguidor">';
-            echo "<a href='vistaUsuario.php?id=".$user->getId()."' class='seg'><img src='server/users/images/". $user->getId() .".png'>";
+            echo "<a onclick=\"openPage('vistaUsuario.php?id="  .$user->getId() . "')\" class='seg'><img src='server/users/images/". $user->getId() .".png'>";
             echo '<p class="ur">' . $user->getUser() . '</p><p>' . $user->getName() . '</p>';
             echo '</a>';
             if ($user->getId() == $_SESSION['idUser']) echo "<p class='tu'>Tu</p>";
@@ -32,7 +32,8 @@ function muestra($id, $seg){
         foreach ($users as $user) {
             $user = user::buscaUsuarioId($user['idUser']);
             echo '<div class="seguidor">';
-            echo "<a href='vistaUsuario.php?id=".$user->getId()."' class='seg'><img src='server/users/images/". $user->getId() .".png'>";
+            echo "<a onclick=\"openPage('vistaUsuario.php?id=".$user->getId()."')\" class='seg'>";
+            echo "<img src='server/users/images/". $user->getId() .".png'>";
             echo '<p class="ur">' . $user->getUser() . '</p><p>' . $user->getName() . '</p>';
             echo '</a>';
             if ($user->getId() == $_SESSION['idUser']) echo "<p class='tu'>Tu</p>";

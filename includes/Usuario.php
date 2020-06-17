@@ -36,14 +36,14 @@ if (($cont = count($seguidores)) == 0) {
     echo "Seguidores: ".$cont;
 }
 else {
-    echo "<a href='vistaSeguidores.php?id=".$usuario->getId()."&seg=true'>Seguidores</a>: ".$cont;
+    echo "<a onclick=\"openPage('vistaSeguidores.php?id=".$usuario->getId()."&seg=true')\">Seguidores</a>: ".$cont;
 }
 echo "</h3> <h3>";
 if (($cont2 = count($siguiendo)) == 0) {
     echo "Siguiendo: ".$cont2;
 }
 else {
-    echo "<a href='vistaSeguidores.php?id=".$usuario->getId()."&seg=false'>Siguiendo</a>: ".$cont2;
+    echo "<a onclick=\"openPage('vistaSeguidores.php?id=".$usuario->getId()."&seg=false')\">Siguiendo</a>: ".$cont2;
 }
 echo "</h3>";
 $rol = $usuario->getRol();

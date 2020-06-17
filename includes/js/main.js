@@ -63,8 +63,13 @@ function mostrarPlaylist(numero){
 	 }
 }
 
-function buscar() {
-	var bus = document.getElementById('input-busqueda').value
+function state() {
+	var bus = document.getElementById('input-busqueda').value;
+	history.pushState({bus}, null, '#' + bus);
+}
+
+function buscar(bus = null) {
+	if (bus == null) bus = document.getElementById('input-busqueda').value;
     return fetch('includes/Busqueda.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -75,7 +80,6 @@ function buscar() {
                 var p = document.getElementById('contBusqueda');
                 if (text === '') p.innerHTML = 'No hay resultado para su busqueda';
                 else {
-                	history.pushState({'busqueda': bus}, null, '#' + bus)
                     var parent = document.getElementById('contents');
 					for(var i=parent.childNodes.length - 1; parent.childNodes[i].nodeName !== 'HEADER' && i > 0; i--) {
 						parent.removeChild(parent.childNodes[i]);
@@ -88,6 +92,5 @@ function buscar() {
             document.write('Fetch Error :', err);
         });
 }
-
 
 
