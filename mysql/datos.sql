@@ -16,15 +16,6 @@ INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`, `rol`, `solicita
 
 
 --
--- Volcado de datos para la tabla `songsForum`
---
-
-INSERT INTO `songsForum` (`id`, `idUser`, `idSong`, `titulo`) VALUES
-(1, 6, 3, 'Comentarios'),
-(2, 6, 2, 'Comentarios'),
-(3, 6, 1, 'Comentarios');
-
---
 -- Volcado de datos para la tabla `albums`
 --
 
@@ -70,6 +61,15 @@ INSERT INTO `contiene` (`idSong`, `idPlaylist`) VALUES
 (3, 1),
 (1, 2),
 (3, 2);
+
+--
+-- Volcado de datos para la tabla `songsForum`
+--
+
+INSERT INTO `songsForum` (`id`, `idUser`, `idSong`, `titulo`) VALUES
+(1, 6, 3, 'Comentarios'),
+(2, 6, 2, 'Comentarios'),
+(3, 6, 1, 'Comentarios');
 
 --
 -- Volcado de datos para la tabla `comentarios`

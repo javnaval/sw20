@@ -35,6 +35,8 @@ GRANT ALL PRIVILEGES ON `sounday`.* TO 'sounday'@'%';
 
 USE `sounday`;
 
+DROP TABLE IF EXISTS `songsForum`;
+DROP TABLE IF EXISTS `descargas`;
 DROP TABLE IF EXISTS `comentarios`;
 DROP TABLE IF EXISTS `meGustacomentarios`;
 DROP TABLE IF EXISTS `seguidores`;
@@ -44,8 +46,7 @@ DROP TABLE IF EXISTS `playlists`;
 DROP TABLE IF EXISTS `noticias`;
 DROP TABLE IF EXISTS `albums`;
 DROP TABLE IF EXISTS `users`;
-DROP TABLE IF EXISTS `songsForum`;
-DROP TABLE IF EXISTS `descargas`;
+
 
 
 --

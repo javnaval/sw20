@@ -75,8 +75,8 @@ function buscar() {
                 var p = document.getElementById('contBusqueda');
                 if (text === '') p.innerHTML = 'No hay resultado para su busqueda';
                 else {
-                	document.
-                    var parent = document.getElementById('contents');
+                	/*document.
+                    var parent = document.getElementById('contents');*/
 					for(var i=parent.childNodes.length - 1; parent.childNodes[i].nodeName !== 'HEADER' && i > 0; i--) {
 						parent.removeChild(parent.childNodes[i]);
 					}
