@@ -91,7 +91,9 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 
         public static function buscaUsuario($user){
 		     $user =(new Users())->where("user", "=", $user)->get();
+			 if($user)
 		     return $user[0];
+			 else return null;
         }
 
         public static function buscaUsuarioId($id){
