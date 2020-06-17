@@ -14,17 +14,6 @@ INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`, `rol`, `solicita
 (8, 'capaldi', 'Lewis Capaldi', 'l.capaldi@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'artista', 0, 0, NULL),
 (9, 'turtles', 'The Turtles', 'turtles@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'artista', 0, 0, NULL);
 
---
--- Volcado de datos para la tabla `comentarios`
---
-
-INSERT INTO `comentarios` (`id`, `idUser`, `idSong`, `texto`, `MeGusta`,`Respuesta`,`idForum`) VALUES
-(1, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,1),
-(2, 2, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,1,1),
-(3, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,2),
-(4, 3, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,3,2),
-(5, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,2),
-(6, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,1);
 
 --
 -- Volcado de datos para la tabla `songsForum`
@@ -82,5 +71,15 @@ INSERT INTO `contiene` (`idSong`, `idPlaylist`) VALUES
 (1, 2),
 (3, 2);
 
+--
+-- Volcado de datos para la tabla `comentarios`
+--
 
+INSERT INTO `comentarios` (`id`, `idUser`, `idSong`, `texto`, `MeGusta`,`Respuesta`,`idForum`) VALUES
+(1, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,1),
+(2, 2, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,1,1),
+(3, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,2),
+(4, 3, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,3,2),
+(5, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,2),
+(6, 1, 3, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',20,0,1);
 
