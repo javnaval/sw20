@@ -137,7 +137,7 @@ footer section.center-footer span.half-center div p{
   border-radius: 2px;
 }
 
-button {
+footer button {
   margin-left: 10px;
   margin-right: 10px;
   background: #000000;
@@ -158,7 +158,7 @@ button {
   -moz-border-radius: 32px;
   border-radius: 32px;
 }
-button:hover{
+footer button:hover{
   transform: scale(1.05);
   color: #ffffff;
 }

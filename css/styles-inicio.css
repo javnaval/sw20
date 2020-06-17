@@ -64,3 +64,25 @@ section.contentsInicial h2{
 div.card  figure img{
     width:100%;
 }
+
+section.contentsInicial button.foot {
+    margin-left: 10px;
+    margin-right: 10px;
+    background: #000000;
+    color: #afafaf;
+    background: -webkit-gradient(linear, left bottom, left top, from(#000000), to(#262626));
+    background: -webkit-linear-gradient(bottom, #000000, #262626);
+    background: -moz-linear-gradient(bottom, #000000, #262626);
+    background: -o-linear-gradient(bottom, #000000, #262626);
+    background: linear-gradient(0deg, #000000, #262626);
+    font-size: 14px;
+    border: none;
+    outline: none;
+    padding: 0px 15px;
+    width: 55px;
+    height: 30px;
+    line-height: 30px;
+    -webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    border-radius: 32px;
+}

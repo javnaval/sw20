@@ -30,7 +30,7 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
       $html .= "<div class='swiper-slide'> <div class='card'>";   
       $html .= "<figure><img onclick='openPage(\"vistaPlaylist.php?id=" .$playlist->getId() . "\")' src='server/albums/images/".$row->getIdAlbum().".png'>";   
       $html .= "<figcaption>" . $row->getTitle() . "<figcaption>";
-      $html .= "<button id='playpause" .$row->getId(). "'  onclick='setTrack(\"" .$playlist->getId(). "\",$i,null)'><i class='fas fa-play-circle'></i></button></div></div>";     
+      $html .= "<button class='foot' id='playpause" .$row->getId(). "'  onclick='setTrack(\"" .$playlist->getId(). "\",$i,null)'><i class='fas fa-play-circle'></i></button></div></div>";
       $i++;
     }                                                 
   return $html;

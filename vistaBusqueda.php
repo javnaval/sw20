@@ -17,3 +17,10 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
         <p id='contBusqueda'>Estas en la pagina de busqueda. Haz click en buscar para encontrar canciones, artistas y albumes.</p>
     </section>
 
+<script type="application/javascript">
+    window.onpopstate = function(event) {
+        document.getElementById('input-busqueda').value = event.state.busqueda;
+        buscar();
+    };
+</script>
+

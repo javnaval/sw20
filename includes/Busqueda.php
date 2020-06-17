@@ -21,7 +21,7 @@ else {
             echo '<a class="buscar" href="vistaCancion.php?id='  .$cancion->getId() . '"><div>';
             echo '<h3>' . $cancion->getTitle() . '</h3><p>Autor: ' . (user::buscaUsuarioId($cancion->getIdUser()))->getName() . '</p><p>Album: ' . (album::buscaAlbumId($cancion->getIdAlbum()))->getTitle() . '</p>';
             echo '</div></a>';
-            echo "<button id='playpause" .$cancion->getId(). "' onclick='setTrack(null,\"" . $cancion->getId() . "\",null)'><i class='fas fa-play-circle'></i></button></div></div>";
+            echo "<button class='foot' id='playpause" .$cancion->getId(). "' onclick='setTrack(null,\"" . $cancion->getId() . "\",null)'><i class='fas fa-play-circle'></i></button></div></div>";
             echo '</div>';
         }
         echo "</section>";
