@@ -1,8 +1,9 @@
 <?php
 use es\ucm\fdi\aw\classes\classes\user as user;
 ?>
- <link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
-<header>
+<link rel="stylesheet" type="text/css" href="css/styles-navSidebarLeft.css"/>
+<nav>
+<header class="sidebarHeader">
     <span><a class="logo" href="vistaInicio.php"><img src="images/logoR.png"></a></span>
     <?php
     $usuario = user::buscaUsuarioId($_SESSION['idUser']);
@@ -10,7 +11,7 @@ use es\ucm\fdi\aw\classes\classes\user as user;
     ?>
     <a class="out" href="includes/procesarLogout.php">Cerrar Sesion</a>
 </header>
-<section>
+<section class="sidebarSection">
     <ul>
         <li><a class="icon" href="vistaInicio.php"><figure><i class="fas fa-home"></i><figcaption>Inicio<figcaption></figure></a></li>
         <li><a class="icon" href="vistaBusqueda.php"><figure><i class="fas fa-search"></i><figcaption>Buscar<figcaption></figure></a></li>
@@ -24,4 +25,4 @@ use es\ucm\fdi\aw\classes\classes\user as user;
         <li><a class="icon" href="vistaUsuario.php"><figure><i class="fas fa-user"></i><figcaption>Cuenta<figcaption></figure></a></li>
     </ul>
 </section>
-
+</nav>
