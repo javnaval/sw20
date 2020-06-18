@@ -56,10 +56,10 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 		}
 
         public static function buscaNoticiaId($id){
-            $noticia = (new Noticias())->where("id", "=", $id)->get();
-            return $noticia[0];
+            return (new Noticias())->where("idUser", "=", $id)->get();
+            //return $noticia[0];
         }
-		
+
 		public static function buscar($user){
 			if(user::esGestor($user)) $aceptado = 0;
 			else $aceptado = 1;

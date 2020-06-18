@@ -81,5 +81,9 @@ class comentario {
     public static function actualizaMegustas($id,$comentario){
         (new Comentarios())->where("id","=",$id)->update($comentario->toString());
     }
+	public static function buscaIdUser($id){
+		return  (new Comentarios())->where("idUser", "=", $id)->get();
+		//return $comentarios[0];
+	}
     
 }

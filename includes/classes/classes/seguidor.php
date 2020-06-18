@@ -20,7 +20,6 @@ class seguidor {
     public function getIdSeguidor() {
         return $this->idSeguidor;
     }
-
     public function toString(){
         return[
             "idUser"      => "".$this->idUser."",

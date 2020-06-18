@@ -42,6 +42,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 			 return $this->name;
 		 }
 
+
 		 public function getEmail(){
 			 return $this->email;
 		 }
@@ -99,6 +100,18 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
         public static function buscaUsuarioId($id){
 		     $user = (new Users())->where("id", "=", $id)->get();
 		     return $user[0];
+        }
+		public static function buscaUsuarioNombre($id){
+		     $user = (new Users())->where("id", "=", $id)->get();
+		     return $user[0]->getName();
+        }
+		public static function buscaUsuarioRol($id){
+		     $user = (new Users())->where("id", "=", $id)->get();
+		     return $user[0]->getRol();
+        }
+		public static function buscaUsuarioDesc($id){
+		     $user = (new Users())->where("id", "=", $id)->get();
+		     return $user[0]->getDescripcion();
         }
 
         public function compruebaPassword($password){
