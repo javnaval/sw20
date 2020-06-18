@@ -53,11 +53,7 @@ function anadeComentario(idCancion,idComentario,idForo){
     });
 }
 
-function apruebaNoticia(idNoticia){
-	$.post("includes/ajax/AprobarNoticia.php",{idNoticia: idNoticia}, function() {
-		openPage("vistaNoticias.php");
-    });
-}
+
 
 function anadeForo(idCancion){
 	var titulo = document.getElementById("txtAreaForo").value;
