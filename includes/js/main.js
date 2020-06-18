@@ -63,6 +63,38 @@ function mostrarPlaylist(numero){
 	 }
 }
 
+function eliminarPlaylist (id){
+	return fetch('includes/Eliminar.php', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		body: 'type=1&value=' + id
+	})
+		.then(function(response) {
+			response.text().then(function(text){
+				document.getElementById('playlists').innerHTML = text;
+			});
+		})
+		.catch(function (err) {
+			document.write('Fetch Error :', err);
+		});
+}
+
+function eliminarSong (id){
+	return fetch('includes/Eliminar.php', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		body: 'type=0&value=' + id
+	})
+		.then(function(response) {
+			response.text().then(function(text){
+				document.getElementById('songs').innerHTML = text;
+			});
+		})
+		.catch(function (err) {
+			document.write('Fetch Error :', err);
+		});
+}
+
 function state() {
 	var bus = document.getElementById('input-busqueda').value;
 	history.pushState({bus}, null, '#' + bus);
@@ -91,6 +123,24 @@ function buscar(bus = null) {
         .catch(function (err) {
             document.write('Fetch Error :', err);
         });
+}
+
+function crearPlaylist(){
+	var pl = document.getElementById('tituloPlaylist').value;
+	return fetch('includes/CrearPlaylist.php', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		body: 'tituloPLaylist=' + pl
+	})
+		.then(function(response) {
+			response.text().then(function(text){
+				document.getElementById('playlists').innerHTML = text;
+				oculta('crearPlaylist'); muestra('pl');
+			});
+		})
+		.catch(function (err) {
+			document.write('Fetch Error :', err);
+		});
 }
 
 

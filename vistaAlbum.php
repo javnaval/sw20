@@ -19,11 +19,11 @@ use es\ucm\fdi\aw\classes\classes\playlist as playlist;
 		 if($songs != null){
 			 foreach ($songs as $row) {   
                  $menu = menu($_SESSION['idUser'],$row->getId(),$i);    
-                 $listaCanciones .= "<li class='tracklistRow'><span class='boton'><button id='playpause" .$row->getId(). "'  onclick='setTrack(\"" . $albumId . "\",$i,1)'><i class='fas fa-play-circle'></i></button></span>
+                 $listaCanciones .= "<li class='tracklistRow'><span class='boton'><button class='foot' id='playpause" .$row->getId(). "'  onclick='setTrack(\"" . $albumId . "\",$i,1)'><i class='fas fa-play-circle'></i></button></span>
                  <span class='icon'><i class='fas fa-music'></i></span><span class='cancion'><p class='titulo' onclick='openPage(\"vistaCancion.php?id=" .$row->getId() . "\")'>". $row->getTitle() ."</p><p class='nombre'>" .$albumArtist."</p></span>
                  <span class='wave'><div id='waveform".$row->getId()."'></div></span>
                  <span class='descargar'><a onclick='descargar(\"".$_SESSION['idUser']."\",\"" . $row->getId() . "\")' href='server/songs/".$row->getId().".mp3' download='".$row->getTitle()."'><i class='fas fa-cloud-download-alt'></i></a></span>
-                 <span class='opciones'><i onclick='mostrarPlaylist(\"".$i."\")' id='PlayList".$i."' class='fas fa-stream'></i></span>$menu</li>";
+                 <span class='opciones'><i onclick='mostrarPlaylist(\"".$i."\")' id='PlayList".$i."' class='fas fa-plus'></i></span>$menu</li>";
                  $i++;
                  
 			 }

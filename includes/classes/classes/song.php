@@ -82,5 +82,9 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
             (new Songs())->where("id","=",$this->id)->delete();
         }
 
+        public static function eliminarId($id){
+            (new Songs())->where("id","=",$id)->delete();
+        }
+
 	}
 ?>

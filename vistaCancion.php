@@ -26,7 +26,7 @@ function muestraCancion($idCancion,$foroid){
         $html .= "<div class='cancion' ><div class='card'>";  
         $html .= "<figure><img src='images/Colores.jpg'>";   
         $html .= "<figcaption>" . $song->getTitle() . "<figcaption>";
-        $html .= "<button id='playpause" .$song->getId(). "'  onclick='setTrack(null,\"" . $song->getId() . "\",null)'><i class='fas fa-play-circle'></i></button></div>";
+        $html .= "<button class='foot' id='playpause" .$song->getId(). "'  onclick='setTrack(null,\"" . $song->getId() . "\",null)'><i class='fas fa-play-circle'></i></button></div>";
 		$html .= "<span class='wave'><div id='waveform".$song->getId()."'></div></span>
 		<span class='descargar'><a onclick='descargar(\"".$_SESSION['idUser']."\",\"" . $song->getId() . "\")' href='server/songs/".$song->getId().".mp3' download='".$song->getTitle()."'><i class='fas fa-cloud-download-alt'></i></a></span>
 		<span class='refrescar'><i onclick='refrescar(\"".$idCancion."\",\"".$foroid."\")' class='fas fa-redo-alt'></i></span>

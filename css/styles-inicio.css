@@ -65,7 +65,7 @@ div.card  figure img{
     width:100%;
 }
 
-section.contentsInicial button.foot {
+button.foot {
     margin-left: 10px;
     margin-right: 10px;
     background: #000000;

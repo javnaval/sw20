@@ -50,5 +50,14 @@ use es\ucm\fdi\aw\classes\databaseClasses\Playlists as Playlists;
             $playlist = (new Playlists())->where("title", "=", $title)->get();
             return $playlist[0];
         }
+
+        public static function buscaTitlePlaylistUser($user, $title){
+            $playlist = (new Playlists())->where("title", "=", $title)->where("idUser", "=", $user)->get();
+            return $playlist[0];
+        }
+
+        public static function eliminar($id){
+            (new Playlists())->where("id","=",$id)->delete();
+        }
 	}
 ?>

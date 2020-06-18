@@ -28,6 +28,7 @@ function sidebar(){
 	<link rel="stylesheet" type="text/css" href="css/styles-noticias.css"/>
 	<link rel="stylesheet" type="text/css" href="css/styles-seguidores.css"/>
 	<link rel="stylesheet" type="text/css" href="css/styles-usuario.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles-biblioteca.css"/>
 	<link rel="stylesheet" type="text/css" href="css/styles-ver-artistas.css"/>
 	<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
 
