@@ -37,15 +37,16 @@ section.contentsVerArtistas form {
 
 section.contentsVerArtistas section.art {
     display: grid;
-    grid-template-columns: 5% 18% 40%;
-    height: 12em;
+    grid-template-columns: 5% 18% 77%;
+    height: 15em;
     margin: 5%;
-    grid-column-gap: 2%;
+    margin-bottom: 10%;
 }
 
 section.contentsVerArtistas section.art div.imagen {
     grid-column-start: 2;
     grid-column-end: 2;
+	height: 15em;
     object-fit: cover;
 }
 section.contentsVerArtistas section.art div.imagen img{
@@ -60,10 +61,9 @@ section.contentsVerArtistas section.art div.texto {
     color: rgb(44, 44, 44);
 }
 
-section.contentsVerArtistas section.art div.checkbox {
-    grid-column-start: 1;
-    grid-column-end: 1;
-    text-align: center;
+section.contentsVerArtistas section.art div.verificar{
+    width: 100%;
+	height: 2%;
 }
 
 section.contentsVerArtistas input.boton {

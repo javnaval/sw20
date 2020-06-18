@@ -46,6 +46,7 @@ function sidebar(){
 	<script type="text/javascript" src="includes/js/uploadDownload.js"></script>
 	<script type="text/javascript" src="includes/js/widgetControl.js"></script>
 	<script type="text/javascript" src="includes/js/aprobarNoticia.js"></script>
+	<script type="text/javascript" src="includes/js/verificarArtista.js"></script>
 	<script src="https://kit.fontawesome.com/9d868392d8.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/wavesurfer.js"></script>

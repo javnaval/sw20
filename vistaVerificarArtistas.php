@@ -11,12 +11,10 @@ if (!user::esGestor($_SESSION['idUser'])){
     header("Location: vistaInicio.php");
 }
 
-$form = new es\ucm\fdi\aw\FormularioVerificarArtista();
-$html = $form->gestiona();
 ?>
 
     <section id="contents" class="contentsVerArtistas">
         <?php
-        echo $html;
+        require 'includes/VerificarArtistas.php';
         ?>
     </section>

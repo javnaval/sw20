@@ -2,7 +2,6 @@
 namespace es\ucm\fdi\aw;
 use es\ucm\fdi\aw\classes\classes\user as user;
 use es\ucm\fdi\aw\classes\classes\noticia as noticia;
-use es\ucm\fdi\aw\FormularioAprobarNoticia as FormularioAprobarNoticia;
 
 $noticias = noticia::buscar($_SESSION['idUser']);
 
