@@ -49,6 +49,12 @@ section.contentsNoticia section.noticia div.imagen img{
     width: 100%;
     height: 100%;
 }
+
+section.contentsNoticia section.noticia div.aprobar{
+    width: 100%;
+	height: 2%;
+}
+
 section.contentsNoticia section.noticia div.texto {
     grid-column-start: 3;
     grid-column-end: 3;
