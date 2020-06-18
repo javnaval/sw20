@@ -3,6 +3,11 @@ body {
     background-color: #363434;
 }
 
+section.contentsCancion p{
+    cursor: pointer;
+    color: white;
+}
+
 section.contentsCancion{
     width: calc(100% - auto);
     margin-left: 100px;
