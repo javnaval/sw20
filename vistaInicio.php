@@ -38,12 +38,25 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 function mostrarSeguidores($albumNombre){
     $html = "";
     $siguiendo = \es\ucm\fdi\aw\classes\classes\seguidor::buscaSiguiendo($_SESSION['idUser']);
-    foreach ($siguiendo as $user) {
-        $row = user::buscaUsuarioId($user['idUser']);
-        $html .= "<div class='swiper-slide'> <div class='card'>";   
-        $html .= "<figure><img onclick='openPage(\"vistaUsuario.php?id=".$row->getId()."\")' src='images/Colores.jpg'>";   
-        $html .= "<figcaption>".$row->getName()."<figcaption>";
-        $html .= "</div></div>"; 
+    if ($siguiendo == null){
+        $usuarios = user::buscar('');
+        foreach ($usuarios as $user) {
+            if (in_array($user->getRol(), array("artista"), TRUE) && $user->getId() != $_SESSION['idUser']) {
+                $html .= "<div class='swiper-slide'> <div class='card'>";
+                $html .= "<figure><img onclick='openPage(\"vistaUsuario.php?id=" . $user->getId() . "\")' src='images/Colores.jpg'>";
+                $html .= "<figcaption>" . $user->getName() . "<figcaption>";
+                $html .= "</div></div>";
+            }
+        }
+    }
+    else {
+        foreach ($siguiendo as $user) {
+            $row = user::buscaUsuarioId($user['idUser']);
+            $html .= "<div class='swiper-slide'> <div class='card'>";
+            $html .= "<figure><img onclick='openPage(\"vistaUsuario.php?id=" . $row->getId() . "\")' src='images/Colores.jpg'>";
+            $html .= "<figcaption>" . $row->getName() . "<figcaption>";
+            $html .= "</div></div>";
+        }
     }
     return $html;
 }
@@ -53,7 +66,7 @@ function mostrarSeguidores($albumNombre){
          <div class="row"> <h2>Listas de éxitos</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo mostrarPlaylists("Listas de éxitos"); ?> </div> </div> </div>
          <div class="row"> <h2>Destacado</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo mostrarPlaylists("Destacado"); ?> </div> </div> </div>
          <div class="row"> <h2>Novedades</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo mostrarPlaylists("Novedades"); ?> </div> </div> </div>
-         <div class="row"> <h2>Entre tus seguidores</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo mostrarSeguidores("Entre tus seguidores"); ?> </div> </div> </div>
+         <div class="row"> <h2>Usuarios sugeridos</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo mostrarSeguidores("Usuarios sugeridos"); ?> </div> </div> </div>
          <div class="row"> <h2>Albums</h2> <div class="swiper-container"><div class="swiper-wrapper"><?php echo  mostrar(); ?> </div> </div> </div>
      </section>
 

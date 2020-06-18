@@ -4,7 +4,7 @@
 --
 
 INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`, `rol`, `solicitado` , `bloqueado` , `descripcion`) VALUES
-(1, 'user', 'user', 'pp@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'premium', 1, 0, NULL),
+(1, 'user', 'user', 'pp@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'usuario', 1, 0, NULL),
 (2, 'user1', 'user1', 'tt@gmail.com', '$2y$10$sWiXnfqwSJfGFkRistH6cePGuxXf1QbFWNxIdilAeIlmNhYGbn/sa', 'usuario', 0, 1, NULL),
 (3, 'premium', 'premium', 'premium@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'premium', 0, 0, NULL),
 (4, 'artista', 'artista', 'artista@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'artista', 0, 0, 'Descripcion de artista'),
@@ -12,7 +12,8 @@ INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`, `rol`, `solicita
 (6, 'admin', 'admin', 'admin@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'administrador', 0, 0, NULL),
 (7, 'extremoduro', 'Extremoduro', 'extremo@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'artista', 0, 0, 'Grupo español de rock'),
 (8, 'capaldi', 'Lewis Capaldi', 'l.capaldi@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'artista', 0, 0, NULL),
-(9, 'turtles', 'The Turtles', 'turtles@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'artista', 0, 0, NULL);
+(9, 'turtles', 'The Turtles', 'turtles@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'artista', 0, 0, NULL),
+(10, 'user_premium', 'user', 'pepa@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'premium', 0, 0, NULL);
 
 
 --
