@@ -22,6 +22,10 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
         if (e.state !== null) {
             buscar(e.state.bus);
         }
+        else{
+            var encodedUrl = encodeURI('vistaBusqueda.php');
+            $("#mainContent").load(encodedUrl);
+        }
     });
 </script>
 

@@ -21,6 +21,7 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
             $menu = menu($_SESSION['idUser'],$row->getId(),$i);   
             $listaCanciones .= "<li class='tracklistRow'><span class='boton'><button class='foot' id='playpause" .$row->getId(). "'  onclick='setTrack(\"" . $_GET["id"] . "\", $i,0)'><i class='fas fa-play-circle'></i></button></span><span class='icon'><i class='fas fa-music'></i></span><span class='cancion'><p class='titulo' onclick='openPage(\"vistaCancion.php?id=" .$row->getId() . "\")'>". $row->getTitle() ."</p><p class='nombre'>" .$user->getName()."</p></span>
             <span class='wave'><div id='waveform".$row->getId()."'></div></span><span class='descargar'><a onclick='descargar(\"".$_SESSION['idUser']."\",\"" . $row->getId() . "\")' href='server/songs/".$row->getId().".mp3' download='".$row->getTitle()."'><i class='fas fa-cloud-download-alt'></i></a></span>
+            <span class='opciones'><i onclick='quitaPlaylist(\"".$playlist->getId()."\", \"".$row->getId()."\")' id='PlayList".$i."' class='fas fa-times'></i></span>
             <span class='opciones'><i onclick='mostrarPlaylist(\"".$i."\")' id='PlayList".$i."' class='fas fa-plus'></i></span>$menu</li>";
             $i++;
         }
@@ -39,7 +40,9 @@ function menu($idUser,$idSong,$iC){
     $html .= "<ul id='navPlayList".$iC."' >";
     $playlists = playlist::playlistsUser($idUser);
     foreach($playlists as $play){
-        $html .= "<li><p onclick='anadePlaylist(". $play->getId().",".$idSong.")'>".$play->getTitle()."</p>";
+        if ($play->getId() != $_GET["id"]) {
+            $html .= "<li><p onclick='anadePlaylist(" . $play->getId() . "," . $idSong . "," . $iC . ")'>" . $play->getTitle() . "</p>";
+        }
     }
     return $html .= "</ul></li>";
 }
