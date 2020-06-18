@@ -18,7 +18,7 @@ if($idComentario != 0){
 	$contesta = "Contesta al comentario de ". $user->getName()."....";
 }
 
-if(strcmp($usuario->getRol(), "premium") === 0){
+if(strcmp($usuario->getRol(), "usuario") !== 0){
 	 $listaComentario = "";
 	 $listaComentario  = "<form> <textarea id='txtArea' placeholder='\"".$contesta."\"' maxlength='300'></textarea> ";
 	 $listaComentario .= "<label  onclick='anadeComentario(\"".$idCancion."\",\"".$idComentario."\",\"".$idForo."\")'><i class='far fa-paper-plane'></i></label></form>";

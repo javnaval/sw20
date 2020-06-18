@@ -8,7 +8,10 @@ echo "<p>Comentarios:</p>";
 function estrcuturaComentario($name,$text,$id,$idUser){
 	$html = "";
 	$html = "<div class='comment-avatar'><img src='images/Colores.jpg'></div><div class='comment-box'><div class='comment-head'>";
-	$html .= "<h6 class='comment-name by-author'>".$name."</h6><i onclick='textComentario(\"".$_GET["id"]."\",\"".$id ."\",\"".$_GET["idForo"]."\")'  class='fa fa-reply'></i><i onclick='meGustaComentario(\"" . $idUser . "\",\"" . $id . "\")' class='fa fa-heart'></i></div><div class='comment-content'>";
+    $html .= "<h6 class='comment-name by-author'>" . $name . "</h6>";
+	if(strcmp(user::buscaUsuarioId($_SESSION['idUser'])->getRol(), "usuario") !== 0) {
+        $html .= "<i onclick='textComentario(\"" . $_GET["id"] . "\",\"" . $id . "\",\"" . $_GET["idForo"] . "\")'  class='fa fa-reply'></i><i onclick='meGustaComentario(\"" . $idUser . "\",\"" . $id . "\")' class='fa fa-heart'></i></div><div class='comment-content'>";
+    }
 	$html .= $text."</div></div>";
 	return $html;
 
@@ -44,3 +47,4 @@ function muestraComentarios($idCancion,$idForo){
 }
 echo muestraComentarios($_GET["id"],$_GET["idForo"]);
 ?>
+
