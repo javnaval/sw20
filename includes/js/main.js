@@ -12,9 +12,17 @@ function meGustaComentario(idUser,id){
 	$.post("includes/ajax/MeGustaComentarios.php",{ idUser: idUser, id: id }, function() {
     });
 }
-function anadePlaylist(idPlaylist,idSong){
+function anadePlaylist(idPlaylist,idSong,i){
     $.post("includes/ajax/AnadeQuitaAPlaylist.php",{ idSong: idSong, idPlaylist: idPlaylist }, function() {
 	});
+    document.getElementById('navPlayList' + i).style.display = 'none';
+}
+
+function quitaPlaylist(idPlaylist,idSong){
+	$.post("includes/ajax/QuitaPlaylist.php",{ idSong: idSong, idPlaylist: idPlaylist }, function() {
+	});
+	var encodedUrl = encodeURI('vistaPlaylist.php?id=' + idPlaylist);
+	$("#mainContent").load(encodedUrl);
 }
 
 function refrescar(idCancion,idForos){

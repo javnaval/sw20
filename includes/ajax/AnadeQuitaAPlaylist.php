@@ -11,6 +11,3 @@ $existe = (new Relations("contiene"))->where("idSong","=",$idSong)->where("idPla
     (new Relations("contiene"))->insert(["idSong" => $idSong,
     "idPlaylist" => $idPlaylist]);
   }
-  else{
-    (new Relations("contiene"))->where("idSong","=",$idSong)->where("idPlaylist","=",$idPlaylist)->delete();
-  }
