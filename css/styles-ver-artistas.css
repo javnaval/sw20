@@ -78,3 +78,22 @@ section.contentsVerArtistas input.boton:hover{
     text-decoration: none;
     cursor: pointer;
 }
+
+section.contentsVerArtistas a {
+    color : floralwhite;
+    background-color: #FF307B;
+    text-align: center;
+    padding: 0.75em;
+    border-radius: 1em;
+    font-size: 15px;
+    text-decoration: none;
+    height: fit-content;
+    float: left;
+    margin-top: 2%;
+    margin-left: 5%;
+	margin-right: 80%;
+}
+
+section.contentsVerArtistas a{
+    cursor: pointer;
+}

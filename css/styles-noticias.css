@@ -119,7 +119,7 @@ section.contentsNoticia::-webkit-scrollbar-thumb {
 
 }
 
-section.contentsNoticia a.activar {
+section.contentsNoticia a {
     color : floralwhite;
     background-color: #FF307B;
     text-align: center;
@@ -128,11 +128,12 @@ section.contentsNoticia a.activar {
     font-size: 15px;
     text-decoration: none;
     height: fit-content;
-    float: right;
+    float: left;
     margin-top: 2%;
-    margin-left: 85%;
+    margin-left: 5%;
+	margin-right: 80%;
 }
 
-section.contentsNoticia a.activar:hover{
+section.contentsNoticia a{
     cursor: pointer;
 }
