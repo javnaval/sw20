@@ -63,8 +63,45 @@ function mostrarPlaylist(numero){
 	 }
 }
 
-function buscar() {
-	var bus = document.getElementById('input-busqueda').value
+function eliminarPlaylist (id){
+	return fetch('includes/Eliminar.php', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		body: 'type=1&value=' + id
+	})
+		.then(function(response) {
+			response.text().then(function(text){
+				document.getElementById('playlists').innerHTML = text;
+			});
+		})
+		.catch(function (err) {
+			document.write('Fetch Error :', err);
+		});
+}
+
+function eliminarSong (id){
+	return fetch('includes/Eliminar.php', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		body: 'type=0&value=' + id
+	})
+		.then(function(response) {
+			response.text().then(function(text){
+				document.getElementById('songs').innerHTML = text;
+			});
+		})
+		.catch(function (err) {
+			document.write('Fetch Error :', err);
+		});
+}
+
+function state() {
+	var bus = document.getElementById('input-busqueda').value;
+	history.pushState({bus}, null, '#' + bus);
+}
+
+function buscar(bus = null) {
+	if (bus == null) bus = document.getElementById('input-busqueda').value;
     return fetch('includes/Busqueda.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -75,7 +112,6 @@ function buscar() {
                 var p = document.getElementById('contBusqueda');
                 if (text === '') p.innerHTML = 'No hay resultado para su busqueda';
                 else {
-                	history.pushState({'busqueda': bus}, null, '#' + bus)
                     var parent = document.getElementById('contents');
 					for(var i=parent.childNodes.length - 1; parent.childNodes[i].nodeName !== 'HEADER' && i > 0; i--) {
 						parent.removeChild(parent.childNodes[i]);
@@ -89,5 +125,22 @@ function buscar() {
         });
 }
 
+function crearPlaylist(){
+	var pl = document.getElementById('tituloPlaylist').value;
+	return fetch('includes/CrearPlaylist.php', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		body: 'tituloPLaylist=' + pl
+	})
+		.then(function(response) {
+			response.text().then(function(text){
+				document.getElementById('playlists').innerHTML = text;
+				oculta('crearPlaylist'); muestra('pl');
+			});
+		})
+		.catch(function (err) {
+			document.write('Fetch Error :', err);
+		});
+}
 
 

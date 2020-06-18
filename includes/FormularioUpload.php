@@ -10,6 +10,7 @@ class FormularioUpload extends Form
 
     public function __construct()
     {
+        $this->opciones['ajax'] = true;
         $this->opciones['action'] = "vistaUpload.php";
         $this->opciones['enctype'] = "multipart/form-data";
         parent::__construct("form-upload", $this->opciones);

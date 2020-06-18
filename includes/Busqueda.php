@@ -18,7 +18,7 @@ else {
         echo "<h1>CANCIONES</h1><section class=\"elementos\">";
         foreach ($canciones as $cancion) {
             echo '<div class="esp">';
-            echo '<a class="buscar" href="vistaCancion.php?id='  .$cancion->getId() . '"><div>';
+            echo '<a class="buscar" onclick="openPage(\'vistaCancion.php?id='  .$cancion->getId() . '\')"><div>';
             echo '<h3>' . $cancion->getTitle() . '</h3><p>Autor: ' . (user::buscaUsuarioId($cancion->getIdUser()))->getName() . '</p><p>Album: ' . (album::buscaAlbumId($cancion->getIdAlbum()))->getTitle() . '</p>';
             echo '</div></a>';
             echo "<button class='foot' id='playpause" .$cancion->getId(). "' onclick='setTrack(null,\"" . $cancion->getId() . "\",null)'><i class='fas fa-play-circle'></i></button></div></div>";
@@ -32,7 +32,7 @@ else {
         foreach ($usuarios as $artista) {
             if (in_array($artista->getRol(), array("artista"), TRUE) && $artista->getId() != $_SESSION['idUser']) {
                 echo '<div class="esp">';
-                echo '<a class="buscar" href="vistaUsuario.php?id='  .$artista->getId() . '"><div>';
+                echo '<a class="buscar" onclick="openPage(\'vistaUsuario.php?id='  .$artista->getId() . '\')"><div>';
                 echo '<h3>' . $artista->getName() . '</h3><p>Descripción: ' . $artista->getDescripcion() . '</p>';
                 echo '</div></a>';
                 if (seguidor::siguiendo($_SESSION['idUser'],$artista->getId())) echo '<a class="siguiendo" id="' .$artista->getId(). '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$artista->getId(). '\')" placeholder="Seguir">Siguiendo</a>';
@@ -48,7 +48,7 @@ else {
         foreach ($usuarios as $usuario) {
             if (in_array($usuario->getRol(), array("usuario","premium"), TRUE) && $usuario->getId() != $_SESSION['idUser']) {
                 echo '<div class="esp">';
-                echo '<a class="buscar" href="vistaUsuario.php?id='  .$usuario->getId() . '"><div>';
+                echo '<a class="buscar" onclick="openPage(\'vistaUsuario.php?id='  .$usuario->getId() . '\')"><div>';
                 echo '<h3>' . $usuario->getName() . '</h3><p>Descripción: ' . $usuario->getDescripcion() . '</p>';
                 echo '</div></a>';
                 if (seguidor::siguiendo($_SESSION['idUser'],$usuario->getId())) echo '<a class="siguiendo" id="' .$usuario->getId(). '" onclick="seguir(\'' .$_SESSION['idUser']. '\',\'' .$usuario->getId(). '\')" placeholder="Seguir">Siguiendo</a>';
@@ -62,7 +62,7 @@ else {
     if ($albumes != null){
         echo "<h1>ALBUMES</h1><section class=\"elementos\">";
         foreach ($albumes as $album) {
-            echo '<a class="buscar" href="vistaAlbum.php?id='  .$album->getId() . '"><div class="esp">';
+            echo '<a class="buscar" onclick="openPage(\'vistaAlbum.php?id='  .$album->getId() . '\')"><div class="esp">';
             echo '<h3>' . $album->getTitle() . '</h3><p>Año de lanzamiento: ' . $album->getReleaseDate() . '</p>';
             echo '</div></a>';
         }

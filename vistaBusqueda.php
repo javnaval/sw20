@@ -11,16 +11,17 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
         <header>
             <form>
                 <input id = "input-busqueda" placeholder = "Buscar artistas, canciones o álbumes" >
-                <label onclick="buscar()" >Buscar</label>
+                <label onclick="state();buscar()" >Buscar</label>
             </form>
         </header>
         <p id='contBusqueda'>Estas en la pagina de busqueda. Haz click en buscar para encontrar canciones, artistas y albumes.</p>
     </section>
 
 <script type="application/javascript">
-    window.onpopstate = function(event) {
-        document.getElementById('input-busqueda').value = event.state.busqueda;
-        buscar();
-    };
+    window.addEventListener('popstate', e=> {
+        if (e.state !== null) {
+            buscar(e.state.bus);
+        }
+    });
 </script>
 
