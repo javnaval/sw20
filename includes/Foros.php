@@ -10,9 +10,11 @@ echo "<p>Foros:</p>";
 $listaForos = "";
 $foros = forum::buscaForosIdSong($idCancion);
 $listaForos .= "<ul>";
-foreach($foros as $foro){
-	$listaForos .= "<li onclick='mostrarComentarios(\"" . $idCancion . "\",\"" .$foro->getId() . "\")'><p>".$foro->getTitutlo()."</p></li>";
+if ($foros !== null) {
+    foreach ($foros as $foro) {
+        $listaForos .= "<li onclick='mostrarComentarios(3,1)'><p>" . $foro->getTitutlo() . "</p></li>";
+    }
+    $listaForos .= "</ul>";
 }
-$listaForos .= "</ul>";	 
 echo $listaForos;
 ?>

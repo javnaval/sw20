@@ -7,7 +7,7 @@ use es\ucm\fdi\aw\classes\classes\song as song;
 use es\ucm\fdi\aw\classes\databaseClasses\Relations as Relations;
 use es\ucm\fdi\aw\classes\databaseClasses\Songs;
 
-	 $albumPlayListId = $_POST['albumPlayListId'];
+	 $albumPlayListId = htmlspecialchars(trim(strip_tags($_POST['albumPlayListId'])));
 
 	 $songs = song::buscaSongsIdAlbum($albumPlayListId);
     $i = 0;

@@ -7,9 +7,9 @@ use es\ucm\fdi\aw\classes\classes\song as song;
 use es\ucm\fdi\aw\classes\databaseClasses\Relations as Relations;
 use es\ucm\fdi\aw\classes\databaseClasses\Songs;
 
-	 $albumPlayListId = $_POST['albumPlayListId'];
+$albumPlayListId =  htmlspecialchars(trim(strip_tags($_POST['albumPlayListId'])));
 
-     $songs = song::buscaSongIdPlaylist($albumPlayListId);
+$songs = song::buscaSongIdPlaylist($albumPlayListId);
 
      foreach($songs as $row){
       $arrayAux = $row->toString();

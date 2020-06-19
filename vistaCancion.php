@@ -54,7 +54,7 @@ function menu($idUser,$idSong,$iC){
 	return $html .= "</ul></li>";
 }
 
-echo "<script>mostrarComentarios('$idCancion','$foroid');</script>"; 
+echo "<script>mostrarComentarios('$idCancion','1');</script>";
 echo "<script>mostrarForos('$idCancion');</script>"; 
 
 ?>

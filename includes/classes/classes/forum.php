@@ -47,7 +47,7 @@ class forum {
     }
 
     public static function crea($idCancion, $titulo){
-        return (new songsForum())->insert((new self(null,$_SESSION['idUser'], $idCancion, $titulo))->toString());
+        return (new songsForum())->insert((new self(NULL,$_SESSION['idUser'], $idCancion, $titulo))->toString());
     }
     public static function buscaForosIdSongTitulo($id,$titulo){
         $foros = (new songsForum())->where("idSong", "=", $id)->where("titulo", "=", $titulo)->get();

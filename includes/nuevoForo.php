@@ -2,7 +2,7 @@
 require_once 'config.php';
 use es\ucm\fdi\aw\classes\classes\user as user;
 
-$idCancion = htmlspecialchars(trim(strip_tags($_GET['idCancion'])));
+$idCancion = htmlspecialchars(trim(strip_tags($_POST['idCancion'])));
 
 $usuario = user::buscaUsuarioId($_SESSION['idUser']);
 

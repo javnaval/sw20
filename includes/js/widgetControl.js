@@ -36,9 +36,9 @@ var wavesurfer;
  }
 
  function setTrack(albumPlayListId,numero,albumOrPlaylist){
-     var direction = "includes/JSON/PlayListJSON.php";
+     var direction = "includes/json/PlayListJSON.php";
      if(albumOrPlaylist == 1){
-        direction = "includes/JSON/SongsJSON.php";
+        direction = "includes/json/SongsJSON.php";
      }
      if(!anuncio){
         if(albumPlayListId == null){
@@ -56,6 +56,7 @@ var wavesurfer;
         }
         else{
            $.post(direction,{ albumPlayListId: albumPlayListId }, function(data) {
+               console.log(data);
                track = JSON.parse(data);
                if(JSON.stringify(currenTrack) === JSON.stringify(track)){
                    if(numero == currentSong){

@@ -59,9 +59,15 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
         }
 
         public static function buscaSongIdPlaylist($id){
-            $song = (new Songs())->join("Songs.id","Contiene","Contiene.idSong")->join("Contiene.idPlayList","PlayLists","PlayLists.id")
-            ->where("Contiene.idPlayList","=",$id)->get();
-            return $song;
+           /* $song = (new Songs())->join("Songs.id","Contiene","Contiene.idSong")->join("Contiene.idPlayList","PlayLists","PlayLists.id")
+            ->where("Contiene.idPlayList","=",$id)->get();*/
+            $songs = contiene::songs($id);
+            if ($songs !== null) {
+                foreach ($songs as $row) {
+                    $songsArray[] = song::buscaSongId($row[0]);
+                }
+            }
+            return $songsArray;
         }
 
         public static function ActualizaPlayed($id,$songActualizada){

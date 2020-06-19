@@ -28,11 +28,14 @@ function refrescar(idCancion,idForos){
 
 }
 function mostrarComentarios(idCancion,idForos){
+	console.log(idCancion);
+	console.log(idForos);
 	$('#recargar').load('includes/Comentarios.php?id='+idCancion+'&idForo='+idForos);
 	textComentario(idCancion,0,idForos);
 }
 
 function mostrarForos(idCancion){
+	console.log(idCancion);
 	$('#foro').load('includes/Foros.php?idCancion='+idCancion);
 	$('#textoForo').load('includes/nuevoForo.php?idCancion='+idCancion);
 }

@@ -68,8 +68,9 @@ class comentario {
         return $comentarios;
     }
     public static function buscaSongIbuscaComentariosIdSongComentariosdPlaylist($id,$idForo){
-        $song = (new Comentarios())->join("Comentarios.idForum","songsForum","songsForum.id")->where("Comentarios.idSong","=",$id)->where("songsForum.id","=",$idForo)->get();
-        return $song;
+        //$song = (new Comentarios())->join("Comentarios.idForum","songsForum","songsForum.id")->where("Comentarios.idSong","=",$id)->where("songsForum.id","=",$idForo)->get();
+        $aux = (new Comentarios())->where("idForum", "=",$idForo)->where("idSong", "=",$id)->get();
+        return $aux;
     }
     public static function buscaComentariosId($id){
         $comentarios = (new Comentarios())->where("id", "=", $id)->get();
