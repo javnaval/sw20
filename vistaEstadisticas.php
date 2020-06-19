@@ -68,7 +68,7 @@ $user=$_SESSION['idUser'];
 $noticias = noticia::buscaNoticiaId($user);
 if($noticias != null){
     echo '<div id="noticias">';
-    $listaNoticias = "<div class='listaNoticias'><ul>";
+    //$listaNoticias = "<div class='listaNoticias'><ul>";
     echo '<h1>TUS NOTICIAS</h1>';
     foreach ($noticias as $row) {
 	
@@ -77,12 +77,12 @@ if($noticias != null){
 	else
 	$acc="  (Aceptada)";
 	
-			echo '<div class="texto"><h3>'. $row->getTitle().''.$acc.'</h3><p>' . $row->getTexto() . '</h3></p>';
+			echo '<div span class="texto"><h3>'. $row->getTitle().''.$acc.'</h3><p>' . $row->getTexto() . '</h3></span></p>';
 			echo '</div>';
         $i++;
 
     }
-	echo $listaNoticias."</ul></div>";
+	//echo $listaNoticias."</ul></div>";
     echo "</div>";
 }
 
@@ -92,14 +92,13 @@ function muestraMeGustaComentarios(){
 $i = 0;
 $user=$_SESSION['idUser'];
 $comentarios = comentario::buscaIdUser($user);
-$acc="  Numero de Me Gustas";
+$acc="  Numero de Me Gustas: ";
 if($comentarios != null){
-    echo '<div id="songs">';
-    //$listaComentarios= "<div class='listaCanciones'><ul>";
+    echo '<div id="comentarios">';
     echo '<h1>TUS Comentarios</h1>';
     foreach ($comentarios as $row) {	 
 			echo '<div class="imagen">';
-			echo '<div class="texto"><h3>'. $row->getText().''.$acc.'</h3><p>' . $row->getMeGusta() .'</p>';
+			echo '<div class="texto"><h3>'. $row->getText().'</h3><p>'.$acc.'' . $row->getMeGusta() .'</p>';
 			echo '</div>';
         $i++;
     }
@@ -136,10 +135,11 @@ if($seguidores != null){
  <section id="contentsEstadistica" class="contentsEstadistica">
            
         <?php
+		
 		//echo muestraUsuario();
 		echo muestraReproduccionCanciones();
-		echo muestraPlaylist();
-		echo muestraNoticias();
+		echo muestraPlaylist();		
+		echo muestraNoticias();		
 		echo muestraMeGustaComentarios();
 
 		
