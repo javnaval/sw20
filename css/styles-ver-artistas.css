@@ -25,58 +25,36 @@ section.contentsVerArtistas h1
 	margin: 0;
 }
 
-section.contentsVerArtistas div
-{
-	margin: 0;
-	margin-bottom: 2%;
-}
-
-section.contentsVerArtistas form {
-    width: 100%;
-}
-
-section.contentsVerArtistas section.art {
-    display: grid;
-    grid-template-columns: 5% 18% 77%;
+section.contentsVerArtistas div.art {
+	width: 90%;
     height: 15em;
-    margin: 5%;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 
-section.contentsVerArtistas section.art div.imagen {
-    grid-column-start: 2;
-    grid-column-end: 2;
-	height: 15em;
-    object-fit: cover;
+section.contentsVerArtistas  div.imagen {
+    width: 20%;
+    height: 15em;
+    float: left;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
-section.contentsVerArtistas section.art div.imagen img{
+section.contentsVerArtistas  div.imagen img{
     width: 100%;
     height: 100%;
 }
-section.contentsVerArtistas section.art div.texto {
-    grid-column-start: 3;
-    grid-column-end: 3;
-    height: 12em;
-    background-color: white;
-    color: rgb(44, 44, 44);
+section.contentsVerArtistas  div.texto {
+    width: 78%;
+    height: 15em;
+    background-color: rgb(44, 44, 44);
+    color: white;
+    float: left;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 
-section.contentsVerArtistas section.art div.verificar{
+section.contentsVerArtistas  div.verificar{
     width: 100%;
 	height: 2%;
-}
-
-section.contentsVerArtistas input.boton {
-    float: right;
-    width: 15%;
-    height: 5%;
-    background-color: #FF307B;
-    color: white;
-    margin: 1%
-}
-section.contentsVerArtistas input.boton:hover{
-    text-decoration: none;
-    cursor: pointer;
 }
 
 section.contentsVerArtistas a {
@@ -96,4 +74,17 @@ section.contentsVerArtistas a {
 
 section.contentsVerArtistas a{
     cursor: pointer;
+}
+
+section.contentsVerArtistas::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 7px;
+    background-color: rgb(0, 0, 0);
+
+}
+section.contentsVerArtistas::-webkit-scrollbar-thumb {
+    width: 7px;
+    border-radius: 7px;
+    background-color: white;
+
 }
