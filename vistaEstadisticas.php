@@ -12,17 +12,6 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
-function muestraUsuario(){
-$user=$_SESSION['idUser'];
-$Nombre=user::buscaUsuarioNombre($user);
-
-echo $user;
-echo $Nombre;
-
-
-
-
-}
 
 function muestraReproduccionCanciones(){
 $i = 0;
@@ -78,8 +67,8 @@ $i = 0;
 $user=$_SESSION['idUser'];
 $noticias = noticia::buscaNoticiaId($user);
 if($noticias != null){
-    echo '<div id="playlists">';
-   // $listaNoticias = "<div class='listaCanciones'><ul>";
+    echo '<div id="noticias">';
+    $listaNoticias = "<div class='listaNoticias'><ul>";
     echo '<h1>TUS NOTICIAS</h1>';
     foreach ($noticias as $row) {
 	
@@ -87,13 +76,13 @@ if($noticias != null){
 	$acc="  (Aun no ha sido aceptada)";
 	else
 	$acc="  (Aceptada)";
-        echo '<div class="imagen">';
+	$listaNoticias. ="<li class='tracklistRow'>
 			echo '<div class="texto"><h3>'. $row->getTitle().''.$acc.'</h3><p>' . $row->getTexto() . '</h3></p>';
-			echo '</div>';
+			echo '</div>'</li>;"
         $i++;
 
     }
-	echo "</ul></div>";
+	echo $listaNoticias."</ul></div>";
     echo "</div>";
 }
 
@@ -144,7 +133,7 @@ if($seguidores != null){
 }
 
 ?>
- <section id="contentsBiblioteca" class="contentsBiblioteca">
+ <section id="contentsEstadistica" class="contentsEstadistica">
            
         <?php
 		//echo muestraUsuario();
