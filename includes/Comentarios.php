@@ -3,15 +3,13 @@ require_once 'config.php';
 use es\ucm\fdi\aw\classes\classes\comentario as comentario;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
-echo "<p>Comentarios:</p>";
+
+
 
 function estrcuturaComentario($name,$text,$id,$idUser,$idSub){
 	$html = "";
 	$html = "<div class='comment-avatar'><img src='images/Colores.jpg'></div><div class='comment-box'><div class='comment-head'>";
-    $html .= "<h6 class='comment-name by-author'>" . $name . "</h6>";
-	if(strcmp(user::buscaUsuarioId($_SESSION['idUser'])->getRol(), "usuario") !== 0) {
-        $html .= "<i onclick='textComentario(\"" .htmlspecialchars(trim(strip_tags($_GET['id']))). "\",\"" . $id . "\",\"" .htmlspecialchars(trim(strip_tags($_GET['idForo']))). "\")'  class='fa fa-reply'></i><i onclick='meGustaComentario(\"".$idUser."\",\"".$idSub."\")' class='fa fa-heart'></i></div><div class='comment-content'>";
-    }
+	$html .= "<h6 class='comment-name by-author'>".$name."</h6><i onclick='textComentario(\"".htmlspecialchars(trim(strip_tags($_GET['id'])))."\",\"".$id ."\",\"".htmlspecialchars(trim(strip_tags($_GET["idForo"])))."\")'  class='fa fa-reply'></i><i onclick='meGustaComentario(\"" . $idUser . "\",\"" . $idSub . "\")' class='fa fa-heart'></i></div><div class='comment-content'>";
 	$html .= $text."</div></div>";
 	return $html;
 
@@ -45,6 +43,5 @@ function muestraComentarios($idCancion,$idForo){
 	}
 	return $html ;
 }
-echo muestraComentarios(htmlspecialchars(trim(strip_tags($_GET['id']))),htmlspecialchars(trim(strip_tags($_GET['idForo']))));
+echo muestraComentarios(htmlspecialchars(trim(strip_tags($_GET['id']))),htmlspecialchars(trim(strip_tags($_GET["idForo"]))));
 ?>
-

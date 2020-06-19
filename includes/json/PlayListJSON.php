@@ -14,7 +14,9 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs;
      foreach($songs as $row){
       $arrayAux = $row->toString();
       $arrayAux["id"] = $row->getId();
+      $arrayAux["played"] = 0;
       $songsArray[] = $arrayAux;
+
      }
 
      echo json_encode($songsArray);

@@ -24,19 +24,19 @@ EOF;
         }
         else $html .= "<input type=\"email\" name=\"email\"  value=".$user->getEmail()." required></p>";
 
-	   $html .= "</p>Nombre usuario: ";
+	   $html .= "<p>Nombre usuario: ";
         if (isset($datosIniciales['user'])) {
             $html .= "<input type=\"text\" name=\"user\" value=".$datosIniciales['user']." required></p>";
         }
         else $html .= "<input type=\"text\" name=\"user\" value=".$user->getUser()." required></p>";
 
-	   $html .= "</p>Nombre: ";
+	   $html .= "<p>Nombre: ";
         if (isset($datosIniciales['name'])) {
             $html .= "<input type=\"text\" name=\"name\" value=".$datosIniciales['name']." required></p>";
         }
         else $html .= "<input type=\"text\" name=\"name\" value=".$user->getName()." required></p>";
 
-        $html .= "</p>Descripcion: ";
+        $html .= "<p>Descripcion: ";
         if (isset($datosIniciales['descripcion'])) {
             $html .= "<input type=\"text\" name=\"descripcion\" value=".$datosIniciales['descripcion']."></p>";
         }

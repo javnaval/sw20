@@ -1,7 +1,3 @@
-
-
-
-
 function openPage(url) {
 	var encodedUrl = encodeURI(url);
 	$("#mainContent").load(encodedUrl);
@@ -9,14 +5,12 @@ function openPage(url) {
 	history.pushState(url, null, url);
 }
 
-
-
 function meGustaComentario(idUser,id){
 	$.post("includes/ajax/MeGustaComentarios.php",{ idUser: idUser, id: id }, function() {
     });
 }
 function anadePlaylist(idPlaylist,idSong,i){
-    $.post("includes/ajax/AnadeQuitaAPlaylist.php",{ idSong: idSong, idPlaylist: idPlaylist }, function() {
+    $.post("includes/ajax/AnadeAPlaylist.php",{ idSong: idSong, idPlaylist: idPlaylist }, function() {
 	});
     document.getElementById('navPlayList' + i).style.display = 'none';
 }
@@ -56,15 +50,12 @@ function anadeComentario(idCancion,idComentario,idForo){
     });
 }
 
-
-
 function anadeForo(idCancion){
 	var titulo = document.getElementById("txtAreaForo").value;
 	$.post("includes/ajax/AnadeForo.php",{ titulo: titulo, idCancion: idCancion}, function() {
 		mostrarForos(idCancion);
     });
 }
-
 
 function mostrarPlaylist(numero){
 	 var nav = 'navPlayList' + numero;
@@ -110,33 +101,32 @@ function eliminarSong (id){
 
 function state() {
 	var bus = document.getElementById('input-busqueda').value;
-	history.pushState({bus}, null, '#' + bus);
+	history.pushState({bus}, null, 'vistaBusqueda.php');
 }
 
 function buscar(bus = null) {
 	if (bus == null) bus = document.getElementById('input-busqueda').value;
-    return fetch('includes/Busqueda.php', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: 'busqueda=' + bus
-    })
-        .then(function(response) {
-            response.text().then(function(text){
-                var p = document.getElementById('contBusqueda');
-                if (text === '') p.innerHTML = 'No hay resultado para su busqueda';
-                else {
-                    var parent = document.getElementById('contents');
-					for(var i=parent.childNodes.length - 1; parent.childNodes[i].nodeName !== 'HEADER' && i > 0; i--) {
-						parent.removeChild(parent.childNodes[i]);
-					}
-					document.getElementById('contents').innerHTML += text;
-					document.getElementById('input-busqueda').value = bus;
-                }
-            });
-        })
-        .catch(function (err) {
-            document.write('Fetch Error :', err);
-        });
+	return fetch('includes/Busqueda.php', {
+		method: 'POST',
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+		body: 'busqueda=' + bus
+	})
+		.then(function(response) {
+			response.text().then(function(text){
+				if (text === '') document.getElementById('contBusqueda').innerHTML = 'No hay resultado para su busqueda';
+				else {
+					document.getElementById('contents').innerHTML = "<header>" +
+						"            <form>" +
+						"                <input id = \"input-busqueda\" placeholder = \"Buscar artistas, canciones o álbumes\" value='" + bus + "'>" +
+						"                <label onclick=\"state();buscar()\" >Buscar</label>" +
+						"            </form>" +
+						"        </header>" + text;
+				}
+			});
+		})
+		.catch(function (err) {
+			document.write('Fetch Error :', err);
+		});
 }
 
 function crearPlaylist(){

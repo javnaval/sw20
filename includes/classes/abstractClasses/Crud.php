@@ -69,6 +69,7 @@ use es\ucm\fdi\aw\Application as Application;
                     $this->update = $this->CRUDupdate($object);
                  }
                  $this->sql =  $this->update . "{$this->wheres}";
+                 var_dump( $this->sql );
                  $this->runCRUD($object);
              } catch (Exception $exc) {
                  echo $exc->getTraceAsString();

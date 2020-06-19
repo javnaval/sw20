@@ -1,13 +1,8 @@
 
-function aprobarNoticia(id){
-        return fetch('includes/AprobarNoticia.php', {
-            method: 'POST',
-            headers: {'Content-Type':'application/x-www-form-urlencoded'},
-            body: 'id='+id
-            })
-            .catch(function(err) {
-                document.write('Fetch Error :', err);
-            });
+function aprobarNoticia(idNoticia){
+    $.post("includes/ajax/AprobarNoticia.php",{ idNoticia: idNoticia },function(data){
+        console.log(data);
+    });
 }
 
 function apruebaNoticia(id){

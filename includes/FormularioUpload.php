@@ -2,6 +2,7 @@
 namespace es\ucm\fdi\aw;
 use es\ucm\fdi\aw\classes\classes\album as album;
 use es\ucm\fdi\aw\classes\classes\song as song;
+use es\ucm\fdi\aw\classes\classes\forum as forum;
 use es\ucm\fdi\aw\Form as Form;
 
 class FormularioUpload extends Form
@@ -52,7 +53,7 @@ EOF;
         $html .= '<p><input id="btnEnviarUpload" type="submit" id="subir" name="Subir" value="Subir"></p>
                 </fieldset>';
 
-        $html .= '<div  id="respuesta"></div>';
+        $html .= '<div class="respuesta"></div>';
 
         if (is_array($err)) {
             foreach ($err as $e) {
@@ -91,6 +92,7 @@ EOF;
                 if ($datos['type'] == 'single') {
                     $idAlbum = album::crea($_SESSION['idUser'], $title, date('Y-m-d'));
                     $idSong = song::crea($title, $_SESSION['idUser'], $idAlbum);
+					forum::crea($idSong,"Comentarios");
                 } else {
                     if (isset($datos['tituloAlbum'])) {
                         $idAlbum = album::crea($_SESSION['idUser'], $titleAlbum, $date);
@@ -109,3 +111,5 @@ EOF;
     }
 
 }
+
+    //javascript com

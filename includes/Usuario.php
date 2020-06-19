@@ -9,27 +9,17 @@ if (isset($_GET['id']))
     $usuario = user::buscaUsuarioId(filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT));
 else $usuario = user::buscaUsuarioId($_SESSION['idUser']);
 
-if($usuario ==null) {
+if($usuario == null) {
     echo "ERROR::No existe el usuario";
     exit;
 }
-
 echo "<div class=\"imagen\"><img src= 'images/user.png'></div>";
-echo "<div class=\"contenido\"><h3> Usuario: ";
-echo $usuario->getUser();
-echo "</h3> <h3>";
-echo "Nombre: ";
-echo $usuario->getName();
-echo "</h3> <h3>";
-echo "Correo electronico: ";
-echo $usuario->getEmail();
-echo "</h3> <h3>";
-echo "Rol: ";
-echo $usuario->getRol();
-echo "</h3> <h3>";
-echo "Descripcion: ";
-echo $usuario->getDescripcion();
-echo " </h3><h3 id='seguidores'>";
+echo "<div id='contenido' class=\"contenido\"><div id='infor' class='infor'><h3> Usuario: ".$usuario->getUser()."</h3>";
+echo "<h3> Nombre: ".$usuario->getName()."</h3>";
+echo "<h3> Correo electronico: ".$usuario->getEmail()."</h3>";
+echo "<h3> Rol: ".$usuario->getRol()."</h3>";
+echo "<h3> Descripcion: ".$usuario->getDescripcion()."</h3>";
+echo "</h3><h3 id='seguidores'>";
 $seguidores = seguidor::buscaSeguidores($usuario->getId());
 $siguiendo = seguidor::buscaSiguiendo($usuario->getId());
 if (($cont = count($seguidores)) == 0) {
@@ -45,5 +35,5 @@ if (($cont2 = count($siguiendo)) == 0) {
 else {
     echo "<a onclick=\"openPage('vistaSeguidores.php?id=".$usuario->getId()."&seg=false')\">Siguiendo</a>: ".$cont2;
 }
-echo "</h3><p onclick='AbrirCerrar()'>Editar Datos</p>";
+echo "</h3></div>";
 $rol = $usuario->getRol();

@@ -12,6 +12,17 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
+function muestraUsuario(){
+$user=$_SESSION['idUser'];
+$Nombre=user::buscaUsuarioNombre($user);
+
+echo $user;
+echo $Nombre;
+
+
+
+
+}
 
 function muestraReproduccionCanciones(){
 $i = 0;
@@ -67,8 +78,8 @@ $i = 0;
 $user=$_SESSION['idUser'];
 $noticias = noticia::buscaNoticiaId($user);
 if($noticias != null){
-    echo '<div id="noticias">';
-    //$listaNoticias = "<div class='listaNoticias'><ul>";
+    echo '<div id="playlists">';
+   // $listaNoticias = "<div class='listaCanciones'><ul>";
     echo '<h1>TUS NOTICIAS</h1>';
     foreach ($noticias as $row) {
 	
@@ -76,13 +87,13 @@ if($noticias != null){
 	$acc="  (Aun no ha sido aceptada)";
 	else
 	$acc="  (Aceptada)";
-	
-			echo '<div span class="texto"><h3>'. $row->getTitle().''.$acc.'</h3><p>' . $row->getTexto() . '</h3></span></p>';
+        echo '<div class="imagen">';
+			echo '<div class="texto"><h3>'. $row->getTitle().''.$acc.'</h3><p>' . $row->getTexto() . '</h3></p>';
 			echo '</div>';
         $i++;
 
     }
-	//echo $listaNoticias."</ul></div>";
+	echo "</ul></div>";
     echo "</div>";
 }
 
@@ -92,13 +103,14 @@ function muestraMeGustaComentarios(){
 $i = 0;
 $user=$_SESSION['idUser'];
 $comentarios = comentario::buscaIdUser($user);
-$acc="  Numero de Me Gustas: ";
+$acc="  Numero de Me Gustas";
 if($comentarios != null){
-    echo '<div id="comentarios">';
+    echo '<div id="songs">';
+    //$listaComentarios= "<div class='listaCanciones'><ul>";
     echo '<h1>TUS Comentarios</h1>';
     foreach ($comentarios as $row) {	 
 			echo '<div class="imagen">';
-			echo '<div class="texto"><h3>'. $row->getText().'</h3><p>'.$acc.'' . $row->getMeGusta() .'</p>';
+			echo '<div class="texto"><h3>'. $row->getText().''.$acc.'</h3><p>' . $row->getMeGusta() .'</p>';
 			echo '</div>';
         $i++;
     }
@@ -132,14 +144,13 @@ if($seguidores != null){
 }
 
 ?>
- <section id="contentsEstadistica" class="contentsEstadistica">
+ <section id="contentsBiblioteca" class="contentsBiblioteca">
            
         <?php
-		
 		//echo muestraUsuario();
 		echo muestraReproduccionCanciones();
-		echo muestraPlaylist();		
-		echo muestraNoticias();		
+		echo muestraPlaylist();
+		echo muestraNoticias();
 		echo muestraMeGustaComentarios();
 
 		

@@ -12,7 +12,7 @@ $idComentaio = htmlspecialchars(trim(strip_tags($_POST['idComentario'])));
 $usuario = user::buscaUsuarioId($_SESSION['idUser']);
 
 
-if(strcmp($usuario->getRol(), "premium") === 0){
+if(strcmp($usuario->getRol(), "usuario") !== 0){
    echo $texto;
    comentario::crea($idCancion,$texto,$idComentaio,$idForo);
 }

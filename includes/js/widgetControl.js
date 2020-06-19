@@ -56,7 +56,6 @@ var wavesurfer;
         }
         else{
            $.post(direction,{ albumPlayListId: albumPlayListId }, function(data) {
-               console.log(data);
                track = JSON.parse(data);
                if(JSON.stringify(currenTrack) === JSON.stringify(track)){
                    if(numero == currentSong){
@@ -74,6 +73,7 @@ var wavesurfer;
                        document.getElementById('nombre-cancion').textContent = track[currentSong].title;
                        playpause();
                        actualizarIconoPlay();
+                       $.post("includes/ajax/AnadeReproduccion.php",{ songId: songId });
                    }
                }
                else{
@@ -91,6 +91,7 @@ var wavesurfer;
                    document.getElementById('nombre-cancion').textContent = track[currentSong].title;
                    playpause();
                    actualizarIconoPlay();
+                   $.post("includes/ajax/AnadeReproduccion.php",{ songId: songId });
                }
            });
         }
@@ -145,40 +146,42 @@ var wavesurfer;
  }
 
  function skip(sk) {
-     if(!anuncio){
-        var bool = song.paused;
-        if (!retweetv) {
-            if(randv){
-                currentSong = Math.floor((Math.random() * (songs.length - 1)));
-            }
-            else{
-               if (sk == 'back') {
-                currentSong--;
-                    if(currentSong < 0){
-                        currentSong = Object.keys(currenTrack).length - 1;
-                    }
-                } 
-                else if (sk == 'fwd') {
-                    currentSong++;
-                    if(currentSong > Object.keys(currenTrack).length - 1){
-                        currentSong = 0;
+     if(currenTrack !== null){
+        if(!anuncio){
+            var bool = song.paused;
+            if (!retweetv) {
+                if(randv){
+                    currentSong = Math.floor((Math.random() * (songs.length - 1)));
+                }
+                else{
+                   if (sk == 'back') {
+                    currentSong--;
+                        if(currentSong < 0){
+                            currentSong = Object.keys(currenTrack).length - 1;
+                        }
+                    } 
+                    else if (sk == 'fwd') {
+                        currentSong++;
+                        if(currentSong > Object.keys(currenTrack).length - 1){
+                            currentSong = 0;
+                        }
                     }
                 }
+                 if (!bool) {
+                   song.pause();
+                   actualizarIconoPlay();
+                 }
+                actualizarWaveSurfer(currenTrack[currentSong].id);
+                songId = currenTrack[currentSong].id;
+                song.src =  song.src = directionSONG + currenTrack[currentSong].id + ".mp3";
+                document.getElementById('img-song').innerHTML = '<img  src="' + directionIMG + track[currentSong].id  + '.png"></img>';
+                document.getElementById('nombre-cancion').textContent = track[currentSong].title;
+                $.post("includes/ajax/AnadeReproduccion.php",{ songId: songId });
             }
-             if (!bool) {
-               song.pause();
-               actualizarIconoPlay();
-             }
-            actualizarWaveSurfer(currenTrack[currentSong].id);
-            songId = currenTrack[currentSong].id;
-            song.src =  song.src = directionSONG + currenTrack[currentSong].id + ".mp3";
-            document.getElementById('img-song').innerHTML = '<img  src="' + directionIMG + track[currentSong].id  + '.png"></img>';
-            document.getElementById('nombre-cancion').textContent = track[currentSong].title;
-        }
-        if (!bool) {
-           playpause();
-        }
-        
+            if (!bool) {
+               playpause();
+            }
+         }
      }
  }
 
@@ -221,9 +224,9 @@ var wavesurfer;
  }
 
  function setPos(pos) {
-     if(!anuncio){
+    if(!anuncio){
         song.currentTime = pos;
-     }
+    }
  }
 
 function mute() {
@@ -251,13 +254,10 @@ function mute() {
      document.getElementById('progressTimeRemaining').textContent = convertTime(Math.round(song.duration));
      var position = song.currentTime / song.duration;
      document.getElementById('seek').style.backgroundSize =  position * 100 +'%';
- });
- song.addEventListener("ended", function() {
-    $.post("includes/ajax/Premium.php", function(data) {
-        if(anuncio == false){
+     $.post("includes/ajax/Premium.php", function(data) {
+        if(!anuncio){
             if(data == 5){
                  anuncio = true;
-                 directionAnuncios
                  guardarPosicion = song.currentTime;
                  guardarCancion = song.src;
                  song.src =  directionAnuncios;
@@ -266,11 +266,13 @@ function mute() {
             }
         }
     });
+ });
+ song.addEventListener("ended", function() {
      if(anuncio){
         song.src = guardarCancion;
         song.currentTime = guardarPosicion;
-        song.pause;
-        song.play;
+        song.pause();
+        song.play();
         anuncio = false;
      }
      else{
@@ -278,3 +280,4 @@ function mute() {
         skip('fwd');
      }
  });
+

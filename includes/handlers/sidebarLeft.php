@@ -21,14 +21,10 @@ use es\ucm\fdi\aw\classes\classes\user as user;
      </ul>
      <span><hr></span>
      <ul>
-         <li><a class="icon" onclick="openPage('vistaEstadisticas.php')"><figure><i class="fas fa-chart-bar"></i><figcaption>Estadisticas<figcaption></figure></a></li>
-         <li><a class="icon" onclick="openPage('vistaUpload.php')"><figure><i class="fas fa-cloud-upload-alt"></i><figcaption>Subir Cancion<figcaption></figure></a></li>
-     </ul>
-	 <span><hr></span>
-	 <ul>
-         <?php
+        <?php
 		    echo "<li><a class='icon' onclick='openPage(\"vistaUsuario.php?id=" .$_SESSION['idUser']. "\")'><figure><i class='fas fa-user'></i><figcaption>Cuenta<figcaption></figure></a></li>";
 	     ?>
+         <li><a class="icon" onclick="openPage('vistaUpload.php')"><figure><i class="fas fa-cloud-upload-alt"></i><figcaption>Subir Cancion<figcaption></figure></a></li>
      </ul>
  </section>
  </nav>

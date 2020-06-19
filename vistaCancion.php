@@ -15,7 +15,12 @@ $idCancion = htmlspecialchars(trim(strip_tags($_GET["id"])));
 
 $foroInicial = forum::buscaForosIdSongTitulo($idCancion,"Comentarios");
 
-$foroid= $foroInicial->getId();
+if($foroInicial != null){
+	$foroid= $foroInicial->getId();
+}
+else{
+	$foroid = null;
+}
 
 
 function muestraCancion($idCancion,$foroid){

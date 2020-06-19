@@ -24,15 +24,18 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
  function mostrarPlaylists($playlistNombre){
   $html = "";   
   $playlist = playlist::buscaTitlePlaylist("playlist1");
-  $playListSongs  = song::buscaSongIdPlaylist($playlist->getId());
-  $i = 0;
+  if($playlist != null){
+     $playListSongs  = song::buscaSongIdPlaylist($playlist->getId());
+     $i = 0;
       foreach ($playListSongs as $row){
       $html .= "<div class='swiper-slide'> <div class='card'>";   
       $html .= "<figure><img onclick='openPage(\"vistaPlaylist.php?id=" .$playlist->getId() . "\")' src='server/albums/images/".$row->getIdAlbum().".png'>";   
       $html .= "<figcaption>" . $row->getTitle() . "<figcaption>";
       $html .= "<button class='foot' id='playpause" .$row->getId(). "'  onclick='setTrack(\"" .$playlist->getId(). "\",$i,null)'><i class='fas fa-play-circle'></i></button></div></div>";
       $i++;
-    }                                                 
+    }          
+
+  }                                       
   return $html;
 }
 function mostrarSeguidores($albumNombre){

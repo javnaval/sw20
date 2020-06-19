@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/config.php';
-include("includes/handlers/includedFiles.php");
+include("includes/handlers/includedFiles.php");  
+
 use es\ucm\fdi\aw\classes\classes\seguidor as seguidor;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
@@ -11,11 +12,11 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 $form = new es\ucm\fdi\aw\FormularioEditarPerfil();
 $htmlform = $form->gestiona();
 
+$Editar = "";
 
 function muestraInteraccion($id,$form){
     $html = '';
     if ($id != $_SESSION['idUser']) {
-        $html .= "</div>";
 		if(user::esAdmin($_SESSION['idUser']))
 		{
 			if (user::esGestor($id) && !user::esAdmin($id)) $html .= '<a class="activado" id="' . $id . '" onclick="gestionaDarGestor(\'' . $id . '\')" placeholder="DarGestor">Es gestor</a>';
@@ -36,26 +37,28 @@ function muestraInteraccion($id,$form){
 		}
    }
     else {
-        if (isset($_GET['editar'])) $html .= $form;
-        else $html .= '<h1><a type="button" onclick="openPage(\'vistaUsuario.php?editar=true&id='  .$_SESSION['idUser'] . '\')">Editar</a></h1>';
-        $html .= "</div>";
 		if(!user::esArtista($id))
 		{
 			if (user::haSolicitado($id)) $html .= '<a class="activado" id="' . $id . '" onclick="gestionaSolicitud(\'' . $id . '\')" placeholder="Solicitar">Solicitado</a>';
 			else $html .= '<a class="activar" id="' . $id . '" onclick="gestionaSolicitud(\'' . $id . '\')" placeholder="Solicitar">Solicitar Verificacion</a>';
 		}
-    }
-    return $html;
+	}
+	$html .= $form;
+	return $html;
 }
+$Editar .= "<p onclick='AbrirCerrar()'>Editar</p>";
 ?>
 
-    <section id="contentsUsuario" class="contentsUsuario">
+    <section id="contents" class="contentsUsuario">
         <?php
         if (isset($_GET['id'])) {
             include 'includes/Usuario.php';
-            echo muestraInteraccion(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT), $htmlform);
+			echo muestraInteraccion(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT), $htmlform);
+			if($_GET['id'] === $_SESSION['idUser']){
+				echo $Editar;
+			}
         }
-        ?>
+		?>
     </section>
 
 	<script>
@@ -85,12 +88,15 @@ function muestraInteraccion($id,$form){
 		return false;
 	});
 });
-    function AbrirCerrar(){
-	 if(!document.getElementById('form-editar').style.display.localeCompare('block')){
+   function AbrirCerrar(){
+	 if(!document.getElementById('form-editar').style.display.localeCompare('flex')){
 		document.getElementById('form-editar').style.display = 'none';
+		document.getElementById('infor').style.display = 'block';
     	}
 	 else{
-		document.getElementById('form-editar').style.display = 'block';
+		document.getElementById('form-editar').style.display = 'flex';
+		document.getElementById('infor').style.display = 'none';
+
 	 }
 	}
 	</script>

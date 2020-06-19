@@ -47,7 +47,7 @@ $html = $form->gestiona();
 				btnEnviar.removeAttr("disabled");
 			},
 			success: function(data){
-				openPage('vistaCrearNoticia.php');
+				openPage('vistaNoticia.php');
 			},
 			error: function(data){
 				alert("Problemas al tratar de enviar el formulario");

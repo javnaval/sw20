@@ -51,7 +51,7 @@ section.contentsUsuario form{
 }
 section.contentsUsuario div.contenido p {
     font-size: 20px;
-    color:#FF307B;;
+    color:#FF307B;
 }
 section.contentsUsuario div.contenido p:hover{
     cursor: pointer;
@@ -59,6 +59,17 @@ section.contentsUsuario div.contenido p:hover{
 
 #form-editar{
     display: none;
+    margin: 0;
+    padding: 0;
+    border-width: 0px;
+    border-style: none;
+}
+fieldset{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-width: 0px;
+    border-style: none;
 }
 
 section.contentsUsuario form button{
@@ -91,4 +102,7 @@ section.contentsUsuario form input[type="submit"]{
 
 section.contentsUsuario form input[type="submit"]:hover{
 	cursor:pointer;
+}
+legend{
+    display: none;
 }

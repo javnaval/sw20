@@ -55,9 +55,8 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 			];
 		}
 
-        public static function buscaNoticiaId($id){
-            return (new Noticias())->where("idUser", "=", $id)->get();
-            //return $noticia[0];
+		public static function buscaNoticiaId($id){
+            return (new Noticias())->where("id", "=", $id)->get()[0];
         }
 
 		public static function buscar($user){

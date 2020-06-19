@@ -39,7 +39,10 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
 
          public function getPlayed(){
              return $this->played;
-		 }
+         }
+         public function setPlayed($played){
+           $this->played = $played;
+        }
 
         public function toString(){
             return[
@@ -59,6 +62,10 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs as songs;
             $song = (new Songs())->join("Songs.id","Contiene","Contiene.idSong")->join("Contiene.idPlayList","PlayLists","PlayLists.id")
             ->where("Contiene.idPlayList","=",$id)->get();
             return $song;
+        }
+
+        public static function ActualizaPlayed($id,$songActualizada){
+            (new Songs())->where("id","=",$id)->update($songActualizada->toString());
         }
 
         public static function buscaSongsIdAlbum($id){

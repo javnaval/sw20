@@ -37,7 +37,6 @@
 			},
 			success: function(data){
 				openPage('vistaUpload.php');
-				document.getElementById('respuesta').innerHTML = data;
 			},
 			error: function(data){
 				alert("Problemas al tratar de enviar el formulario");

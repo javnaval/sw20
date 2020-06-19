@@ -1,5 +1,4 @@
 <?php
-
 require_once '../config.php';
 
 use es\ucm\fdi\aw\classes\databaseClasses\Relations as Relations;
