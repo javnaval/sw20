@@ -6,6 +6,7 @@ use es\ucm\fdi\aw\classes\classes\user as user;
 $idCancion = htmlspecialchars(trim(strip_tags($_GET['idCancion'])));
 
 $usuario = user::buscaUsuarioId($_SESSION['idUser']);
+echo "<p>Foros:</p>";
 $listaForos = "";
 $foros = forum::buscaForosIdSong($idCancion);
 $listaForos .= "<ul>";

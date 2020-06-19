@@ -4,7 +4,7 @@ use es\ucm\fdi\aw\classes\classes\comentario as comentario;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
 
-
+echo "<p>Comentarios:</p>";
 
 function estrcuturaComentario($name,$text,$id,$idUser,$idSub){
 	$html = "";

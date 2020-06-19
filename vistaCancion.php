@@ -35,7 +35,7 @@ function muestraCancion($idCancion,$foroid){
 		$html .= "<span class='wave'><div id='waveform".$song->getId()."'></div></span>
 		<span class='descargar'><a onclick='descargar(\"".$_SESSION['idUser']."\",\"" . $song->getId() . "\")' href='server/songs/".$song->getId().".mp3' download='".$song->getTitle()."'><i class='fas fa-cloud-download-alt'></i></a></span>
 		<span class='refrescar'><i onclick='refrescar(\"".$idCancion."\",\"".$foroid."\")' class='fas fa-redo-alt'></i></span>
-		<span class='opciones'><i onclick='mostrarPlaylist(0)' id='PlayList0' class='fas fa-stream'></i></span>$menu</div>";
+		<span class='opciones'><i onclick='mostrarPlaylist(0)' id='PlayList0' class='fas fa-plus'></i></span>$menu</div>";
 	}
 	return $html;
 }
@@ -45,7 +45,7 @@ function menu($idUser,$idSong,$iC){
 	$playlists = playlist::playlistsUser($idUser);
 	if($playlists != null){
 		foreach($playlists as $play){
-			$html .= "<li><p onclick='anadePlaylist(". $play->getId().",".$idSong.")'>".$play->getTitle()."</p>";
+			$html .= "<li><p onclick='anadePlaylist(". $play->getId().",".$idSong.",".$iC.")'>".$play->getTitle()."</p>";
 		}
     }
     else{
