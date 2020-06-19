@@ -52,7 +52,7 @@ EOF;
         $html .= '<p><input id="btnEnviarUpload" type="submit" id="subir" name="Subir" value="Subir"></p>
                 </fieldset>';
 
-        $html .= '<div class="respuesta"></div>';
+        $html .= '<div  id="respuesta"></div>';
 
         if (is_array($err)) {
             foreach ($err as $e) {
@@ -109,5 +109,3 @@ EOF;
     }
 
 }
-
-    //javascript com
