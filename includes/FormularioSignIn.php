@@ -62,7 +62,7 @@ EOF;
                     $idUser = user::crea($usuario, $email, $contrasenia);
                     session_regenerate_id(true);
                     Application::getSingleton()->login($idUser);
-                    $resultado = "vistaInicio.php";
+                    $resultado = "vista.php";
                 }
                 catch (Exception $exc) {
                     $resultado[] = "<p id='error'>Usuario, email o contraseña incorrecto.</p>";

@@ -106,3 +106,37 @@ section.contentsUsuario form input[type="submit"]:hover{
 legend{
     display: none;
 }
+
+section.contentsUsuario a.activar {
+    color : floralwhite;
+    background-color: #FF307B;
+    text-align: center;
+    padding: 0.75em;
+    border-radius: 1em;
+    font-size: 15px;
+    text-decoration: none;
+    height: fit-content;
+    float: right;
+    margin-top: 2%;
+    margin-right: 15%;
+    margin-left: 75%;
+}
+
+section.contentsUsuario a.activado {
+    color : #FF307B;
+    background-color: floralwhite;
+    text-align: center;
+    padding: 0.75em;
+    border-radius: 1em;
+    font-size: 15px;
+    text-decoration: none;
+    height: fit-content;
+    float: right;
+    margin-top: 2%;
+    margin-right: 15%;
+    margin-left: 75%;
+}
+
+section.contentsUsuario a.activar:hover, section.contents a.activado:hover {
+    cursor: pointer;
+}

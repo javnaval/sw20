@@ -130,7 +130,7 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
         }
 
         public static function crea($user, $email, $contrasenia){
-            return (new Users())->insert((new self(null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT), "usuario", null))->toString());
+            return (new Users())->insert((new self(null,$user, "VACIO", $email, password_hash($contrasenia, PASSWORD_DEFAULT), 'usuario', '0', "0", null))->toString());
         }
 
         public static function buscar($user){
@@ -201,14 +201,6 @@ use es\ucm\fdi\aw\classes\databaseClasses\Users as Users;
 		public function quitarGestor(){
 			 $this->rol = "usuario";
 			 $this->update();
-        }
-
-        public function seguir($idSeguir){
-            $this->user = $usuario;
-            $this->email = $email;
-            $this->name = $name;
-            $this->descripcion = $descripcion;
-            $this->update();
         }
 	}
 ?>

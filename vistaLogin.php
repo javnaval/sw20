@@ -1,8 +1,7 @@
 <?php
     require_once 'includes/config.php';
-    require_once 'includes/FormularioLogin.php';
+
     if (es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
-        $_SESSION['maxNav'] = $_SESSION['nav'] = 0;
         header("Location: vistaInicio.php");
     }
     $form = new es\ucm\fdi\aw\FormularioLogin();
