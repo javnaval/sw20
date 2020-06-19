@@ -10,9 +10,11 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs;
 	 $albumPlayListId = $_POST['albumPlayListId'];
 
 	 $songs = song::buscaSongsIdAlbum($albumPlayListId);
-
+    $i = 0;
 	 foreach($songs as $row){
-        $songsArray[] =  $row->toString();
+        $arrayAux = $row->toString();
+        $arrayAux["id"] = $row->getId();
+        $songsArray[] = $arrayAux;
      }
 
      echo json_encode($songsArray);

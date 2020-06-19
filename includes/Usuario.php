@@ -45,5 +45,5 @@ if (($cont2 = count($siguiendo)) == 0) {
 else {
     echo "<a onclick=\"openPage('vistaSeguidores.php?id=".$usuario->getId()."&seg=false')\">Siguiendo</a>: ".$cont2;
 }
-echo "</h3>";
+echo "</h3><p onclick='AbrirCerrar()'>Editar Datos</p>";
 $rol = $usuario->getRol();

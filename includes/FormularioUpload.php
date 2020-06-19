@@ -49,7 +49,7 @@ EOF;
 
         $html .= '<p><input type="radio" name="type" value="single" onClick="oculta(\'eleccionAlbum\');oculta(\'crearAlbum\', \'tituloAlbum\')" checked>Single</p>';
 
-        $html .= '<p><input type="submit" id="subir" name="Subir" value="Subir"></p>
+        $html .= '<p><input id="btnEnviarUpload" type="submit" id="subir" name="Subir" value="Subir"></p>
                 </fieldset>';
 
         $html .= '<div class="respuesta"></div>';
@@ -85,7 +85,7 @@ EOF;
                 ),
                 true
             );
-            if (!$ext || $_FILES['fileAudio']['size'] > 10000000) {
+            if (!$ext || $_FILES['fileAudio']['size'] > 10000000000000000000) {
                 $resultado[] = "La extensión o el tamaño de los archivos no es correcta.";
             } else {
                 if ($datos['type'] == 'single') {

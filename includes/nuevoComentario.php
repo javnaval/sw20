@@ -24,6 +24,4 @@ if(strcmp($usuario->getRol(), "usuario") !== 0){
 	 $listaComentario .= "<label  onclick='anadeComentario(\"".$idCancion."\",\"".$idComentario."\",\"".$idForo."\")'><i class='far fa-paper-plane'></i></label></form>";
 	 echo  $listaComentario;
 }
-
-
 ?>

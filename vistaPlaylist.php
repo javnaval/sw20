@@ -37,12 +37,18 @@ function viewPlayListInfo($playlist,$userPlaylist) {
 
 function menu($idUser,$idSong,$iC){
     $html = ""; 
-    $html .= "<ul id='navPlayList".$iC."' >";
+    $html .= "<ul class='navPlayList' id='navPlayList".$iC."' >";
     $playlists = playlist::playlistsUser($idUser);
-    foreach($playlists as $play){
-        if ($play->getId() != $_GET["id"]) {
-            $html .= "<li><p onclick='anadePlaylist(" . $play->getId() . "," . $idSong . "," . $iC . ")'>" . $play->getTitle() . "</p>";
+    if($playlists != null){
+        foreach($playlists as $play){
+            if ($play->getId() != $_GET["id"]) {
+                $html .= "<li><p onclick='anadePlaylist(" . $play->getId() . "," . $idSong . "," . $iC . ")'>" . $play->getTitle() . "</p>";
+            }
         }
+
+    }
+    else{
+        $html .= "<li><p> NO TIENES PLAYLISTS </p>";
     }
     return $html .= "</ul></li>";
 }

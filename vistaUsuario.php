@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/config.php';
-
+include("includes/handlers/includedFiles.php");
 use es\ucm\fdi\aw\classes\classes\seguidor as seguidor;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
@@ -10,7 +10,7 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 
 $form = new es\ucm\fdi\aw\FormularioEditarPerfil();
 $htmlform = $form->gestiona();
-include("includes/handlers/includedFiles.php");
+
 
 function muestraInteraccion($id,$form){
     $html = '';
@@ -49,7 +49,7 @@ function muestraInteraccion($id,$form){
 }
 ?>
 
-    <section id="contents" class="contentsUsuario">
+    <section id="contentsUsuario" class="contentsUsuario">
         <?php
         if (isset($_GET['id'])) {
             include 'includes/Usuario.php';
@@ -57,3 +57,40 @@ function muestraInteraccion($id,$form){
         }
         ?>
     </section>
+
+	<script>
+	 var id = '<?php echo $_SESSION['idUser'] ?>';
+	 $(document).ready(function(){
+	  $("#form-editar").bind("submit",function(){
+		var btnEnviar = $(document.getElementById("btnEnviar"));
+		$.ajax({
+			type: $(this).attr("method"),
+			url: $(this).attr("action"),
+			data:$(this).serialize(),
+			beforeSend: function(){
+				btnEnviar.val("Actualizando");
+				btnEnviar.attr("disabled","disabled");
+			},
+			complete:function(data){
+				btnEnviar.val("Actualizar");
+				btnEnviar.removeAttr("disabled");
+			},
+			success: function(data){
+				openPage('vistaUsuario.php?id='+id);
+			},
+			error: function(data){
+				alert("Problemas al tratar de enviar el formulario");
+			}
+		});
+		return false;
+	});
+});
+    function AbrirCerrar(){
+	 if(!document.getElementById('form-editar').style.display.localeCompare('block')){
+		document.getElementById('form-editar').style.display = 'none';
+    	}
+	 else{
+		document.getElementById('form-editar').style.display = 'block';
+	 }
+	}
+	</script>

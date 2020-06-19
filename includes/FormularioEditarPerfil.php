@@ -7,7 +7,7 @@ class FormularioEditarPerfil extends Form {
     private $opciones = array();
 
     public function __construct() {
-        $this->opciones['action'] = "vistaUsuario.php?id='" . $_SESSION['idUser'];
+        $this->opciones['action'] = "vistaUsuario.php?id=" . $_SESSION['idUser'];
         $this->opciones['enctype'] = "multipart/form-data";
         parent::__construct("form-editar", $this->opciones);
     }
@@ -42,7 +42,7 @@ EOF;
         }
         else $html .= "<input type=\"text\" name=\"descripcion\" value=".$user->getDescripcion()."></p>";
 
-	   $html .= '<p><input type="submit" name="Actualizar" value="Actualizar"></p> </fieldset>';
+	   $html .= '<p><input id="btnEnviar" type="submit" name="Actualizar" value="Actualizar"></p> </fieldset>';
 
 	   if (is_array($err)) {
             foreach ($err as $e) {
@@ -55,7 +55,6 @@ EOF;
     protected function procesaFormulario($datos)
     {
         $resultado = array();
-
 		$user = user::buscaUsuarioId($_SESSION['idUser']);
 
         assert(is_string($datos['user']) && is_string($datos['email']) && is_string($datos['name']), "Error al introducir los datos");

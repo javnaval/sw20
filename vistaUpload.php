@@ -1,5 +1,6 @@
 <?php
     require_once 'includes/config.php';
+    include("includes/handlers/includedFiles.php");
     use es\ucm\fdi\aw\classes\classes\user as user;
 
     if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
@@ -7,7 +8,6 @@
     }
     $form = new es\ucm\fdi\aw\FormularioUpload();
     $html = $form->gestiona();
-    include("includes/handlers/includedFiles.php");
 
 ?>
     <section id="contents" class="contents">
@@ -16,30 +16,33 @@
         ?>
     </section>
 
-<script type="application/javascript">
-    $(document).ready(function () {
-        $("#form-upload").bind("submit",function(){
-            var formData = new FormData(document.getElementById("form-upload"));
-            formData.append("dato", "valor");
-            var subir = $("#subir");
-            $.ajax({
-                type: $(this).attr("method"),
-                url: $(this).attr("action"),
-                data:formData,
-                beforeSend: function(){
-                    subir.attr("disabled","disabled");
-                },
-                complete:function(data){
-                    subir.removeAttr("disabled");
-                },
-                success: function(data){
-                    $(".respuesta").html(data);
-                },
-                error: function(data){
-                    alert("Problemas al tratar de enviar el formulario");
-                }
-            });
-            return false;
-        });
-    });
+<script>
+	 $(document).ready(function(){
+	  $("#form-upload").bind("submit",function(){
+        var fd = new FormData(this);
+        var btnEnviar = $("#btnEnviarUpload");
+		$.ajax({
+			type: $(this).attr("method"),
+			url: $(this).attr("action"),
+            data: new FormData(this),
+            processData: false,  
+            contentType: false,  
+			beforeSend: function(){
+				btnEnviar.val("Subiendo");
+				btnEnviar.attr("disabled","disabled");
+			},
+			complete:function(data){
+				btnEnviar.val("subir");
+				btnEnviar.removeAttr("disabled");
+			},
+			success: function(data){
+				openPage('vistaUpload.php');
+			},
+			error: function(data){
+				alert("Problemas al tratar de enviar el formulario");
+			}
+		});
+		return false;
+	});
+});
 </script>

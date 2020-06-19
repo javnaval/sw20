@@ -50,12 +50,13 @@ var wavesurfer;
               song.src = directionSONG + numero + ".mp3";
               songId = numero;
               document.getElementById('img-song').innerHTML = '<img  src="' + directionIMG + songId  + '.png"></img>';
-              //document.getElementById('nombre-cancion').textContent = track[currentSong].title;
+              document.getElementById('nombre-cancion').textContent = albumOrPlaylist;
               playpause();
            }
         }
         else{
            $.post(direction,{ albumPlayListId: albumPlayListId }, function(data) {
+               console.log(data);
                track = JSON.parse(data);
                if(JSON.stringify(currenTrack) === JSON.stringify(track)){
                    if(numero == currentSong){

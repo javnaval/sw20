@@ -13,7 +13,7 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 
 $idCancion = htmlspecialchars(trim(strip_tags($_GET["id"])));
 
-$foroInicial = forum::buscaForosIdSongTitulo($_GET["id"],"Comentarios");
+$foroInicial = forum::buscaForosIdSongTitulo($idCancion,"Comentarios");
 
 $foroid= $foroInicial->getId();
 
@@ -26,11 +26,11 @@ function muestraCancion($idCancion,$foroid){
         $html .= "<div class='cancion' ><div class='card'>";  
         $html .= "<figure><img src='images/Colores.jpg'>";   
         $html .= "<figcaption>" . $song->getTitle() . "<figcaption>";
-        $html .= "<button class='foot' id='playpause" .$song->getId(). "'  onclick='setTrack(null,\"" . $song->getId() . "\",null)'><i class='fas fa-play-circle'></i></button></div>";
+        $html .= "<button class='foot' id='playpause" .$song->getId(). "'  onclick='setTrack(null,\"" . $song->getId() . "\",\"".$song->getTitle()."\")'><i class='fas fa-play-circle'></i></button></div>";
 		$html .= "<span class='wave'><div id='waveform".$song->getId()."'></div></span>
 		<span class='descargar'><a onclick='descargar(\"".$_SESSION['idUser']."\",\"" . $song->getId() . "\")' href='server/songs/".$song->getId().".mp3' download='".$song->getTitle()."'><i class='fas fa-cloud-download-alt'></i></a></span>
 		<span class='refrescar'><i onclick='refrescar(\"".$idCancion."\",\"".$foroid."\")' class='fas fa-redo-alt'></i></span>
-		<span class='opciones'><i onclick='mostrarPlaylist(0)' id='PlayList0' class='fas fa-plus'></i></span>$menu</div>";
+		<span class='opciones'><i onclick='mostrarPlaylist(0)' id='PlayList0' class='fas fa-stream'></i></span>$menu</div>";
 	}
 	return $html;
 }
@@ -38,9 +38,14 @@ function menu($idUser,$idSong,$iC){
 	$html = ""; 
 	$html .= "<ul id='navPlayList".$iC."' >";
 	$playlists = playlist::playlistsUser($idUser);
-	foreach($playlists as $play){
-		$html .= "<li><p onclick='anadePlaylist(". $play->getId().",".$idSong."," . $iC . ")'>".$play->getTitle()."</p>";
-	}
+	if($playlists != null){
+		foreach($playlists as $play){
+			$html .= "<li><p onclick='anadePlaylist(". $play->getId().",".$idSong.")'>".$play->getTitle()."</p>";
+		}
+    }
+    else{
+        $html .= "<li><p> NO TIENES PLAYLISTS </p>";
+    }
 	return $html .= "</ul></li>";
 }
 

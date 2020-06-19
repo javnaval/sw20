@@ -12,7 +12,9 @@ use es\ucm\fdi\aw\classes\databaseClasses\Songs;
      $songs = song::buscaSongIdPlaylist($albumPlayListId);
 
      foreach($songs as $row){
-        $songsArray[] =  $row->toString();
+      $arrayAux = $row->toString();
+      $arrayAux["id"] = $row->getId();
+      $songsArray[] = $arrayAux;
      }
 
      echo json_encode($songsArray);

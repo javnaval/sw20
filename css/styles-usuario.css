@@ -3,89 +3,92 @@ body {
     margin: 0;
 }
 
-section.contentsUsuario img{
-    width: 15em;
-	height: 15em;
-    text-align: center;
-	margin-left: 5%;
-	border-radius: 50%;
-}
-
-section.contentsUsuario div.contenido {
-	width: auto;
-    height: 40%;
-	color: white;
-	position: absolute;
-	margin-left: 30%;
-	margin-top: 5%;
-}
-
-section.contentsUsuario h3 a {
-    color: rgb(255,251,251);
-    text-decoration: none;
-}
-
-section.contentsUsuario h3 a:hover {
-    text-decoration: underline;
-}
-
-section.contentsUsuario {
+section.contentsUsuario{
     margin-left: 100px;
     margin-bottom: 100px;
-    height: 100%;;
+    height: calc(100% - 100px);
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     position: fixed;
     overflow-y: scroll;
+    background: -moz-linear-gradient(top, rgba(28,28,28,1) 0%, rgba(102,102,102,1) 0%, rgba(90,90,90,1) 4%, rgba(76,76,76,1) 9%, rgba(76,76,76,1) 17%, rgba(76,76,76,1) 18%, rgba(71,71,71,1) 31%, rgba(44,44,44,1) 44%, rgba(43,43,43,1) 50%, rgba(19,19,19,1) 67%, rgba(17,17,17,1) 77%, rgba(0,0,0,1) 87%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(28,28,28,1)), color-stop(0%, rgba(102,102,102,1)), color-stop(4%, rgba(90,90,90,1)), color-stop(9%, rgba(76,76,76,1)), color-stop(17%, rgba(76,76,76,1)), color-stop(18%, rgba(76,76,76,1)), color-stop(31%, rgba(71,71,71,1)), color-stop(44%, rgba(44,44,44,1)), color-stop(50%, rgba(43,43,43,1)), color-stop(67%, rgba(19,19,19,1)), color-stop(77%, rgba(17,17,17,1)), color-stop(87%, rgba(0,0,0,1)));
+    background: -webkit-linear-gradient(top, rgba(28,28,28,1) 0%, rgba(102,102,102,1) 0%, rgba(90,90,90,1) 4%, rgba(76,76,76,1) 9%, rgba(76,76,76,1) 17%, rgba(76,76,76,1) 18%, rgba(71,71,71,1) 31%, rgba(44,44,44,1) 44%, rgba(43,43,43,1) 50%, rgba(19,19,19,1) 67%, rgba(17,17,17,1) 77%, rgba(0,0,0,1) 87%);
+    background: -o-linear-gradient(top, rgba(28,28,28,1) 0%, rgba(102,102,102,1) 0%, rgba(90,90,90,1) 4%, rgba(76,76,76,1) 9%, rgba(76,76,76,1) 17%, rgba(76,76,76,1) 18%, rgba(71,71,71,1) 31%, rgba(44,44,44,1) 44%, rgba(43,43,43,1) 50%, rgba(19,19,19,1) 67%, rgba(17,17,17,1) 77%, rgba(0,0,0,1) 87%);
+    background: -ms-linear-gradient(top, rgba(28,28,28,1) 0%, rgba(102,102,102,1) 0%, rgba(90,90,90,1) 4%, rgba(76,76,76,1) 9%, rgba(76,76,76,1) 17%, rgba(76,76,76,1) 18%, rgba(71,71,71,1) 31%, rgba(44,44,44,1) 44%, rgba(43,43,43,1) 50%, rgba(19,19,19,1) 67%, rgba(17,17,17,1) 77%, rgba(0,0,0,1) 87%);
+    background: linear-gradient(to bottom, rgba(28,28,28,1) 0%, rgba(102,102,102,1) 0%, rgba(90,90,90,1) 4%, rgba(76,76,76,1) 9%, rgba(76,76,76,1) 17%, rgba(76,76,76,1) 18%, rgba(71,71,71,1) 31%, rgba(44,44,44,1) 44%, rgba(43,43,43,1) 50%, rgba(19,19,19,1) 67%, rgba(17,17,17,1) 77%, rgba(0,0,0,1) 87%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1c1c', endColorstr='#000000', GradientType=0 );
 }
-
-section.contentsUsuario h3 {
-    color: rgb(255, 251, 251);
+section.contentsUsuario div.imagen{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
 }
-
-section.contentsUsuario h1 a {
-    color: #FF307B;
+section.contentsUsuario div.contenido{
+    height: calc(100% - 100px);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
 }
-
-section.contentsUsuario legend{
-    color: #FF307B;
+section.contentsUsuario div.contenido h3{
+    color: white;
 }
-
-section.contentsUsuario fieldset{
-    color: rgb(255,251,251);
+section.contentsUsuario div.imagen img{
+    width: 100%;
+    height: 50%;
+    border-radius: 20px;
+    margin: 50px;
 }
-
-section.contentsUsuario a.activar {
-    color : floralwhite;
-    background-color: #FF307B;
-    text-align: center;
-    padding: 0.75em;
-    border-radius: 1em;
-    font-size: 15px;
-    text-decoration: none;
-    height: fit-content;
-    float: right;
-    margin-top: 2%;
-    margin-right: 15%;
-    margin-left: 75%;
+section.contentsUsuario form{
+	width:100%;
+	border-radius:10px;
+	margin:auto;
+	background-color:#ccc;
 }
-
-section.contentsUsuario a.activado {
-    color : #FF307B;
-    background-color: floralwhite;
-    text-align: center;
-    padding: 0.75em;
-    border-radius: 1em;
-    font-size: 15px;
-    text-decoration: none;
-    height: fit-content;
-    float: right;
-    margin-top: 2%;
-    margin-right: 15%;
-    margin-left: 75%;
+section.contentsUsuario div.contenido p {
+    font-size: 20px;
+    color:#FF307B;;
 }
-
-section.contentsUsuario a.activar:hover, section.contentsUsuario a.activado:hover {
+section.contentsUsuario div.contenido p:hover{
     cursor: pointer;
+}
+
+#form-editar{
+    display: none;
+}
+
+section.contentsUsuario form button{
+	width:72px;
+	font-weight:bold;
+	display:inline-block;
+}
+
+section.contentsUsuario form input[type="text"],
+section.contentsUsuario form input[type="email"]{
+	width:180px;
+	padding:3px 10px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;
+	margin:8px 0;
+	display:inline-block;
+}
+
+section.contentsUsuario form input[type="submit"]{
+	width:100%;
+	padding:8px 16px;
+	margin-top:32px;
+	border:1px solid #000;
+	border-radius:5px;
+	display:block;
+	color:#fff;
+	background-color:#000;
+} 
+
+section.contentsUsuario form input[type="submit"]:hover{
+	cursor:pointer;
 }

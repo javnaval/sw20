@@ -23,11 +23,11 @@ EOF;
 
 		$html .= "<p><input type=\"text\" name=\"titulo\" placeholder=\"Titulo\" required></p>";
 
-		$html .= "<p><textarea name=\"texto\" rows=\"10\" cols=\"40\">Texto de la noticia</textarea></p>";
+		$html .= "<p><textarea id='campotexto' name=\"texto\" rows=\"10\" cols=\"40\">Texto de la noticia</textarea></p>";
 
         $html .= '<p><input type="file" name="fileImage" value="Elija una imagen" required></p>';
 
-        $html .= '<p><input type="submit" name="Subir" onClick="validar(campotexto.value);" value="Subir"></p>
+        $html .= '<p><input id="bntEnviarNoticia" type="submit" name="Subir" onclick="validar(campotexto.value);" value="Subir"></p>
                 </fieldset>';
         return $html;
     }
@@ -35,6 +35,7 @@ EOF;
     protected function procesaFormulario($datos)
     {
         $resultado = array();
+        print_r($datos);
 
         assert(is_string($datos['titulo']));
         $title = htmlspecialchars(trim(strip_tags($datos['titulo'])));
@@ -63,6 +64,7 @@ EOF;
                 }
             }
         } else $resultado[] = "Error al subir el fichero (configuración)";
+
 
         return $resultado;
     }

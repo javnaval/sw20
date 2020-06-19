@@ -1,4 +1,7 @@
 
+
+
+
 function openPage(url) {
 	var encodedUrl = encodeURI(url);
 	$("#mainContent").load(encodedUrl);

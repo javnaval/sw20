@@ -43,12 +43,21 @@ use es\ucm\fdi\aw\classes\classes\playlist as playlist;
     }
     function menu($idUser,$idSong,$iC){
         $html = ""; 
-        $html .= "<ul id='navPlayList".$iC."' >";
+        $html .= "<ul class='navPlayList' id='navPlayList".$iC."' >";
         $playlists = playlist::playlistsUser($idUser);
-        foreach($playlists as $play){
-            $html .= "<li><p onclick='anadePlaylist(". $play->getId().",".$idSong.")'>".$play->getTitle()."</p>";
+        if($playlists != null){
+            foreach($playlists as $play){
+                if ($play->getId() != $_GET["id"]) {
+                    $html .= "<li><p onclick='anadePlaylist(" . $play->getId() . "," . $idSong . "," . $iC . ")'>" . $play->getTitle() . "</p>";
+                }
+            }
+    
+        }
+        else{
+            $html .= "<li><p> NO TIENES PLAYLISTS </p>";
         }
         return $html .= "</ul></li>";
+        
     }
 
 ?>
@@ -65,9 +74,10 @@ use es\ucm\fdi\aw\classes\classes\playlist as playlist;
       if($(existe).length > 0) {
          document.getElementById(playId).innerHTML = '<i class="fas fa-stop-circle"></i>';
        }
-         crearSpectro(<?php echo $idCancion ?>);
+         crearSpectro(songId);
 		 wavesurfer.load(song.src);
      }
+
      var ids = '<?php echo $i ?>';
             for(var i = 0; i < ids; i++){
                 var nav = 'navPlayList' + i;
