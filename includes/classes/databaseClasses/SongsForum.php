@@ -11,7 +11,7 @@ class SongsForum extends Crud {
         "titulo"         => "NOT NULL"
     ];
     public function __construct(){
-        parent::__construct("SongsForum",$this->properties);
+        parent::__construct("songsForum",$this->properties);
     }
     public function get(){
         $arrayPDO = parent::get();

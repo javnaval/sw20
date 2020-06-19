@@ -4,9 +4,9 @@ use es\ucm\fdi\aw\classes\classes\comentario as comentario;
 use es\ucm\fdi\aw\classes\classes\user as user;
 
 
-$idCancion = htmlspecialchars(trim(strip_tags($_POST['idCancion'])));
-$idComentario = htmlspecialchars(trim(strip_tags($_POST['idComentario'])));
-$idForo = htmlspecialchars(trim(strip_tags($_POST['idForo'])));
+$idCancion = htmlspecialchars(trim(strip_tags($_GET['idCancion'])));
+$idComentario = htmlspecialchars(trim(strip_tags($_GET['idComentario'])));
+$idForo = htmlspecialchars(trim(strip_tags($_GET['idForo'])));
 
 
 

@@ -13,7 +13,7 @@ class Comentarios extends Crud {
         "idForum"        => "NOT NULL"
     ];
     public function __construct(){
-        parent::__construct("Comentarios",$this->properties);
+        parent::__construct("comentarios",$this->properties);
     }
 
     public function get(){

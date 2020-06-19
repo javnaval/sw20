@@ -19,7 +19,7 @@ function muestraComentarios($idCancion,$idForo){
 	$html = "";
 	$htmlSub = "";
 	$i = 0;
-	$comentarios = comentario::buscaSongIbuscaComentariosIdSongComentariosdPlaylist(3,1);
+	$comentarios = comentario::buscaSongIbuscaComentariosIdSongComentariosdPlaylist($idCancion,$idForo);
 	$html .=  "<div class='comments-container'><ul id='comments-list' class='comments-list'>";
 	if($comentarios !== null){
 		foreach($comentarios as $comentario){
@@ -43,5 +43,5 @@ function muestraComentarios($idCancion,$idForo){
 	}
 	return $html ;
 }
-echo muestraComentarios(3, 1);
+echo muestraComentarios(htmlspecialchars(trim(strip_tags($_GET['id']))), htmlspecialchars(trim(strip_tags($_GET["idForo"]))));
 ?>

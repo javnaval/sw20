@@ -113,7 +113,7 @@ CREATE TABLE `noticias` (
   `idUser` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
   `texto` text NOT NULL,
-  `accepted` boolean NOT NULL
+  `accepted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -161,8 +161,8 @@ CREATE TABLE `users` (
   `email` varchar(200) NOT NULL,
   `password` varchar(80) NOT NULL,
   `rol` varchar(15) NOT NULL,
-  `solicitado` boolean NOT NULL,
-  `bloqueado` boolean NOT NULL,
+  `solicitado` tinyint(1) NOT NULL,
+  `bloqueado` tinyint(1) NOT NULL,
   `descripcion` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -241,6 +241,7 @@ ALTER TABLE `albums`
 -- Indices de la tabla `contiene`
 --
 ALTER TABLE `contiene`
+  ADD PRIMARY KEY (`idSong`,`idPlaylist`),
   ADD KEY `contiene_ibfk_1` (`idPlaylist`),
   ADD KEY `idSong` (`idSong`);
 

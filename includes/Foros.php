@@ -12,7 +12,7 @@ $foros = forum::buscaForosIdSong($idCancion);
 $listaForos .= "<ul>";
 if ($foros !== null) {
     foreach ($foros as $foro) {
-        $listaForos .= "<li onclick='mostrarComentarios(3,1)'><p>" . $foro->getTitutlo() . "</p></li>";
+        $listaForos .= "<li onclick='mostrarComentarios(\"" . $idCancion . "\",\"" . $foro->getId() . "\")'><p>" . $foro->getTitutlo() . "</p></li>";
     }
     $listaForos .= "</ul>";
 }
