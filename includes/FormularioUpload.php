@@ -49,8 +49,10 @@ EOF;
 
         $html .= '<p><input type="radio" name="type" value="single" onClick="oculta(\'eleccionAlbum\');oculta(\'crearAlbum\', \'tituloAlbum\')" checked>Single</p>';
 
-        $html .= '<p><input type="submit" name="Subir" value="Subir"></p>
+        $html .= '<p><input type="submit" id="subir" name="Subir" value="Subir"></p>
                 </fieldset>';
+
+        $html .= '<div class="respuesta"></div>';
 
         if (is_array($err)) {
             foreach ($err as $e) {

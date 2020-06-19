@@ -7,8 +7,6 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
     header("Location: index.php");
 }
 
-
-
 ?>
 
     <section id="contents" class="contentsNoticia">

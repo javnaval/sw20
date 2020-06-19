@@ -13,8 +13,3 @@
     </div>
 </header>
 
-<script>
-    window.onload = function() {
-        adjust(<?php echo $_SESSION['nav'];?>, <?php echo $_SESSION['maxNav'];?>, <?php if (isset($_SESSION['h'])) {echo 1; unset($_SESSION['h']);} else echo 0; ?>);
-    }
-</script>

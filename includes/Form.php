@@ -75,7 +75,7 @@ class Form {
                 if ( ! $this->ajax ) {
                     return $this->generaFormulario($errores, $_POST);
                 } else {
-                    return $this->generaHtmlErrores($errores);
+                    return $this->generaListaErrores($errores);
                 }
             } else  {
                 $result = $this->procesaFormulario($_POST);
@@ -84,7 +84,7 @@ class Form {
                     if ( ! $this->ajax ) {
                         return $this->generaFormulario($result, $_POST);
                     } else {
-                        return $this->generaHtmlErrores($result);
+                        return $this->generaListaErrores($result);
                     }
                 } else {
                     if ( ! $this->ajax ) {

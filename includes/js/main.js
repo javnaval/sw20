@@ -127,6 +127,7 @@ function buscar(bus = null) {
 						parent.removeChild(parent.childNodes[i]);
 					}
 					document.getElementById('contents').innerHTML += text;
+					document.getElementById('input-busqueda').value = bus;
                 }
             });
         })

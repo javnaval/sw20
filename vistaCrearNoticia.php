@@ -13,6 +13,7 @@ if (!user::esArtista($_SESSION['idUser'])){
 
 $form = new es\ucm\fdi\aw\FormularioCrearNoticia();
 $html = $form->gestiona();
+include("includes/handlers/includedFiles.php");
 ?>
 
     <section id="contents" class="contentsCrearNoticia">

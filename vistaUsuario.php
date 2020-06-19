@@ -1,6 +1,5 @@
 <?php
 require_once 'includes/config.php';
-include("includes/handlers/includedFiles.php");  
 
 use es\ucm\fdi\aw\classes\classes\seguidor as seguidor;
 use es\ucm\fdi\aw\classes\classes\user as user;
@@ -11,6 +10,7 @@ if (!es\ucm\fdi\aw\Application::getSingleton()->usuarioLogueado()) {
 
 $form = new es\ucm\fdi\aw\FormularioEditarPerfil();
 $htmlform = $form->gestiona();
+include("includes/handlers/includedFiles.php");
 
 function muestraInteraccion($id,$form){
     $html = '';
