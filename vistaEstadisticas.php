@@ -76,9 +76,9 @@ if($noticias != null){
 	$acc="  (Aun no ha sido aceptada)";
 	else
 	$acc="  (Aceptada)";
-	$listaNoticias. ="<li class='tracklistRow'>
+	
 			echo '<div class="texto"><h3>'. $row->getTitle().''.$acc.'</h3><p>' . $row->getTexto() . '</h3></p>';
-			echo '</div>'</li>;"
+			echo '</div>';
         $i++;
 
     }
