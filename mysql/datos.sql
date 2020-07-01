@@ -16,6 +16,26 @@ INSERT INTO `users` (`id`, `user`, `name`, `email`, `password`, `rol`, `solicita
 (10, 'user_premium', 'user', 'pepa@gmail.com', '$2y$10$.fO4ow1Ptq.WgAzVjCZQA.S5iPtdHi.pbRjLuAWw6gYF5Qu/01d0e', 'premium', 0, 0, NULL);
 
 
+INSERT INTO `seguidores` (`idUser`, `idSeguidor`) VALUES
+(1, 10),
+(2, 10),
+(3, 1),
+(4, 1),
+(7, 1),
+(7, 10),
+(8, 1);
+
+
+--
+-- Volcado de datos para la tabla `playlists`
+--
+
+INSERT INTO `playlists` (`id`, `idUser`, `title`) VALUES
+(1, 3, 'playlist1'),
+(2, 1, 'playlist2'),
+(3, 10, 'mis favs');
+
+
 --
 -- Volcado de datos para la tabla `albums`
 --

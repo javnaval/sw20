@@ -35,9 +35,9 @@ GRANT ALL PRIVILEGES ON `sounday`.* TO 'sounday'@'%';
 
 USE `sounday`;
 
+DROP TABLE IF EXISTS `comentarios`;
 DROP TABLE IF EXISTS `songsForum`;
 DROP TABLE IF EXISTS `descargas`;
-DROP TABLE IF EXISTS `comentarios`;
 DROP TABLE IF EXISTS `meGustacomentarios`;
 DROP TABLE IF EXISTS `seguidores`;
 DROP TABLE IF EXISTS `contiene`;
@@ -306,12 +306,6 @@ ALTER TABLE `meGustacomentarios`
 --
 ALTER TABLE `descargas`
   ADD PRIMARY KEY( `idUser`, `idSong`);
-
---
--- Indices de la tabla `contiene`
---
-ALTER TABLE `contiene`
-  ADD PRIMARY KEY( `idSong`, `idPlaylist`);
 
 --
 -- Indices de la tabla `seguidores`
